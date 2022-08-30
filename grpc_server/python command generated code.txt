@@ -1,0 +1,4 @@
+Ejecutar en el siguiente orden:
+1. pipenv shell -> Entrar en entorno virtual de python
+2. python -m grpc_tools.protoc -I..\gRPC_server\protobufs --python_out=. --grpc_python_out=. ..\gRPC_server\protobufs\usuarios.proto -> Generar codigo para cada uno de los archivos protos
+3. python .\server.py -> Compilar y ejecutar servidor

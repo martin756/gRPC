@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "7Nhn3t73WB2vkMIjmTq3EnckPUnja8qS7llwJu62qkY2HyAcmFtoNKqzxdt5IiAjNYxHGegjSjmeK0+1FwD55w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\magostino\\.nuget\\packages\\google.api.commonprotos\\2.3.0\\google.api.commonprotos.2.3.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\grpc.core\\2.39.1\\grpc.core.2.39.1.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\grpc.core.api\\2.39.1\\grpc.core.api.2.39.1.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\grpc.net.client\\2.39.0\\grpc.net.client.2.39.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\grpc.net.common\\2.39.0\\grpc.net.common.2.39.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\grpc.tools\\2.39.1\\grpc.tools.2.39.1.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.9\\microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.9\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.9.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+  ],
+  "logs": []
+}

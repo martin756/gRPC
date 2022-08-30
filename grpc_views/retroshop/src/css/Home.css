@@ -1,0 +1,20 @@
+.containerPrincipal {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  background-color: white;
+}
+
+.containerHome {
+  text-align: center;
+  border: 1px solid blue;
+  padding: 40px;
+}
+
+.containerTitulo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 28px;
+  padding: 18px;
+  text-align: center;
+}

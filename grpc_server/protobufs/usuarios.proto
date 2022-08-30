@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+message Usuario/*Pizza*/ {
+    //repeated string topping  = 1;
+    //int32 pulgadas = 2;
+    string nombre = 1;
+    string apellido = 2;
+    uint64 dni = 3;
+    string email = 4;
+    string user = 5;
+    string password = 6;
+}
+
+message Username {
+    string username = 1;
+    string password = 2;
+}
+
+/*message Orden {
+    repeated Pizza pizzas = 1;
+    string direccion = 2;
+}
+
+message ConfirmacionOrden {
+    int64 entregaEstimada = 1;
+}*/
+
+message Response {
+    string message = 1;
+}
+
+message Nulo {
+}
+
+service Usuarios/*Pizzeria*/ {
+    rpc Listo(Nulo) returns (Nulo);
+    //rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
+    rpc TraerUsuario(Username) returns (Usuario);
+    rpc AltaUsuario(Usuario) returns (Response);
+}
