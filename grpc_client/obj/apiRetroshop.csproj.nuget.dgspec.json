@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj": {}
+    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj": {
+    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj",
+        "projectUniqueName": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
         "projectName": "apiRetroshop",
-        "projectPath": "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj",
+        "projectPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
         "packagesPath": "C:\\Users\\magostino\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\obj\\",
+        "outputPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

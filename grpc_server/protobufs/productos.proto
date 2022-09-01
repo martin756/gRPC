@@ -1,0 +1,19 @@
+syntax = "proto3";
+import "usuarios.proto";
+
+message Producto {
+    string nombre = 1;
+    string descripcion = 2;
+    Tipo_categoria idtipocategoria = 3;
+    float precio = 4;
+    int64 cantidad_disponible = 5;
+    int64 fecha_publicacion = 6;
+    Usuario publicador_idusuario = 7;
+}
+message Tipo_categoria{   
+    string nombre = 1;
+}
+
+service Productos {
+    
+}

@@ -64,7 +64,8 @@ namespace apiRetroshop.Controllers
                     Dni = user.Dni,
                     Email = user.Email,
                     User = user.User,
-                    Password = user.Password
+                    Password = user.Password,
+                    Saldo = user.Saldo
                 };
 
                 var usuarioResponse = cliente.AltaUsuario(postUser);

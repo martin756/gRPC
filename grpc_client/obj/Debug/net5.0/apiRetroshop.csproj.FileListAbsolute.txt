@@ -85,3 +85,47 @@ C:\Users\magostino\Desktop\Facu\Sistemas Distribuidos\Trabajos Prácticos\gRPC R
 C:\Users\magostino\Desktop\Facu\Sistemas Distribuidos\Trabajos Prácticos\gRPC Retroshop Web\grpc_client\obj\Debug\net5.0\ref\apiRetroshop.dll
 C:\Users\magostino\Desktop\Facu\Sistemas Distribuidos\Trabajos Prácticos\gRPC Retroshop Web\grpc_client\obj\Debug\net5.0\apiRetroshop.pdb
 C:\Users\magostino\Desktop\Facu\Sistemas Distribuidos\Trabajos Prácticos\gRPC Retroshop Web\grpc_client\obj\Debug\net5.0\apiRetroshop.genruntimeconfig.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\appsettings.json
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.exe
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.deps.json
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.runtimeconfig.json
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.runtimeconfig.dev.json
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\ref\apiRetroshop.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\apiRetroshop.pdb
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Google.Api.CommonProtos.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Google.Protobuf.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Grpc.Core.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Grpc.Core.Api.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Grpc.Net.Client.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Grpc.Net.Common.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.AssemblyReference.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.AssemblyInfoInputs.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.AssemblyInfo.cs
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.CoreCompileInputs.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\staticwebassets\apiRetroshop.StaticWebAssets.Manifest.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\staticwebassets\apiRetroshop.StaticWebAssets.xml
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\scopedcss\bundle\apiRetroshop.styles.css
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.RazorTargetAssemblyInfo.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.CopyComplete
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\ref\apiRetroshop.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.pdb
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.genruntimeconfig.cache

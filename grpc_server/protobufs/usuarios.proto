@@ -9,6 +9,7 @@ message Usuario/*Pizza*/ {
     string email = 4;
     string user = 5;
     string password = 6;
+    float saldo = 7;
 }
 
 message Username {

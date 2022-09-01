@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Nhn3t73WB2vkMIjmTq3EnckPUnja8qS7llwJu62qkY2HyAcmFtoNKqzxdt5IiAjNYxHGegjSjmeK0+1FwD55w==",
+  "dgSpecHash": "6kjCmYDTdwo0DtHJYAN+iqV9eM2uU2pNoO/lCWXurwMkJSiMuWWDlSQLxLRWajJwTPr/oUuOZxL2iPevJFatVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\magostino\\Desktop\\Facu\\Sistemas Distribuidos\\Trabajos Prácticos\\gRPC Retroshop Web\\grpc_client\\apiRetroshop.csproj",
+  "projectFilePath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\magostino\\.nuget\\packages\\google.api.commonprotos\\2.3.0\\google.api.commonprotos.2.3.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",

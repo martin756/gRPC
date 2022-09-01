@@ -27,7 +27,7 @@ class ServicioUsuarios(UsuariosServicer):
         row = cursor.fetchone()
         if row is not None:
             return Response(message = "400")
-        query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`) VALUES ('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}')")
+        query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`, `saldo`) VALUES ('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}', '{request.saldo}')")
         cursor.execute(query)
         cnx.commit()
 
@@ -45,7 +45,7 @@ class ServicioUsuarios(UsuariosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Usuario(nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña)
+            return Usuario(nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo)
         else:
             return Usuario()
 

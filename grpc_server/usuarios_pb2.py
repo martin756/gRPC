@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eusuarios.proto\"g\n\x07Usuario\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x10\n\x08\x61pellido\x18\x02 \x01(\t\x12\x0b\n\x03\x64ni\x18\x03 \x01(\x04\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0c\n\x04user\x18\x05 \x01(\t\x12\x10\n\x08password\x18\x06 \x01(\t\".\n\x08Username\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x06\n\x04Nulo2j\n\x08Usuarios\x12\x15\n\x05Listo\x12\x05.Nulo\x1a\x05.Nulo\x12#\n\x0cTraerUsuario\x12\t.Username\x1a\x08.Usuario\x12\"\n\x0b\x41ltaUsuario\x12\x08.Usuario\x1a\t.Responseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eusuarios.proto\"v\n\x07Usuario\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x10\n\x08\x61pellido\x18\x02 \x01(\t\x12\x0b\n\x03\x64ni\x18\x03 \x01(\x04\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x0c\n\x04user\x18\x05 \x01(\t\x12\x10\n\x08password\x18\x06 \x01(\t\x12\r\n\x05saldo\x18\x07 \x01(\x02\".\n\x08Username\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x06\n\x04Nulo2j\n\x08Usuarios\x12\x15\n\x05Listo\x12\x05.Nulo\x1a\x05.Nulo\x12#\n\x0cTraerUsuario\x12\t.Username\x1a\x08.Usuario\x12\"\n\x0b\x41ltaUsuario\x12\x08.Usuario\x1a\t.Responseb\x06proto3')
 
 
 
@@ -55,13 +55,13 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _USUARIO._serialized_start=18
-  _USUARIO._serialized_end=121
-  _USERNAME._serialized_start=123
-  _USERNAME._serialized_end=169
-  _RESPONSE._serialized_start=171
-  _RESPONSE._serialized_end=198
-  _NULO._serialized_start=200
-  _NULO._serialized_end=206
-  _USUARIOS._serialized_start=208
-  _USUARIOS._serialized_end=314
+  _USUARIO._serialized_end=136
+  _USERNAME._serialized_start=138
+  _USERNAME._serialized_end=184
+  _RESPONSE._serialized_start=186
+  _RESPONSE._serialized_end=213
+  _NULO._serialized_start=215
+  _NULO._serialized_end=221
+  _USUARIOS._serialized_start=223
+  _USUARIOS._serialized_end=329
 # @@protoc_insertion_point(module_scope)

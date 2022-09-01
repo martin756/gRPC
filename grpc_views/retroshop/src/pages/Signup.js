@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Cookies from "universal-cookie";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
@@ -11,93 +11,74 @@ function Signup(props) {
     const username = useRef(null),password = useRef(null)
     const navigate = useNavigate()
 
-    const registrarse=async()=>{
+    const registrarse=async(event)=>{
+        debugger
+        event.preventDefault()
+
         const jsonBody = 
         {
-            "nombre": nombre.current.value == "" ? 0 : nombre.current.value,
-            "apellido": apellido.current.value == "" ? 0 : apellido.current.value,
+            "nombre": nombre.current.value,
+            "apellido": apellido.current.value,
             "dni": dni.current.value,
-            "email": email.current.value == "" ? 0 : email.current.value,
-            "user": username.current.value == "" ? 0 : username.current.value,
-            "password": password.current.value == "" ? 0 : password.current.value
+            "email": email.current.value,
+            "user": username.current.value,
+            "password": password.current.value
         }
         debugger
         await axios.post(baseUrl, jsonBody)
         .then(response=>{
             debugger
-            if (response.data.Message != '400'){
+            if (response.data.Message !== '400'){
                 navigate('/')
             }else{
                 alert("El usuario ya se encuentra registrado")
             }
         })
-        .catch(()=>{
-            alert("Todos los campos son obligatorios")
+        .catch((error)=>{
+            alert(error)
+            //alert("Todos los campos son obligatorios")
         })
     }
+
+    useEffect(()=>{
+        if(cookies.get('User')){
+            navigate('/mainmenu')
+        }
+    },[])
 
     return (
         <div className='containerPrincipal'>
             <div className='containerTitulo'>
                 RetroShop</div>
             <div className='containerHome'>
-                <div className='form-group'>
+                <form onSubmit={event => registrarse(event)} className='form-group'>
                     <label>Nombre: </label>
                     <br />
-                    <input
-                        ref={nombre}
-                        type="text"
-                        className='form-control'
-                        name='nombre'
-                    />
+                    <input ref={nombre} type="text" className='form-control' name='nombre' required />
                     <br />
                     <label>Apellido: </label>
                     <br />
-                    <input
-                        ref={apellido}
-                        type='text'
-                        className='form-control'
-                        name='apellido'
-                    />
+                    <input ref={apellido} type='text' className='form-control' name='apellido' required />
                     <br />
                     <label>Dni: </label>
                     <br />
-                    <input
-                        ref={dni}
-                        type="number"
-                        className='form-control'
-                        name='dni'
-                    />
+                    <input ref={dni} type="number" className='form-control' name='dni' required />
                     <br />
                     <label>Email: </label>
                     <br />
-                    <input
-                        ref={email}
-                        type="text"
-                        className='form-control'
-                        name='email'
-                    />
+                    <input ref={email} type="text" className='form-control' name='email' required />
                     <br />
                     <label>User: </label>
                     <br />
-                    <input
-                        ref={username}
-                        type="text"
-                        className='form-control'
-                        name='usuario'
-                    />
+                    <input ref={username} type="text" className='form-control' name='usuario' required />
                     <br />
                     <label>Contraseña: </label>
                     <br />
-                    <input
-                        ref={password}
-                        type="password"
-                        className='form-control'
-                        name='password'
+                    <input ref={password} type="password" className='form-control' name='password' required
                     />
                     <br />
-                    <button onClick={() => registrarse()} className='btn btn-primary'>Registrarse</button>
-                </div>
+                    <button type="submit" className='btn btn-primary'>Registrarse</button>
+                </form>
             </div>
         </div>
     );
