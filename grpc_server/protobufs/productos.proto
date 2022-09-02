@@ -15,5 +15,5 @@ message Tipo_categoria{
 }
 
 service Productos {
-    
+    rpc SayHello(Nulo) returns (Nulo);
 }
