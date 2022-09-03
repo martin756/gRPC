@@ -1,0 +1,3 @@
+obj\Debug\net5.0/Productos.cs \
+obj\Debug\net5.0/ProductosGrpc.cs: ../gRPC_server/protobufs/usuarios.proto\
+ ../gRPC_server/protobufs/productos.proto

@@ -15,18 +15,44 @@ _sym_db = _symbol_database.Default()
 import usuarios_pb2 as usuarios__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\"\xc9\x01\n\x08Producto\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12(\n\x0fidtipocategoria\x18\x03 \x01(\x0b\x32\x0f.Tipo_categoria\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\x03\x12&\n\x14publicador_idusuario\x18\x07 \x01(\x0b\x32\x08.Usuario\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t2\x0b\n\tProductosb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\"\xc9\x01\n\x08Producto\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12(\n\x0fidtipocategoria\x18\x03 \x01(\x0b\x32\x0f.Tipo_categoria\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12&\n\x14publicador_idusuario\x18\x07 \x01(\x0b\x32\x08.Usuario\"\xa1\x01\n\x0bProductoGet\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x11\n\tcategoria\x18\x03 \x01(\t\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x12\n\npublicador\x18\x07 \x01(\t\"\xb2\x01\n\x0cProductoPost\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x03 \x01(\x03\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x07 \x01(\x03\"\x8c\x01\n\x0bProductoPut\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x03\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t\" \n\nIdProducto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\"\x1e\n\tIdUsuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x32\xc4\x01\n\tProductos\x12.\n\x11TraerProductoById\x12\x0b.IdProducto\x1a\x0c.ProductoGet\x12\x32\n\x16TraerProductoByUsuario\x12\n.IdUsuario\x1a\x0c.ProductoGet\x12(\n\x0c\x41ltaProducto\x12\r.ProductoPost\x1a\t.Response\x12)\n\x0e\x45\x64itarProducto\x12\x0c.ProductoPut\x1a\t.Responseb\x06proto3')
 
 
 
 _PRODUCTO = DESCRIPTOR.message_types_by_name['Producto']
+_PRODUCTOGET = DESCRIPTOR.message_types_by_name['ProductoGet']
+_PRODUCTOPOST = DESCRIPTOR.message_types_by_name['ProductoPost']
+_PRODUCTOPUT = DESCRIPTOR.message_types_by_name['ProductoPut']
 _TIPO_CATEGORIA = DESCRIPTOR.message_types_by_name['Tipo_categoria']
+_IDPRODUCTO = DESCRIPTOR.message_types_by_name['IdProducto']
+_IDUSUARIO = DESCRIPTOR.message_types_by_name['IdUsuario']
 Producto = _reflection.GeneratedProtocolMessageType('Producto', (_message.Message,), {
   'DESCRIPTOR' : _PRODUCTO,
   '__module__' : 'productos_pb2'
   # @@protoc_insertion_point(class_scope:Producto)
   })
 _sym_db.RegisterMessage(Producto)
+
+ProductoGet = _reflection.GeneratedProtocolMessageType('ProductoGet', (_message.Message,), {
+  'DESCRIPTOR' : _PRODUCTOGET,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:ProductoGet)
+  })
+_sym_db.RegisterMessage(ProductoGet)
+
+ProductoPost = _reflection.GeneratedProtocolMessageType('ProductoPost', (_message.Message,), {
+  'DESCRIPTOR' : _PRODUCTOPOST,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:ProductoPost)
+  })
+_sym_db.RegisterMessage(ProductoPost)
+
+ProductoPut = _reflection.GeneratedProtocolMessageType('ProductoPut', (_message.Message,), {
+  'DESCRIPTOR' : _PRODUCTOPUT,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:ProductoPut)
+  })
+_sym_db.RegisterMessage(ProductoPut)
 
 Tipo_categoria = _reflection.GeneratedProtocolMessageType('Tipo_categoria', (_message.Message,), {
   'DESCRIPTOR' : _TIPO_CATEGORIA,
@@ -35,14 +61,38 @@ Tipo_categoria = _reflection.GeneratedProtocolMessageType('Tipo_categoria', (_me
   })
 _sym_db.RegisterMessage(Tipo_categoria)
 
+IdProducto = _reflection.GeneratedProtocolMessageType('IdProducto', (_message.Message,), {
+  'DESCRIPTOR' : _IDPRODUCTO,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:IdProducto)
+  })
+_sym_db.RegisterMessage(IdProducto)
+
+IdUsuario = _reflection.GeneratedProtocolMessageType('IdUsuario', (_message.Message,), {
+  'DESCRIPTOR' : _IDUSUARIO,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:IdUsuario)
+  })
+_sym_db.RegisterMessage(IdUsuario)
+
 _PRODUCTOS = DESCRIPTOR.services_by_name['Productos']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _PRODUCTO._serialized_start=36
   _PRODUCTO._serialized_end=237
-  _TIPO_CATEGORIA._serialized_start=239
-  _TIPO_CATEGORIA._serialized_end=271
-  _PRODUCTOS._serialized_start=273
-  _PRODUCTOS._serialized_end=284
+  _PRODUCTOGET._serialized_start=240
+  _PRODUCTOGET._serialized_end=401
+  _PRODUCTOPOST._serialized_start=404
+  _PRODUCTOPOST._serialized_end=582
+  _PRODUCTOPUT._serialized_start=585
+  _PRODUCTOPUT._serialized_end=725
+  _TIPO_CATEGORIA._serialized_start=727
+  _TIPO_CATEGORIA._serialized_end=759
+  _IDPRODUCTO._serialized_start=761
+  _IDPRODUCTO._serialized_end=793
+  _IDUSUARIO._serialized_start=795
+  _IDUSUARIO._serialized_end=825
+  _PRODUCTOS._serialized_start=828
+  _PRODUCTOS._serialized_end=1024
 # @@protoc_insertion_point(module_scope)
