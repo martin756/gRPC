@@ -2,13 +2,18 @@ syntax = "proto3";
 import "usuarios.proto";
 
 message Producto {
-    string nombre = 1;
-    string descripcion = 2;
-    Tipo_categoria idtipocategoria = 3;
-    float precio = 4;
-    int64 cantidad_disponible = 5;
-    string fecha_publicacion = 6;
-    Usuario publicador_idusuario = 7;
+    int32 idproducto=1;
+    string nombre = 2;
+    string descripcion = 3;
+    int32 idtipocategoria = 4;
+    float precio = 5;
+    int64 cantidad_disponible = 6;
+    string fecha_publicacion = 7;
+    int32 publicador_idusuario = 8;
+}
+
+message ProductosList {
+    repeated Producto productos = 1;
 }
 
 message ProductoGet {
@@ -57,7 +62,7 @@ message IdUsuario {
 
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
-    rpc TraerProductoByUsuario(IdUsuario) returns (ProductoGet);
+    rpc TraerProductos(Nulo) returns (ProductosList);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
 }

@@ -20,10 +20,10 @@ class ProductosStub(object):
                 request_serializer=productos__pb2.IdProducto.SerializeToString,
                 response_deserializer=productos__pb2.ProductoGet.FromString,
                 )
-        self.TraerProductoByUsuario = channel.unary_unary(
-                '/Productos/TraerProductoByUsuario',
-                request_serializer=productos__pb2.IdUsuario.SerializeToString,
-                response_deserializer=productos__pb2.ProductoGet.FromString,
+        self.TraerProductos = channel.unary_unary(
+                '/Productos/TraerProductos',
+                request_serializer=usuarios__pb2.Nulo.SerializeToString,
+                response_deserializer=productos__pb2.ProductosList.FromString,
                 )
         self.AltaProducto = channel.unary_unary(
                 '/Productos/AltaProducto',
@@ -46,7 +46,7 @@ class ProductosServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def TraerProductoByUsuario(self, request, context):
+    def TraerProductos(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -72,10 +72,10 @@ def add_ProductosServicer_to_server(servicer, server):
                     request_deserializer=productos__pb2.IdProducto.FromString,
                     response_serializer=productos__pb2.ProductoGet.SerializeToString,
             ),
-            'TraerProductoByUsuario': grpc.unary_unary_rpc_method_handler(
-                    servicer.TraerProductoByUsuario,
-                    request_deserializer=productos__pb2.IdUsuario.FromString,
-                    response_serializer=productos__pb2.ProductoGet.SerializeToString,
+            'TraerProductos': grpc.unary_unary_rpc_method_handler(
+                    servicer.TraerProductos,
+                    request_deserializer=usuarios__pb2.Nulo.FromString,
+                    response_serializer=productos__pb2.ProductosList.SerializeToString,
             ),
             'AltaProducto': grpc.unary_unary_rpc_method_handler(
                     servicer.AltaProducto,
@@ -115,7 +115,7 @@ class Productos(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def TraerProductoByUsuario(request,
+    def TraerProductos(request,
             target,
             options=(),
             channel_credentials=None,
@@ -125,9 +125,9 @@ class Productos(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Productos/TraerProductoByUsuario',
-            productos__pb2.IdUsuario.SerializeToString,
-            productos__pb2.ProductoGet.FromString,
+        return grpc.experimental.unary_unary(request, target, '/Productos/TraerProductos',
+            usuarios__pb2.Nulo.SerializeToString,
+            productos__pb2.ProductosList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
