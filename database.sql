@@ -48,7 +48,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `retroshop`.`carrito` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`carrito` (
-  `idcarrito` INT NOT NULL,
+  `idcarrito` INT NOT NULL AUTO_INCREMENT,
   `total` FLOAT NULL DEFAULT NULL,
   `cliente_idusuario` INT NOT NULL,
   PRIMARY KEY (`idcarrito`),
@@ -69,7 +69,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `retroshop`.`tipo_categoria` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`tipo_categoria` (
-  `idtipocategoria` INT NOT NULL,
+  `idtipocategoria` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idtipocategoria`))
 ENGINE = InnoDB
@@ -83,13 +83,13 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `retroshop`.`producto` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`producto` (
-  `idproducto` INT NOT NULL,
+  `idproducto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `descripcion` VARCHAR(45) NULL DEFAULT NULL,
   `idtipocategoria` INT NULL DEFAULT NULL,
   `precio` FLOAT NULL DEFAULT NULL,
   `cantidad_disponible` INT NULL DEFAULT NULL,
-  `fecha_publicacion` DATETIME NULL DEFAULT NULL,
+  `fecha_publicacion` VARCHAR(45) NULL DEFAULT NULL,
   `publicador_idusuario` INT NOT NULL,
   PRIMARY KEY (`idproducto`),
   INDEX `fk_idtipocategoria_idx` (`idtipocategoria` ASC) VISIBLE,
@@ -113,7 +113,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `retroshop`.`producto_carrito` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`producto_carrito` (
-  `idproducto_carrito` INT NOT NULL,
+  `idproducto_carrito` INT NOT NULL AUTO_INCREMENT,
   `idproducto` INT NULL DEFAULT NULL,
   `idcarrito` INT NULL DEFAULT NULL,
   `cantidad` INT NULL DEFAULT NULL,

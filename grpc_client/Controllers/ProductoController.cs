@@ -60,9 +60,10 @@ namespace apiRetroshop.Controllers
                     Idtipocategoria = producto.Idtipocategoria,
                     Precio = producto.Precio,
                     CantidadDisponible = producto.CantidadDisponible,
-                    FechaPublicacion = DateTime.Now.ToString(),
+                    FechaPublicacion = producto.FechaPublicacion,
                     PublicadorIdusuario = producto.PublicadorIdusuario
                 };
+                postProducto.UrlFotos.Add(producto.UrlFotos);
 
                 var productoResponse = cliente.AltaProducto(postProducto);
                 response = JsonConvert.SerializeObject(productoResponse);

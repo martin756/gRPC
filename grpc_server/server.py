@@ -29,7 +29,8 @@ class ServicioUsuarios(UsuariosServicer):
         row = cursor.fetchone()
         if row is not None:
             return Response(message = "400")
-        query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`, `saldo`) VALUES ('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}', '{request.saldo}')")
+        query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`, `saldo`) VALUES "+
+        f"('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}', '{request.saldo}')")
         cursor.execute(query)
         cnx.commit()
 
@@ -62,9 +63,13 @@ class ProductoUsuarios(ProductosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is None:
-            return Response(message = "400")
+            return Response(message = "404 Not-Found. El producto con ese id no existe")
         else:
-            query = (f"UPDATE  producto SET `nombre` ='{request.nombre}' , `descripcion` ='{request.descripcion}', `idtipocategoria`='{request.idtipocategoria}', `precio`='{request.precio}', `cantidad_disponible`= '{request.cantidad_disponible}' where idproducto= '{request.idproducto}' ")
+            query = (f"UPDATE producto SET `nombre` ='{request.nombre}', `descripcion` ='{request.descripcion}', `idtipocategoria`='{request.idtipocategoria}', "+
+            f"`precio`='{request.precio}', `cantidad_disponible`= '{request.cantidad_disponible}'")
+            for idx, url_foto in enumerate(request.url_fotos, start=1):
+                query += (f", `url_foto{idx}` = '{url_foto}'")
+            query += (f"where idproducto= '{request.idproducto}' ")
             cursor.execute(query)
             cnx.commit()
 
@@ -96,9 +101,15 @@ class ProductoUsuarios(ProductosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Response(message = "400")
-        query = (f"INSERT INTO producto (`nombre`, `descripcion`, `idtipocategoria`, `precio`, `cantidad_disponible`, `fecha_publicacion`, `publicador_idusuario`) VALUES ('{request.nombre}', '{request.descripcion}', '{request.idtipocategoria}', '{request.precio}', '{request.cantidad_disponible}', '{request.fecha_publicacion}', '{request.publicador_idusuario}')")
+            return Response(message = "400 Bad-Request. El nombre del producto especificado ya existe")
+
+        query = (f"INSERT INTO producto (`nombre`, `descripcion`, `idtipocategoria`, `precio`, `cantidad_disponible`, `fecha_publicacion`, `publicador_idusuario`, `url_foto1`, `url_foto2`, `url_foto3`, `url_foto4`, `url_foto5`) "+
+        f"VALUES ('{request.nombre}', '{request.descripcion}', '{request.idtipocategoria}', '{request.precio}', '{request.cantidad_disponible}', '{request.fecha_publicacion}', '{request.publicador_idusuario}'")
+        for url_foto in request.url_fotos:
+            query += (f", '{url_foto}'")
+        query += ")"
         cursor.execute(query)
+        
         cnx.commit()
 
         cursor.close()

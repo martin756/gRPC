@@ -19,6 +19,7 @@ message ProductoGet {
     int64 cantidad_disponible = 5;
     string fecha_publicacion = 6;
     string publicador = 7;
+    repeated string url_fotos = 8;
 }
 
 message ProductoPost {
@@ -29,6 +30,7 @@ message ProductoPost {
     int64 cantidad_disponible = 5;
     string fecha_publicacion = 6;
     int64 publicador_idusuario = 7;
+    repeated string url_fotos = 8;
 }
 
 message ProductoPut {
@@ -38,6 +40,7 @@ message ProductoPut {
     int64 idtipocategoria = 4;
     float precio = 5;
     int64 cantidad_disponible = 6;
+    repeated string url_fotos = 7;
 }
 
 message Tipo_categoria{   
