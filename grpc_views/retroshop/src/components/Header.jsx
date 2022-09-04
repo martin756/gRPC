@@ -5,6 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import { Cart } from 'react-bootstrap-icons';
+import '../css/ShopProductsList.css'
 
 function Header() {
 
@@ -32,15 +34,20 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">RetroShop</Navbar.Brand>
+        <Navbar.Brand href="/">RetroShop</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">
-            <NavDropdown title="Perfil" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Publicar</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Mis publicaciones</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Mis compras</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Cargar saldo</NavDropdown.Item>
+            <Cart onClick={()=>{navigate('/mainmenu')}} style={{color: 'white', alignSelf: 'center', cursor: 'pointer'}}>
+            </Cart>
+            <span id="badgeCarrito" class="position-absolute top-50 start-5 carrito p-1 badge bg-danger rounded-circle">
+                {cookies.get('Carrito') !== undefined ? cookies.get('Carrito').length : 0}
+            </span>
+            <NavDropdown title="Perfil" id="collasible-nav-dropdown" align="end">
+              <NavDropdown.Item onClick={()=>{navigate('/publish')}}>Publicar</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{}}>Mis publicaciones</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{}}>Mis compras</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{}}>Cargar saldo</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={()=>cerrarSesion()}>Cerrar Sesión</NavDropdown.Item>
             </NavDropdown>

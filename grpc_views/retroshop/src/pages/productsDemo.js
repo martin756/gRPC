@@ -8,6 +8,7 @@ export const categorias = [
 ]
 export const jsonProducts = [
     {
+        id: 1,
         nombre: "Resident Evil 4",
         descripcion: "Esta buenisimo",
         url_fotos: [
@@ -20,6 +21,7 @@ export const jsonProducts = [
         publicador: "Jorgito"
     },
     {
+        id: 2,
         nombre: "Coldplay",
         descripcion: "A Sky Full of Stars",
         url_fotos: [
@@ -33,6 +35,7 @@ export const jsonProducts = [
         publicador: "Kalii46"
     },
     {
+        id: 3,
         nombre: "Clarin",
         descripcion: "Noticias",
         url_fotos: [
@@ -47,6 +50,7 @@ export const jsonProducts = [
         publicador: "Dario.13"
     },
     {
+        id : 4,
         nombre: "Pronto",
         descripcion: "Todo revistas",
         url_fotos: [
@@ -61,6 +65,7 @@ export const jsonProducts = [
         publicador: "Robert45"
     },
     {
+        id: 5,
         nombre: "Guirnalda inglesa",
         descripcion: "Muy pesado",
         url_fotos: [
@@ -75,6 +80,7 @@ export const jsonProducts = [
         publicador: "yudi44"
     },
     {
+        id: 6,
         nombre: "Florero Suizo",
         descripcion: "Gran adorno",
         url_fotos: [

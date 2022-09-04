@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
+import Header from "../components/Header";
+import { PlusLg, DashLg } from 'react-bootstrap-icons'
 
 function Publish(props) {
     const baseUrl="https://localhost:5001/api/Publicar"
@@ -9,10 +11,12 @@ function Publish(props) {
     const precio = useRef(null)
     const stock = useRef(null)
     const fechaFabricacion = useRef(null)
-    const imagen = useRef(null)
+    const imagen = useRef(new Array())
     const navigate = useNavigate()
+    const [inputs, setInputsState] = useState([])
 
-    const publicar=async()=>{
+    const publicar=async(event)=>{
+        event.preventDefault()
         const jsonBody = 
         {
             "nombre": nombre.current.value === "" ? 0 : nombre.current.value,
@@ -25,7 +29,6 @@ function Publish(props) {
         debugger
         await axios.post(baseUrl, jsonBody)
         .then(response=>{
-            debugger
             if (response.data.Message !== '400'){
                 navigate('/')
             }else{
@@ -38,69 +41,127 @@ function Publish(props) {
 
     }
 
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "https://getbootstrap.com/docs/5.2/examples/checkout/form-validation.js";
+        script.async = true;
+        document.body.appendChild(script);
+      return () => {
+          document.body.removeChild(script);
+        }
+      }, []);
+
+      const addDynamicInput = () => {
+        if (inputs.length <= 3) {
+            imagen.current.push()
+            let arr = [...inputs]
+            arr.push(inputs.length)
+            setInputsState(arr)
+        }
+      }
+
+      const removeDynamicInput = (index) => {
+        debugger
+        let r = imagen.current;
+        if (inputs.length > 0) {
+            let arr = [...inputs]
+            arr.splice(index,1)
+            setInputsState(arr)
+        }
+      }
+
     return (
-        <div className='containerPrincipal'>
+        <div>
+        <Header />
+        <div className="container">
+            <div className="row g-5 mt-4" style={{justifyContent: 'center'}}>
+            <div className="col-md-6 col-lg-7">
+                <h4 className="mb-3">Publicar nuevo producto</h4>
+                <form onSubmit={event => publicar(event)} className="needs-validation" noValidate>
+                <div className="row g-3">
+                    <div className="col-12">
+                        <label className="form-label">Nombre del producto</label>
+                        <input ref={nombre} type="text" className='form-control' required/>
+                        <div className="invalid-feedback">El nombre del producto es requerido.</div>
+                    </div>
+                    <div className="col-12">
+                        <label className="form-label">Descripción <span className="text-muted">(Opcional)</span></label>
+                        <input ref={descripcion} type='text' className='form-control'/>
+                    </div>
+                    <div className="col-12">
+                        <label className="form-label">Precio unitario</label>
+                        <div className="input-group has-validation">
+                            <span className="input-group-text">$</span>
+                            <input ref={precio} type="number" className='form-control' name='precio' required min="1"/>
+                            <span className="input-group-text">.00</span>
+                            <div className="invalid-feedback">Precio inválido.</div>
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <label className="form-label">Cantidad a stockear</label>
+                        <input ref={stock} type="number" className='form-control' required min="1"/>
+                        <div className="invalid-feedback">Ingrese una cantidad válida.</div>
+                    </div>
+                    <div className="col-12">
+                        <label className="form-label">Fecha de fabricación</label>
+                        <input ref={fechaFabricacion} type="date" className='form-control' required/>
+                        <div className="invalid-feedback">Ingrese la fecha de fabricación.</div>
+                    </div>
+                    <div className="col-12">
+                        <label className="form-label">URLs de imágenes <span className="text-muted">(Máx. 5)</span></label>
+                        <div className="input-group has-validation mb-1">
+                            <input ref={(element)=>imagen.current.push(element)} type="text" className='form-control' required />
+                            <span onClick={() => {addDynamicInput()}} className="btn btn-success input-group-text"><PlusLg/></span>
+                            <div className="invalid-feedback">Provea una URL de imagen del producto.</div>
+                        </div>
+                        {inputs.map((value,index)=>(
+                            <div className="input-group has-validation mb-1" key={value}>
+                                <input ref={(element)=>imagen.current.push(element)} type="text" className='form-control' required/>
+                                <span onClick={()=>{removeDynamicInput(value)}} className="btn btn-danger input-group-text"><DashLg/></span>
+                                <div className="invalid-feedback"></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <hr className="my-4" />
+                <button className="w-100 btn btn-primary btn-lg" type="submit">Publicar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+        {/*<div className='containerPrincipal'>
             <div className='containerTitulo'>
                 Publicar un nuevo producto</div>
             <div className='containerHome'>
-                <div className='form-group'>
-                <label>Nombre: </label>
+                <form onSubmit={event => publicar(event)} className='form-group'>
+                    <label>Nombre: </label>
                     <br />
-                    <input
-                        ref={nombre}
-                        type="text"
-                        className='form-control'
-                        name='nombre'
-                    />
+                    <input ref={nombre} type="text" className='form-control' name='nombre' required/>
                     <br />
                     <label>Descripción: </label>
                     <br />
-                    <input
-                        ref={descripcion}
-                        type='text'
-                        className='form-control'
-                        name='descripcion'
-                    />
+                    <input ref={descripcion} type='text' className='form-control' name='descripcion'/>
                     <br />
                     <label>Precio unitario: </label>
                     <br />
-                    <input
-                        ref={precio}
-                        type="number"
-                        className='form-control'
-                        name='precio'
-                    />
+                    <input ref={precio} type="number" className='form-control' name='precio' required/>
                     <br />
                     <label>Cantidad de stock: </label>
                     <br />
-                    <input
-                        ref={stock}
-                        type="number"
-                        className='form-control'
-                        name='stock'
-                    />
+                    <input ref={stock} type="number" className='form-control' name='stock' required/>
                     <br />
                     <label>Fecha de fabricación: </label>
                     <br />
-                    <input
-                        ref={fechaFabricacion}
-                        type="text"
-                        className='form-control'
-                        name='fechaFabricacion'
-                    />
+                    <input ref={fechaFabricacion} type="text" className='form-control' name='fechaFabricacion' required/>
                     <br />
                     <label>URL de imagen: </label>
                     <br />
-                    <input
-                        ref={imagen}
-                        type="text"
-                        className='form-control'
-                        name='imagen'
-                    />
+                    <input ref={imagen} type="text" className='form-control' name='imagen' required/>
                     <br />
-                    <button onClick={() => publicar()} className='btn btn-primary'>Publicar</button>
-                </div>
+                    <button type="submit" className='btn btn-primary'>Publicar</button>
+                </form>
             </div>
+    </div>*/}
         </div>
     );
 }

@@ -1,41 +1,20 @@
+.product-detail {
+    padding: 30px 30px 50px;
+}
 
-    
-    /*panel*/
-    .panel {
-        /*border: none;
-        box-shadow: none;*/
-    }
-    
-    
-    
-    
+.product-content {
+    border: 1px solid #dfe5e9;
+    margin-bottom: 20px;
+    margin-top: 12px;
+    background: #fff;
+}
 
-    .form-group {
-        /*padding: 15px 0 15px 0;*/
-    }
+.price-container {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 300;
+}
 
-    .row {
-        /*margin-top: 0%;
-        margin-right: 0%;
-        margin-left: 0%;*/
-    }
-    
-    
-    /*product list*/
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+.carrito {
+    transform: translate(-400%,-100%)!important;
+}

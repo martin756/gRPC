@@ -4,6 +4,7 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import MainMenu from '../pages/MainMenu';
 import Publish from '../pages/Publish'
+import BuyProduct from '../pages/BuyProduct';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/signup' element={<Signup />}/>
         <Route path='/mainmenu' element={<MainMenu />}/>
         <Route path='/publish' element={<Publish />}/>
+        <Route path='/buyProduct' element={<BuyProduct />}/>
       </Routes>
     </BrowserRouter>
   );

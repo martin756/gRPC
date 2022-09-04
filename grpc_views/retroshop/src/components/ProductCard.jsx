@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PropTypes from 'prop-types'
+import { Link } from "react-router-dom"
 
 function ProductCard(props) {
+  //let query = useQuery()
   return (
   <div className="col-6 col-md-6 col-lg-4 mb-3">
     <div className="card h-100 border-0">
@@ -11,7 +12,8 @@ function ProductCard(props) {
       </div>
       <div className="card-body text-center">
         <h4 className="card-title">
-          <a href="product.html" className=" font-weight-bold text-dark text-uppercase small">{props.nombre}</a>
+          {/*<a href={`/buyProduct?id=${props.id}`} className=" font-weight-bold text-dark text-uppercase small">{props.nombre}</a>*/}
+          <Link to={`/buyProduct?id=${props.id}`} className=" font-weight-bold text-dark text-uppercase small">{props.nombre}</Link>
         </h4>
         <h5 className="card-price">
           <i>${props.precio}</i>

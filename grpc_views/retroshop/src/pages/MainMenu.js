@@ -59,8 +59,7 @@ function MainMenu() {
       return arr
     }
 
-    const filtroRangoFecha = (arr) =>{
-      debugger
+    const filtroRangoFecha = (arr) => {
       if (filtroFechaDesde.current.value !== '') {
         arr = arr.filter(product=>product.fecha_fabricacion >= new Date(filtroFechaDesde.current.value))
       }
@@ -81,7 +80,7 @@ function MainMenu() {
                   <div className="container-fluid">
                     <div className="row">
                       {products.map((value)=>(
-                        <ProductCard nombre={value.nombre} precio={value.precio} url={value.url_fotos[0]}/>
+                        <ProductCard id={value.id} nombre={value.nombre} precio={value.precio} url={value.url_fotos[0]}/>
                       ))}
                     </div>
                   </div>
