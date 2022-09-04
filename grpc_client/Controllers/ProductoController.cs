@@ -14,6 +14,7 @@ namespace apiRetroshop.Controllers
     public class ProductoController : ControllerBase
     {
         [HttpGet]
+        [Route("GetProductoById")]
         public string GetProductoById(int id)
         {
             string response;
@@ -25,7 +26,7 @@ namespace apiRetroshop.Controllers
                 var channel = GrpcChannel.ForAddress("http://localhost:50051");
                 var cliente = new Productos.ProductosClient(channel);
 
-                
+
                 var idProducto = new IdProducto
                 {
                     Idproducto = id
@@ -37,6 +38,32 @@ namespace apiRetroshop.Controllers
             catch (Exception e)
             {
                 response = e.Message + e.StackTrace;
+            }
+
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetProductos")]
+        public string GetProductos()
+        {
+            string response;
+            try
+            {
+                // This switch must be set before creating the GrpcChannel/HttpClient.
+                AppContext.SetSwitch(
+                    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+                var channel = GrpcChannel.ForAddress("http://localhost:50051");
+                var cliente = new Productos.ProductosClient(channel);
+
+
+
+                var productos = cliente.TraerProductos(new Nulo()).ToString();
+               response = JsonConvert.SerializeObject(productos);
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
             }
 
             return response;

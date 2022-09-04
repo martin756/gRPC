@@ -2,7 +2,7 @@ from email import message
 from usuarios_pb2_grpc import UsuariosServicer, add_UsuariosServicer_to_server
 from usuarios_pb2 import Usuario, Response
 from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_server
-from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut
+from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList
 
 import grpc
 from concurrent import futures
@@ -85,6 +85,19 @@ class ProductoUsuarios(ProductosServicer):
             return ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
         else:
             return ProductoGet()
+
+    def TraerProductos(self, request, context):
+        cnx = mysql.connector.connect(user='root', password='root', 
+                              host='localhost', port='3306',
+                              database='retroshop')
+        cursor = cnx.cursor(named_tuple=True)
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria inner join usuario u on p.publicador_idusuario = u.idusuario")
+        cursor.execute(query)
+        records = cursor.fetchall()
+        for row in records:
+            yield ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
+        
+
 
 
     def AltaProducto(self, request, context):
