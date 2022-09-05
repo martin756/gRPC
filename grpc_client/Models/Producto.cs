@@ -9,11 +9,11 @@ namespace apiRetroshop.Models
     {
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public string categoria { get; set; }
+        public int idtipocategoria { get; set; }
         public float precio { get; set; }
         public int cantidad_disponible { get; set; }
         public string fecha_publicacion { get; set; }
-        public string publicador { get; set; }
+        public int publicador_idusuario { get; set; }
         public List<string> url_fotos { get; set; }
     }
 
