@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 import usuarios_pb2 as usuarios__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\"\xc2\x01\n\x08Producto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x05\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x07 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x08 \x01(\x05\"-\n\rProductosList\x12\x1c\n\tproductos\x18\x01 \x03(\x0b\x32\t.Producto\"\xb4\x01\n\x0bProductoGet\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x11\n\tcategoria\x18\x03 \x01(\t\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x12\n\npublicador\x18\x07 \x01(\t\x12\x11\n\turl_fotos\x18\x08 \x03(\t\"\xc5\x01\n\x0cProductoPost\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x03 \x01(\x03\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x07 \x01(\x03\x12\x11\n\turl_fotos\x18\x08 \x03(\t\"\x9f\x01\n\x0bProductoPut\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x03\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x11\n\turl_fotos\x18\x07 \x03(\t\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t\" \n\nIdProducto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\"\x1e\n\tIdUsuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x32\xb6\x01\n\tProductos\x12.\n\x11TraerProductoById\x12\x0b.IdProducto\x1a\x0c.ProductoGet\x12$\n\x0eTraerProductos\x12\x05.Nulo\x1a\t.Producto0\x01\x12(\n\x0c\x41ltaProducto\x12\r.ProductoPost\x1a\t.Response\x12)\n\x0e\x45\x64itarProducto\x12\x0c.ProductoPut\x1a\t.Responseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\"\xd5\x01\n\x08Producto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x05\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x07 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x08 \x01(\x05\x12\x11\n\turl_fotos\x18\t \x03(\t\"-\n\rProductosList\x12\x1c\n\tproductos\x18\x01 \x03(\x0b\x32\t.Producto\"\xb4\x01\n\x0bProductoGet\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x11\n\tcategoria\x18\x03 \x01(\t\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x12\n\npublicador\x18\x07 \x01(\t\x12\x11\n\turl_fotos\x18\x08 \x03(\t\"\xc5\x01\n\x0cProductoPost\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x03 \x01(\x03\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x07 \x01(\x03\x12\x11\n\turl_fotos\x18\x08 \x03(\t\"\x9f\x01\n\x0bProductoPut\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x03\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x11\n\turl_fotos\x18\x07 \x03(\t\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t\" \n\nIdProducto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\"\x1e\n\tIdUsuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x32\xb6\x01\n\tProductos\x12.\n\x11TraerProductoById\x12\x0b.IdProducto\x1a\x0c.ProductoGet\x12$\n\x0eTraerProductos\x12\x05.Nulo\x1a\t.Producto0\x01\x12(\n\x0c\x41ltaProducto\x12\r.ProductoPost\x1a\t.Response\x12)\n\x0e\x45\x64itarProducto\x12\x0c.ProductoPut\x1a\t.Responseb\x06proto3')
 
 
 
@@ -88,21 +88,21 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _PRODUCTO._serialized_start=36
-  _PRODUCTO._serialized_end=230
-  _PRODUCTOSLIST._serialized_start=232
-  _PRODUCTOSLIST._serialized_end=277
-  _PRODUCTOGET._serialized_start=280
-  _PRODUCTOGET._serialized_end=460
-  _PRODUCTOPOST._serialized_start=463
-  _PRODUCTOPOST._serialized_end=660
-  _PRODUCTOPUT._serialized_start=663
-  _PRODUCTOPUT._serialized_end=822
-  _TIPO_CATEGORIA._serialized_start=824
-  _TIPO_CATEGORIA._serialized_end=856
-  _IDPRODUCTO._serialized_start=858
-  _IDPRODUCTO._serialized_end=890
-  _IDUSUARIO._serialized_start=892
-  _IDUSUARIO._serialized_end=922
-  _PRODUCTOS._serialized_start=925
-  _PRODUCTOS._serialized_end=1107
+  _PRODUCTO._serialized_end=249
+  _PRODUCTOSLIST._serialized_start=251
+  _PRODUCTOSLIST._serialized_end=296
+  _PRODUCTOGET._serialized_start=299
+  _PRODUCTOGET._serialized_end=479
+  _PRODUCTOPOST._serialized_start=482
+  _PRODUCTOPOST._serialized_end=679
+  _PRODUCTOPUT._serialized_start=682
+  _PRODUCTOPUT._serialized_end=841
+  _TIPO_CATEGORIA._serialized_start=843
+  _TIPO_CATEGORIA._serialized_end=875
+  _IDPRODUCTO._serialized_start=877
+  _IDPRODUCTO._serialized_end=909
+  _IDUSUARIO._serialized_start=911
+  _IDUSUARIO._serialized_end=941
+  _PRODUCTOS._serialized_start=944
+  _PRODUCTOS._serialized_end=1126
 # @@protoc_insertion_point(module_scope)

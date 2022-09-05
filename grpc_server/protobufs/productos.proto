@@ -10,6 +10,7 @@ message Producto {
     int64 cantidad_disponible = 6;
     string fecha_publicacion = 7;
     int32 publicador_idusuario = 8;
+    repeated string url_fotos = 9;
 }
 
 message ProductosList {

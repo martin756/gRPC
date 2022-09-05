@@ -52,7 +52,7 @@ function Publish(props) {
         }
       }, []);
 
-      const addDynamicInput = () => {
+      /*const addDynamicInput = () => {
         if (inputs.length <= 3) {
             imagen.current.push()
             let arr = [...inputs]
@@ -69,7 +69,7 @@ function Publish(props) {
             arr.splice(index,1)
             setInputsState(arr)
         }
-      }
+      }*/
 
     return (
         <div>
@@ -111,22 +111,22 @@ function Publish(props) {
                     <div className="col-12">
                         <label className="form-label">URLs de imágenes <span className="text-muted">(Máx. 5)</span></label>
                         <div className="input-group has-validation mb-1">
-                            <input ref={imagen1} type="text" className='form-control' required />
+                            <input ref={imagen1} type="text" className='form-control' required key="1"/>
                             <div className="invalid-feedback">Provea una URL de imagen del producto.</div>
                         </div>
-                        <div className="input-group has-validation mb-1" key={value}>
+                        <div className="input-group has-validation mb-1" key="2">
                             <input ref={imagen2} type="text" className='form-control'/>
                             <div className="invalid-feedback"></div>
                         </div>
-                        <div className="input-group has-validation mb-1" key={value}>
+                        <div className="input-group has-validation mb-1" key="3">
                             <input ref={imagen3} type="text" className='form-control'/>
                             <div className="invalid-feedback"></div>
                         </div>
-                        <div className="input-group has-validation mb-1" key={value}>
+                        <div className="input-group has-validation mb-1" key="4">
                             <input ref={imagen4} type="text" className='form-control'/>
                             <div className="invalid-feedback"></div>
                         </div>
-                        <div className="input-group has-validation mb-1" key={value}>
+                        <div className="input-group has-validation mb-1" key="5">
                             <input ref={imagen5} type="text" className='form-control'/>
                             <div className="invalid-feedback"></div>
                         </div>

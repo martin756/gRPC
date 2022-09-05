@@ -4,46 +4,41 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import ProductCard from '../components/ProductCard';
 //import '../css/ShopProductsList.css'
 import { jsonProducts, categorias } from './productsDemo';
+import axios from 'axios';
 
 function MainMenu() {
+    const baseUrl="https://localhost:5001/api/Producto/GetProductos"
     
-    const [products, setProductsFilter] = useState(jsonProducts)
-    /*const [productsByCategories, setFilterByCategories] = useState(jsonProducts)
-    const [productsByNombre, setFilterByName] = useState(jsonProducts)
-    const [productsByPriceRange, setFilterByPriceRange] = useState(jsonProducts)
-    const [productsByDateRange, setFilterByDateRange] = useState(jsonProducts)
-    const [productsFiltered, setProductsFiltered] = useState(null)*/
-    /*let productsByCategories = [...jsonProducts]
-    let productsByNombre = [...jsonProducts]
-    let productsByPriceRange = [...jsonProducts]
-    let productsByDateRange = [...jsonProducts]*/
-    let productsFiltered = [...jsonProducts];
-
+    //const [categorias, setCategories] = useState([])
+    const [productsReadOnly, setProductsReadOnly] = useState([])
+    const [products, setProductsFiltered] = useState([])
     const filtroCategoria = useRef(null),filtroNombre = useRef(null)
     const filtroPrecioDesde = useRef(null),filtroPrecioHasta = useRef(null)
     const filtroFechaDesde = useRef(null),filtroFechaHasta = useRef(null)
 
     const filterProducts = () => {
+        let productsFiltered = [...productsReadOnly]
+
         productsFiltered = filtroPorNombre(productsFiltered)
         productsFiltered = filtroPorCategoria(productsFiltered)
         productsFiltered = filtroRangoPrecio(productsFiltered)
         productsFiltered = filtroRangoFecha(productsFiltered)
 
-        //productsFiltered = [...productsByNombre]
-        setProductsFilter(productsFiltered)
+        setProductsFiltered(productsFiltered)
     }
 
     const filtroPorCategoria = (arr) => {
       const optionLabelSelected = filtroCategoria.current.options[filtroCategoria.current.options.selectedIndex]
       if (optionLabelSelected.index !== 0) {
-        return arr.filter(product=>product.categoria===optionLabelSelected.label)
+        debugger
+        return arr.filter(product=>product.Idtipocategoria===optionLabelSelected.index)
       }
       return arr
     }
 
     const filtroPorNombre = (arr) => {
       if (filtroNombre.current.value !== '') {
-        return arr.filter(product=>product.nombre.toLowerCase()
+        return arr.filter(product=>product.Nombre.toLowerCase()
           .includes(filtroNombre.current.value.toLowerCase()))
       }
       return arr
@@ -51,23 +46,39 @@ function MainMenu() {
 
     const filtroRangoPrecio = (arr) => {
       if (filtroPrecioDesde.current.value !== '') {
-        arr = arr.filter(product=>product.precio >= filtroPrecioDesde.current.value)
+        arr = arr.filter(product=>product.Precio >= filtroPrecioDesde.current.value)
       }
       if (filtroPrecioHasta.current.value !== '') {
-        arr = arr.filter(product=>product.precio <= filtroPrecioHasta.current.value)
+        arr = arr.filter(product=>product.Precio <= filtroPrecioHasta.current.value)
       }
       return arr
     }
 
     const filtroRangoFecha = (arr) => {
+      debugger
       if (filtroFechaDesde.current.value !== '') {
-        arr = arr.filter(product=>product.fecha_fabricacion >= new Date(filtroFechaDesde.current.value))
+        arr = arr.filter(product=>product.FechaPublicacion >= filtroFechaDesde.current.value)
       }
       if (filtroFechaHasta.current.value !== '') {
-        arr = arr.filter(product=>product.fecha_fabricacion <= new Date(filtroFechaHasta.current.value))
+        arr = arr.filter(product=>product.FechaPublicacion <= filtroFechaHasta.current.value)
       }
       return arr
     }
+
+    const traerProductos = async () => {
+      await axios.get(baseUrl)
+      .then(response=>{
+        setProductsReadOnly(response.data)
+        setProductsFiltered(response.data)
+      })
+      .catch(error=>{
+        alert(error)
+      })
+    }
+
+    useEffect(()=>{
+      traerProductos(baseUrl)
+    },[])
 
     return (
         <div>
@@ -80,7 +91,7 @@ function MainMenu() {
                   <div className="container-fluid">
                     <div className="row">
                       {products.map((value)=>(
-                        <ProductCard id={value.id} nombre={value.nombre} precio={value.precio} url={value.url_fotos[0]}/>
+                        <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} url={value.UrlFotos[0]}/>
                       ))}
                     </div>
                   </div>
