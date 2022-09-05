@@ -66,7 +66,6 @@ namespace apiRetroshop.Controllers
                         productos.Add(currentProduct);
                     }
                 }
-                //var productos = cliente.TraerProductos(new Nulo());
                 response = JsonConvert.SerializeObject(productos);
             }
             catch (Exception e)
@@ -78,7 +77,7 @@ namespace apiRetroshop.Controllers
         }
 
         [HttpPost]
-        public string PostProducto(ProductoPost producto)
+        public string PostProducto(ClasePostProducto producto)
         {
             string response;
             try
@@ -90,15 +89,18 @@ namespace apiRetroshop.Controllers
 
                 var postProducto = new ProductoPost
                 {
-                    Nombre = producto.Nombre,
-                    Descripcion = producto.Descripcion,
-                    Idtipocategoria = producto.Idtipocategoria,
-                    Precio = producto.Precio,
-                    CantidadDisponible = producto.CantidadDisponible,
-                    FechaPublicacion = producto.FechaPublicacion,
-                    PublicadorIdusuario = producto.PublicadorIdusuario
+                    Nombre = producto.nombre,
+                    Descripcion = producto.descripcion,
+                    Idtipocategoria = producto.idtipocategoria,
+                    Precio = producto.precio,
+                    CantidadDisponible = producto.cantidad_disponible,
+                    FechaPublicacion = producto.fecha_publicacion,
+                    PublicadorIdusuario = producto.publicador_idusuario
                 };
-                postProducto.UrlFotos.Add(producto.UrlFotos);
+                foreach (var stringUrl in producto.url_fotos)
+                {
+                    postProducto.UrlFotos.Add(stringUrl);
+                }
 
                 var productoResponse = cliente.AltaProducto(postProducto);
                 response = JsonConvert.SerializeObject(productoResponse);
@@ -112,7 +114,7 @@ namespace apiRetroshop.Controllers
         }
 
         [HttpPut]
-        public string PutProducto(ProductoPut producto)
+        public string PutProducto(ClasePutProducto producto)
         {
             string response;
             try
@@ -124,13 +126,17 @@ namespace apiRetroshop.Controllers
 
                 var postProducto = new ProductoPut
                 {
-                    Idproducto = producto.Idproducto,
-                    Nombre = producto.Nombre,
-                    Descripcion = producto.Descripcion,
-                    Idtipocategoria = producto.Idtipocategoria,
-                    Precio = producto.Precio,
-                    CantidadDisponible = producto.CantidadDisponible
+                    Idproducto = producto.idproducto,
+                    Nombre = producto.nombre,
+                    Descripcion = producto.descripcion,
+                    Idtipocategoria = producto.idtipocategoria,
+                    Precio = producto.precio,
+                    CantidadDisponible = producto.cantidad_disponible
                 };
+                foreach (var stringUrl in producto.url_fotos)
+                {
+                    postProducto.UrlFotos.Add(stringUrl);
+                }
 
                 var productoResponse = cliente.EditarProducto(postProducto);
                 response = JsonConvert.SerializeObject(productoResponse);

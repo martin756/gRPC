@@ -22,35 +22,36 @@ public static partial class ProductosReflection {
   static ProductosReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg9wcm9kdWN0b3MucHJvdG8aDnVzdWFyaW9zLnByb3RvIsIBCghQcm9kdWN0",
+          "Cg9wcm9kdWN0b3MucHJvdG8aDnVzdWFyaW9zLnByb3RvItUBCghQcm9kdWN0",
           "bxISCgppZHByb2R1Y3RvGAEgASgFEg4KBm5vbWJyZRgCIAEoCRITCgtkZXNj",
           "cmlwY2lvbhgDIAEoCRIXCg9pZHRpcG9jYXRlZ29yaWEYBCABKAUSDgoGcHJl",
           "Y2lvGAUgASgCEhsKE2NhbnRpZGFkX2Rpc3BvbmlibGUYBiABKAMSGQoRZmVj",
           "aGFfcHVibGljYWNpb24YByABKAkSHAoUcHVibGljYWRvcl9pZHVzdWFyaW8Y",
-          "CCABKAUiLQoNUHJvZHVjdG9zTGlzdBIcCglwcm9kdWN0b3MYASADKAsyCS5Q",
-          "cm9kdWN0byK0AQoLUHJvZHVjdG9HZXQSDgoGbm9tYnJlGAEgASgJEhMKC2Rl",
-          "c2NyaXBjaW9uGAIgASgJEhEKCWNhdGVnb3JpYRgDIAEoCRIOCgZwcmVjaW8Y",
-          "BCABKAISGwoTY2FudGlkYWRfZGlzcG9uaWJsZRgFIAEoAxIZChFmZWNoYV9w",
-          "dWJsaWNhY2lvbhgGIAEoCRISCgpwdWJsaWNhZG9yGAcgASgJEhEKCXVybF9m",
-          "b3RvcxgIIAMoCSLFAQoMUHJvZHVjdG9Qb3N0Eg4KBm5vbWJyZRgBIAEoCRIT",
-          "CgtkZXNjcmlwY2lvbhgCIAEoCRIXCg9pZHRpcG9jYXRlZ29yaWEYAyABKAMS",
-          "DgoGcHJlY2lvGAQgASgCEhsKE2NhbnRpZGFkX2Rpc3BvbmlibGUYBSABKAMS",
-          "GQoRZmVjaGFfcHVibGljYWNpb24YBiABKAkSHAoUcHVibGljYWRvcl9pZHVz",
-          "dWFyaW8YByABKAMSEQoJdXJsX2ZvdG9zGAggAygJIp8BCgtQcm9kdWN0b1B1",
-          "dBISCgppZHByb2R1Y3RvGAEgASgFEg4KBm5vbWJyZRgCIAEoCRITCgtkZXNj",
-          "cmlwY2lvbhgDIAEoCRIXCg9pZHRpcG9jYXRlZ29yaWEYBCABKAMSDgoGcHJl",
-          "Y2lvGAUgASgCEhsKE2NhbnRpZGFkX2Rpc3BvbmlibGUYBiABKAMSEQoJdXJs",
-          "X2ZvdG9zGAcgAygJIiAKDlRpcG9fY2F0ZWdvcmlhEg4KBm5vbWJyZRgBIAEo",
-          "CSIgCgpJZFByb2R1Y3RvEhIKCmlkcHJvZHVjdG8YASABKAUiHgoJSWRVc3Vh",
-          "cmlvEhEKCWlkdXN1YXJpbxgBIAEoBTK2AQoJUHJvZHVjdG9zEi4KEVRyYWVy",
-          "UHJvZHVjdG9CeUlkEgsuSWRQcm9kdWN0bxoMLlByb2R1Y3RvR2V0EiQKDlRy",
-          "YWVyUHJvZHVjdG9zEgUuTnVsbxoJLlByb2R1Y3RvMAESKAoMQWx0YVByb2R1",
-          "Y3RvEg0uUHJvZHVjdG9Qb3N0GgkuUmVzcG9uc2USKQoORWRpdGFyUHJvZHVj",
-          "dG8SDC5Qcm9kdWN0b1B1dBoJLlJlc3BvbnNlYgZwcm90bzM="));
+          "CCABKAUSEQoJdXJsX2ZvdG9zGAkgAygJIi0KDVByb2R1Y3Rvc0xpc3QSHAoJ",
+          "cHJvZHVjdG9zGAEgAygLMgkuUHJvZHVjdG8itAEKC1Byb2R1Y3RvR2V0Eg4K",
+          "Bm5vbWJyZRgBIAEoCRITCgtkZXNjcmlwY2lvbhgCIAEoCRIRCgljYXRlZ29y",
+          "aWEYAyABKAkSDgoGcHJlY2lvGAQgASgCEhsKE2NhbnRpZGFkX2Rpc3Bvbmli",
+          "bGUYBSABKAMSGQoRZmVjaGFfcHVibGljYWNpb24YBiABKAkSEgoKcHVibGlj",
+          "YWRvchgHIAEoCRIRCgl1cmxfZm90b3MYCCADKAkixQEKDFByb2R1Y3RvUG9z",
+          "dBIOCgZub21icmUYASABKAkSEwoLZGVzY3JpcGNpb24YAiABKAkSFwoPaWR0",
+          "aXBvY2F0ZWdvcmlhGAMgASgDEg4KBnByZWNpbxgEIAEoAhIbChNjYW50aWRh",
+          "ZF9kaXNwb25pYmxlGAUgASgDEhkKEWZlY2hhX3B1YmxpY2FjaW9uGAYgASgJ",
+          "EhwKFHB1YmxpY2Fkb3JfaWR1c3VhcmlvGAcgASgDEhEKCXVybF9mb3RvcxgI",
+          "IAMoCSKfAQoLUHJvZHVjdG9QdXQSEgoKaWRwcm9kdWN0bxgBIAEoBRIOCgZu",
+          "b21icmUYAiABKAkSEwoLZGVzY3JpcGNpb24YAyABKAkSFwoPaWR0aXBvY2F0",
+          "ZWdvcmlhGAQgASgDEg4KBnByZWNpbxgFIAEoAhIbChNjYW50aWRhZF9kaXNw",
+          "b25pYmxlGAYgASgDEhEKCXVybF9mb3RvcxgHIAMoCSIgCg5UaXBvX2NhdGVn",
+          "b3JpYRIOCgZub21icmUYASABKAkiIAoKSWRQcm9kdWN0bxISCgppZHByb2R1",
+          "Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIRCglpZHVzdWFyaW8YASABKAUytgEK",
+          "CVByb2R1Y3RvcxIuChFUcmFlclByb2R1Y3RvQnlJZBILLklkUHJvZHVjdG8a",
+          "DC5Qcm9kdWN0b0dldBIkCg5UcmFlclByb2R1Y3RvcxIFLk51bG8aCS5Qcm9k",
+          "dWN0bzABEigKDEFsdGFQcm9kdWN0bxINLlByb2R1Y3RvUG9zdBoJLlJlc3Bv",
+          "bnNlEikKDkVkaXRhclByb2R1Y3RvEgwuUHJvZHVjdG9QdXQaCS5SZXNwb25z",
+          "ZWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::UsuariosReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::Producto), global::Producto.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Producto), global::Producto.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductosList), global::ProductosList.Parser, new[]{ "Productos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoGet), global::ProductoGet.Parser, new[]{ "Nombre", "Descripcion", "Categoria", "Precio", "CantidadDisponible", "FechaPublicacion", "Publicador", "UrlFotos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPost), global::ProductoPost.Parser, new[]{ "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos" }, null, null, null, null),
@@ -101,6 +102,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
     cantidadDisponible_ = other.cantidadDisponible_;
     fechaPublicacion_ = other.fechaPublicacion_;
     publicadorIdusuario_ = other.publicadorIdusuario_;
+    urlFotos_ = other.urlFotos_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -197,6 +199,16 @@ public sealed partial class Producto : pb::IMessage<Producto>
     }
   }
 
+  /// <summary>Field number for the "url_fotos" field.</summary>
+  public const int UrlFotosFieldNumber = 9;
+  private static readonly pb::FieldCodec<string> _repeated_urlFotos_codec
+      = pb::FieldCodec.ForString(74);
+  private readonly pbc::RepeatedField<string> urlFotos_ = new pbc::RepeatedField<string>();
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public pbc::RepeatedField<string> UrlFotos {
+    get { return urlFotos_; }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Producto);
@@ -218,6 +230,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (CantidadDisponible != other.CantidadDisponible) return false;
     if (FechaPublicacion != other.FechaPublicacion) return false;
     if (PublicadorIdusuario != other.PublicadorIdusuario) return false;
+    if(!urlFotos_.Equals(other.urlFotos_)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -232,6 +245,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (CantidadDisponible != 0L) hash ^= CantidadDisponible.GetHashCode();
     if (FechaPublicacion.Length != 0) hash ^= FechaPublicacion.GetHashCode();
     if (PublicadorIdusuario != 0) hash ^= PublicadorIdusuario.GetHashCode();
+    hash ^= urlFotos_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -280,6 +294,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
       output.WriteRawTag(64);
       output.WriteInt32(PublicadorIdusuario);
     }
+    urlFotos_.WriteTo(output, _repeated_urlFotos_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -321,6 +336,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
       output.WriteRawTag(64);
       output.WriteInt32(PublicadorIdusuario);
     }
+    urlFotos_.WriteTo(ref output, _repeated_urlFotos_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -354,6 +370,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (PublicadorIdusuario != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(PublicadorIdusuario);
     }
+    size += urlFotos_.CalculateSize(_repeated_urlFotos_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -389,6 +406,7 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (other.PublicadorIdusuario != 0) {
       PublicadorIdusuario = other.PublicadorIdusuario;
     }
+    urlFotos_.Add(other.urlFotos_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -435,6 +453,10 @@ public sealed partial class Producto : pb::IMessage<Producto>
           PublicadorIdusuario = input.ReadInt32();
           break;
         }
+        case 74: {
+          urlFotos_.AddEntriesFrom(input, _repeated_urlFotos_codec);
+          break;
+        }
       }
     }
   #endif
@@ -479,6 +501,10 @@ public sealed partial class Producto : pb::IMessage<Producto>
         }
         case 64: {
           PublicadorIdusuario = input.ReadInt32();
+          break;
+        }
+        case 74: {
+          urlFotos_.AddEntriesFrom(ref input, _repeated_urlFotos_codec);
           break;
         }
       }
