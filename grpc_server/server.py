@@ -169,7 +169,7 @@ class CarritoProductos(CarritosServicer):
         cursor = cnx.cursor()
         query = f"INSERT INTO carrito (`total`, `cliente_idusuario`) VALUES ('{request.total}', '{request.cliente_idusuario}')"
         cursor.execute(query)
-        idcarrito = IdCarrito(cursor.lastrowid)
+        idcarrito = IdCarrito(id = cursor.lastrowid)
 
         cnx.commit()
 
@@ -206,6 +206,7 @@ def start():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     add_UsuariosServicer_to_server(ServicioUsuarios(), server)
     add_ProductosServicer_to_server(ProductoUsuarios(), server)
+    add_CarritosServicer_to_server(CarritoProductos(), server)
     server.add_insecure_port('[::]:50051')
     print("The server is running!")
     server.start()
