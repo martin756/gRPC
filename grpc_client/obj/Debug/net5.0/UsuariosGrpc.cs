@@ -93,12 +93,6 @@ public static partial class Usuarios
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
 
-    /// <summary>
-    ///rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-    /// </summary>
-    /// <param name="request">The request received from the client.</param>
-    /// <param name="context">The context of the server-side call handler being invoked.</param>
-    /// <returns>The response to send back to the client (wrapped by a task).</returns>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::System.Threading.Tasks.Task<global::Usuario> TraerUsuario(global::Username request, grpc::ServerCallContext context)
     {
@@ -160,49 +154,21 @@ public static partial class Usuarios
     {
       return CallInvoker.AsyncUnaryCall(__Method_Listo, null, options, request);
     }
-    /// <summary>
-    ///rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-    /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-    /// <param name="cancellationToken">An optional token for canceling the call.</param>
-    /// <returns>The response received from the server.</returns>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::Usuario TraerUsuario(global::Username request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return TraerUsuario(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    /// <summary>
-    ///rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="options">The options for the call.</param>
-    /// <returns>The response received from the server.</returns>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::Usuario TraerUsuario(global::Username request, grpc::CallOptions options)
     {
       return CallInvoker.BlockingUnaryCall(__Method_TraerUsuario, null, options, request);
     }
-    /// <summary>
-    ///rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-    /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-    /// <param name="cancellationToken">An optional token for canceling the call.</param>
-    /// <returns>The call object.</returns>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual grpc::AsyncUnaryCall<global::Usuario> TraerUsuarioAsync(global::Username request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return TraerUsuarioAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    /// <summary>
-    ///rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="options">The options for the call.</param>
-    /// <returns>The call object.</returns>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual grpc::AsyncUnaryCall<global::Usuario> TraerUsuarioAsync(global::Username request, grpc::CallOptions options)
     {

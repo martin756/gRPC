@@ -22,20 +22,21 @@ public static partial class UsuariosReflection {
   static UsuariosReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg51c3Vhcmlvcy5wcm90byJ2CgdVc3VhcmlvEg4KBm5vbWJyZRgBIAEoCRIQ",
-          "CghhcGVsbGlkbxgCIAEoCRILCgNkbmkYAyABKAQSDQoFZW1haWwYBCABKAkS",
-          "DAoEdXNlchgFIAEoCRIQCghwYXNzd29yZBgGIAEoCRINCgVzYWxkbxgHIAEo",
-          "AiIuCghVc2VybmFtZRIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgC",
-          "IAEoCSIbCghSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIgYKBE51bG8yagoI",
-          "VXN1YXJpb3MSFQoFTGlzdG8SBS5OdWxvGgUuTnVsbxIjCgxUcmFlclVzdWFy",
-          "aW8SCS5Vc2VybmFtZRoILlVzdWFyaW8SIgoLQWx0YVVzdWFyaW8SCC5Vc3Vh",
-          "cmlvGgkuUmVzcG9uc2ViBnByb3RvMw=="));
+          "Cg51c3Vhcmlvcy5wcm90byKJAQoHVXN1YXJpbxIRCglpZHVzdWFyaW8YASAB",
+          "KA0SDgoGbm9tYnJlGAIgASgJEhAKCGFwZWxsaWRvGAMgASgJEgsKA2RuaRgE",
+          "IAEoBBINCgVlbWFpbBgFIAEoCRIMCgR1c2VyGAYgASgJEhAKCHBhc3N3b3Jk",
+          "GAcgASgJEg0KBXNhbGRvGAggASgCIi4KCFVzZXJuYW1lEhAKCHVzZXJuYW1l",
+          "GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIi4KCFJlc3BvbnNlEg8KB21lc3Nh",
+          "Z2UYASABKAkSEQoJaWR1c3VhcmlvGAIgASgNIgYKBE51bG8yagoIVXN1YXJp",
+          "b3MSFQoFTGlzdG8SBS5OdWxvGgUuTnVsbxIjCgxUcmFlclVzdWFyaW8SCS5V",
+          "c2VybmFtZRoILlVzdWFyaW8SIgoLQWx0YVVzdWFyaW8SCC5Vc3VhcmlvGgku",
+          "UmVzcG9uc2ViBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::Usuario), global::Usuario.Parser, new[]{ "Nombre", "Apellido", "Dni", "Email", "User", "Password", "Saldo" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Usuario), global::Usuario.Parser, new[]{ "Idusuario", "Nombre", "Apellido", "Dni", "Email", "User", "Password", "Saldo" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Username), global::Username.Parser, new[]{ "Username_", "Password" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::Response), global::Response.Parser, new[]{ "Message" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Response), global::Response.Parser, new[]{ "Message", "Idusuario" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Nulo), global::Nulo.Parser, null, null, null, null, null)
         }));
   }
@@ -72,6 +73,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public Usuario(Usuario other) : this() {
+    idusuario_ = other.idusuario_;
     nombre_ = other.nombre_;
     apellido_ = other.apellido_;
     dni_ = other.dni_;
@@ -87,13 +89,20 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     return new Usuario(this);
   }
 
+  /// <summary>Field number for the "idusuario" field.</summary>
+  public const int IdusuarioFieldNumber = 1;
+  private uint idusuario_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public uint Idusuario {
+    get { return idusuario_; }
+    set {
+      idusuario_ = value;
+    }
+  }
+
   /// <summary>Field number for the "nombre" field.</summary>
-  public const int NombreFieldNumber = 1;
+  public const int NombreFieldNumber = 2;
   private string nombre_ = "";
-  /// <summary>
-  ///repeated string topping  = 1;
-  ///int32 pulgadas = 2;
-  /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Nombre {
     get { return nombre_; }
@@ -103,7 +112,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "apellido" field.</summary>
-  public const int ApellidoFieldNumber = 2;
+  public const int ApellidoFieldNumber = 3;
   private string apellido_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Apellido {
@@ -114,7 +123,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "dni" field.</summary>
-  public const int DniFieldNumber = 3;
+  public const int DniFieldNumber = 4;
   private ulong dni_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public ulong Dni {
@@ -125,7 +134,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "email" field.</summary>
-  public const int EmailFieldNumber = 4;
+  public const int EmailFieldNumber = 5;
   private string email_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Email {
@@ -136,7 +145,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "user" field.</summary>
-  public const int UserFieldNumber = 5;
+  public const int UserFieldNumber = 6;
   private string user_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string User {
@@ -147,7 +156,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "password" field.</summary>
-  public const int PasswordFieldNumber = 6;
+  public const int PasswordFieldNumber = 7;
   private string password_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Password {
@@ -158,7 +167,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   }
 
   /// <summary>Field number for the "saldo" field.</summary>
-  public const int SaldoFieldNumber = 7;
+  public const int SaldoFieldNumber = 8;
   private float saldo_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public float Saldo {
@@ -181,6 +190,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (ReferenceEquals(other, this)) {
       return true;
     }
+    if (Idusuario != other.Idusuario) return false;
     if (Nombre != other.Nombre) return false;
     if (Apellido != other.Apellido) return false;
     if (Dni != other.Dni) return false;
@@ -194,6 +204,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override int GetHashCode() {
     int hash = 1;
+    if (Idusuario != 0) hash ^= Idusuario.GetHashCode();
     if (Nombre.Length != 0) hash ^= Nombre.GetHashCode();
     if (Apellido.Length != 0) hash ^= Apellido.GetHashCode();
     if (Dni != 0UL) hash ^= Dni.GetHashCode();
@@ -217,32 +228,36 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     output.WriteRawMessage(this);
   #else
+    if (Idusuario != 0) {
+      output.WriteRawTag(8);
+      output.WriteUInt32(Idusuario);
+    }
     if (Nombre.Length != 0) {
-      output.WriteRawTag(10);
+      output.WriteRawTag(18);
       output.WriteString(Nombre);
     }
     if (Apellido.Length != 0) {
-      output.WriteRawTag(18);
+      output.WriteRawTag(26);
       output.WriteString(Apellido);
     }
     if (Dni != 0UL) {
-      output.WriteRawTag(24);
+      output.WriteRawTag(32);
       output.WriteUInt64(Dni);
     }
     if (Email.Length != 0) {
-      output.WriteRawTag(34);
+      output.WriteRawTag(42);
       output.WriteString(Email);
     }
     if (User.Length != 0) {
-      output.WriteRawTag(42);
+      output.WriteRawTag(50);
       output.WriteString(User);
     }
     if (Password.Length != 0) {
-      output.WriteRawTag(50);
+      output.WriteRawTag(58);
       output.WriteString(Password);
     }
     if (Saldo != 0F) {
-      output.WriteRawTag(61);
+      output.WriteRawTag(69);
       output.WriteFloat(Saldo);
     }
     if (_unknownFields != null) {
@@ -254,32 +269,36 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (Idusuario != 0) {
+      output.WriteRawTag(8);
+      output.WriteUInt32(Idusuario);
+    }
     if (Nombre.Length != 0) {
-      output.WriteRawTag(10);
+      output.WriteRawTag(18);
       output.WriteString(Nombre);
     }
     if (Apellido.Length != 0) {
-      output.WriteRawTag(18);
+      output.WriteRawTag(26);
       output.WriteString(Apellido);
     }
     if (Dni != 0UL) {
-      output.WriteRawTag(24);
+      output.WriteRawTag(32);
       output.WriteUInt64(Dni);
     }
     if (Email.Length != 0) {
-      output.WriteRawTag(34);
+      output.WriteRawTag(42);
       output.WriteString(Email);
     }
     if (User.Length != 0) {
-      output.WriteRawTag(42);
+      output.WriteRawTag(50);
       output.WriteString(User);
     }
     if (Password.Length != 0) {
-      output.WriteRawTag(50);
+      output.WriteRawTag(58);
       output.WriteString(Password);
     }
     if (Saldo != 0F) {
-      output.WriteRawTag(61);
+      output.WriteRawTag(69);
       output.WriteFloat(Saldo);
     }
     if (_unknownFields != null) {
@@ -291,6 +310,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int CalculateSize() {
     int size = 0;
+    if (Idusuario != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
+    }
     if (Nombre.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Nombre);
     }
@@ -322,6 +344,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   public void MergeFrom(Usuario other) {
     if (other == null) {
       return;
+    }
+    if (other.Idusuario != 0) {
+      Idusuario = other.Idusuario;
     }
     if (other.Nombre.Length != 0) {
       Nombre = other.Nombre;
@@ -358,31 +383,35 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
-        case 10: {
-          Nombre = input.ReadString();
+        case 8: {
+          Idusuario = input.ReadUInt32();
           break;
         }
         case 18: {
+          Nombre = input.ReadString();
+          break;
+        }
+        case 26: {
           Apellido = input.ReadString();
           break;
         }
-        case 24: {
+        case 32: {
           Dni = input.ReadUInt64();
           break;
         }
-        case 34: {
+        case 42: {
           Email = input.ReadString();
           break;
         }
-        case 42: {
+        case 50: {
           User = input.ReadString();
           break;
         }
-        case 50: {
+        case 58: {
           Password = input.ReadString();
           break;
         }
-        case 61: {
+        case 69: {
           Saldo = input.ReadFloat();
           break;
         }
@@ -400,31 +429,35 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
-        case 10: {
-          Nombre = input.ReadString();
+        case 8: {
+          Idusuario = input.ReadUInt32();
           break;
         }
         case 18: {
+          Nombre = input.ReadString();
+          break;
+        }
+        case 26: {
           Apellido = input.ReadString();
           break;
         }
-        case 24: {
+        case 32: {
           Dni = input.ReadUInt64();
           break;
         }
-        case 34: {
+        case 42: {
           Email = input.ReadString();
           break;
         }
-        case 42: {
+        case 50: {
           User = input.ReadString();
           break;
         }
-        case 50: {
+        case 58: {
           Password = input.ReadString();
           break;
         }
-        case 61: {
+        case 69: {
           Saldo = input.ReadFloat();
           break;
         }
@@ -673,6 +706,7 @@ public sealed partial class Response : pb::IMessage<Response>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public Response(Response other) : this() {
     message_ = other.message_;
+    idusuario_ = other.idusuario_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -692,6 +726,17 @@ public sealed partial class Response : pb::IMessage<Response>
     }
   }
 
+  /// <summary>Field number for the "idusuario" field.</summary>
+  public const int IdusuarioFieldNumber = 2;
+  private uint idusuario_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public uint Idusuario {
+    get { return idusuario_; }
+    set {
+      idusuario_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Response);
@@ -706,6 +751,7 @@ public sealed partial class Response : pb::IMessage<Response>
       return true;
     }
     if (Message != other.Message) return false;
+    if (Idusuario != other.Idusuario) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -713,6 +759,7 @@ public sealed partial class Response : pb::IMessage<Response>
   public override int GetHashCode() {
     int hash = 1;
     if (Message.Length != 0) hash ^= Message.GetHashCode();
+    if (Idusuario != 0) hash ^= Idusuario.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -733,6 +780,10 @@ public sealed partial class Response : pb::IMessage<Response>
       output.WriteRawTag(10);
       output.WriteString(Message);
     }
+    if (Idusuario != 0) {
+      output.WriteRawTag(16);
+      output.WriteUInt32(Idusuario);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -746,6 +797,10 @@ public sealed partial class Response : pb::IMessage<Response>
       output.WriteRawTag(10);
       output.WriteString(Message);
     }
+    if (Idusuario != 0) {
+      output.WriteRawTag(16);
+      output.WriteUInt32(Idusuario);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -757,6 +812,9 @@ public sealed partial class Response : pb::IMessage<Response>
     int size = 0;
     if (Message.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+    }
+    if (Idusuario != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -771,6 +829,9 @@ public sealed partial class Response : pb::IMessage<Response>
     }
     if (other.Message.Length != 0) {
       Message = other.Message;
+    }
+    if (other.Idusuario != 0) {
+      Idusuario = other.Idusuario;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -790,6 +851,10 @@ public sealed partial class Response : pb::IMessage<Response>
           Message = input.ReadString();
           break;
         }
+        case 16: {
+          Idusuario = input.ReadUInt32();
+          break;
+        }
       }
     }
   #endif
@@ -806,6 +871,10 @@ public sealed partial class Response : pb::IMessage<Response>
           break;
         case 10: {
           Message = input.ReadString();
+          break;
+        }
+        case 16: {
+          Idusuario = input.ReadUInt32();
           break;
         }
       }

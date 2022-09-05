@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "productos.proto";
+
+message Carrito {
+    uint64 total = 1;
+    uint32 cliente_idusuario = 2;
+}
+
+message Producto_Carrito {
+    uint32 idproducto = 1;
+    uint32 idcarrito = 2;
+    uint32 cantidad = 3;
+    uint64 subtotal = 4;
+}
+
+message GetCarrito {
+    repeated Producto_Carrito items = 1;
+    uint64 total = 2;
+    uint32 cliente_idusuario = 3;
+}
+
+message IdCarrito {
+    uint32 id = 1;
+}
+
+message ResponseCarrito {
+    string mensaje = 1;
+}
+
+service Carritos {
+    rpc CrearCarrito (Carrito) returns (IdCarrito);
+    rpc AgregarItemsCarrito (stream Producto_Carrito) returns (ResponseCarrito);
+    rpc TraerCarritosByIdUsuario (IdUsuario) returns (stream GetCarrito);
+    rpc TraerCarritoById (IdCarrito) returns (GetCarrito);
+}

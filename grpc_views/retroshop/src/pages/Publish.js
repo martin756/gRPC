@@ -11,7 +11,8 @@ function Publish(props) {
     const precio = useRef(null)
     const stock = useRef(null)
     const fechaFabricacion = useRef(null)
-    const imagen = useRef(new Array())
+    const imagen1 = useRef(null), imagen2 = useRef(null)
+    const imagen3 = useRef(null), imagen4 = useRef(null), imagen5 = useRef(null)
     const navigate = useNavigate()
     const [inputs, setInputsState] = useState([])
 
@@ -19,17 +20,17 @@ function Publish(props) {
         event.preventDefault()
         const jsonBody = 
         {
-            "nombre": nombre.current.value === "" ? 0 : nombre.current.value,
-            "descripcion": descripcion.current.value === "" ? 0 : descripcion.current.value,
+            "nombre": nombre.current.value,
+            "descripcion": descripcion.current.value,
             "precio": precio.current.value,
             "stock": stock.current.value,
-            "fechaFabricacion": fechaFabricacion.current.value === "" ? 0 : fechaFabricacion.current.value,
-            "imagen": imagen.current.value === "" ? 0 : imagen.current.value
+            "fechaFabricacion": fechaFabricacion.current.value,
+            "imagenes": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value]
         }
         debugger
         await axios.post(baseUrl, jsonBody)
         .then(response=>{
-            if (response.data.Message !== '400'){
+            if (response.data.Message.includes('400')){
                 navigate('/')
             }else{
                 alert("El producto ya se encuentra publicado")
@@ -110,17 +111,25 @@ function Publish(props) {
                     <div className="col-12">
                         <label className="form-label">URLs de imágenes <span className="text-muted">(Máx. 5)</span></label>
                         <div className="input-group has-validation mb-1">
-                            <input ref={(element)=>imagen.current.push(element)} type="text" className='form-control' required />
-                            <span onClick={() => {addDynamicInput()}} className="btn btn-success input-group-text"><PlusLg/></span>
+                            <input ref={imagen1} type="text" className='form-control' required />
                             <div className="invalid-feedback">Provea una URL de imagen del producto.</div>
                         </div>
-                        {inputs.map((value,index)=>(
-                            <div className="input-group has-validation mb-1" key={value}>
-                                <input ref={(element)=>imagen.current.push(element)} type="text" className='form-control' required/>
-                                <span onClick={()=>{removeDynamicInput(value)}} className="btn btn-danger input-group-text"><DashLg/></span>
-                                <div className="invalid-feedback"></div>
-                            </div>
-                        ))}
+                        <div className="input-group has-validation mb-1" key={value}>
+                            <input ref={imagen2} type="text" className='form-control'/>
+                            <div className="invalid-feedback"></div>
+                        </div>
+                        <div className="input-group has-validation mb-1" key={value}>
+                            <input ref={imagen3} type="text" className='form-control'/>
+                            <div className="invalid-feedback"></div>
+                        </div>
+                        <div className="input-group has-validation mb-1" key={value}>
+                            <input ref={imagen4} type="text" className='form-control'/>
+                            <div className="invalid-feedback"></div>
+                        </div>
+                        <div className="input-group has-validation mb-1" key={value}>
+                            <input ref={imagen5} type="text" className='form-control'/>
+                            <div className="invalid-feedback"></div>
+                        </div>
                     </div>
                 </div>
                 <hr className="my-4" />

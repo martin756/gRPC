@@ -1,8 +1,10 @@
-from email import message
+from time import sleep
 from usuarios_pb2_grpc import UsuariosServicer, add_UsuariosServicer_to_server
 from usuarios_pb2 import Usuario, Response
 from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_server
-from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList
+from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList, Tipo_categoria
+from carritos_pb2_grpc import CarritosServicer, add_CarritosServicer_to_server
+from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, ResponseCarrito
 
 import grpc
 from concurrent import futures
@@ -32,12 +34,12 @@ class ServicioUsuarios(UsuariosServicer):
         query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`, `saldo`) VALUES "+
         f"('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}', '{request.saldo}')")
         cursor.execute(query)
+        resp = Response(message = "204", idusuario = cursor.lastrowid)
         cnx.commit()
 
         cursor.close()
         cnx.close()
-
-        return Response()
+        return resp
 
     def TraerUsuario(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
@@ -100,9 +102,18 @@ class ProductoUsuarios(ProductosServicer):
         cursor.execute(query)
         records = cursor.fetchall()
         for row in records:
-            yield ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
-        
+            yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion, 
+            idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, 
+            fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario)
+            sleep(3)
 
+        """for row in records:
+            yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion, idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario)
+            time.sleep(3)
+        return ProductosList(productos = records)
+        for row in records:
+            yield ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
+            yield ProductosList(ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username))"""
 
 
     def AltaProducto(self, request, context):
@@ -130,7 +141,45 @@ class ProductoUsuarios(ProductosServicer):
 
         return Response()
 
-  
+class CarritoProductos(CarritosServicer):
+    def CrearCarrito(self, request, context):
+        cnx =mysql.connector.connect(user='root', password='root',
+                        host='localhost', port='3306',
+                        database='retroshop')
+        cursor = cnx.cursor()
+        query = f"INSERT INTO carrito (`total`, `cliente_idusuario`) VALUES ('{request.total}', '{request.cliente_idusuario}')"
+        cursor.execute(query)
+        idcarrito = IdCarrito(cursor.lastrowid)
+
+        cnx.commit()
+
+        cursor.close()
+        cnx.close()
+        return idcarrito
+
+    def AgregarItemsCarrito(self, request_iterator, context):
+        cnx =mysql.connector.connect(user='root', password='root',
+                host='localhost', port='3306',
+                database='retroshop')
+        cursor = cnx.cursor()
+        stmt = "INSERT INTO producto_carrito (`idproducto`, `idcarrito`, `cantidad`, `subtotal`) VALUES (%s,%s,%s,%s)"
+        data = []
+        for request in request_iterator:
+            data.append((request.idproducto, request.idcarrito, request.cantidad, request.subtotal))
+        cursor.executemany(stmt, data)
+
+        cnx.commit()
+
+        cursor.close()
+        cnx.close()
+        return ResponseCarrito(mensaje = "204 No Content.")
+
+    def TraerCarritosByIdUsuario(self, request, context):
+        return super().TraerCarritosByIdUsuario(request, context)
+
+    def TraerCarritoById(self, request, context):
+        return super().TraerCarritoById(request, context)
+        
 
 
 def start():

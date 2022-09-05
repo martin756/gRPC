@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <Protobuf Include="../gRPC_server/protobufs/usuarios.proto" />
-	<Protobuf Include="../gRPC_server/protobufs/productos.proto" />
-
+	  <Protobuf Include="../gRPC_server/protobufs/productos.proto" />
+    <Protobuf Include="../gRPC_server/protobufs/carritos.proto" />
   </ItemGroup>
 </Project>

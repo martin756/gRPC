@@ -113,7 +113,6 @@ C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
-C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.AssemblyReference.cache
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.AssemblyInfoInputs.cache
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.AssemblyInfo.cs

@@ -1,4 +1,5 @@
 ﻿using apiRetroshop.Models;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -45,7 +46,7 @@ namespace apiRetroshop.Controllers
 
         [HttpGet]
         [Route("GetProductos")]
-        public string GetProductos()
+        public async Task<string> GetProductosAsync()
         {
             string response;
             try
@@ -56,10 +57,17 @@ namespace apiRetroshop.Controllers
                 var channel = GrpcChannel.ForAddress("http://localhost:50051");
                 var cliente = new Productos.ProductosClient(channel);
 
-
-
-                var productos = cliente.TraerProductos(new Nulo()).ToString();
-               response = JsonConvert.SerializeObject(productos);
+                List<Producto> productos = new();
+                using (var call = cliente.TraerProductos(new Nulo()))
+                {
+                    while (await call.ResponseStream.MoveNext())
+                    {
+                        var currentProduct = call.ResponseStream.Current;
+                        productos.Add(currentProduct);
+                    }
+                }
+                //var productos = cliente.TraerProductos(new Nulo());
+                response = JsonConvert.SerializeObject(productos);
             }
             catch (Exception e)
             {

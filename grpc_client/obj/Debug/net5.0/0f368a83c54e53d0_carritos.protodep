@@ -1,0 +1,4 @@
+obj\Debug\net5.0/Carritos.cs \
+obj\Debug\net5.0/CarritosGrpc.cs: ../gRPC_server/protobufs/usuarios.proto\
+ ../gRPC_server/protobufs/productos.proto\
+ ../gRPC_server/protobufs/carritos.proto

@@ -62,7 +62,7 @@ message IdUsuario {
 
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
-    rpc TraerProductos(Nulo) returns (ProductosList);
+    rpc TraerProductos(Nulo) returns (stream Producto);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
 }

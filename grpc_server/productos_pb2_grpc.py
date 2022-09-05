@@ -20,10 +20,10 @@ class ProductosStub(object):
                 request_serializer=productos__pb2.IdProducto.SerializeToString,
                 response_deserializer=productos__pb2.ProductoGet.FromString,
                 )
-        self.TraerProductos = channel.unary_unary(
+        self.TraerProductos = channel.unary_stream(
                 '/Productos/TraerProductos',
                 request_serializer=usuarios__pb2.Nulo.SerializeToString,
-                response_deserializer=productos__pb2.ProductosList.FromString,
+                response_deserializer=productos__pb2.Producto.FromString,
                 )
         self.AltaProducto = channel.unary_unary(
                 '/Productos/AltaProducto',
@@ -72,10 +72,10 @@ def add_ProductosServicer_to_server(servicer, server):
                     request_deserializer=productos__pb2.IdProducto.FromString,
                     response_serializer=productos__pb2.ProductoGet.SerializeToString,
             ),
-            'TraerProductos': grpc.unary_unary_rpc_method_handler(
+            'TraerProductos': grpc.unary_stream_rpc_method_handler(
                     servicer.TraerProductos,
                     request_deserializer=usuarios__pb2.Nulo.FromString,
-                    response_serializer=productos__pb2.ProductosList.SerializeToString,
+                    response_serializer=productos__pb2.Producto.SerializeToString,
             ),
             'AltaProducto': grpc.unary_unary_rpc_method_handler(
                     servicer.AltaProducto,
@@ -125,9 +125,9 @@ class Productos(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Productos/TraerProductos',
+        return grpc.experimental.unary_stream(request, target, '/Productos/TraerProductos',
             usuarios__pb2.Nulo.SerializeToString,
-            productos__pb2.ProductosList.FromString,
+            productos__pb2.Producto.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
