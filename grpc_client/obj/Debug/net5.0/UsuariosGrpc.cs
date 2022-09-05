@@ -52,6 +52,8 @@ public static partial class Usuarios
   static readonly grpc::Marshaller<global::Usuario> __Marshaller_Usuario = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Usuario.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::Response> __Marshaller_Response = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Response.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::Saldo> __Marshaller_Saldo = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Saldo.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::Nulo, global::Nulo> __Method_Listo = new grpc::Method<global::Nulo, global::Nulo>(
@@ -75,6 +77,14 @@ public static partial class Usuarios
       __ServiceName,
       "AltaUsuario",
       __Marshaller_Usuario,
+      __Marshaller_Response);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::Saldo, global::Response> __Method_CargarSaldo = new grpc::Method<global::Saldo, global::Response>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "CargarSaldo",
+      __Marshaller_Saldo,
       __Marshaller_Response);
 
   /// <summary>Service descriptor</summary>
@@ -101,6 +111,12 @@ public static partial class Usuarios
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::System.Threading.Tasks.Task<global::Response> AltaUsuario(global::Usuario request, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::System.Threading.Tasks.Task<global::Response> CargarSaldo(global::Saldo request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -194,6 +210,26 @@ public static partial class Usuarios
     {
       return CallInvoker.AsyncUnaryCall(__Method_AltaUsuario, null, options, request);
     }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::Response CargarSaldo(global::Saldo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return CargarSaldo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::Response CargarSaldo(global::Saldo request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_CargarSaldo, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::Response> CargarSaldoAsync(global::Saldo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return CargarSaldoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::Response> CargarSaldoAsync(global::Saldo request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_CargarSaldo, null, options, request);
+    }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     protected override UsuariosClient NewInstance(ClientBaseConfiguration configuration)
@@ -210,7 +246,8 @@ public static partial class Usuarios
     return grpc::ServerServiceDefinition.CreateBuilder()
         .AddMethod(__Method_Listo, serviceImpl.Listo)
         .AddMethod(__Method_TraerUsuario, serviceImpl.TraerUsuario)
-        .AddMethod(__Method_AltaUsuario, serviceImpl.AltaUsuario).Build();
+        .AddMethod(__Method_AltaUsuario, serviceImpl.AltaUsuario)
+        .AddMethod(__Method_CargarSaldo, serviceImpl.CargarSaldo).Build();
   }
 
   /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -223,6 +260,7 @@ public static partial class Usuarios
     serviceBinder.AddMethod(__Method_Listo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Nulo, global::Nulo>(serviceImpl.Listo));
     serviceBinder.AddMethod(__Method_TraerUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Username, global::Usuario>(serviceImpl.TraerUsuario));
     serviceBinder.AddMethod(__Method_AltaUsuario, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Usuario, global::Response>(serviceImpl.AltaUsuario));
+    serviceBinder.AddMethod(__Method_CargarSaldo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Saldo, global::Response>(serviceImpl.CargarSaldo));
   }
 
 }

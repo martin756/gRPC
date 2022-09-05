@@ -10,6 +10,10 @@ message Usuario {
     string password = 7;
     float saldo = 8;
 }
+message Saldo{
+    uint32 idusuario = 1;
+    float saldo = 2;
+}
 
 message Username {
     string username = 1;
@@ -28,4 +32,5 @@ service Usuarios {
     rpc Listo(Nulo) returns (Nulo);
     rpc TraerUsuario(Username) returns (Usuario);
     rpc AltaUsuario(Usuario) returns (Response);
+    rpc CargarSaldo(Saldo) returns(Response);
 }

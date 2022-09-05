@@ -30,13 +30,12 @@ class ServicioUsuarios(UsuariosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Response(message = "400")
+            return Response(message = "400 - Ya existe usuario")
         query = (f"INSERT INTO usuario (`nombre`, `apellido`, `dni`, `email`, `usuario`, `contraseña`, `saldo`) VALUES "+
         f"('{request.nombre}', '{request.apellido}', '{request.dni}', '{request.email}', '{request.user}', '{request.password}', '{request.saldo}')")
-        cursor.execute(query)
-        resp = Response(message = "204", idusuario = cursor.lastrowid)
+        cursor.execute(query)        
         cnx.commit()
-
+        resp = Response(message = "204", idusuario = cursor.lastrowid)
         cursor.close()
         cnx.close()
         return resp
@@ -54,6 +53,27 @@ class ServicioUsuarios(UsuariosServicer):
         else:
             return Usuario()
 
+    def CargarSaldo(self, request, context):
+        cnx =mysql.connector.connect(user='root', password='root',
+                             host='localhost', port='3306',
+                             database='retroshop')
+        cursor = cnx.cursor()
+        query = (f"SELECT * FROM usuario WHERE idusuario = '{request.idusuario}'")
+        
+        cursor.execute(query)
+        row = cursor.fetchone()
+        if row is None:
+            return Response(message = "404 Not-Found. El usuario con ese id no existe")
+        else:
+            query = (f"UPDATE usuario SET `saldo` ='{row[7] + request.saldo}' where idusuario = '{request.idusuario}' ")
+            cursor.execute(query)
+            resp = Response(message = f"Saldo total:'{row[7] + request.saldo}'", idusuario =  cursor.lastrowid)
+            cnx.commit()
+            cursor.close()
+            cnx.close()
+            return resp
+
+           
 
 class ProductoUsuarios(ProductosServicer):
     def EditarProducto(self, request, context):
