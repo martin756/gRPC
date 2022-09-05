@@ -23,23 +23,23 @@ public static partial class CarritosReflection {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "Cg5jYXJyaXRvcy5wcm90bxoPcHJvZHVjdG9zLnByb3RvIjMKB0NhcnJpdG8S",
-          "DQoFdG90YWwYASABKAQSGQoRY2xpZW50ZV9pZHVzdWFyaW8YAiABKA0iXQoQ",
+          "DQoFdG90YWwYASABKAQSGQoRY2xpZW50ZV9pZHVzdWFyaW8YAiABKA0icgoQ",
           "UHJvZHVjdG9fQ2Fycml0bxISCgppZHByb2R1Y3RvGAEgASgNEhEKCWlkY2Fy",
           "cml0bxgCIAEoDRIQCghjYW50aWRhZBgDIAEoDRIQCghzdWJ0b3RhbBgEIAEo",
-          "BCJYCgpHZXRDYXJyaXRvEiAKBWl0ZW1zGAEgAygLMhEuUHJvZHVjdG9fQ2Fy",
-          "cml0bxINCgV0b3RhbBgCIAEoBBIZChFjbGllbnRlX2lkdXN1YXJpbxgDIAEo",
-          "DSIXCglJZENhcnJpdG8SCgoCaWQYASABKA0iIgoPUmVzcG9uc2VDYXJyaXRv",
-          "Eg8KB21lbnNhamUYASABKAky0gEKCENhcnJpdG9zEiQKDENyZWFyQ2Fycml0",
-          "bxIILkNhcnJpdG8aCi5JZENhcnJpdG8SPAoTQWdyZWdhckl0ZW1zQ2Fycml0",
-          "bxIRLlByb2R1Y3RvX0NhcnJpdG8aEC5SZXNwb25zZUNhcnJpdG8oARI1ChhU",
-          "cmFlckNhcnJpdG9zQnlJZFVzdWFyaW8SCi5JZFVzdWFyaW8aCy5HZXRDYXJy",
-          "aXRvMAESKwoQVHJhZXJDYXJyaXRvQnlJZBIKLklkQ2Fycml0bxoLLkdldENh",
-          "cnJpdG9iBnByb3RvMw=="));
+          "BBITCgtkZXNjcmlwY2lvbhgFIAEoCSJYCgpHZXRDYXJyaXRvEiAKBWl0ZW1z",
+          "GAEgAygLMhEuUHJvZHVjdG9fQ2Fycml0bxINCgV0b3RhbBgCIAEoBBIZChFj",
+          "bGllbnRlX2lkdXN1YXJpbxgDIAEoDSIXCglJZENhcnJpdG8SCgoCaWQYASAB",
+          "KA0iIgoPUmVzcG9uc2VDYXJyaXRvEg8KB21lbnNhamUYASABKAky1wEKCENh",
+          "cnJpdG9zEiQKDENyZWFyQ2Fycml0bxIILkNhcnJpdG8aCi5JZENhcnJpdG8S",
+          "PAoTQWdyZWdhckl0ZW1zQ2Fycml0bxIRLlByb2R1Y3RvX0NhcnJpdG8aEC5S",
+          "ZXNwb25zZUNhcnJpdG8oARI7ChhUcmFlckNhcnJpdG9zQnlJZFVzdWFyaW8S",
+          "Ci5JZFVzdWFyaW8aES5Qcm9kdWN0b19DYXJyaXRvMAESKgoQVHJhZXJDYXJy",
+          "aXRvQnlJZBIKLklkQ2Fycml0bxoILkNhcnJpdG8wAWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::ProductosReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Carrito), global::Carrito.Parser, new[]{ "Total", "ClienteIdusuario" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::Producto_Carrito), global::Producto_Carrito.Parser, new[]{ "Idproducto", "Idcarrito", "Cantidad", "Subtotal" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Producto_Carrito), global::Producto_Carrito.Parser, new[]{ "Idproducto", "Idcarrito", "Cantidad", "Subtotal", "Descripcion" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetCarrito), global::GetCarrito.Parser, new[]{ "Items", "Total", "ClienteIdusuario" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdCarrito), global::IdCarrito.Parser, new[]{ "Id" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ResponseCarrito), global::ResponseCarrito.Parser, new[]{ "Mensaje" }, null, null, null, null)
@@ -290,6 +290,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     idcarrito_ = other.idcarrito_;
     cantidad_ = other.cantidad_;
     subtotal_ = other.subtotal_;
+    descripcion_ = other.descripcion_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -342,6 +343,17 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
   }
 
+  /// <summary>Field number for the "descripcion" field.</summary>
+  public const int DescripcionFieldNumber = 5;
+  private string descripcion_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Descripcion {
+    get { return descripcion_; }
+    set {
+      descripcion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Producto_Carrito);
@@ -359,6 +371,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (Idcarrito != other.Idcarrito) return false;
     if (Cantidad != other.Cantidad) return false;
     if (Subtotal != other.Subtotal) return false;
+    if (Descripcion != other.Descripcion) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -369,6 +382,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (Idcarrito != 0) hash ^= Idcarrito.GetHashCode();
     if (Cantidad != 0) hash ^= Cantidad.GetHashCode();
     if (Subtotal != 0UL) hash ^= Subtotal.GetHashCode();
+    if (Descripcion.Length != 0) hash ^= Descripcion.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -401,6 +415,10 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
       output.WriteRawTag(32);
       output.WriteUInt64(Subtotal);
     }
+    if (Descripcion.Length != 0) {
+      output.WriteRawTag(42);
+      output.WriteString(Descripcion);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -426,6 +444,10 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
       output.WriteRawTag(32);
       output.WriteUInt64(Subtotal);
     }
+    if (Descripcion.Length != 0) {
+      output.WriteRawTag(42);
+      output.WriteString(Descripcion);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -446,6 +468,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
     if (Subtotal != 0UL) {
       size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Subtotal);
+    }
+    if (Descripcion.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Descripcion);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -469,6 +494,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
     if (other.Subtotal != 0UL) {
       Subtotal = other.Subtotal;
+    }
+    if (other.Descripcion.Length != 0) {
+      Descripcion = other.Descripcion;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -500,6 +528,10 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
           Subtotal = input.ReadUInt64();
           break;
         }
+        case 42: {
+          Descripcion = input.ReadString();
+          break;
+        }
       }
     }
   #endif
@@ -528,6 +560,10 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
         }
         case 32: {
           Subtotal = input.ReadUInt64();
+          break;
+        }
+        case 42: {
+          Descripcion = input.ReadString();
           break;
         }
       }

@@ -91,18 +91,6 @@ namespace apiRetroshop.Controllers
                 var channel = GrpcChannel.ForAddress("http://localhost:50051");
                 var cliente = new Usuarios.UsuariosClient(channel);
 
-                //var postProducto = new ProductoPost
-                //{
-                //    Nombre = producto.Nombre,
-                //    Descripcion = producto.Descripcion,
-                //    Idtipocategoria = producto.Idtipocategoria,
-                //    Precio = producto.Precio,
-                //    CantidadDisponible = producto.CantidadDisponible,
-                //    FechaPublicacion = producto.FechaPublicacion,
-                //    PublicadorIdusuario = producto.PublicadorIdusuario
-                //};
-               // postProducto.UrlFotos.Add(producto.UrlFotos);
-
                 var productoResponse = cliente.CargarSaldo(s);
                 response = JsonConvert.SerializeObject(productoResponse);
             }

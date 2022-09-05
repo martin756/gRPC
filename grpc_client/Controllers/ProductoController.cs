@@ -66,7 +66,7 @@ namespace apiRetroshop.Controllers
                         productos.Add(currentProduct);
                     }
                 }
-                //var productos = cliente.TraerProductos(new Nulo());
+                
                 response = JsonConvert.SerializeObject(productos);
             }
             catch (Exception e)

@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 import productos_pb2 as productos__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0e\x63\x61rritos.proto\x1a\x0fproductos.proto\"3\n\x07\x43\x61rrito\x12\r\n\x05total\x18\x01 \x01(\x04\x12\x19\n\x11\x63liente_idusuario\x18\x02 \x01(\r\"]\n\x10Producto_Carrito\x12\x12\n\nidproducto\x18\x01 \x01(\r\x12\x11\n\tidcarrito\x18\x02 \x01(\r\x12\x10\n\x08\x63\x61ntidad\x18\x03 \x01(\r\x12\x10\n\x08subtotal\x18\x04 \x01(\x04\"X\n\nGetCarrito\x12 \n\x05items\x18\x01 \x03(\x0b\x32\x11.Producto_Carrito\x12\r\n\x05total\x18\x02 \x01(\x04\x12\x19\n\x11\x63liente_idusuario\x18\x03 \x01(\r\"\x17\n\tIdCarrito\x12\n\n\x02id\x18\x01 \x01(\r\"\"\n\x0fResponseCarrito\x12\x0f\n\x07mensaje\x18\x01 \x01(\t2\xd2\x01\n\x08\x43\x61rritos\x12$\n\x0c\x43rearCarrito\x12\x08.Carrito\x1a\n.IdCarrito\x12<\n\x13\x41gregarItemsCarrito\x12\x11.Producto_Carrito\x1a\x10.ResponseCarrito(\x01\x12\x35\n\x18TraerCarritosByIdUsuario\x12\n.IdUsuario\x1a\x0b.GetCarrito0\x01\x12+\n\x10TraerCarritoById\x12\n.IdCarrito\x1a\x0b.GetCarritob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0e\x63\x61rritos.proto\x1a\x0fproductos.proto\"3\n\x07\x43\x61rrito\x12\r\n\x05total\x18\x01 \x01(\x04\x12\x19\n\x11\x63liente_idusuario\x18\x02 \x01(\r\"r\n\x10Producto_Carrito\x12\x12\n\nidproducto\x18\x01 \x01(\r\x12\x11\n\tidcarrito\x18\x02 \x01(\r\x12\x10\n\x08\x63\x61ntidad\x18\x03 \x01(\r\x12\x10\n\x08subtotal\x18\x04 \x01(\x04\x12\x13\n\x0b\x64\x65scripcion\x18\x05 \x01(\t\"X\n\nGetCarrito\x12 \n\x05items\x18\x01 \x03(\x0b\x32\x11.Producto_Carrito\x12\r\n\x05total\x18\x02 \x01(\x04\x12\x19\n\x11\x63liente_idusuario\x18\x03 \x01(\r\"\x17\n\tIdCarrito\x12\n\n\x02id\x18\x01 \x01(\r\"\"\n\x0fResponseCarrito\x12\x0f\n\x07mensaje\x18\x01 \x01(\t2\xd7\x01\n\x08\x43\x61rritos\x12$\n\x0c\x43rearCarrito\x12\x08.Carrito\x1a\n.IdCarrito\x12<\n\x13\x41gregarItemsCarrito\x12\x11.Producto_Carrito\x1a\x10.ResponseCarrito(\x01\x12;\n\x18TraerCarritosByIdUsuario\x12\n.IdUsuario\x1a\x11.Producto_Carrito0\x01\x12*\n\x10TraerCarritoById\x12\n.IdCarrito\x1a\x08.Carrito0\x01\x62\x06proto3')
 
 
 
@@ -66,13 +66,13 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _CARRITO._serialized_start=35
   _CARRITO._serialized_end=86
   _PRODUCTO_CARRITO._serialized_start=88
-  _PRODUCTO_CARRITO._serialized_end=181
-  _GETCARRITO._serialized_start=183
-  _GETCARRITO._serialized_end=271
-  _IDCARRITO._serialized_start=273
-  _IDCARRITO._serialized_end=296
-  _RESPONSECARRITO._serialized_start=298
-  _RESPONSECARRITO._serialized_end=332
-  _CARRITOS._serialized_start=335
-  _CARRITOS._serialized_end=545
+  _PRODUCTO_CARRITO._serialized_end=202
+  _GETCARRITO._serialized_start=204
+  _GETCARRITO._serialized_end=292
+  _IDCARRITO._serialized_start=294
+  _IDCARRITO._serialized_end=317
+  _RESPONSECARRITO._serialized_start=319
+  _RESPONSECARRITO._serialized_end=353
+  _CARRITOS._serialized_start=356
+  _CARRITOS._serialized_end=571
 # @@protoc_insertion_point(module_scope)

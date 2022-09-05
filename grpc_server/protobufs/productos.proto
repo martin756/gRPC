@@ -65,4 +65,5 @@ service Productos {
     rpc TraerProductos(Nulo) returns (stream Producto);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
+    
 }
