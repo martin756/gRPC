@@ -23,12 +23,12 @@ public static partial class UsuariosReflection {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "Cg51c3Vhcmlvcy5wcm90byKJAQoHVXN1YXJpbxIRCglpZHVzdWFyaW8YASAB",
-          "KA0SDgoGbm9tYnJlGAIgASgJEhAKCGFwZWxsaWRvGAMgASgJEgsKA2RuaRgE",
-          "IAEoBBINCgVlbWFpbBgFIAEoCRIMCgR1c2VyGAYgASgJEhAKCHBhc3N3b3Jk",
+          "KAUSDgoGbm9tYnJlGAIgASgJEhAKCGFwZWxsaWRvGAMgASgJEgsKA2RuaRgE",
+          "IAEoAxINCgVlbWFpbBgFIAEoCRIMCgR1c2VyGAYgASgJEhAKCHBhc3N3b3Jk",
           "GAcgASgJEg0KBXNhbGRvGAggASgCIikKBVNhbGRvEhEKCWlkdXN1YXJpbxgB",
-          "IAEoDRINCgVzYWxkbxgCIAEoAiIuCghVc2VybmFtZRIQCgh1c2VybmFtZRgB",
+          "IAEoBRINCgVzYWxkbxgCIAEoAiIuCghVc2VybmFtZRIQCgh1c2VybmFtZRgB",
           "IAEoCRIQCghwYXNzd29yZBgCIAEoCSIuCghSZXNwb25zZRIPCgdtZXNzYWdl",
-          "GAEgASgJEhEKCWlkdXN1YXJpbxgCIAEoDSIGCgROdWxvMowBCghVc3Vhcmlv",
+          "GAEgASgJEhEKCWlkdXN1YXJpbxgCIAEoBSIGCgROdWxvMowBCghVc3Vhcmlv",
           "cxIVCgVMaXN0bxIFLk51bG8aBS5OdWxvEiMKDFRyYWVyVXN1YXJpbxIJLlVz",
           "ZXJuYW1lGgguVXN1YXJpbxIiCgtBbHRhVXN1YXJpbxIILlVzdWFyaW8aCS5S",
           "ZXNwb25zZRIgCgtDYXJnYXJTYWxkbxIGLlNhbGRvGgkuUmVzcG9uc2ViBnBy",
@@ -94,9 +94,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
 
   /// <summary>Field number for the "idusuario" field.</summary>
   public const int IdusuarioFieldNumber = 1;
-  private uint idusuario_;
+  private int idusuario_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Idusuario {
+  public int Idusuario {
     get { return idusuario_; }
     set {
       idusuario_ = value;
@@ -127,9 +127,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
 
   /// <summary>Field number for the "dni" field.</summary>
   public const int DniFieldNumber = 4;
-  private ulong dni_;
+  private long dni_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public ulong Dni {
+  public long Dni {
     get { return dni_; }
     set {
       dni_ = value;
@@ -210,7 +210,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (Idusuario != 0) hash ^= Idusuario.GetHashCode();
     if (Nombre.Length != 0) hash ^= Nombre.GetHashCode();
     if (Apellido.Length != 0) hash ^= Apellido.GetHashCode();
-    if (Dni != 0UL) hash ^= Dni.GetHashCode();
+    if (Dni != 0L) hash ^= Dni.GetHashCode();
     if (Email.Length != 0) hash ^= Email.GetHashCode();
     if (User.Length != 0) hash ^= User.GetHashCode();
     if (Password.Length != 0) hash ^= Password.GetHashCode();
@@ -233,7 +233,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   #else
     if (Idusuario != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (Nombre.Length != 0) {
       output.WriteRawTag(18);
@@ -243,9 +243,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
       output.WriteRawTag(26);
       output.WriteString(Apellido);
     }
-    if (Dni != 0UL) {
+    if (Dni != 0L) {
       output.WriteRawTag(32);
-      output.WriteUInt64(Dni);
+      output.WriteInt64(Dni);
     }
     if (Email.Length != 0) {
       output.WriteRawTag(42);
@@ -274,7 +274,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
     if (Idusuario != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (Nombre.Length != 0) {
       output.WriteRawTag(18);
@@ -284,9 +284,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
       output.WriteRawTag(26);
       output.WriteString(Apellido);
     }
-    if (Dni != 0UL) {
+    if (Dni != 0L) {
       output.WriteRawTag(32);
-      output.WriteUInt64(Dni);
+      output.WriteInt64(Dni);
     }
     if (Email.Length != 0) {
       output.WriteRawTag(42);
@@ -314,7 +314,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
   public int CalculateSize() {
     int size = 0;
     if (Idusuario != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idusuario);
     }
     if (Nombre.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Nombre);
@@ -322,8 +322,8 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (Apellido.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Apellido);
     }
-    if (Dni != 0UL) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Dni);
+    if (Dni != 0L) {
+      size += 1 + pb::CodedOutputStream.ComputeInt64Size(Dni);
     }
     if (Email.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
@@ -357,7 +357,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (other.Apellido.Length != 0) {
       Apellido = other.Apellido;
     }
-    if (other.Dni != 0UL) {
+    if (other.Dni != 0L) {
       Dni = other.Dni;
     }
     if (other.Email.Length != 0) {
@@ -387,7 +387,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
         case 8: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
         case 18: {
@@ -399,7 +399,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
           break;
         }
         case 32: {
-          Dni = input.ReadUInt64();
+          Dni = input.ReadInt64();
           break;
         }
         case 42: {
@@ -433,7 +433,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
         case 8: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
         case 18: {
@@ -445,7 +445,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
           break;
         }
         case 32: {
-          Dni = input.ReadUInt64();
+          Dni = input.ReadInt64();
           break;
         }
         case 42: {
@@ -512,9 +512,9 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
 
   /// <summary>Field number for the "idusuario" field.</summary>
   public const int IdusuarioFieldNumber = 1;
-  private uint idusuario_;
+  private int idusuario_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Idusuario {
+  public int Idusuario {
     get { return idusuario_; }
     set {
       idusuario_ = value;
@@ -573,7 +573,7 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
   #else
     if (Idusuario != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (Saldo_ != 0F) {
       output.WriteRawTag(21);
@@ -590,7 +590,7 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
     if (Idusuario != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (Saldo_ != 0F) {
       output.WriteRawTag(21);
@@ -606,7 +606,7 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
   public int CalculateSize() {
     int size = 0;
     if (Idusuario != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idusuario);
     }
     if (Saldo_ != 0F) {
       size += 1 + 4;
@@ -643,7 +643,7 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
         case 8: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
         case 21: {
@@ -665,7 +665,7 @@ public sealed partial class Saldo : pb::IMessage<Saldo>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
         case 8: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
         case 21: {
@@ -939,9 +939,9 @@ public sealed partial class Response : pb::IMessage<Response>
 
   /// <summary>Field number for the "idusuario" field.</summary>
   public const int IdusuarioFieldNumber = 2;
-  private uint idusuario_;
+  private int idusuario_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Idusuario {
+  public int Idusuario {
     get { return idusuario_; }
     set {
       idusuario_ = value;
@@ -993,7 +993,7 @@ public sealed partial class Response : pb::IMessage<Response>
     }
     if (Idusuario != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -1010,7 +1010,7 @@ public sealed partial class Response : pb::IMessage<Response>
     }
     if (Idusuario != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(Idusuario);
+      output.WriteInt32(Idusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -1025,7 +1025,7 @@ public sealed partial class Response : pb::IMessage<Response>
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
     }
     if (Idusuario != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idusuario);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1063,7 +1063,7 @@ public sealed partial class Response : pb::IMessage<Response>
           break;
         }
         case 16: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
       }
@@ -1085,7 +1085,7 @@ public sealed partial class Response : pb::IMessage<Response>
           break;
         }
         case 16: {
-          Idusuario = input.ReadUInt32();
+          Idusuario = input.ReadInt32();
           break;
         }
       }

@@ -15,17 +15,19 @@ function Login() {
 
     const iniciarSesion=async(event)=>{
         event.preventDefault()
-        /*await axios.get(baseUrl+`/?username=${username.current.value}&password=${password.current.value}`)
+        await axios.get(baseUrl+`/?username=${username.current.value}&password=${password.current.value}`)
         .then(response=>{
             return response.data
         }).then(response=>{
             if(response.User !== undefined && response.User !== ''){
-                cookies.set('Nombre',response.Nombre, {path: '/'})
-                cookies.set('Apellido',response.Nombre, {path: '/'})
-                cookies.set('Dni',response.Dni, {path: '/'})
-                cookies.set('Email',response.Email, {path: '/'})
-                cookies.set('User',response.User, {path: '/'})
-                cookies.set('Password',response.Password, {path: '/'})
+                cookies.set('Idusuario',response.Idusuario)
+                cookies.set('Nombre',response.Nombre)
+                cookies.set('Apellido',response.Nombre)
+                cookies.set('Dni',response.Dni)
+                cookies.set('Email',response.Email)
+                cookies.set('User',response.User)
+                cookies.set('Password',response.Password)
+                cookies.set('Saldo',response.Saldo)
                 alert("Bienvenido "+response.Nombre)
                 navigate('/mainmenu')
             }else{
@@ -34,7 +36,7 @@ function Login() {
         })
         .catch(error=>{
             alert(error)
-        })*/
+        })
         navigate('/mainmenu')
     }
 
@@ -42,11 +44,11 @@ function Login() {
         navigate('/signup')
     }
 
-    /*useEffect(()=>{
+    useEffect(()=>{
         if(cookies.get('User')){
             navigate('/mainmenu')
         }
-    },[])*/
+    },[])
 
     return (
         <div className='containerPrincipal'>

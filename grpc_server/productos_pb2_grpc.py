@@ -35,6 +35,11 @@ class ProductosStub(object):
                 request_serializer=productos__pb2.ProductoPut.SerializeToString,
                 response_deserializer=usuarios__pb2.Response.FromString,
                 )
+        self.ActualizarStock = channel.unary_unary(
+                '/Productos/ActualizarStock',
+                request_serializer=productos__pb2.ProductoStock.SerializeToString,
+                response_deserializer=usuarios__pb2.Response.FromString,
+                )
 
 
 class ProductosServicer(object):
@@ -64,6 +69,12 @@ class ProductosServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ActualizarStock(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ProductosServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -85,6 +96,11 @@ def add_ProductosServicer_to_server(servicer, server):
             'EditarProducto': grpc.unary_unary_rpc_method_handler(
                     servicer.EditarProducto,
                     request_deserializer=productos__pb2.ProductoPut.FromString,
+                    response_serializer=usuarios__pb2.Response.SerializeToString,
+            ),
+            'ActualizarStock': grpc.unary_unary_rpc_method_handler(
+                    servicer.ActualizarStock,
+                    request_deserializer=productos__pb2.ProductoStock.FromString,
                     response_serializer=usuarios__pb2.Response.SerializeToString,
             ),
     }
@@ -161,6 +177,23 @@ class Productos(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Productos/EditarProducto',
             productos__pb2.ProductoPut.SerializeToString,
+            usuarios__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ActualizarStock(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Productos/ActualizarStock',
+            productos__pb2.ProductoStock.SerializeToString,
             usuarios__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

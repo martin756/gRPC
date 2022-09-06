@@ -61,9 +61,15 @@ message IdUsuario {
     int32 idusuario = 1;
 }
 
+message ProductoStock {
+    int32 idProducto = 1;
+    int32 cantidad = 2;
+}
+
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
     rpc TraerProductos(Nulo) returns (stream Producto);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
+    rpc ActualizarStock(ProductoStock) returns (Response);
 }

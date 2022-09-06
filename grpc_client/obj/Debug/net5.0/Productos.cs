@@ -42,12 +42,14 @@ public static partial class ProductosReflection {
           "ZWdvcmlhGAQgASgDEg4KBnByZWNpbxgFIAEoAhIbChNjYW50aWRhZF9kaXNw",
           "b25pYmxlGAYgASgDEhEKCXVybF9mb3RvcxgHIAMoCSIgCg5UaXBvX2NhdGVn",
           "b3JpYRIOCgZub21icmUYASABKAkiIAoKSWRQcm9kdWN0bxISCgppZHByb2R1",
-          "Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIRCglpZHVzdWFyaW8YASABKAUytgEK",
-          "CVByb2R1Y3RvcxIuChFUcmFlclByb2R1Y3RvQnlJZBILLklkUHJvZHVjdG8a",
-          "DC5Qcm9kdWN0b0dldBIkCg5UcmFlclByb2R1Y3RvcxIFLk51bG8aCS5Qcm9k",
-          "dWN0bzABEigKDEFsdGFQcm9kdWN0bxINLlByb2R1Y3RvUG9zdBoJLlJlc3Bv",
-          "bnNlEikKDkVkaXRhclByb2R1Y3RvEgwuUHJvZHVjdG9QdXQaCS5SZXNwb25z",
-          "ZWIGcHJvdG8z"));
+          "Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIRCglpZHVzdWFyaW8YASABKAUiNQoN",
+          "UHJvZHVjdG9TdG9jaxISCgppZFByb2R1Y3RvGAEgASgFEhAKCGNhbnRpZGFk",
+          "GAIgASgFMuQBCglQcm9kdWN0b3MSLgoRVHJhZXJQcm9kdWN0b0J5SWQSCy5J",
+          "ZFByb2R1Y3RvGgwuUHJvZHVjdG9HZXQSJAoOVHJhZXJQcm9kdWN0b3MSBS5O",
+          "dWxvGgkuUHJvZHVjdG8wARIoCgxBbHRhUHJvZHVjdG8SDS5Qcm9kdWN0b1Bv",
+          "c3QaCS5SZXNwb25zZRIpCg5FZGl0YXJQcm9kdWN0bxIMLlByb2R1Y3RvUHV0",
+          "GgkuUmVzcG9uc2USLAoPQWN0dWFsaXphclN0b2NrEg4uUHJvZHVjdG9TdG9j",
+          "axoJLlJlc3BvbnNlYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::UsuariosReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,7 +60,8 @@ public static partial class ProductosReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPut), global::ProductoPut.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "UrlFotos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Tipo_categoria), global::Tipo_categoria.Parser, new[]{ "Nombre" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdProducto), global::IdProducto.Parser, new[]{ "Idproducto" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::IdUsuario), global::IdUsuario.Parser, new[]{ "Idusuario" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::IdUsuario), global::IdUsuario.Parser, new[]{ "Idusuario" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoStock), global::ProductoStock.Parser, new[]{ "IdProducto", "Cantidad" }, null, null, null, null)
         }));
   }
   #endregion
@@ -2385,6 +2388,214 @@ public sealed partial class IdUsuario : pb::IMessage<IdUsuario>
           break;
         case 8: {
           Idusuario = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+public sealed partial class ProductoStock : pb::IMessage<ProductoStock>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<ProductoStock> _parser = new pb::MessageParser<ProductoStock>(() => new ProductoStock());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<ProductoStock> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ProductosReflection.Descriptor.MessageTypes[8]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public ProductoStock() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public ProductoStock(ProductoStock other) : this() {
+    idProducto_ = other.idProducto_;
+    cantidad_ = other.cantidad_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public ProductoStock Clone() {
+    return new ProductoStock(this);
+  }
+
+  /// <summary>Field number for the "idProducto" field.</summary>
+  public const int IdProductoFieldNumber = 1;
+  private int idProducto_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int IdProducto {
+    get { return idProducto_; }
+    set {
+      idProducto_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "cantidad" field.</summary>
+  public const int CantidadFieldNumber = 2;
+  private int cantidad_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Cantidad {
+    get { return cantidad_; }
+    set {
+      cantidad_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as ProductoStock);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(ProductoStock other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (IdProducto != other.IdProducto) return false;
+    if (Cantidad != other.Cantidad) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (IdProducto != 0) hash ^= IdProducto.GetHashCode();
+    if (Cantidad != 0) hash ^= Cantidad.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (IdProducto != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdProducto);
+    }
+    if (Cantidad != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Cantidad);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (IdProducto != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdProducto);
+    }
+    if (Cantidad != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Cantidad);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (IdProducto != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdProducto);
+    }
+    if (Cantidad != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cantidad);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(ProductoStock other) {
+    if (other == null) {
+      return;
+    }
+    if (other.IdProducto != 0) {
+      IdProducto = other.IdProducto;
+    }
+    if (other.Cantidad != 0) {
+      Cantidad = other.Cantidad;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          IdProducto = input.ReadInt32();
+          break;
+        }
+        case 16: {
+          Cantidad = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          IdProducto = input.ReadInt32();
+          break;
+        }
+        case 16: {
+          Cantidad = input.ReadInt32();
           break;
         }
       }

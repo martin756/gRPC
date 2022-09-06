@@ -23,12 +23,12 @@ public static partial class CarritosReflection {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "Cg5jYXJyaXRvcy5wcm90bxoPcHJvZHVjdG9zLnByb3RvIjMKB0NhcnJpdG8S",
-          "DQoFdG90YWwYASABKAQSGQoRY2xpZW50ZV9pZHVzdWFyaW8YAiABKA0iXQoQ",
-          "UHJvZHVjdG9fQ2Fycml0bxISCgppZHByb2R1Y3RvGAEgASgNEhEKCWlkY2Fy",
-          "cml0bxgCIAEoDRIQCghjYW50aWRhZBgDIAEoDRIQCghzdWJ0b3RhbBgEIAEo",
-          "BCJYCgpHZXRDYXJyaXRvEiAKBWl0ZW1zGAEgAygLMhEuUHJvZHVjdG9fQ2Fy",
-          "cml0bxINCgV0b3RhbBgCIAEoBBIZChFjbGllbnRlX2lkdXN1YXJpbxgDIAEo",
-          "DSIXCglJZENhcnJpdG8SCgoCaWQYASABKA0iIgoPUmVzcG9uc2VDYXJyaXRv",
+          "DQoFdG90YWwYASABKAISGQoRY2xpZW50ZV9pZHVzdWFyaW8YAiABKAUiXQoQ",
+          "UHJvZHVjdG9fQ2Fycml0bxISCgppZHByb2R1Y3RvGAEgASgFEhEKCWlkY2Fy",
+          "cml0bxgCIAEoBRIQCghjYW50aWRhZBgDIAEoBRIQCghzdWJ0b3RhbBgEIAEo",
+          "AiJYCgpHZXRDYXJyaXRvEiAKBWl0ZW1zGAEgAygLMhEuUHJvZHVjdG9fQ2Fy",
+          "cml0bxINCgV0b3RhbBgCIAEoBRIZChFjbGllbnRlX2lkdXN1YXJpbxgDIAEo",
+          "BSIXCglJZENhcnJpdG8SCgoCaWQYASABKAUiIgoPUmVzcG9uc2VDYXJyaXRv",
           "Eg8KB21lbnNhamUYASABKAky0gEKCENhcnJpdG9zEiQKDENyZWFyQ2Fycml0",
           "bxIILkNhcnJpdG8aCi5JZENhcnJpdG8SPAoTQWdyZWdhckl0ZW1zQ2Fycml0",
           "bxIRLlByb2R1Y3RvX0NhcnJpdG8aEC5SZXNwb25zZUNhcnJpdG8oARI1ChhU",
@@ -90,9 +90,9 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
 
   /// <summary>Field number for the "total" field.</summary>
   public const int TotalFieldNumber = 1;
-  private ulong total_;
+  private float total_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public ulong Total {
+  public float Total {
     get { return total_; }
     set {
       total_ = value;
@@ -101,9 +101,9 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
 
   /// <summary>Field number for the "cliente_idusuario" field.</summary>
   public const int ClienteIdusuarioFieldNumber = 2;
-  private uint clienteIdusuario_;
+  private int clienteIdusuario_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint ClienteIdusuario {
+  public int ClienteIdusuario {
     get { return clienteIdusuario_; }
     set {
       clienteIdusuario_ = value;
@@ -123,7 +123,7 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
     if (ReferenceEquals(other, this)) {
       return true;
     }
-    if (Total != other.Total) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Total, other.Total)) return false;
     if (ClienteIdusuario != other.ClienteIdusuario) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -131,7 +131,7 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override int GetHashCode() {
     int hash = 1;
-    if (Total != 0UL) hash ^= Total.GetHashCode();
+    if (Total != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Total);
     if (ClienteIdusuario != 0) hash ^= ClienteIdusuario.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -149,13 +149,13 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     output.WriteRawMessage(this);
   #else
-    if (Total != 0UL) {
-      output.WriteRawTag(8);
-      output.WriteUInt64(Total);
+    if (Total != 0F) {
+      output.WriteRawTag(13);
+      output.WriteFloat(Total);
     }
     if (ClienteIdusuario != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(ClienteIdusuario);
+      output.WriteInt32(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -166,13 +166,13 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (Total != 0UL) {
-      output.WriteRawTag(8);
-      output.WriteUInt64(Total);
+    if (Total != 0F) {
+      output.WriteRawTag(13);
+      output.WriteFloat(Total);
     }
     if (ClienteIdusuario != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(ClienteIdusuario);
+      output.WriteInt32(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -183,11 +183,11 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int CalculateSize() {
     int size = 0;
-    if (Total != 0UL) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Total);
+    if (Total != 0F) {
+      size += 1 + 4;
     }
     if (ClienteIdusuario != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClienteIdusuario);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -200,7 +200,7 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
     if (other == null) {
       return;
     }
-    if (other.Total != 0UL) {
+    if (other.Total != 0F) {
       Total = other.Total;
     }
     if (other.ClienteIdusuario != 0) {
@@ -220,12 +220,12 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
-        case 8: {
-          Total = input.ReadUInt64();
+        case 13: {
+          Total = input.ReadFloat();
           break;
         }
         case 16: {
-          ClienteIdusuario = input.ReadUInt32();
+          ClienteIdusuario = input.ReadInt32();
           break;
         }
       }
@@ -242,12 +242,12 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
-        case 8: {
-          Total = input.ReadUInt64();
+        case 13: {
+          Total = input.ReadFloat();
           break;
         }
         case 16: {
-          ClienteIdusuario = input.ReadUInt32();
+          ClienteIdusuario = input.ReadInt32();
           break;
         }
       }
@@ -300,9 +300,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 
   /// <summary>Field number for the "idproducto" field.</summary>
   public const int IdproductoFieldNumber = 1;
-  private uint idproducto_;
+  private int idproducto_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Idproducto {
+  public int Idproducto {
     get { return idproducto_; }
     set {
       idproducto_ = value;
@@ -311,9 +311,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 
   /// <summary>Field number for the "idcarrito" field.</summary>
   public const int IdcarritoFieldNumber = 2;
-  private uint idcarrito_;
+  private int idcarrito_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Idcarrito {
+  public int Idcarrito {
     get { return idcarrito_; }
     set {
       idcarrito_ = value;
@@ -322,9 +322,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 
   /// <summary>Field number for the "cantidad" field.</summary>
   public const int CantidadFieldNumber = 3;
-  private uint cantidad_;
+  private int cantidad_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Cantidad {
+  public int Cantidad {
     get { return cantidad_; }
     set {
       cantidad_ = value;
@@ -333,9 +333,9 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 
   /// <summary>Field number for the "subtotal" field.</summary>
   public const int SubtotalFieldNumber = 4;
-  private ulong subtotal_;
+  private float subtotal_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public ulong Subtotal {
+  public float Subtotal {
     get { return subtotal_; }
     set {
       subtotal_ = value;
@@ -358,7 +358,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (Idproducto != other.Idproducto) return false;
     if (Idcarrito != other.Idcarrito) return false;
     if (Cantidad != other.Cantidad) return false;
-    if (Subtotal != other.Subtotal) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Subtotal, other.Subtotal)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -368,7 +368,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (Idproducto != 0) hash ^= Idproducto.GetHashCode();
     if (Idcarrito != 0) hash ^= Idcarrito.GetHashCode();
     if (Cantidad != 0) hash ^= Cantidad.GetHashCode();
-    if (Subtotal != 0UL) hash ^= Subtotal.GetHashCode();
+    if (Subtotal != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Subtotal);
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -387,19 +387,19 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
   #else
     if (Idproducto != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idproducto);
+      output.WriteInt32(Idproducto);
     }
     if (Idcarrito != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(Idcarrito);
+      output.WriteInt32(Idcarrito);
     }
     if (Cantidad != 0) {
       output.WriteRawTag(24);
-      output.WriteUInt32(Cantidad);
+      output.WriteInt32(Cantidad);
     }
-    if (Subtotal != 0UL) {
-      output.WriteRawTag(32);
-      output.WriteUInt64(Subtotal);
+    if (Subtotal != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(Subtotal);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -412,19 +412,19 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
     if (Idproducto != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Idproducto);
+      output.WriteInt32(Idproducto);
     }
     if (Idcarrito != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt32(Idcarrito);
+      output.WriteInt32(Idcarrito);
     }
     if (Cantidad != 0) {
       output.WriteRawTag(24);
-      output.WriteUInt32(Cantidad);
+      output.WriteInt32(Cantidad);
     }
-    if (Subtotal != 0UL) {
-      output.WriteRawTag(32);
-      output.WriteUInt64(Subtotal);
+    if (Subtotal != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(Subtotal);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -436,16 +436,16 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
   public int CalculateSize() {
     int size = 0;
     if (Idproducto != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idproducto);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idproducto);
     }
     if (Idcarrito != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idcarrito);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idcarrito);
     }
     if (Cantidad != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Cantidad);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cantidad);
     }
-    if (Subtotal != 0UL) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Subtotal);
+    if (Subtotal != 0F) {
+      size += 1 + 4;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -467,7 +467,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (other.Cantidad != 0) {
       Cantidad = other.Cantidad;
     }
-    if (other.Subtotal != 0UL) {
+    if (other.Subtotal != 0F) {
       Subtotal = other.Subtotal;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -485,19 +485,19 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
         case 8: {
-          Idproducto = input.ReadUInt32();
+          Idproducto = input.ReadInt32();
           break;
         }
         case 16: {
-          Idcarrito = input.ReadUInt32();
+          Idcarrito = input.ReadInt32();
           break;
         }
         case 24: {
-          Cantidad = input.ReadUInt32();
+          Cantidad = input.ReadInt32();
           break;
         }
-        case 32: {
-          Subtotal = input.ReadUInt64();
+        case 37: {
+          Subtotal = input.ReadFloat();
           break;
         }
       }
@@ -515,19 +515,19 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
         case 8: {
-          Idproducto = input.ReadUInt32();
+          Idproducto = input.ReadInt32();
           break;
         }
         case 16: {
-          Idcarrito = input.ReadUInt32();
+          Idcarrito = input.ReadInt32();
           break;
         }
         case 24: {
-          Cantidad = input.ReadUInt32();
+          Cantidad = input.ReadInt32();
           break;
         }
-        case 32: {
-          Subtotal = input.ReadUInt64();
+        case 37: {
+          Subtotal = input.ReadFloat();
           break;
         }
       }
@@ -589,9 +589,9 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
 
   /// <summary>Field number for the "total" field.</summary>
   public const int TotalFieldNumber = 2;
-  private ulong total_;
+  private int total_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public ulong Total {
+  public int Total {
     get { return total_; }
     set {
       total_ = value;
@@ -600,9 +600,9 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
 
   /// <summary>Field number for the "cliente_idusuario" field.</summary>
   public const int ClienteIdusuarioFieldNumber = 3;
-  private uint clienteIdusuario_;
+  private int clienteIdusuario_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint ClienteIdusuario {
+  public int ClienteIdusuario {
     get { return clienteIdusuario_; }
     set {
       clienteIdusuario_ = value;
@@ -632,7 +632,7 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
   public override int GetHashCode() {
     int hash = 1;
     hash ^= items_.GetHashCode();
-    if (Total != 0UL) hash ^= Total.GetHashCode();
+    if (Total != 0) hash ^= Total.GetHashCode();
     if (ClienteIdusuario != 0) hash ^= ClienteIdusuario.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -651,13 +651,13 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
     output.WriteRawMessage(this);
   #else
     items_.WriteTo(output, _repeated_items_codec);
-    if (Total != 0UL) {
+    if (Total != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt64(Total);
+      output.WriteInt32(Total);
     }
     if (ClienteIdusuario != 0) {
       output.WriteRawTag(24);
-      output.WriteUInt32(ClienteIdusuario);
+      output.WriteInt32(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -669,13 +669,13 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
     items_.WriteTo(ref output, _repeated_items_codec);
-    if (Total != 0UL) {
+    if (Total != 0) {
       output.WriteRawTag(16);
-      output.WriteUInt64(Total);
+      output.WriteInt32(Total);
     }
     if (ClienteIdusuario != 0) {
       output.WriteRawTag(24);
-      output.WriteUInt32(ClienteIdusuario);
+      output.WriteInt32(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -687,11 +687,11 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
   public int CalculateSize() {
     int size = 0;
     size += items_.CalculateSize(_repeated_items_codec);
-    if (Total != 0UL) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Total);
+    if (Total != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Total);
     }
     if (ClienteIdusuario != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ClienteIdusuario);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClienteIdusuario);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -705,7 +705,7 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
       return;
     }
     items_.Add(other.items_);
-    if (other.Total != 0UL) {
+    if (other.Total != 0) {
       Total = other.Total;
     }
     if (other.ClienteIdusuario != 0) {
@@ -730,11 +730,11 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
           break;
         }
         case 16: {
-          Total = input.ReadUInt64();
+          Total = input.ReadInt32();
           break;
         }
         case 24: {
-          ClienteIdusuario = input.ReadUInt32();
+          ClienteIdusuario = input.ReadInt32();
           break;
         }
       }
@@ -756,11 +756,11 @@ public sealed partial class GetCarrito : pb::IMessage<GetCarrito>
           break;
         }
         case 16: {
-          Total = input.ReadUInt64();
+          Total = input.ReadInt32();
           break;
         }
         case 24: {
-          ClienteIdusuario = input.ReadUInt32();
+          ClienteIdusuario = input.ReadInt32();
           break;
         }
       }
@@ -810,9 +810,9 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
 
   /// <summary>Field number for the "id" field.</summary>
   public const int IdFieldNumber = 1;
-  private uint id_;
+  private int id_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public uint Id {
+  public int Id {
     get { return id_; }
     set {
       id_ = value;
@@ -858,7 +858,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
   #else
     if (Id != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Id);
+      output.WriteInt32(Id);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -871,7 +871,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
     if (Id != 0) {
       output.WriteRawTag(8);
-      output.WriteUInt32(Id);
+      output.WriteInt32(Id);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -883,7 +883,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
   public int CalculateSize() {
     int size = 0;
     if (Id != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -914,7 +914,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
         case 8: {
-          Id = input.ReadUInt32();
+          Id = input.ReadInt32();
           break;
         }
       }
@@ -932,7 +932,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
         case 8: {
-          Id = input.ReadUInt32();
+          Id = input.ReadInt32();
           break;
         }
       }

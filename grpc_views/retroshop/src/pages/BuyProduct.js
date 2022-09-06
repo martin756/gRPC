@@ -29,6 +29,7 @@ function BuyProduct(props) {
         debugger
         //producto.CantidadDisponible -= cantidad.current.value
         let p = {
+            "IdProducto": idProduct,
             "Nombre": producto.Nombre,
             "Descripcion": producto.Descripcion,
             "Categoria": producto.Categoria,
@@ -38,7 +39,7 @@ function BuyProduct(props) {
         }
         //p.CantidadDisponible -= cantidad.current.value
         carrito.push(p)
-        cookies.set('Carrito',carrito, {path: '/mainmenu'})
+        cookies.set('Carrito',carrito)
         navigate('/mainmenu')
     }
     const traerProducto = async () => {

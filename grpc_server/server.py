@@ -1,3 +1,4 @@
+from email import message
 from time import sleep
 from usuarios_pb2_grpc import UsuariosServicer, add_UsuariosServicer_to_server
 from usuarios_pb2 import Usuario, Response
@@ -49,7 +50,7 @@ class ServicioUsuarios(UsuariosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Usuario(nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo)
+            return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo)
         else:
             return Usuario()
 
@@ -187,6 +188,19 @@ class ProductoUsuarios(ProductosServicer):
         cnx.close()
 
         return Response()
+
+    def ActualizarStock(self, request, context):
+        cnx =mysql.connector.connect(user='root', password='root',
+                        host='localhost', port='3306',
+                        database='retroshop')
+        cursor = cnx.cursor()
+        query = (f"UPDATE producto SET `cantidad_disponible` ='{request.cantidad}' where idproducto= '{request.idProducto}'")
+        cursor.execute(query)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+
+        return Response(message = "204 No-Content. Actualizacion exitosa")
 
 class CarritoProductos(CarritosServicer):
     def CrearCarrito(self, request, context):

@@ -114,6 +114,7 @@ namespace apiRetroshop.Controllers
         }
 
         [HttpPut]
+        [Route("PutProducto")]
         public string PutProducto(ClasePutProducto producto)
         {
             string response;
@@ -146,6 +147,33 @@ namespace apiRetroshop.Controllers
                 response = e.Message + e.StackTrace;
             }
 
+            return response;
+        }
+
+        [HttpPut]
+        [Route("UpdateStock")]
+        public string updateStock(int idProducto, int cantidad)
+        {
+            string response;
+            try
+            {
+                AppContext.SetSwitch(
+                    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+                var channel = GrpcChannel.ForAddress("http://localhost:50051");
+                var cliente = new Productos.ProductosClient(channel);
+
+                var putUpdateStock = new ProductoStock
+                {
+                    IdProducto = idProducto,
+                    Cantidad = cantidad
+                };
+                var updatedStock = cliente.ActualizarStock(putUpdateStock);
+                response = JsonConvert.SerializeObject(updatedStock);
+            }
+            catch (Exception e)
+            {
+                response = e.Message + e.StackTrace;
+            }
             return response;
         }
     }

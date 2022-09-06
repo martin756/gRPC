@@ -1,17 +1,17 @@
 syntax = "proto3";
 
 message Usuario {
-    uint32 idusuario = 1;
+    int32 idusuario = 1;
     string nombre = 2;
     string apellido = 3;
-    uint64 dni = 4;
+    int64 dni = 4;
     string email = 5;
     string user = 6;
     string password = 7;
     float saldo = 8;
 }
 message Saldo{
-    uint32 idusuario = 1;
+    int32 idusuario = 1;
     float saldo = 2;
 }
 
@@ -22,7 +22,7 @@ message Username {
 
 message Response {
     string message = 1;
-    uint32 idusuario = 2;
+    int32 idusuario = 2;
 }
 
 message Nulo {

@@ -13,21 +13,22 @@ function Header() {
   const cookies = new Cookies()
   const navigate = useNavigate()
 
-  /*useEffect(() => {
+  useEffect(() => {
     debugger
     if (!cookies.get('User')) {
       navigate('/')
     }
-  }, [])*/
+  }, [])
 
   const cerrarSesion = () => {
     debugger
-    cookies.remove('Nombre', { path: '/' })
-    cookies.remove('Apellido', { path: '/' })
-    cookies.remove('Dni', { path: '/' })
-    cookies.remove('Email', { path: '/' })
-    cookies.remove('User', { path: '/' })
-    cookies.remove('Password', { path: '/' })
+    cookies.remove('Nombre')
+    cookies.remove('Apellido')
+    cookies.remove('Dni')
+    cookies.remove('Email')
+    cookies.remove('User')
+    cookies.remove('Password')
+    cookies.remove('Saldo')
     navigate('/')
   }
 
@@ -38,7 +39,7 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">
-            <Cart onClick={()=>{navigate('/mainmenu')}} style={{color: 'white', alignSelf: 'center', cursor: 'pointer'}}>
+            <Cart onClick={()=>{navigate('/carrito')}} style={{color: 'white', alignSelf: 'center', cursor: 'pointer'}}>
             </Cart>
             <span id="badgeCarrito" class="position-absolute top-50 start-5 carrito p-1 badge bg-danger rounded-circle">
                 {cookies.get('Carrito') !== undefined ? cookies.get('Carrito').length : 0}

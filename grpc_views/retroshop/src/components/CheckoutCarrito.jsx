@@ -9,22 +9,29 @@ function CheckoutCarrito(props) {
     <div className="card-body text-center">
         <li class="list-group-item d-flex justify-content-between lh-sm">
           <div>
-            <strong>Producto:</strong>
+            <strong>Producto: </strong>
             <i>{props.nombre}</i>
           </div>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-sm">
           <div>
-            <strong>Cantidad de Productos:</strong>
+            <strong>Cantidad de Productos: </strong>
             <i>{props.cantidad}</i>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+          <div>
+            <strong>Precio: </strong>
+            <i>${props.precio}</i>
           </div>
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <div>
-            <strong>Precio:</strong>
-            <i>${props.precio}</i>
+            <strong>Subtotal: </strong>
+            <i>${props.precio*props.cantidad}</i>
           </div>
         </li>
+        <br></br>
     </div>  
   )
 }
