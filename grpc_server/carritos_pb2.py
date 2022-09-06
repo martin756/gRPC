@@ -66,13 +66,13 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _CARRITO._serialized_start=35
   _CARRITO._serialized_end=86
   _PRODUCTO_CARRITO._serialized_start=88
-  _PRODUCTO_CARRITO._serialized_end=181
-  _GETCARRITO._serialized_start=183
-  _GETCARRITO._serialized_end=271
-  _IDCARRITO._serialized_start=273
-  _IDCARRITO._serialized_end=296
-  _RESPONSECARRITO._serialized_start=298
-  _RESPONSECARRITO._serialized_end=332
-  _CARRITOS._serialized_start=335
-  _CARRITOS._serialized_end=545
+  _PRODUCTO_CARRITO._serialized_end=202
+  _GETCARRITO._serialized_start=204
+  _GETCARRITO._serialized_end=292
+  _IDCARRITO._serialized_start=294
+  _IDCARRITO._serialized_end=317
+  _RESPONSECARRITO._serialized_start=319
+  _RESPONSECARRITO._serialized_end=353
+  _CARRITOS._serialized_start=356
+  _CARRITOS._serialized_end=571
 # @@protoc_insertion_point(module_scope)

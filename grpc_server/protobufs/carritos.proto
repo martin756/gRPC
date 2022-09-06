@@ -11,6 +11,7 @@ message Producto_Carrito {
     int32 idcarrito = 2;
     int32 cantidad = 3;
     float subtotal = 4;
+    string descripcion = 5;
 }
 
 message GetCarrito {
@@ -30,6 +31,6 @@ message ResponseCarrito {
 service Carritos {
     rpc CrearCarrito (Carrito) returns (IdCarrito);
     rpc AgregarItemsCarrito (stream Producto_Carrito) returns (ResponseCarrito);
-    rpc TraerCarritosByIdUsuario (IdUsuario) returns (stream GetCarrito);
-    rpc TraerCarritoById (IdCarrito) returns (GetCarrito);
+    rpc TraerCarritosByIdUsuario (IdUsuario) returns (stream Producto_Carrito);
+    rpc TraerCarritoById (IdCarrito) returns (stream Carrito);
 }

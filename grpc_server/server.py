@@ -74,8 +74,6 @@ class ServicioUsuarios(UsuariosServicer):
             cnx.close()
             return resp
 
-           
-
 class ProductoUsuarios(ProductosServicer):
     def EditarProducto(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
@@ -152,6 +150,9 @@ class ProductoUsuarios(ProductosServicer):
             idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, 
             fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario, url_fotos = fotos)
 
+
+
+
         """for row in records:
             yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion, idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario)
             time.sleep(3)
@@ -159,7 +160,6 @@ class ProductoUsuarios(ProductosServicer):
         for row in records:
             yield ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
             yield ProductosList(ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username))"""
-
 
     def AltaProducto(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
@@ -236,7 +236,21 @@ class CarritoProductos(CarritosServicer):
         return ResponseCarrito(mensaje = "204 No Content.")
 
     def TraerCarritosByIdUsuario(self, request, context):
-        return super().TraerCarritosByIdUsuario(request, context)
+        cnx = mysql.connector.connect(user='root', password='root', 
+                              host='localhost', port='3306',
+                              database='retroshop')
+        cursor = cnx.cursor(named_tuple=True)
+        query = (f"SELECT  c.idcarrito,c.total, pc.idproducto_carrito, pc.cantidad,pc.subtotal,p.idproducto, p.nombre, p.precio FROM carrito c inner join producto_carrito pc on c.idcarrito=pc.idcarrito inner join producto p on p.idproducto=pc.idproducto where c.cliente_idusuario = '{request.idusuario}'")
+        cursor.execute(query)
+        print(cursor.execute(query))
+        records = cursor.fetchall()
+        print(query)
+        for row in records:
+            print(row)
+            yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, subtotal = (row.cantidad*row.precio), descripcion = row.descripcion)
+
+            sleep(3)
+        
 
     def TraerCarritoById(self, request, context):
         return super().TraerCarritoById(request, context)

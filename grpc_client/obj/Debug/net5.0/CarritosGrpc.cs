@@ -54,8 +54,6 @@ public static partial class Carritos
   static readonly grpc::Marshaller<global::ResponseCarrito> __Marshaller_ResponseCarrito = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ResponseCarrito.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::IdUsuario> __Marshaller_IdUsuario = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::IdUsuario.Parser));
-  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-  static readonly grpc::Marshaller<global::GetCarrito> __Marshaller_GetCarrito = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetCarrito.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::Carrito, global::IdCarrito> __Method_CrearCarrito = new grpc::Method<global::Carrito, global::IdCarrito>(
@@ -74,20 +72,20 @@ public static partial class Carritos
       __Marshaller_ResponseCarrito);
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-  static readonly grpc::Method<global::IdUsuario, global::GetCarrito> __Method_TraerCarritosByIdUsuario = new grpc::Method<global::IdUsuario, global::GetCarrito>(
+  static readonly grpc::Method<global::IdUsuario, global::Producto_Carrito> __Method_TraerCarritosByIdUsuario = new grpc::Method<global::IdUsuario, global::Producto_Carrito>(
       grpc::MethodType.ServerStreaming,
       __ServiceName,
       "TraerCarritosByIdUsuario",
       __Marshaller_IdUsuario,
-      __Marshaller_GetCarrito);
+      __Marshaller_Producto_Carrito);
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-  static readonly grpc::Method<global::IdCarrito, global::GetCarrito> __Method_TraerCarritoById = new grpc::Method<global::IdCarrito, global::GetCarrito>(
-      grpc::MethodType.Unary,
+  static readonly grpc::Method<global::IdCarrito, global::Carrito> __Method_TraerCarritoById = new grpc::Method<global::IdCarrito, global::Carrito>(
+      grpc::MethodType.ServerStreaming,
       __ServiceName,
       "TraerCarritoById",
       __Marshaller_IdCarrito,
-      __Marshaller_GetCarrito);
+      __Marshaller_Carrito);
 
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -112,13 +110,13 @@ public static partial class Carritos
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual global::System.Threading.Tasks.Task TraerCarritosByIdUsuario(global::IdUsuario request, grpc::IServerStreamWriter<global::GetCarrito> responseStream, grpc::ServerCallContext context)
+    public virtual global::System.Threading.Tasks.Task TraerCarritosByIdUsuario(global::IdUsuario request, grpc::IServerStreamWriter<global::Producto_Carrito> responseStream, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual global::System.Threading.Tasks.Task<global::GetCarrito> TraerCarritoById(global::IdCarrito request, grpc::ServerCallContext context)
+    public virtual global::System.Threading.Tasks.Task TraerCarritoById(global::IdCarrito request, grpc::IServerStreamWriter<global::Carrito> responseStream, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -183,34 +181,24 @@ public static partial class Carritos
       return CallInvoker.AsyncClientStreamingCall(__Method_AgregarItemsCarrito, null, options);
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual grpc::AsyncServerStreamingCall<global::GetCarrito> TraerCarritosByIdUsuario(global::IdUsuario request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual grpc::AsyncServerStreamingCall<global::Producto_Carrito> TraerCarritosByIdUsuario(global::IdUsuario request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return TraerCarritosByIdUsuario(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual grpc::AsyncServerStreamingCall<global::GetCarrito> TraerCarritosByIdUsuario(global::IdUsuario request, grpc::CallOptions options)
+    public virtual grpc::AsyncServerStreamingCall<global::Producto_Carrito> TraerCarritosByIdUsuario(global::IdUsuario request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncServerStreamingCall(__Method_TraerCarritosByIdUsuario, null, options, request);
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual global::GetCarrito TraerCarritoById(global::IdCarrito request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual grpc::AsyncServerStreamingCall<global::Carrito> TraerCarritoById(global::IdCarrito request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return TraerCarritoById(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual global::GetCarrito TraerCarritoById(global::IdCarrito request, grpc::CallOptions options)
+    public virtual grpc::AsyncServerStreamingCall<global::Carrito> TraerCarritoById(global::IdCarrito request, grpc::CallOptions options)
     {
-      return CallInvoker.BlockingUnaryCall(__Method_TraerCarritoById, null, options, request);
-    }
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual grpc::AsyncUnaryCall<global::GetCarrito> TraerCarritoByIdAsync(global::IdCarrito request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return TraerCarritoByIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public virtual grpc::AsyncUnaryCall<global::GetCarrito> TraerCarritoByIdAsync(global::IdCarrito request, grpc::CallOptions options)
-    {
-      return CallInvoker.AsyncUnaryCall(__Method_TraerCarritoById, null, options, request);
+      return CallInvoker.AsyncServerStreamingCall(__Method_TraerCarritoById, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -241,8 +229,8 @@ public static partial class Carritos
   {
     serviceBinder.AddMethod(__Method_CrearCarrito, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Carrito, global::IdCarrito>(serviceImpl.CrearCarrito));
     serviceBinder.AddMethod(__Method_AgregarItemsCarrito, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Producto_Carrito, global::ResponseCarrito>(serviceImpl.AgregarItemsCarrito));
-    serviceBinder.AddMethod(__Method_TraerCarritosByIdUsuario, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::IdUsuario, global::GetCarrito>(serviceImpl.TraerCarritosByIdUsuario));
-    serviceBinder.AddMethod(__Method_TraerCarritoById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::IdCarrito, global::GetCarrito>(serviceImpl.TraerCarritoById));
+    serviceBinder.AddMethod(__Method_TraerCarritosByIdUsuario, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::IdUsuario, global::Producto_Carrito>(serviceImpl.TraerCarritosByIdUsuario));
+    serviceBinder.AddMethod(__Method_TraerCarritoById, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::IdCarrito, global::Carrito>(serviceImpl.TraerCarritoById));
   }
 
 }

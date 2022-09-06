@@ -28,12 +28,12 @@ class CarritosStub(object):
         self.TraerCarritosByIdUsuario = channel.unary_stream(
                 '/Carritos/TraerCarritosByIdUsuario',
                 request_serializer=productos__pb2.IdUsuario.SerializeToString,
-                response_deserializer=carritos__pb2.GetCarrito.FromString,
+                response_deserializer=carritos__pb2.Producto_Carrito.FromString,
                 )
-        self.TraerCarritoById = channel.unary_unary(
+        self.TraerCarritoById = channel.unary_stream(
                 '/Carritos/TraerCarritoById',
                 request_serializer=carritos__pb2.IdCarrito.SerializeToString,
-                response_deserializer=carritos__pb2.GetCarrito.FromString,
+                response_deserializer=carritos__pb2.Carrito.FromString,
                 )
 
 
@@ -80,12 +80,12 @@ def add_CarritosServicer_to_server(servicer, server):
             'TraerCarritosByIdUsuario': grpc.unary_stream_rpc_method_handler(
                     servicer.TraerCarritosByIdUsuario,
                     request_deserializer=productos__pb2.IdUsuario.FromString,
-                    response_serializer=carritos__pb2.GetCarrito.SerializeToString,
+                    response_serializer=carritos__pb2.Producto_Carrito.SerializeToString,
             ),
-            'TraerCarritoById': grpc.unary_unary_rpc_method_handler(
+            'TraerCarritoById': grpc.unary_stream_rpc_method_handler(
                     servicer.TraerCarritoById,
                     request_deserializer=carritos__pb2.IdCarrito.FromString,
-                    response_serializer=carritos__pb2.GetCarrito.SerializeToString,
+                    response_serializer=carritos__pb2.Carrito.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -144,7 +144,7 @@ class Carritos(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/Carritos/TraerCarritosByIdUsuario',
             productos__pb2.IdUsuario.SerializeToString,
-            carritos__pb2.GetCarrito.FromString,
+            carritos__pb2.Producto_Carrito.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -159,8 +159,8 @@ class Carritos(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Carritos/TraerCarritoById',
+        return grpc.experimental.unary_stream(request, target, '/Carritos/TraerCarritoById',
             carritos__pb2.IdCarrito.SerializeToString,
-            carritos__pb2.GetCarrito.FromString,
+            carritos__pb2.Carrito.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
