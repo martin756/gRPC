@@ -28,6 +28,12 @@ function BuyProduct(props) {
         event.preventDefault()
         debugger
         //producto.CantidadDisponible -= cantidad.current.value
+        const productosAgregados = carrito.filter(p=>p.IdProducto===idProduct)
+        if (productosAgregados.length > 0){
+             alert("El producto ya fue agregado al carrito")
+             navigate('/mainmenu')
+             return
+        }
         let p = {
             "IdProducto": idProduct,
             "Nombre": producto.Nombre,
@@ -73,6 +79,7 @@ function BuyProduct(props) {
                         <div className="col-md-5 col-sm-12 col-xs-12" style={{paddingTop: '40px'}}>
                             <Carousel style={{ width: '300px', height: '400px' }}>
                                 {stringsUrlsFotos.map((value) => (
+                                    value !== "" &&
                                     <Carousel.Item>
                                         <img
                                             className="d-block"

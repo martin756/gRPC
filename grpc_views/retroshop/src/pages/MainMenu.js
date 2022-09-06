@@ -5,9 +5,11 @@ import ProductCard from '../components/ProductCard';
 //import '../css/ShopProductsList.css'
 import { jsonProducts, categorias } from './productsDemo';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 function MainMenu() {
     const baseUrl="https://localhost:5001/api/Producto/GetProductos"
+    const cookies = new Cookies()
     
     //const [categorias, setCategories] = useState([])
     const [productsReadOnly, setProductsReadOnly] = useState([])
@@ -68,8 +70,11 @@ function MainMenu() {
     const traerProductos = async () => {
       await axios.get(baseUrl)
       .then(response=>{
-        setProductsReadOnly(response.data)
-        setProductsFiltered(response.data)
+        debugger
+        const idusuario = cookies.get('Idusuario') === undefined ? 0 : parseInt(cookies.get('Idusuario'))
+        const productsNotPublishedByLoggedUser = response.data.filter(p=>p.PublicadorIdusuario!==idusuario && p.CantidadDisponible>0)
+        setProductsReadOnly(productsNotPublishedByLoggedUser)
+        setProductsFiltered(productsNotPublishedByLoggedUser)
       })
       .catch(error=>{
         alert(error)
@@ -90,9 +95,10 @@ function MainMenu() {
                 <div className="col-md-8 order-md-2 col-lg-9">
                   <div className="container-fluid">
                     <div className="row">
-                      {products.map((value)=>(
-                        <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} url={value.UrlFotos[0]}/>
-                      ))}
+                      {products.length > 0 ? products.map((value)=>(
+                        <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} 
+                        url={value.UrlFotos[0]} cantidad_disponible={value.CantidadDisponible} linkPage="buyProduct"/>
+                      )) : "No hay productos para mostrar"}
                     </div>
                   </div>
                 </div><div className="col-md-4 order-md-1 col-lg-3 sidebar-filter">

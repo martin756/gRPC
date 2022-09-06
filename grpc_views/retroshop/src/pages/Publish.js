@@ -3,41 +3,51 @@ import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import Header from "../components/Header";
 import { PlusLg, DashLg } from 'react-bootstrap-icons'
+import { categorias } from "./productsDemo";
+import Cookies from "universal-cookie";
 
 function Publish(props) {
-    const baseUrl="https://localhost:5001/api/Publicar"
+    const baseUrl="https://localhost:5001/api/Producto"
     const nombre = useRef(null) 
     const descripcion = useRef(null)
     const precio = useRef(null)
     const stock = useRef(null)
     const fechaFabricacion = useRef(null)
+    const tipoCategoria = useRef(null)
     const imagen1 = useRef(null), imagen2 = useRef(null)
     const imagen3 = useRef(null), imagen4 = useRef(null), imagen5 = useRef(null)
     const navigate = useNavigate()
     const [inputs, setInputsState] = useState([])
+    const cookies = new Cookies()
+    const idusuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
 
     const publicar=async(event)=>{
         event.preventDefault()
+        debugger
         const jsonBody = 
         {
             "nombre": nombre.current.value,
             "descripcion": descripcion.current.value,
-            "precio": precio.current.value,
-            "stock": stock.current.value,
-            "fechaFabricacion": fechaFabricacion.current.value,
-            "imagenes": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value]
+            "idtipocategoria": tipoCategoria.current.options[tipoCategoria.current.options.selectedIndex].index,
+            "precio": parseFloat(precio.current.value),
+            "cantidad_disponible": parseInt(stock.current.value),
+            "fecha_publicacion": fechaFabricacion.current.value,
+            "publicador_idusuario": parseInt(idusuario),
+            "url_fotos": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value]
         }
         debugger
         await axios.post(baseUrl, jsonBody)
         .then(response=>{
             if (response.data.Message.includes('400')){
-                navigate('/')
+                alert(response.data.Message)
             }else{
-                alert("El producto ya se encuentra publicado")
+                alert("Producto publicado correctamente")
+                navigate('/')
+                
             }
         })
-        .catch(()=>{
-            alert("Todos los campos son obligatorios")
+        .catch((error)=>{
+            alert(error)
         })
 
     }
@@ -90,6 +100,16 @@ function Publish(props) {
                         <input ref={descripcion} type='text' className='form-control'/>
                     </div>
                     <div className="col-12">
+                        <label className="form-label">Categoría</label>
+                        <select ref={tipoCategoria} className="form-select" required>
+                            <option value="">Seleccione categoria</option>
+                            {categorias.map((value, index)=>(
+                                <option>{value}</option>
+                            ))}
+                        </select>
+                        <div className="invalid-feedback">Seleccione una categoría.</div>
+                    </div>
+                    <div className="col-12">
                         <label className="form-label">Precio unitario</label>
                         <div className="input-group has-validation">
                             <span className="input-group-text">$</span>
@@ -115,19 +135,19 @@ function Publish(props) {
                             <div className="invalid-feedback">Provea una URL de imagen del producto.</div>
                         </div>
                         <div className="input-group has-validation mb-1" key="2">
-                            <input ref={imagen2} type="text" className='form-control'/>
+                            <input ref={imagen2} type="text" className='form-control' placeholder="Opcional"/>
                             <div className="invalid-feedback"></div>
                         </div>
                         <div className="input-group has-validation mb-1" key="3">
-                            <input ref={imagen3} type="text" className='form-control'/>
+                            <input ref={imagen3} type="text" className='form-control' placeholder="Opcional"/>
                             <div className="invalid-feedback"></div>
                         </div>
                         <div className="input-group has-validation mb-1" key="4">
-                            <input ref={imagen4} type="text" className='form-control'/>
+                            <input ref={imagen4} type="text" className='form-control' placeholder="Opcional"/>
                             <div className="invalid-feedback"></div>
                         </div>
                         <div className="input-group has-validation mb-1" key="5">
-                            <input ref={imagen5} type="text" className='form-control'/>
+                            <input ref={imagen5} type="text" className='form-control' placeholder="Opcional"/>
                             <div className="invalid-feedback"></div>
                         </div>
                     </div>

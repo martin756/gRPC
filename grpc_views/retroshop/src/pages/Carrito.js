@@ -13,6 +13,7 @@ export default function Carrito(props) {
   const baseUrl = "https://localhost:5001/api"
   const [products, setProducts] = useState([])
   const [total, setTotalAPagar] = useState(0)
+  let flagMostrarItems = true
   const precio = useRef(null);
   const nombre = useRef(null);
   const cantidad = useRef(null);
@@ -26,7 +27,10 @@ export default function Carrito(props) {
   //const idProduct = query.get('id')
   //const product = jsonCarrito.filter(p=>p.id==idProduct)[0]
   useEffect(() => {
-    getCookies()
+    //getCookies()
+    debugger
+    const myArray = cookies.get('Carrito')
+    setProducts(myArray)
     calcularTotal()
       const script = document.createElement('script');
       script.src = "https://getbootstrap.com/docs/5.2/examples/checkout/form-validation.js";
@@ -42,20 +46,18 @@ export default function Carrito(props) {
     const [carrito] = useState(jsonCarrito)
     console.log(carrito);
     var myArray = cookies.set('Carrito')
-  }*/
+  }
 
 
   function getCookies(){
     //setCookies()
 
     //const cookies = new Cookies()
-    debugger
-    const myArray = cookies.get('Carrito')
-    setProducts(myArray)
+    
 
     //let obj = JSON.parse(myArray)
     //console.log(obj)
-  }
+  }*/
 
   const calcularTotal = () =>{
     let totalAPagar = 0
@@ -104,13 +106,15 @@ export default function Carrito(props) {
       //putProducto.cantidad = value.CantidadDisponible
       await axios.put(baseUrl+"/Producto/UpdateStock?idProducto="+value.IdProducto+"&cantidad="+value.CantidadDisponible)
     })
-
+    const IdUsuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
+    await axios.post(baseUrl+"/Usuarios/CargarSaldo",{"idusuario": IdUsuario, "saldo_": (-totalAPagar)})
+    cookies.set('Saldo',(saldoDisponible-totalAPagar))
     cookies.remove('Carrito')
     alert("Gracias por su compra!")
     navigate('/mainmenu')
   }
 
-const postCarrito=async(event)=>{
+/*const postCarrito=async(event)=>{
     event.preventDefault()
     const jsonBody = 
     {
@@ -150,7 +154,7 @@ const postProductoCarrito=async(event)=>{
   .catch((error)=>{
     alert(error)
 })
-}
+}*/
 
   return (
     <div>
@@ -163,20 +167,23 @@ const postProductoCarrito=async(event)=>{
         <ul className="list-group mb-3">
           <form onSubmit={event=> comprar(event)} className='form-group'>
             <div className="row">
-              {products.map((value) => (
-              <CheckoutCarrito nombre={value.Nombre} cantidad={value.CantidadSeleccionada} precio={value.Precio}/>
-              ))}
+              {products !== undefined ? products.map((value) => (
+                <CheckoutCarrito nombre={value.Nombre} cantidad={value.CantidadSeleccionada} precio={value.Precio}/>
+              )) : flagMostrarItems=false}
               <br></br>
+              {flagMostrarItems ?
+              <div>
               <li className="list-group-item d-flex justify-content-between">
                 <div>
                   <strong>Total a pagar: </strong>
                   <i>${total}</i>
                 </div>
               </li>
-              
+              </div>
+              : <div>Nada por aqui</div>}
             </div>
             <br></br>
-            <button className="w-100 btn btn-primary btn-lg" type="submit">Comprar</button>
+            {flagMostrarItems && <button className="w-100 btn btn-primary btn-lg" type="submit">Comprar</button>}
           </form>
         </ul>
       </div>
