@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { jsonProducts } from './productsDemo';
@@ -6,17 +6,54 @@ import Carousel from 'react-bootstrap/Carousel'
 import Header from '../components/Header';
 import { CartPlusFill } from 'react-bootstrap-icons';
 import Cookies from 'universal-cookie';
+import axios from 'axios';
 
-export default function BuyProduct(props) {
-    const cookies = new Cookies()
-    let carrito = cookies.get('Carrito')
-    const cantidad = useRef(null)
+function BuyProduct(props) {
     const navigate = useNavigate()
+    const cookies = new Cookies()
+    let carrito = cookies.get('Carrito') === undefined ? [] : cookies.get('Carrito')
+
+    const cantidad = useRef(null)
+    const [producto, setProducto] = useState([])
+    const [stringsUrlsFotos, setArrayUrlsStrings] = useState([])
+
     const { search } = useLocation();
     let query = React.useMemo(() => new URLSearchParams(search), [search]);
+
     const idProduct = query.get('id')
-    const product = jsonProducts.filter(p=>p.id==idProduct)[0]
+    //const product = jsonProducts.filter(p=>p.id==idProduct)[0]
+    const baseUrl = "https://localhost:5001/api/Producto/GetProductoById"
+
+    const agregarAlCarrito = (event) => {
+        event.preventDefault()
+        debugger
+        //producto.CantidadDisponible -= cantidad.current.value
+        let p = {
+            "Nombre": producto.Nombre,
+            "Descripcion": producto.Descripcion,
+            "Categoria": producto.Categoria,
+            "Precio": producto.Precio,
+            "CantidadSeleccionada": cantidad.current.value,
+            "CantidadDisponible": producto.CantidadDisponible-cantidad.current.value
+        }
+        //p.CantidadDisponible -= cantidad.current.value
+        carrito.push(p)
+        cookies.set('Carrito',carrito, {path: '/mainmenu'})
+        navigate('/mainmenu')
+    }
+    const traerProducto = async () => {
+        await axios.get(baseUrl+`/?id=${idProduct}`)
+        .then(response=>{
+            setProducto(response.data)
+            setArrayUrlsStrings(response.data.UrlFotos)
+        })
+        .catch(error=>{
+            alert(error)
+        })
+    }
+
     useEffect(() => {
+        traerProducto()
         const script = document.createElement('script');
         script.src = "https://getbootstrap.com/docs/5.2/examples/checkout/form-validation.js";
         script.async = true;
@@ -25,14 +62,7 @@ export default function BuyProduct(props) {
           document.body.removeChild(script);
         }
       }, []);
-    const agregarAlCarrito = (event) => {
-        event.preventDefault()
-        debugger
-        product.cantidad_disponible -= cantidad.current.value
-        carrito.push(product)
-        cookies.set('Carrito',carrito, {path: '/mainmenu'})
-        navigate('/mainmenu')
-    }
+
     return (
         <div>
             <Header />
@@ -41,7 +71,7 @@ export default function BuyProduct(props) {
                     <div className="row justify-content-center" style={{paddingTop: '80px',alignItems: 'center'}}>
                         <div className="col-md-5 col-sm-12 col-xs-12" style={{paddingTop: '40px'}}>
                             <Carousel style={{ width: '300px', height: '400px' }}>
-                                {product.url_fotos.map((value) => (
+                                {stringsUrlsFotos.map((value) => (
                                     <Carousel.Item>
                                         <img
                                             className="d-block"
@@ -54,17 +84,17 @@ export default function BuyProduct(props) {
                             </Carousel>
                         </div>
                         <div className="col-md-5 col-sm-12 col-xs-12">
-                            <h2 className="name">{product.nombre}<h5>Publicado por <a href="#">Adeline</a></h5></h2>
-                            <h5>{product.fecha_fabricacion.toLocaleDateString()}</h5>
-                            <hr /><h3 className="price-container">${product.precio}</h3><hr />
+                            <h2 className="name">{producto.Nombre}<h5>Publicado por <a href="#">{producto.Publicador}</a></h5></h2>
+                            <h5>{producto.FechaPublicacion}</h5>
+                            <hr /><h3 className="price-container">${producto.Precio}</h3><hr />
                             <div className="description description-tabs">
                                 <div className="tab-content">
                                         <strong>Descripción del producto</strong>
-                                        <p>{product.descripcion}</p>
+                                        <p>{producto.Descripcion}</p>
                                     <hr/>
                                     <div>
                                         Unidades en stock: 
-                                        <h5>{product.cantidad_disponible}
+                                        <h5>{producto.CantidadDisponible}
                                         </h5>
                                     </div>
                                     <div className="row">
@@ -72,7 +102,7 @@ export default function BuyProduct(props) {
                                         <form onSubmit={(event)=>{agregarAlCarrito(event)}} className="needs-validation" noValidate>
                                             <div className="col-12">
                                                 <label className="form-label"></label>
-                                                <input ref={cantidad} type="number" className='form-control' required placeholder='Cantidad' min="1" max={product.cantidad_disponible}/>
+                                                <input ref={cantidad} type="number" className='form-control' required placeholder='Cantidad' min="1" max={producto.CantidadDisponible}/>
                                                 <div className="invalid-feedback"></div>
                                             </div>
                                             <br></br>
@@ -114,3 +144,5 @@ export default function BuyProduct(props) {
         </div>
   )
 }
+
+export default BuyProduct;

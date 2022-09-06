@@ -77,7 +77,7 @@ function MainMenu() {
     }
 
     useEffect(()=>{
-      traerProductos(baseUrl)
+      traerProductos()
     },[])
 
     return (
