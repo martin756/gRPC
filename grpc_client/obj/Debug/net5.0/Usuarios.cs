@@ -25,16 +25,19 @@ public static partial class UsuariosReflection {
           "Cg51c3Vhcmlvcy5wcm90byKJAQoHVXN1YXJpbxIRCglpZHVzdWFyaW8YASAB",
           "KA0SDgoGbm9tYnJlGAIgASgJEhAKCGFwZWxsaWRvGAMgASgJEgsKA2RuaRgE",
           "IAEoBBINCgVlbWFpbBgFIAEoCRIMCgR1c2VyGAYgASgJEhAKCHBhc3N3b3Jk",
-          "GAcgASgJEg0KBXNhbGRvGAggASgCIi4KCFVzZXJuYW1lEhAKCHVzZXJuYW1l",
-          "GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIi4KCFJlc3BvbnNlEg8KB21lc3Nh",
-          "Z2UYASABKAkSEQoJaWR1c3VhcmlvGAIgASgNIgYKBE51bG8yagoIVXN1YXJp",
-          "b3MSFQoFTGlzdG8SBS5OdWxvGgUuTnVsbxIjCgxUcmFlclVzdWFyaW8SCS5V",
-          "c2VybmFtZRoILlVzdWFyaW8SIgoLQWx0YVVzdWFyaW8SCC5Vc3VhcmlvGgku",
-          "UmVzcG9uc2ViBnByb3RvMw=="));
+          "GAcgASgJEg0KBXNhbGRvGAggASgCIikKBVNhbGRvEhEKCWlkdXN1YXJpbxgB",
+          "IAEoDRINCgVzYWxkbxgCIAEoAiIuCghVc2VybmFtZRIQCgh1c2VybmFtZRgB",
+          "IAEoCRIQCghwYXNzd29yZBgCIAEoCSIuCghSZXNwb25zZRIPCgdtZXNzYWdl",
+          "GAEgASgJEhEKCWlkdXN1YXJpbxgCIAEoDSIGCgROdWxvMowBCghVc3Vhcmlv",
+          "cxIVCgVMaXN0bxIFLk51bG8aBS5OdWxvEiMKDFRyYWVyVXN1YXJpbxIJLlVz",
+          "ZXJuYW1lGgguVXN1YXJpbxIiCgtBbHRhVXN1YXJpbxIILlVzdWFyaW8aCS5S",
+          "ZXNwb25zZRIgCgtDYXJnYXJTYWxkbxIGLlNhbGRvGgkuUmVzcG9uc2ViBnBy",
+          "b3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Usuario), global::Usuario.Parser, new[]{ "Idusuario", "Nombre", "Apellido", "Dni", "Email", "User", "Password", "Saldo" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Saldo), global::Saldo.Parser, new[]{ "Idusuario", "Saldo_" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Username), global::Username.Parser, new[]{ "Username_", "Password" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Response), global::Response.Parser, new[]{ "Message", "Idusuario" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Nulo), global::Nulo.Parser, null, null, null, null, null)
@@ -468,6 +471,214 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
 
 }
 
+public sealed partial class Saldo : pb::IMessage<Saldo>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<Saldo> _parser = new pb::MessageParser<Saldo>(() => new Saldo());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<Saldo> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::UsuariosReflection.Descriptor.MessageTypes[1]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Saldo() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Saldo(Saldo other) : this() {
+    idusuario_ = other.idusuario_;
+    saldo_ = other.saldo_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Saldo Clone() {
+    return new Saldo(this);
+  }
+
+  /// <summary>Field number for the "idusuario" field.</summary>
+  public const int IdusuarioFieldNumber = 1;
+  private uint idusuario_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public uint Idusuario {
+    get { return idusuario_; }
+    set {
+      idusuario_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "saldo" field.</summary>
+  public const int Saldo_FieldNumber = 2;
+  private float saldo_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public float Saldo_ {
+    get { return saldo_; }
+    set {
+      saldo_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as Saldo);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(Saldo other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Idusuario != other.Idusuario) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Saldo_, other.Saldo_)) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Idusuario != 0) hash ^= Idusuario.GetHashCode();
+    if (Saldo_ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Saldo_);
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (Idusuario != 0) {
+      output.WriteRawTag(8);
+      output.WriteUInt32(Idusuario);
+    }
+    if (Saldo_ != 0F) {
+      output.WriteRawTag(21);
+      output.WriteFloat(Saldo_);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (Idusuario != 0) {
+      output.WriteRawTag(8);
+      output.WriteUInt32(Idusuario);
+    }
+    if (Saldo_ != 0F) {
+      output.WriteRawTag(21);
+      output.WriteFloat(Saldo_);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Idusuario != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Idusuario);
+    }
+    if (Saldo_ != 0F) {
+      size += 1 + 4;
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(Saldo other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Idusuario != 0) {
+      Idusuario = other.Idusuario;
+    }
+    if (other.Saldo_ != 0F) {
+      Saldo_ = other.Saldo_;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          Idusuario = input.ReadUInt32();
+          break;
+        }
+        case 21: {
+          Saldo_ = input.ReadFloat();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          Idusuario = input.ReadUInt32();
+          break;
+        }
+        case 21: {
+          Saldo_ = input.ReadFloat();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
 public sealed partial class Username : pb::IMessage<Username>
 #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     , pb::IBufferMessage
@@ -480,7 +691,7 @@ public sealed partial class Username : pb::IMessage<Username>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::UsuariosReflection.Descriptor.MessageTypes[1]; }
+    get { return global::UsuariosReflection.Descriptor.MessageTypes[2]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -688,7 +899,7 @@ public sealed partial class Response : pb::IMessage<Response>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::UsuariosReflection.Descriptor.MessageTypes[2]; }
+    get { return global::UsuariosReflection.Descriptor.MessageTypes[3]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -896,7 +1107,7 @@ public sealed partial class Nulo : pb::IMessage<Nulo>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::UsuariosReflection.Descriptor.MessageTypes[3]; }
+    get { return global::UsuariosReflection.Descriptor.MessageTypes[4]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

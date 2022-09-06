@@ -5,6 +5,7 @@ import Signup from '../pages/Signup'
 import MainMenu from '../pages/MainMenu';
 import Publish from '../pages/Publish'
 import BuyProduct from '../pages/BuyProduct';
+import Carrito from '../pages/Carrito';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/mainmenu' element={<MainMenu />}/>
         <Route path='/publish' element={<Publish />}/>
         <Route path='/buyProduct' element={<BuyProduct />}/>
+        <Route path='/carrito' element={<Carrito />}/>
       </Routes>
     </BrowserRouter>
   );

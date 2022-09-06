@@ -29,6 +29,11 @@ class UsuariosStub(object):
                 request_serializer=usuarios__pb2.Usuario.SerializeToString,
                 response_deserializer=usuarios__pb2.Response.FromString,
                 )
+        self.CargarSaldo = channel.unary_unary(
+                '/Usuarios/CargarSaldo',
+                request_serializer=usuarios__pb2.Saldo.SerializeToString,
+                response_deserializer=usuarios__pb2.Response.FromString,
+                )
 
 
 class UsuariosServicer(object):
@@ -41,13 +46,18 @@ class UsuariosServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def TraerUsuario(self, request, context):
-        """rpc RegistraOrden(Orden) returns (ConfirmacionOrden);
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AltaUsuario(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CargarSaldo(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -69,6 +79,11 @@ def add_UsuariosServicer_to_server(servicer, server):
             'AltaUsuario': grpc.unary_unary_rpc_method_handler(
                     servicer.AltaUsuario,
                     request_deserializer=usuarios__pb2.Usuario.FromString,
+                    response_serializer=usuarios__pb2.Response.SerializeToString,
+            ),
+            'CargarSaldo': grpc.unary_unary_rpc_method_handler(
+                    servicer.CargarSaldo,
+                    request_deserializer=usuarios__pb2.Saldo.FromString,
                     response_serializer=usuarios__pb2.Response.SerializeToString,
             ),
     }
@@ -128,6 +143,23 @@ class Usuarios(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Usuarios/AltaUsuario',
             usuarios__pb2.Usuario.SerializeToString,
+            usuarios__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CargarSaldo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Usuarios/CargarSaldo',
+            usuarios__pb2.Saldo.SerializeToString,
             usuarios__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

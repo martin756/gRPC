@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using grpc = global::Grpc.Core;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
