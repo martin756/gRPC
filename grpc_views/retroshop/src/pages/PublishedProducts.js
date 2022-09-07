@@ -30,6 +30,7 @@ function PublishedProducts() {
         <Header />
         <div className="container pt-5">
             <div className="col-md-12 order-md-3 col-lg-12">
+            <h4 className="mb-3">Mis publicaciones</h4>
                 <div className="row">
                     {products.length > 0 ? products.map((value)=>(
                     <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} 

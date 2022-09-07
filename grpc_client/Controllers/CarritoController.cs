@@ -118,5 +118,31 @@ namespace apiRetroshop.Controllers
             return response;
         }
 
+        [HttpPut]
+        [Route("UpdateTotal")]
+        public string updateTotalCarrito(PutTotalCarrito totalCarrito)
+        {
+            string response;
+            try
+            {
+                AppContext.SetSwitch(
+                    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+                var channel = GrpcChannel.ForAddress("http://localhost:50051");
+                var cliente = new Carritos.CarritosClient(channel);
+
+                var putUpdateTotal = new PutTotalCarrito
+                {
+                    Idcarrito = totalCarrito.Idcarrito,
+                    Total = totalCarrito.Total
+                };
+                var message = cliente.ActualizarTotalCarrito(putUpdateTotal);
+                response = JsonConvert.SerializeObject(message);
+            }
+            catch (Exception e)
+            {
+                response = e.Message + e.StackTrace;
+            }
+            return response;
+        }
     }
 }

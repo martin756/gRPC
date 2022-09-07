@@ -17,11 +17,6 @@ class ServicioUsuarios(UsuariosServicer):
     def Listo(self, request, context):
         return request
 
-    """def RegistraOrden(self, request, context):
-        print(f"Orden recibida de {request.direccion}, pizzas {len(request.pizzas)}")
-
-        return ConfirmacionOrden(entregaEstimada = 10)"""
-
     def AltaUsuario(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
                              host='localhost', port='3306',
@@ -150,17 +145,6 @@ class ProductoUsuarios(ProductosServicer):
             idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, 
             fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario, url_fotos = fotos)
 
-
-
-
-        """for row in records:
-            yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion, idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario)
-            time.sleep(3)
-        return ProductosList(productos = records)
-        for row in records:
-            yield ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username)
-            yield ProductosList(ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username))"""
-
     def AltaProducto(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
                              host='localhost', port='3306',
@@ -179,7 +163,6 @@ class ProductoUsuarios(ProductosServicer):
             values += f", '{url_foto}'"
         stmt += ")"
         query = stmt+values+")"
-        print(query)
         cursor.execute(query)
         
         cnx.commit()
@@ -240,21 +223,28 @@ class CarritoProductos(CarritosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"SELECT  c.idcarrito,c.total, pc.idproducto_carrito, pc.cantidad,pc.subtotal,p.idproducto, p.nombre, p.precio FROM carrito c inner join producto_carrito pc on c.idcarrito=pc.idcarrito inner join producto p on p.idproducto=pc.idproducto where c.cliente_idusuario = '{request.idusuario}'")
+        query = (f"SELECT c.idcarrito,c.total, pc.idproducto_carrito, pc.cantidad,pc.subtotal,p.idproducto, "+
+        "p.precio, p.nombre FROM carrito c "+
+        f"inner join producto_carrito pc on c.idcarrito=pc.idcarrito "+
+        f"inner join producto p on p.idproducto=pc.idproducto where c.cliente_idusuario = '{request.idusuario}'")
         cursor.execute(query)
-        print(cursor.execute(query))
         records = cursor.fetchall()
-        print(query)
         for row in records:
-            print(row)
-            yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, subtotal = (row.cantidad*row.precio), descripcion = row.descripcion)
+            yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, 
+            subtotal = row.subtotal, nombre = row.nombre, precio = row.precio, total = row.total)
 
-            sleep(3)
-        
+    def ActualizarTotalCarrito(self, request, context):
+        cnx = mysql.connector.connect(user='root', password='root', 
+                        host='localhost', port='3306',
+                        database='retroshop')
+        cursor = cnx.cursor()
+        query = (f"UPDATE carrito SET `total` ='{request.total}' where idcarrito= '{request.idcarrito}'")
+        cursor.execute(query)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
 
-    def TraerCarritoById(self, request, context):
-        return super().TraerCarritoById(request, context)
-        
+        return ResponseCarrito(mensaje = "204 No-Content. Actualizacion exitosa")
 
 
 def start():

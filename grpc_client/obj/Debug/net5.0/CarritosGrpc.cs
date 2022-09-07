@@ -54,6 +54,8 @@ public static partial class Carritos
   static readonly grpc::Marshaller<global::ResponseCarrito> __Marshaller_ResponseCarrito = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ResponseCarrito.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::IdUsuario> __Marshaller_IdUsuario = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::IdUsuario.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::PutTotalCarrito> __Marshaller_PutTotalCarrito = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::PutTotalCarrito.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::Carrito, global::IdCarrito> __Method_CrearCarrito = new grpc::Method<global::Carrito, global::IdCarrito>(
@@ -87,6 +89,14 @@ public static partial class Carritos
       __Marshaller_IdCarrito,
       __Marshaller_Carrito);
 
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::PutTotalCarrito, global::ResponseCarrito> __Method_ActualizarTotalCarrito = new grpc::Method<global::PutTotalCarrito, global::ResponseCarrito>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "ActualizarTotalCarrito",
+      __Marshaller_PutTotalCarrito,
+      __Marshaller_ResponseCarrito);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -117,6 +127,12 @@ public static partial class Carritos
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::System.Threading.Tasks.Task TraerCarritoById(global::IdCarrito request, grpc::IServerStreamWriter<global::Carrito> responseStream, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::System.Threading.Tasks.Task<global::ResponseCarrito> ActualizarTotalCarrito(global::PutTotalCarrito request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -200,6 +216,26 @@ public static partial class Carritos
     {
       return CallInvoker.AsyncServerStreamingCall(__Method_TraerCarritoById, null, options, request);
     }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::ResponseCarrito ActualizarTotalCarrito(global::PutTotalCarrito request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return ActualizarTotalCarrito(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::ResponseCarrito ActualizarTotalCarrito(global::PutTotalCarrito request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_ActualizarTotalCarrito, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::ResponseCarrito> ActualizarTotalCarritoAsync(global::PutTotalCarrito request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return ActualizarTotalCarritoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::ResponseCarrito> ActualizarTotalCarritoAsync(global::PutTotalCarrito request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_ActualizarTotalCarrito, null, options, request);
+    }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     protected override CarritosClient NewInstance(ClientBaseConfiguration configuration)
@@ -217,7 +253,8 @@ public static partial class Carritos
         .AddMethod(__Method_CrearCarrito, serviceImpl.CrearCarrito)
         .AddMethod(__Method_AgregarItemsCarrito, serviceImpl.AgregarItemsCarrito)
         .AddMethod(__Method_TraerCarritosByIdUsuario, serviceImpl.TraerCarritosByIdUsuario)
-        .AddMethod(__Method_TraerCarritoById, serviceImpl.TraerCarritoById).Build();
+        .AddMethod(__Method_TraerCarritoById, serviceImpl.TraerCarritoById)
+        .AddMethod(__Method_ActualizarTotalCarrito, serviceImpl.ActualizarTotalCarrito).Build();
   }
 
   /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -231,6 +268,7 @@ public static partial class Carritos
     serviceBinder.AddMethod(__Method_AgregarItemsCarrito, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Producto_Carrito, global::ResponseCarrito>(serviceImpl.AgregarItemsCarrito));
     serviceBinder.AddMethod(__Method_TraerCarritosByIdUsuario, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::IdUsuario, global::Producto_Carrito>(serviceImpl.TraerCarritosByIdUsuario));
     serviceBinder.AddMethod(__Method_TraerCarritoById, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::IdCarrito, global::Carrito>(serviceImpl.TraerCarritoById));
+    serviceBinder.AddMethod(__Method_ActualizarTotalCarrito, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::PutTotalCarrito, global::ResponseCarrito>(serviceImpl.ActualizarTotalCarrito));
   }
 
 }

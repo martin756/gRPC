@@ -11,13 +11,14 @@ message Producto_Carrito {
     int32 idcarrito = 2;
     int32 cantidad = 3;
     float subtotal = 4;
-    string descripcion = 5;
+    string nombre = 5;
+    float precio = 6;
+    float total = 7;
 }
 
-message GetCarrito {
-    repeated Producto_Carrito items = 1;
-    int32 total = 2;
-    int32 cliente_idusuario = 3;
+message PutTotalCarrito {
+    int32 idcarrito = 1;
+    float total = 2;
 }
 
 message IdCarrito {
@@ -33,4 +34,5 @@ service Carritos {
     rpc AgregarItemsCarrito (stream Producto_Carrito) returns (ResponseCarrito);
     rpc TraerCarritosByIdUsuario (IdUsuario) returns (stream Producto_Carrito);
     rpc TraerCarritoById (IdCarrito) returns (stream Carrito);
+    rpc ActualizarTotalCarrito(PutTotalCarrito) returns (ResponseCarrito);
 }

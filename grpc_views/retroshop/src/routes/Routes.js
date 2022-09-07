@@ -9,6 +9,7 @@ import Carrito from '../pages/Carrito';
 import ChargeBalance from '../pages/ChargeBalance';
 import PublishedProducts from '../pages/PublishedProducts';
 import EditPublication from '../pages/EditPublication';
+import MyShopping from '../pages/MyShopping';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/chargeBalance' element={<ChargeBalance />}/>
         <Route path='/publishedProducts' element={<PublishedProducts />}/>
         <Route path='/editPublication' element={<EditPublication />}/>
+        <Route path='/myShopping' element={<MyShopping />}/>
       </Routes>
     </BrowserRouter>
   );

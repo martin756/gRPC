@@ -50,7 +50,7 @@ function Header() {
             <NavDropdown title="Perfil" id="collasible-nav-dropdown" align="end">
               <NavDropdown.Item onClick={()=>{navigate('/publish')}}>Publicar</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>{navigate('/publishedProducts')}}>Mis publicaciones</NavDropdown.Item>
-              <NavDropdown.Item onClick={()=>{}}>Mis compras</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{navigate('/myShopping')}}>Mis compras</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>{navigate('/chargeBalance')}}>Cargar saldo</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={()=>cerrarSesion()}>Cerrar Sesión</NavDropdown.Item>

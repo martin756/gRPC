@@ -171,4 +171,3 @@ C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRet
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\ref\apiRetroshop.dll
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.pdb
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.genruntimeconfig.cache
-C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.AssemblyReference.cache

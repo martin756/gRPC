@@ -31,6 +31,14 @@ function CheckoutCarrito(props) {
             <i>${props.precio*props.cantidad}</i>
           </div>
         </li>
+        {/*{props.total !== null &&
+          <li class="list-group-item d-flex justify-content-between">
+            <div>
+              <strong>Total gastado: </strong>
+              <i>${props.total}</i>
+            </div>
+          </li>
+        }*/}
         <br></br>
     </div>  
   )
