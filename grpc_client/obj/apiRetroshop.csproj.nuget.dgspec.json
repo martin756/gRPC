@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {}
+    "E:\\UNLA\\Sistemas 2022\\Sistemas Distribuidos\\Kafka\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {
+    "E:\\UNLA\\Sistemas 2022\\Sistemas Distribuidos\\Kafka\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
+        "projectUniqueName": "E:\\UNLA\\Sistemas 2022\\Sistemas Distribuidos\\Kafka\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
         "projectName": "apiRetroshop",
-        "projectPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
-        "packagesPath": "C:\\Users\\magostino\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\obj\\",
+        "projectPath": "E:\\UNLA\\Sistemas 2022\\Sistemas Distribuidos\\Kafka\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
+        "packagesPath": "C:\\Users\\Wallatt\\.nuget\\packages\\",
+        "outputPath": "E:\\UNLA\\Sistemas 2022\\Sistemas Distribuidos\\Kafka\\gRPC-Retroshop\\grpc_client\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\magostino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Wallatt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,9 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://baget.apps.aro.andreani.com.ar/v3/index.json": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/architecture-it/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -63,6 +58,10 @@
               "target": "Package",
               "version": "[2.39.1, )"
             },
+            "MASES.KNet": {
+              "target": "Package",
+              "version": "[1.3.5, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.9, )"
@@ -78,10 +77,29 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -90,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
