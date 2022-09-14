@@ -25,6 +25,11 @@ class ProductosStub(object):
                 request_serializer=usuarios__pb2.Nulo.SerializeToString,
                 response_deserializer=productos__pb2.Producto.FromString,
                 )
+        self.TraerSubastas = channel.unary_stream(
+                '/Productos/TraerSubastas',
+                request_serializer=usuarios__pb2.Nulo.SerializeToString,
+                response_deserializer=productos__pb2.Producto.FromString,
+                )
         self.AltaProducto = channel.unary_unary(
                 '/Productos/AltaProducto',
                 request_serializer=productos__pb2.ProductoPost.SerializeToString,
@@ -52,6 +57,12 @@ class ProductosServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def TraerProductos(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TraerSubastas(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -85,6 +96,11 @@ def add_ProductosServicer_to_server(servicer, server):
             ),
             'TraerProductos': grpc.unary_stream_rpc_method_handler(
                     servicer.TraerProductos,
+                    request_deserializer=usuarios__pb2.Nulo.FromString,
+                    response_serializer=productos__pb2.Producto.SerializeToString,
+            ),
+            'TraerSubastas': grpc.unary_stream_rpc_method_handler(
+                    servicer.TraerSubastas,
                     request_deserializer=usuarios__pb2.Nulo.FromString,
                     response_serializer=productos__pb2.Producto.SerializeToString,
             ),
@@ -142,6 +158,23 @@ class Productos(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/Productos/TraerProductos',
+            usuarios__pb2.Nulo.SerializeToString,
+            productos__pb2.Producto.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TraerSubastas(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/Productos/TraerSubastas',
             usuarios__pb2.Nulo.SerializeToString,
             productos__pb2.Producto.FromString,
             options, channel_credentials,
