@@ -83,6 +83,7 @@ message ProductoStock {
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
     rpc TraerProductos(Nulo) returns (stream Producto);
+    rpc TraerSubastas(Nulo) returns (stream Producto);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
     rpc ActualizarStock(ProductoStock) returns (Response);
