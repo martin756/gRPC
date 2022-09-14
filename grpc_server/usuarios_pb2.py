@@ -3,7 +3,6 @@
 # source: usuarios.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,15 +13,254 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eusuarios.proto\"\x89\x01\n\x07Usuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x10\n\x08\x61pellido\x18\x03 \x01(\t\x12\x0b\n\x03\x64ni\x18\x04 \x01(\x03\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x0c\n\x04user\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\x12\r\n\x05saldo\x18\x08 \x01(\x02\")\n\x05Saldo\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x12\r\n\x05saldo\x18\x02 \x01(\x02\".\n\x08Username\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\".\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x11\n\tidusuario\x18\x02 \x01(\x05\"\x06\n\x04Nulo2\x8c\x01\n\x08Usuarios\x12\x15\n\x05Listo\x12\x05.Nulo\x1a\x05.Nulo\x12#\n\x0cTraerUsuario\x12\t.Username\x1a\x08.Usuario\x12\"\n\x0b\x41ltaUsuario\x12\x08.Usuario\x1a\t.Response\x12 \n\x0b\x43\x61rgarSaldo\x12\x06.Saldo\x1a\t.Responseb\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='usuarios.proto',
+  package='',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x0eusuarios.proto\"\x9c\x01\n\x07Usuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x10\n\x08\x61pellido\x18\x03 \x01(\t\x12\x0b\n\x03\x64ni\x18\x04 \x01(\x03\x12\r\n\x05\x65mail\x18\x05 \x01(\t\x12\x0c\n\x04user\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\x12\r\n\x05saldo\x18\x08 \x01(\x02\x12\x11\n\tesMonitor\x18\t \x01(\x08\")\n\x05Saldo\x12\x11\n\tidusuario\x18\x01 \x01(\x05\x12\r\n\x05saldo\x18\x02 \x01(\x02\".\n\x08Username\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\".\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x11\n\tidusuario\x18\x02 \x01(\x05\"\x06\n\x04Nulo2\x8c\x01\n\x08Usuarios\x12\x15\n\x05Listo\x12\x05.Nulo\x1a\x05.Nulo\x12#\n\x0cTraerUsuario\x12\t.Username\x1a\x08.Usuario\x12\"\n\x0b\x41ltaUsuario\x12\x08.Usuario\x1a\t.Response\x12 \n\x0b\x43\x61rgarSaldo\x12\x06.Saldo\x1a\t.Responseb\x06proto3'
+)
 
 
 
-_USUARIO = DESCRIPTOR.message_types_by_name['Usuario']
-_SALDO = DESCRIPTOR.message_types_by_name['Saldo']
-_USERNAME = DESCRIPTOR.message_types_by_name['Username']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-_NULO = DESCRIPTOR.message_types_by_name['Nulo']
+
+_USUARIO = _descriptor.Descriptor(
+  name='Usuario',
+  full_name='Usuario',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='idusuario', full_name='Usuario.idusuario', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nombre', full_name='Usuario.nombre', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='apellido', full_name='Usuario.apellido', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dni', full_name='Usuario.dni', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='email', full_name='Usuario.email', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user', full_name='Usuario.user', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='password', full_name='Usuario.password', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='saldo', full_name='Usuario.saldo', index=7,
+      number=8, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='esMonitor', full_name='Usuario.esMonitor', index=8,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=19,
+  serialized_end=175,
+)
+
+
+_SALDO = _descriptor.Descriptor(
+  name='Saldo',
+  full_name='Saldo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='idusuario', full_name='Saldo.idusuario', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='saldo', full_name='Saldo.saldo', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=177,
+  serialized_end=218,
+)
+
+
+_USERNAME = _descriptor.Descriptor(
+  name='Username',
+  full_name='Username',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='username', full_name='Username.username', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='password', full_name='Username.password', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=220,
+  serialized_end=266,
+)
+
+
+_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='Response.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='idusuario', full_name='Response.idusuario', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=268,
+  serialized_end=314,
+)
+
+
+_NULO = _descriptor.Descriptor(
+  name='Nulo',
+  full_name='Nulo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=316,
+  serialized_end=322,
+)
+
+DESCRIPTOR.message_types_by_name['Usuario'] = _USUARIO
+DESCRIPTOR.message_types_by_name['Saldo'] = _SALDO
+DESCRIPTOR.message_types_by_name['Username'] = _USERNAME
+DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
+DESCRIPTOR.message_types_by_name['Nulo'] = _NULO
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 Usuario = _reflection.GeneratedProtocolMessageType('Usuario', (_message.Message,), {
   'DESCRIPTOR' : _USUARIO,
   '__module__' : 'usuarios_pb2'
@@ -58,20 +296,61 @@ Nulo = _reflection.GeneratedProtocolMessageType('Nulo', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Nulo)
 
-_USUARIOS = DESCRIPTOR.services_by_name['Usuarios']
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _USUARIO._serialized_start=19
-  _USUARIO._serialized_end=156
-  _SALDO._serialized_start=158
-  _SALDO._serialized_end=199
-  _USERNAME._serialized_start=201
-  _USERNAME._serialized_end=247
-  _RESPONSE._serialized_start=249
-  _RESPONSE._serialized_end=295
-  _NULO._serialized_start=297
-  _NULO._serialized_end=303
-  _USUARIOS._serialized_start=306
-  _USUARIOS._serialized_end=446
+
+_USUARIOS = _descriptor.ServiceDescriptor(
+  name='Usuarios',
+  full_name='Usuarios',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=325,
+  serialized_end=465,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='Listo',
+    full_name='Usuarios.Listo',
+    index=0,
+    containing_service=None,
+    input_type=_NULO,
+    output_type=_NULO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TraerUsuario',
+    full_name='Usuarios.TraerUsuario',
+    index=1,
+    containing_service=None,
+    input_type=_USERNAME,
+    output_type=_USUARIO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AltaUsuario',
+    full_name='Usuarios.AltaUsuario',
+    index=2,
+    containing_service=None,
+    input_type=_USUARIO,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CargarSaldo',
+    full_name='Usuarios.CargarSaldo',
+    index=3,
+    containing_service=None,
+    input_type=_SALDO,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_USUARIOS)
+
+DESCRIPTOR.services_by_name['Usuarios'] = _USUARIOS
+
 # @@protoc_insertion_point(module_scope)

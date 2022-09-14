@@ -17,6 +17,7 @@ class ServicioUsuarios(UsuariosServicer):
     def Listo(self, request, context):
         return request
 
+
     def AltaUsuario(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
                              host='localhost', port='3306',
@@ -36,6 +37,7 @@ class ServicioUsuarios(UsuariosServicer):
         cnx.close()
         return resp
 
+
     def TraerUsuario(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
                               host='localhost', port='3306',
@@ -48,6 +50,7 @@ class ServicioUsuarios(UsuariosServicer):
             return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo)
         else:
             return Usuario()
+
 
     def CargarSaldo(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
@@ -68,6 +71,7 @@ class ServicioUsuarios(UsuariosServicer):
             cursor.close()
             cnx.close()
             return resp
+
 
 class ProductoUsuarios(ProductosServicer):
     def EditarProducto(self, request, context):
@@ -94,6 +98,7 @@ class ProductoUsuarios(ProductosServicer):
 
             return Response()
 
+
     def TraerProductoById(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
                               host='localhost', port='3306',
@@ -115,18 +120,22 @@ class ProductoUsuarios(ProductosServicer):
             if row.url_foto5 is not None:
                 fotos.append(row.url_foto5)
             
+            #traer campos de subasta y aniadirlos al return
+            if row.esSubasta:
+                pass
             return ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, 
             cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username,
             url_fotos = fotos)
         else:
             return ProductoGet()
 
+
     def TraerProductos(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria inner join usuario u on p.publicador_idusuario = u.idusuario")
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria inner join usuario u on p.publicador_idusuario = u.idusuario where p.esSubasta = 0")
         cursor.execute(query)
         records = cursor.fetchall()
         for row in records:
@@ -145,6 +154,45 @@ class ProductoUsuarios(ProductosServicer):
             idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, 
             fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario, url_fotos = fotos)
 
+
+    def TraerSubastas(self, request, context):
+        cnx = mysql.connector.connect(user='root', password='root', 
+                              host='localhost', port='3306',
+                              database='retroshop')
+        cursor = cnx.cursor(named_tuple=True)
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username, "
+                " s.fechafin as fechafin, s.preciofinal as preciofinal from producto p "
+                " inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "
+                " inner join usuario u on p.publicador_idusuario = u.idusuario "
+                " inner join subasta son s.idproducto = p.idproducto where p.esSubasta = 1 ")
+        cursor.execute(query)
+        records = cursor.fetchall()
+        for row in records:
+            fotos = []
+            if row.url_foto1 is not None:
+                fotos.append(row.url_foto1)
+            if row.url_foto2 is not None:
+                fotos.append(row.url_foto2)
+            if row.url_foto3 is not None:
+                fotos.append(row.url_foto3)
+            if row.url_foto4 is not None:
+                fotos.append(row.url_foto4)
+            if row.url_foto5 is not None:
+                fotos.append(row.url_foto5)
+            
+            # implementar conversion de fechafin para envio por grpc
+            yield Producto(idproducto = row.idproducto,
+                        nombre = row.nombre,
+                        descripcion = row.descripcion, 
+                        idtipocategoria = row.idtipocategoria, 
+                        preciofinal = row.preciofinal,
+                        cantidad_disponible = row.cantidad_disponible, 
+                        fecha_publicacion = row.fecha_publicacion, 
+                        publicador_idusuario = row.publicador_idusuario, 
+                        esSubasta = row.esSubasta, 
+                        url_fotos = fotos)
+
+
     def AltaProducto(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
                              host='localhost', port='3306',
@@ -156,21 +204,24 @@ class ProductoUsuarios(ProductosServicer):
         if row is not None:
             return Response(message = "400 Bad-Request. El nombre del producto especificado ya existe")
 
-        stmt = f"INSERT INTO producto (`nombre`, `descripcion`, `idtipocategoria`, `precio`, `cantidad_disponible`, `fecha_publicacion`, `publicador_idusuario`"
-        values = f" VALUES ('{request.nombre}', '{request.descripcion}', '{request.idtipocategoria}', '{request.precio}', '{request.cantidad_disponible}', '{request.fecha_publicacion}', '{request.publicador_idusuario}'"
+        stmt = f"INSERT INTO producto (`nombre`, `descripcion`, `idtipocategoria`, `precio`, `cantidad_disponible`, `fecha_publicacion`, `publicador_idusuario`, `esSubasta`"
+        values = f" VALUES ('{request.nombre}', '{request.descripcion}', '{request.idtipocategoria}', '{request.precio}', '{request.cantidad_disponible}', '{request.fecha_publicacion}', '{request.publicador_idusuario}', '{int(request.esSubasta)}' "
         for idx,url_foto in enumerate(request.url_fotos,start=1):
             stmt += f", `url_foto{idx}`"
             values += f", '{url_foto}'"
         stmt += ")"
         query = stmt+values+")"
         cursor.execute(query)
-        
         cnx.commit()
-
         cursor.close()
         cnx.close()
+        
+        #aniadir valores a tabla de subasta
+        if(int(request.esSubasta)==1):
+            pass
 
         return Response()
+
 
     def ActualizarStock(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',
@@ -184,6 +235,7 @@ class ProductoUsuarios(ProductosServicer):
         cnx.close()
 
         return Response(message = "204 No-Content. Actualizacion exitosa")
+
 
 class CarritoProductos(CarritosServicer):
     def CrearCarrito(self, request, context):
@@ -200,6 +252,7 @@ class CarritoProductos(CarritosServicer):
         cursor.close()
         cnx.close()
         return idcarrito
+
 
     def AgregarItemsCarrito(self, request_iterator, context):
         cnx =mysql.connector.connect(user='root', password='root',
@@ -218,6 +271,7 @@ class CarritoProductos(CarritosServicer):
         cnx.close()
         return ResponseCarrito(mensaje = "204 No Content.")
 
+
     def TraerCarritosByIdUsuario(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
                               host='localhost', port='3306',
@@ -232,6 +286,7 @@ class CarritoProductos(CarritosServicer):
         for row in records:
             yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, 
             subtotal = row.subtotal, nombre = row.nombre, precio = row.precio, total = row.total)
+
 
     def ActualizarTotalCarrito(self, request, context):
         cnx = mysql.connector.connect(user='root', password='root', 
