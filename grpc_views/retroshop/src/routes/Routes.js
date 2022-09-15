@@ -10,6 +10,7 @@ import ChargeBalance from '../pages/ChargeBalance';
 import PublishedProducts from '../pages/PublishedProducts';
 import EditPublication from '../pages/EditPublication';
 import MyShopping from '../pages/MyShopping';
+import Subasta from '../pages/Subasta';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/publishedProducts' element={<PublishedProducts />}/>
         <Route path='/editPublication' element={<EditPublication />}/>
         <Route path='/myShopping' element={<MyShopping />}/>
+        <Route path='/Subasta' element={<Subasta />}/>
       </Routes>
     </BrowserRouter>
   );

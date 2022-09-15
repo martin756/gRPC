@@ -6,6 +6,8 @@ import ProductCard from '../components/ProductCard';
 import { jsonProducts, categorias } from './productsDemo';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 function MainMenu() {
     const baseUrl="https://localhost:5001/api/Producto/GetProductos"
@@ -89,16 +91,22 @@ function MainMenu() {
         <div>
         <Header />
         
-        {/*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />*/}
         <div className="container pt-5">
               <div className="row">
                 <div className="col-md-8 order-md-2 col-lg-9">
                   <div className="container-fluid">
                     <div className="row">
-                      {products.length > 0 ? products.map((value)=>(
-                        <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} 
-                        url={value.UrlFotos[0]} cantidad_disponible={value.CantidadDisponible} linkPage="buyProduct"/>
-                      )) : "No hay productos para mostrar"}
+                      <Tabs defaultActiveKey="productos" className="mb-3">
+                        <Tab eventKey="productos" title="Compra directa">
+                          {products.length > 0 ? products.map((value)=>(
+                            <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} 
+                            url={value.UrlFotos[0]} cantidad_disponible={value.CantidadDisponible} linkPage="buyProduct"/>
+                          )) : "No hay productos para mostrar"}
+                        </Tab>
+                        <Tab eventKey="subastas" title="Subasta">
+                          <div>Subastas</div>
+                        </Tab>
+                      </Tabs>
                     </div>
                   </div>
                 </div><div className="col-md-4 order-md-1 col-lg-3 sidebar-filter">
