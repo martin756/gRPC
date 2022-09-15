@@ -6,6 +6,8 @@ from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_serve
 from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList, Tipo_categoria
 from carritos_pb2_grpc import CarritosServicer, add_CarritosServicer_to_server
 from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, ResponseCarrito
+from datetime import datetime
+from google.protobuf.timestamp_pb2 import Timestamp
 
 import grpc
 from concurrent import futures
@@ -47,7 +49,7 @@ class ServicioUsuarios(UsuariosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo)
+            return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo, esMonitor= bool(row.esMonitor) )
         else:
             return Usuario()
 
@@ -161,7 +163,7 @@ class ProductoUsuarios(ProductosServicer):
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
         query = (f"select p.*, c.nombre as 'categoria', u.usuario as username, "
-                " s.fechafin as fechafin, s.preciofinal as preciofinal from producto p "
+                " s.fechafin as fechafin, s.ultimapuja as ultimapuja ,s.preciofinal as preciofinal from producto p "
                 " inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "
                 " inner join usuario u on p.publicador_idusuario = u.idusuario "
                 " inner join subasta son s.idproducto = p.idproducto where p.esSubasta = 1 ")
@@ -180,16 +182,24 @@ class ProductoUsuarios(ProductosServicer):
             if row.url_foto5 is not None:
                 fotos.append(row.url_foto5)
             
-            # implementar conversion de fechafin para envio por grpc
+            # implementar conversion de formato MySQL a grpc para envio de timestamp
+            timestampFin = Timestamp()
+            timestampFin.FromDatetime(row.fechafin)
+            timestampPuja = Timestamp()
+            timestampPuja.FromDatetime(row.ultimapuja)
+
+
             yield Producto(idproducto = row.idproducto,
                         nombre = row.nombre,
                         descripcion = row.descripcion, 
                         idtipocategoria = row.idtipocategoria, 
-                        preciofinal = row.preciofinal,
+                        precio = row.preciofinal,
                         cantidad_disponible = row.cantidad_disponible, 
                         fecha_publicacion = row.fecha_publicacion, 
                         publicador_idusuario = row.publicador_idusuario, 
-                        esSubasta = row.esSubasta, 
+                        esSubasta = row.esSubasta,
+                        fecha_fin = timestampFin,
+                        fecha_inicio = timestampPuja,
                         url_fotos = fotos)
 
 
@@ -213,14 +223,31 @@ class ProductoUsuarios(ProductosServicer):
         query = stmt+values+")"
         cursor.execute(query)
         cnx.commit()
-        cursor.close()
-        cnx.close()
+        id_item = cursor.lastrowid
         
         #aniadir valores a tabla de subasta
-        if(int(request.esSubasta)==1):
-            pass
 
+        if(int(request.esSubasta)==1):
+            fechaInicio = self.getFechaFromTimeStamp(request.fecha_inicio)
+            fechaFin = self.getFechaFromTimeStamp(request.fecha_fin)
+            sql = "INSERT INTO subasta(idproducto, preciofinal, fechainicio, fechafin, ultimapuja ) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')"
+
+            cursor.execute(sql.format(id_item, request.precio, fechaInicio, fechaFin, fechaInicio))
+            cnx.commit()
+
+        cursor.close()
+        cnx.close()
         return Response()
+
+    def getFechaFromTimeStamp(self, fecha):
+        if len(fecha) == 0:
+            print("fecha vacia")
+            return None
+        print("no vacio")
+        num = fecha.split(':')[1].replace(' ','').replace('\n','')
+        a = int(num)
+        a = a/1000
+        return datetime.fromtimestamp(a)
 
 
     def ActualizarStock(self, request, context):

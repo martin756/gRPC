@@ -111,11 +111,11 @@ DROP TABLE IF EXISTS `retroshop`.`subasta` ;
 CREATE TABLE IF NOT EXISTS `retroshop`.`subasta` (
   `idsubasta` INT NOT NULL AUTO_INCREMENT,
   `idproducto` INT NULL DEFAULT NULL,
-  `precioinicial` FLOAT NULL DEFAULT NULL,
   `preciofinal` FLOAT NULL DEFAULT NULL,
   `fechainicio` DATETIME NULL DEFAULT NULL,
   `fechafin` DATETIME NULL DEFAULT NULL,
-  `pujador_idusuario` INT NOT NULL,
+  `ultimapuja` DATETIME NULL DEFAULT NULL,
+  `pujador_idusuario` INT DEFAULT NULL,
   PRIMARY KEY (`idsubasta`),
   INDEX `fk_idproducto_idx` (`idproducto` ASC) VISIBLE,
  
