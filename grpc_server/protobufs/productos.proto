@@ -1,6 +1,9 @@
 syntax = "proto3";
 import "usuarios.proto";
 
+import "google/protobuf/timestamp.proto";
+
+
 message Producto {
     int32 idproducto=1;
     string nombre = 2;
@@ -11,6 +14,9 @@ message Producto {
     string fecha_publicacion = 7;
     int32 publicador_idusuario = 8;
     repeated string url_fotos = 9;
+    bool esSubasta = 10;
+    google.protobuf.Timestamp fecha_inicio = 11;
+    google.protobuf.Timestamp fecha_fin = 12;
 }
 
 message ProductosList {
@@ -26,6 +32,10 @@ message ProductoGet {
     string fecha_publicacion = 6;
     string publicador = 7;
     repeated string url_fotos = 8;
+    bool esSubasta = 9;
+    google.protobuf.Timestamp fecha_inicio = 10;
+    google.protobuf.Timestamp fecha_fin = 11;
+    
 }
 
 message ProductoPost {
@@ -37,6 +47,10 @@ message ProductoPost {
     string fecha_publicacion = 6;
     int64 publicador_idusuario = 7;
     repeated string url_fotos = 8;
+    bool esSubasta = 9;
+    google.protobuf.Timestamp fecha_inicio = 10;
+    google.protobuf.Timestamp fecha_fin = 11;
+    
 }
 
 message ProductoPut {
@@ -69,6 +83,7 @@ message ProductoStock {
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
     rpc TraerProductos(Nulo) returns (stream Producto);
+    rpc TraerSubastas(Nulo) returns (stream Producto);
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
     rpc ActualizarStock(ProductoStock) returns (Response);

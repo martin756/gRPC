@@ -9,6 +9,7 @@ message Usuario {
     string user = 6;
     string password = 7;
     float saldo = 8;
+    bool esMonitor = 9;
 }
 message Saldo{
     int32 idusuario = 1;
