@@ -37,6 +37,7 @@ class ActualizaSubastas():
 if __name__ == "__main__":
 
     bdSubasta = ActualizaSubastas()
+
     consumer = KafkaConsumer("TopicSubasta",
                             bootstrap_servers='127.0.0.1:9092',
                             auto_offset_reset='latest', 
@@ -47,11 +48,10 @@ if __name__ == "__main__":
 
     for msg in consumer:
         try:
-            print("usuario3 = {}".format(json.loads(msg.value)))
             subasta = json.loads(msg.value)
             bdSubasta.actualizarSubasta(subasta['id'], subasta['pujador'], subasta['precio'])
         except:
-            print("Error3")
+            print("Error")
 
 
 
