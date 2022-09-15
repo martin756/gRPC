@@ -26,7 +26,7 @@ class ActualizaSubastas():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sql = "update subasta set pujador_idusuario = '{0}', preciofinal = '{1}' where idsubasta = '{2}' "
+                sql = "update subasta set pujador_idusuario = '{0}', preciofinal = '{1}' , ultimapuja = now() where idsubasta = '{2}' "
                 cursor.execute(sql.format(pujador, precio, id))
                 self.conexion.commit()
             except Error as ex:
