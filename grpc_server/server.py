@@ -122,14 +122,40 @@ class ProductoUsuarios(ProductosServicer):
             if row.url_foto5 is not None:
                 fotos.append(row.url_foto5)
             
+            result = ProductoGet(
+                    nombre = row.nombre, 
+                    descripcion = row.descripcion, 
+                    categoria = row.categoria, 
+                    precio = row.precio, 
+                    cantidad_disponible = row.cantidad_disponible, 
+                    fecha_publicacion = row.fecha_publicacion, 
+                    publicador = row.username,
+                    url_fotos = fotos)
+
             #traer campos de subasta y aniadirlos al return
             if row.esSubasta:
-                pass
-            return ProductoGet(nombre = row.nombre, descripcion = row.descripcion, categoria = row.categoria, precio = row.precio, 
-            cantidad_disponible = row.cantidad_disponible, fecha_publicacion = row.fecha_publicacion, publicador = row.username,
-            url_fotos = fotos)
+                query = (f"select s.preciofinal as preciofinal, s.ultimapuja as ultimapuja, s.fechafin as fechafin from subasta s where s.idproducto= '{request.idproducto}'")
+                cursor.execute(query)
+                subasta = cursor.fetchone()
+
+                timestampFin = Timestamp()
+                timestampFin.FromDatetime(subasta.fechafin)
+                timestampPuja = Timestamp()
+                timestampPuja.FromDatetime(subasta.ultimapuja)
+
+                result = ProductoGet(
+                    nombre = row.nombre, 
+                    descripcion = row.descripcion, 
+                    categoria = row.categoria,
+                    precio = subasta.preciofinal, 
+                    cantidad_disponible = row.cantidad_disponible, 
+                    fecha_publicacion = row.fecha_publicacion, 
+                    publicador = row.username,
+                    fecha_fin = timestampFin,
+                    fecha_inicio = timestampPuja,
+                    url_fotos = fotos)
         else:
-            return ProductoGet()
+            return result
 
 
     def TraerProductos(self, request, context):
@@ -166,7 +192,7 @@ class ProductoUsuarios(ProductosServicer):
                 " s.fechafin as fechafin, s.ultimapuja as ultimapuja ,s.preciofinal as preciofinal from producto p "
                 " inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "
                 " inner join usuario u on p.publicador_idusuario = u.idusuario "
-                " inner join subasta son s.idproducto = p.idproducto where p.esSubasta = 1 ")
+                " inner join subasta s on s.idproducto = p.idproducto where p.esSubasta = 1 ")
         cursor.execute(query)
         records = cursor.fetchall()
         for row in records:
@@ -304,7 +330,7 @@ class CarritoProductos(CarritosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"SELECT c.idcarrito,c.total, pc.idproducto_carrito, pc.cantidad,pc.subtotal,p.idproducto, "+
+        query = (f"SELECT c.idcarrito,c.total, pc.idproducto_carrito as productocarrito, pc.cantidad,pc.subtotal,p.idproducto, "+
         "p.precio, p.nombre FROM carrito c "+
         f"inner join producto_carrito pc on c.idcarrito=pc.idcarrito "+
         f"inner join producto p on p.idproducto=pc.idproducto where c.cliente_idusuario = '{request.idusuario}'")
@@ -312,7 +338,7 @@ class CarritoProductos(CarritosServicer):
         records = cursor.fetchall()
         for row in records:
             yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, 
-            subtotal = row.subtotal, nombre = row.nombre, precio = row.precio, total = row.total)
+            subtotal = row.subtotal, nombre = row.nombre, precio = row.precio, total = row.total, idproductocarrito = row.productocarrito)
 
 
     def ActualizarTotalCarrito(self, request, context):
