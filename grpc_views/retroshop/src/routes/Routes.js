@@ -11,6 +11,8 @@ import PublishedProducts from '../pages/PublishedProducts';
 import EditPublication from '../pages/EditPublication';
 import MyShopping from '../pages/MyShopping';
 import Subasta from '../pages/Subasta';
+import MonitorMenu from '../pages/MonitorMenu';
+import ViewProductChanges from '../pages/ViewProductChanges';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path='/editPublication' element={<EditPublication />}/>
         <Route path='/myShopping' element={<MyShopping />}/>
         <Route path='/Subasta' element={<Subasta />}/>
+        <Route path='/admin' element={<MonitorMenu />}/>
+        <Route path='/viewProductChanges' element={<ViewProductChanges />}/>
       </Routes>
     </BrowserRouter>
   );

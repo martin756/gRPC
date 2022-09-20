@@ -171,4 +171,26 @@ C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRet
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\ref\apiRetroshop.dll
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.pdb
 C:\distribuidos\Nueva carpeta\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.genruntimeconfig.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\MASES.CLIParser.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\C2JBridge.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\MASES.JNet.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\MASES.KNet.dll
 C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\obj\Debug\net5.0\apiRetroshop.csproj.AssemblyReference.cache
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\Confluent.Kafka.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-x64\native\alpine-librdkafka.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-x64\native\centos7-librdkafka.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-x64\native\debian9-librdkafka.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\linux-x64\native\librdkafka.so
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\osx-x64\native\librdkafka.dylib
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\librdkafka.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\librdkafkacpp.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\libzstd.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\msvcp120.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\msvcr120.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x64\native\zlib.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\librdkafka.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\librdkafkacpp.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\libzstd.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\msvcp120.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\msvcr120.dll
+C:\Users\magostino\Documents\GitHub\gRPC-Retroshop\grpc_client\bin\Debug\net5.0\runtimes\win-x86\native\zlib.dll

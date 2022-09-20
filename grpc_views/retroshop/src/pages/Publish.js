@@ -37,8 +37,11 @@ function Publish(props) {
             "fecha_publicacion": fechaFabricacion.current.value,
             "publicador_idusuario": parseInt(idusuario),
             "url_fotos": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value],
-            "fecha_finalizacion_subasta": fechaFinalizacionSubasta.current.value,
             "esSubasta": isChecked
+        }
+        if(isChecked){
+            jsonBody["fecha_inicio"] = {"seconds": Math.floor(Date.now()/1000), "nanos": 0}
+            jsonBody["fecha_fin"] = {"seconds": Math.floor(new Date(fechaFinalizacionSubasta.current.value).getTime()/1000), "nanos": 0}
         }
         debugger
         await axios.post(baseUrl, jsonBody)
@@ -141,9 +144,9 @@ function Publish(props) {
                         </div>
                     </div>
                     <div>
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" id="topping" name="topping" value="Paneer" checked={isChecked} onChange={handleOnChange}/> 
-                            <label class="custom-control-label" for="customControlValidation1">¿Es subasta?</label>
+                        <div className="form-check mb-3">
+                            <input type="checkbox" className="form-check-input" checked={isChecked} onChange={handleOnChange}/> 
+                            <label className="form-check-label" >¿Es subasta?</label>
                         </div>
                         <div>
                             <div className="col-12">

@@ -22,41 +22,50 @@ public static partial class ProductosReflection {
   static ProductosReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg9wcm9kdWN0b3MucHJvdG8aDnVzdWFyaW9zLnByb3RvItUBCghQcm9kdWN0",
-          "bxISCgppZHByb2R1Y3RvGAEgASgFEg4KBm5vbWJyZRgCIAEoCRITCgtkZXNj",
-          "cmlwY2lvbhgDIAEoCRIXCg9pZHRpcG9jYXRlZ29yaWEYBCABKAUSDgoGcHJl",
-          "Y2lvGAUgASgCEhsKE2NhbnRpZGFkX2Rpc3BvbmlibGUYBiABKAMSGQoRZmVj",
-          "aGFfcHVibGljYWNpb24YByABKAkSHAoUcHVibGljYWRvcl9pZHVzdWFyaW8Y",
-          "CCABKAUSEQoJdXJsX2ZvdG9zGAkgAygJIi0KDVByb2R1Y3Rvc0xpc3QSHAoJ",
-          "cHJvZHVjdG9zGAEgAygLMgkuUHJvZHVjdG8itAEKC1Byb2R1Y3RvR2V0Eg4K",
-          "Bm5vbWJyZRgBIAEoCRITCgtkZXNjcmlwY2lvbhgCIAEoCRIRCgljYXRlZ29y",
-          "aWEYAyABKAkSDgoGcHJlY2lvGAQgASgCEhsKE2NhbnRpZGFkX2Rpc3Bvbmli",
-          "bGUYBSABKAMSGQoRZmVjaGFfcHVibGljYWNpb24YBiABKAkSEgoKcHVibGlj",
-          "YWRvchgHIAEoCRIRCgl1cmxfZm90b3MYCCADKAkixQEKDFByb2R1Y3RvUG9z",
-          "dBIOCgZub21icmUYASABKAkSEwoLZGVzY3JpcGNpb24YAiABKAkSFwoPaWR0",
-          "aXBvY2F0ZWdvcmlhGAMgASgDEg4KBnByZWNpbxgEIAEoAhIbChNjYW50aWRh",
-          "ZF9kaXNwb25pYmxlGAUgASgDEhkKEWZlY2hhX3B1YmxpY2FjaW9uGAYgASgJ",
-          "EhwKFHB1YmxpY2Fkb3JfaWR1c3VhcmlvGAcgASgDEhEKCXVybF9mb3RvcxgI",
-          "IAMoCSKfAQoLUHJvZHVjdG9QdXQSEgoKaWRwcm9kdWN0bxgBIAEoBRIOCgZu",
-          "b21icmUYAiABKAkSEwoLZGVzY3JpcGNpb24YAyABKAkSFwoPaWR0aXBvY2F0",
-          "ZWdvcmlhGAQgASgDEg4KBnByZWNpbxgFIAEoAhIbChNjYW50aWRhZF9kaXNw",
-          "b25pYmxlGAYgASgDEhEKCXVybF9mb3RvcxgHIAMoCSIgCg5UaXBvX2NhdGVn",
-          "b3JpYRIOCgZub21icmUYASABKAkiIAoKSWRQcm9kdWN0bxISCgppZHByb2R1",
-          "Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIRCglpZHVzdWFyaW8YASABKAUiNQoN",
-          "UHJvZHVjdG9TdG9jaxISCgppZFByb2R1Y3RvGAEgASgFEhAKCGNhbnRpZGFk",
-          "GAIgASgFMuQBCglQcm9kdWN0b3MSLgoRVHJhZXJQcm9kdWN0b0J5SWQSCy5J",
-          "ZFByb2R1Y3RvGgwuUHJvZHVjdG9HZXQSJAoOVHJhZXJQcm9kdWN0b3MSBS5O",
-          "dWxvGgkuUHJvZHVjdG8wARIoCgxBbHRhUHJvZHVjdG8SDS5Qcm9kdWN0b1Bv",
-          "c3QaCS5SZXNwb25zZRIpCg5FZGl0YXJQcm9kdWN0bxIMLlByb2R1Y3RvUHV0",
-          "GgkuUmVzcG9uc2USLAoPQWN0dWFsaXphclN0b2NrEg4uUHJvZHVjdG9TdG9j",
-          "axoJLlJlc3BvbnNlYgZwcm90bzM="));
+          "Cg9wcm9kdWN0b3MucHJvdG8aDnVzdWFyaW9zLnByb3RvGh9nb29nbGUvcHJv",
+          "dG9idWYvdGltZXN0YW1wLnByb3RvIskCCghQcm9kdWN0bxISCgppZHByb2R1",
+          "Y3RvGAEgASgFEg4KBm5vbWJyZRgCIAEoCRITCgtkZXNjcmlwY2lvbhgDIAEo",
+          "CRIXCg9pZHRpcG9jYXRlZ29yaWEYBCABKAUSDgoGcHJlY2lvGAUgASgCEhsK",
+          "E2NhbnRpZGFkX2Rpc3BvbmlibGUYBiABKAMSGQoRZmVjaGFfcHVibGljYWNp",
+          "b24YByABKAkSHAoUcHVibGljYWRvcl9pZHVzdWFyaW8YCCABKAUSEQoJdXJs",
+          "X2ZvdG9zGAkgAygJEhEKCWVzU3ViYXN0YRgKIAEoCBIwCgxmZWNoYV9pbmlj",
+          "aW8YCyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWZlY2hh",
+          "X2ZpbhgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiLQoNUHJv",
+          "ZHVjdG9zTGlzdBIcCglwcm9kdWN0b3MYASADKAsyCS5Qcm9kdWN0byKoAgoL",
+          "UHJvZHVjdG9HZXQSDgoGbm9tYnJlGAEgASgJEhMKC2Rlc2NyaXBjaW9uGAIg",
+          "ASgJEhEKCWNhdGVnb3JpYRgDIAEoCRIOCgZwcmVjaW8YBCABKAISGwoTY2Fu",
+          "dGlkYWRfZGlzcG9uaWJsZRgFIAEoAxIZChFmZWNoYV9wdWJsaWNhY2lvbhgG",
+          "IAEoCRISCgpwdWJsaWNhZG9yGAcgASgJEhEKCXVybF9mb3RvcxgIIAMoCRIR",
+          "Cgllc1N1YmFzdGEYCSABKAgSMAoMZmVjaGFfaW5pY2lvGAogASgLMhouZ29v",
+          "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglmZWNoYV9maW4YCyABKAsyGi5n",
+          "b29nbGUucHJvdG9idWYuVGltZXN0YW1wIrkCCgxQcm9kdWN0b1Bvc3QSDgoG",
+          "bm9tYnJlGAEgASgJEhMKC2Rlc2NyaXBjaW9uGAIgASgJEhcKD2lkdGlwb2Nh",
+          "dGVnb3JpYRgDIAEoAxIOCgZwcmVjaW8YBCABKAISGwoTY2FudGlkYWRfZGlz",
+          "cG9uaWJsZRgFIAEoAxIZChFmZWNoYV9wdWJsaWNhY2lvbhgGIAEoCRIcChRw",
+          "dWJsaWNhZG9yX2lkdXN1YXJpbxgHIAEoAxIRCgl1cmxfZm90b3MYCCADKAkS",
+          "EQoJZXNTdWJhc3RhGAkgASgIEjAKDGZlY2hhX2luaWNpbxgKIAEoCzIaLmdv",
+          "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJZmVjaGFfZmluGAsgASgLMhou",
+          "Z29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKfAQoLUHJvZHVjdG9QdXQSEgoK",
+          "aWRwcm9kdWN0bxgBIAEoBRIOCgZub21icmUYAiABKAkSEwoLZGVzY3JpcGNp",
+          "b24YAyABKAkSFwoPaWR0aXBvY2F0ZWdvcmlhGAQgASgDEg4KBnByZWNpbxgF",
+          "IAEoAhIbChNjYW50aWRhZF9kaXNwb25pYmxlGAYgASgDEhEKCXVybF9mb3Rv",
+          "cxgHIAMoCSIgCg5UaXBvX2NhdGVnb3JpYRIOCgZub21icmUYASABKAkiIAoK",
+          "SWRQcm9kdWN0bxISCgppZHByb2R1Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIR",
+          "CglpZHVzdWFyaW8YASABKAUiNQoNUHJvZHVjdG9TdG9jaxISCgppZFByb2R1",
+          "Y3RvGAEgASgFEhAKCGNhbnRpZGFkGAIgASgFMokCCglQcm9kdWN0b3MSLgoR",
+          "VHJhZXJQcm9kdWN0b0J5SWQSCy5JZFByb2R1Y3RvGgwuUHJvZHVjdG9HZXQS",
+          "JAoOVHJhZXJQcm9kdWN0b3MSBS5OdWxvGgkuUHJvZHVjdG8wARIjCg1UcmFl",
+          "clN1YmFzdGFzEgUuTnVsbxoJLlByb2R1Y3RvMAESKAoMQWx0YVByb2R1Y3Rv",
+          "Eg0uUHJvZHVjdG9Qb3N0GgkuUmVzcG9uc2USKQoORWRpdGFyUHJvZHVjdG8S",
+          "DC5Qcm9kdWN0b1B1dBoJLlJlc3BvbnNlEiwKD0FjdHVhbGl6YXJTdG9jaxIO",
+          "LlByb2R1Y3RvU3RvY2saCS5SZXNwb25zZWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { global::UsuariosReflection.Descriptor, },
+        new pbr::FileDescriptor[] { global::UsuariosReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::Producto), global::Producto.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Producto), global::Producto.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductosList), global::ProductosList.Parser, new[]{ "Productos" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoGet), global::ProductoGet.Parser, new[]{ "Nombre", "Descripcion", "Categoria", "Precio", "CantidadDisponible", "FechaPublicacion", "Publicador", "UrlFotos" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPost), global::ProductoPost.Parser, new[]{ "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoGet), global::ProductoGet.Parser, new[]{ "Nombre", "Descripcion", "Categoria", "Precio", "CantidadDisponible", "FechaPublicacion", "Publicador", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPost), global::ProductoPost.Parser, new[]{ "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPut), global::ProductoPut.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "UrlFotos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Tipo_categoria), global::Tipo_categoria.Parser, new[]{ "Nombre" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdProducto), global::IdProducto.Parser, new[]{ "Idproducto" }, null, null, null, null),
@@ -106,6 +115,9 @@ public sealed partial class Producto : pb::IMessage<Producto>
     fechaPublicacion_ = other.fechaPublicacion_;
     publicadorIdusuario_ = other.publicadorIdusuario_;
     urlFotos_ = other.urlFotos_.Clone();
+    esSubasta_ = other.esSubasta_;
+    fechaInicio_ = other.fechaInicio_ != null ? other.fechaInicio_.Clone() : null;
+    fechaFin_ = other.fechaFin_ != null ? other.fechaFin_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -212,6 +224,39 @@ public sealed partial class Producto : pb::IMessage<Producto>
     get { return urlFotos_; }
   }
 
+  /// <summary>Field number for the "esSubasta" field.</summary>
+  public const int EsSubastaFieldNumber = 10;
+  private bool esSubasta_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool EsSubasta {
+    get { return esSubasta_; }
+    set {
+      esSubasta_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_inicio" field.</summary>
+  public const int FechaInicioFieldNumber = 11;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaInicio_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaInicio {
+    get { return fechaInicio_; }
+    set {
+      fechaInicio_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_fin" field.</summary>
+  public const int FechaFinFieldNumber = 12;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaFin_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaFin {
+    get { return fechaFin_; }
+    set {
+      fechaFin_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Producto);
@@ -234,6 +279,9 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (FechaPublicacion != other.FechaPublicacion) return false;
     if (PublicadorIdusuario != other.PublicadorIdusuario) return false;
     if(!urlFotos_.Equals(other.urlFotos_)) return false;
+    if (EsSubasta != other.EsSubasta) return false;
+    if (!object.Equals(FechaInicio, other.FechaInicio)) return false;
+    if (!object.Equals(FechaFin, other.FechaFin)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -249,6 +297,9 @@ public sealed partial class Producto : pb::IMessage<Producto>
     if (FechaPublicacion.Length != 0) hash ^= FechaPublicacion.GetHashCode();
     if (PublicadorIdusuario != 0) hash ^= PublicadorIdusuario.GetHashCode();
     hash ^= urlFotos_.GetHashCode();
+    if (EsSubasta != false) hash ^= EsSubasta.GetHashCode();
+    if (fechaInicio_ != null) hash ^= FechaInicio.GetHashCode();
+    if (fechaFin_ != null) hash ^= FechaFin.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -298,6 +349,18 @@ public sealed partial class Producto : pb::IMessage<Producto>
       output.WriteInt32(PublicadorIdusuario);
     }
     urlFotos_.WriteTo(output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(80);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(98);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -340,6 +403,18 @@ public sealed partial class Producto : pb::IMessage<Producto>
       output.WriteInt32(PublicadorIdusuario);
     }
     urlFotos_.WriteTo(ref output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(80);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(98);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -374,6 +449,15 @@ public sealed partial class Producto : pb::IMessage<Producto>
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(PublicadorIdusuario);
     }
     size += urlFotos_.CalculateSize(_repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      size += 1 + 1;
+    }
+    if (fechaInicio_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaFin);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -410,6 +494,21 @@ public sealed partial class Producto : pb::IMessage<Producto>
       PublicadorIdusuario = other.PublicadorIdusuario;
     }
     urlFotos_.Add(other.urlFotos_);
+    if (other.EsSubasta != false) {
+      EsSubasta = other.EsSubasta;
+    }
+    if (other.fechaInicio_ != null) {
+      if (fechaInicio_ == null) {
+        FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaInicio.MergeFrom(other.FechaInicio);
+    }
+    if (other.fechaFin_ != null) {
+      if (fechaFin_ == null) {
+        FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaFin.MergeFrom(other.FechaFin);
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -460,6 +559,24 @@ public sealed partial class Producto : pb::IMessage<Producto>
           urlFotos_.AddEntriesFrom(input, _repeated_urlFotos_codec);
           break;
         }
+        case 80: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 90: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 98: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
+          break;
+        }
       }
     }
   #endif
@@ -508,6 +625,24 @@ public sealed partial class Producto : pb::IMessage<Producto>
         }
         case 74: {
           urlFotos_.AddEntriesFrom(ref input, _repeated_urlFotos_codec);
+          break;
+        }
+        case 80: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 90: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 98: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
           break;
         }
       }
@@ -715,6 +850,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     fechaPublicacion_ = other.fechaPublicacion_;
     publicador_ = other.publicador_;
     urlFotos_ = other.urlFotos_.Clone();
+    esSubasta_ = other.esSubasta_;
+    fechaInicio_ = other.fechaInicio_ != null ? other.fechaInicio_.Clone() : null;
+    fechaFin_ = other.fechaFin_ != null ? other.fechaFin_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -810,6 +948,39 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     get { return urlFotos_; }
   }
 
+  /// <summary>Field number for the "esSubasta" field.</summary>
+  public const int EsSubastaFieldNumber = 9;
+  private bool esSubasta_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool EsSubasta {
+    get { return esSubasta_; }
+    set {
+      esSubasta_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_inicio" field.</summary>
+  public const int FechaInicioFieldNumber = 10;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaInicio_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaInicio {
+    get { return fechaInicio_; }
+    set {
+      fechaInicio_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_fin" field.</summary>
+  public const int FechaFinFieldNumber = 11;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaFin_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaFin {
+    get { return fechaFin_; }
+    set {
+      fechaFin_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as ProductoGet);
@@ -831,6 +1002,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (FechaPublicacion != other.FechaPublicacion) return false;
     if (Publicador != other.Publicador) return false;
     if(!urlFotos_.Equals(other.urlFotos_)) return false;
+    if (EsSubasta != other.EsSubasta) return false;
+    if (!object.Equals(FechaInicio, other.FechaInicio)) return false;
+    if (!object.Equals(FechaFin, other.FechaFin)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -845,6 +1019,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (FechaPublicacion.Length != 0) hash ^= FechaPublicacion.GetHashCode();
     if (Publicador.Length != 0) hash ^= Publicador.GetHashCode();
     hash ^= urlFotos_.GetHashCode();
+    if (EsSubasta != false) hash ^= EsSubasta.GetHashCode();
+    if (fechaInicio_ != null) hash ^= FechaInicio.GetHashCode();
+    if (fechaFin_ != null) hash ^= FechaFin.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -890,6 +1067,18 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       output.WriteString(Publicador);
     }
     urlFotos_.WriteTo(output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -928,6 +1117,18 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       output.WriteString(Publicador);
     }
     urlFotos_.WriteTo(ref output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -959,6 +1160,15 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Publicador);
     }
     size += urlFotos_.CalculateSize(_repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      size += 1 + 1;
+    }
+    if (fechaInicio_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaFin);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -992,6 +1202,21 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       Publicador = other.Publicador;
     }
     urlFotos_.Add(other.urlFotos_);
+    if (other.EsSubasta != false) {
+      EsSubasta = other.EsSubasta;
+    }
+    if (other.fechaInicio_ != null) {
+      if (fechaInicio_ == null) {
+        FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaInicio.MergeFrom(other.FechaInicio);
+    }
+    if (other.fechaFin_ != null) {
+      if (fechaFin_ == null) {
+        FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaFin.MergeFrom(other.FechaFin);
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -1036,6 +1261,24 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
         }
         case 66: {
           urlFotos_.AddEntriesFrom(input, _repeated_urlFotos_codec);
+          break;
+        }
+        case 72: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 82: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 90: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
           break;
         }
       }
@@ -1084,6 +1327,24 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
           urlFotos_.AddEntriesFrom(ref input, _repeated_urlFotos_codec);
           break;
         }
+        case 72: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 82: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 90: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
+          break;
+        }
       }
     }
   }
@@ -1128,6 +1389,9 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
     fechaPublicacion_ = other.fechaPublicacion_;
     publicadorIdusuario_ = other.publicadorIdusuario_;
     urlFotos_ = other.urlFotos_.Clone();
+    esSubasta_ = other.esSubasta_;
+    fechaInicio_ = other.fechaInicio_ != null ? other.fechaInicio_.Clone() : null;
+    fechaFin_ = other.fechaFin_ != null ? other.fechaFin_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1223,6 +1487,39 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
     get { return urlFotos_; }
   }
 
+  /// <summary>Field number for the "esSubasta" field.</summary>
+  public const int EsSubastaFieldNumber = 9;
+  private bool esSubasta_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool EsSubasta {
+    get { return esSubasta_; }
+    set {
+      esSubasta_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_inicio" field.</summary>
+  public const int FechaInicioFieldNumber = 10;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaInicio_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaInicio {
+    get { return fechaInicio_; }
+    set {
+      fechaInicio_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_fin" field.</summary>
+  public const int FechaFinFieldNumber = 11;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaFin_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaFin {
+    get { return fechaFin_; }
+    set {
+      fechaFin_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as ProductoPost);
@@ -1244,6 +1541,9 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
     if (FechaPublicacion != other.FechaPublicacion) return false;
     if (PublicadorIdusuario != other.PublicadorIdusuario) return false;
     if(!urlFotos_.Equals(other.urlFotos_)) return false;
+    if (EsSubasta != other.EsSubasta) return false;
+    if (!object.Equals(FechaInicio, other.FechaInicio)) return false;
+    if (!object.Equals(FechaFin, other.FechaFin)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1258,6 +1558,9 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
     if (FechaPublicacion.Length != 0) hash ^= FechaPublicacion.GetHashCode();
     if (PublicadorIdusuario != 0L) hash ^= PublicadorIdusuario.GetHashCode();
     hash ^= urlFotos_.GetHashCode();
+    if (EsSubasta != false) hash ^= EsSubasta.GetHashCode();
+    if (fechaInicio_ != null) hash ^= FechaInicio.GetHashCode();
+    if (fechaFin_ != null) hash ^= FechaFin.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1303,6 +1606,18 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
       output.WriteInt64(PublicadorIdusuario);
     }
     urlFotos_.WriteTo(output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1341,6 +1656,18 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
       output.WriteInt64(PublicadorIdusuario);
     }
     urlFotos_.WriteTo(ref output, _repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsSubasta);
+    }
+    if (fechaInicio_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaFin);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -1372,6 +1699,15 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
       size += 1 + pb::CodedOutputStream.ComputeInt64Size(PublicadorIdusuario);
     }
     size += urlFotos_.CalculateSize(_repeated_urlFotos_codec);
+    if (EsSubasta != false) {
+      size += 1 + 1;
+    }
+    if (fechaInicio_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaInicio);
+    }
+    if (fechaFin_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaFin);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -1405,6 +1741,21 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
       PublicadorIdusuario = other.PublicadorIdusuario;
     }
     urlFotos_.Add(other.urlFotos_);
+    if (other.EsSubasta != false) {
+      EsSubasta = other.EsSubasta;
+    }
+    if (other.fechaInicio_ != null) {
+      if (fechaInicio_ == null) {
+        FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaInicio.MergeFrom(other.FechaInicio);
+    }
+    if (other.fechaFin_ != null) {
+      if (fechaFin_ == null) {
+        FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaFin.MergeFrom(other.FechaFin);
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -1451,6 +1802,24 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
           urlFotos_.AddEntriesFrom(input, _repeated_urlFotos_codec);
           break;
         }
+        case 72: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 82: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 90: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
+          break;
+        }
       }
     }
   #endif
@@ -1495,6 +1864,24 @@ public sealed partial class ProductoPost : pb::IMessage<ProductoPost>
         }
         case 66: {
           urlFotos_.AddEntriesFrom(ref input, _repeated_urlFotos_codec);
+          break;
+        }
+        case 72: {
+          EsSubasta = input.ReadBool();
+          break;
+        }
+        case 82: {
+          if (fechaInicio_ == null) {
+            FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaInicio);
+          break;
+        }
+        case 90: {
+          if (fechaFin_ == null) {
+            FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaFin);
           break;
         }
       }

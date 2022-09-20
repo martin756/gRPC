@@ -78,6 +78,14 @@ public static partial class Productos
       __Marshaller_Producto);
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::Nulo, global::Producto> __Method_TraerSubastas = new grpc::Method<global::Nulo, global::Producto>(
+      grpc::MethodType.ServerStreaming,
+      __ServiceName,
+      "TraerSubastas",
+      __Marshaller_Nulo,
+      __Marshaller_Producto);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::ProductoPost, global::Response> __Method_AltaProducto = new grpc::Method<global::ProductoPost, global::Response>(
       grpc::MethodType.Unary,
       __ServiceName,
@@ -119,6 +127,12 @@ public static partial class Productos
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::System.Threading.Tasks.Task TraerProductos(global::Nulo request, grpc::IServerStreamWriter<global::Producto> responseStream, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::System.Threading.Tasks.Task TraerSubastas(global::Nulo request, grpc::IServerStreamWriter<global::Producto> responseStream, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -201,6 +215,16 @@ public static partial class Productos
       return CallInvoker.AsyncServerStreamingCall(__Method_TraerProductos, null, options, request);
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncServerStreamingCall<global::Producto> TraerSubastas(global::Nulo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return TraerSubastas(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncServerStreamingCall<global::Producto> TraerSubastas(global::Nulo request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncServerStreamingCall(__Method_TraerSubastas, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::Response AltaProducto(global::ProductoPost request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return AltaProducto(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -276,6 +300,7 @@ public static partial class Productos
     return grpc::ServerServiceDefinition.CreateBuilder()
         .AddMethod(__Method_TraerProductoById, serviceImpl.TraerProductoById)
         .AddMethod(__Method_TraerProductos, serviceImpl.TraerProductos)
+        .AddMethod(__Method_TraerSubastas, serviceImpl.TraerSubastas)
         .AddMethod(__Method_AltaProducto, serviceImpl.AltaProducto)
         .AddMethod(__Method_EditarProducto, serviceImpl.EditarProducto)
         .AddMethod(__Method_ActualizarStock, serviceImpl.ActualizarStock).Build();
@@ -290,6 +315,7 @@ public static partial class Productos
   {
     serviceBinder.AddMethod(__Method_TraerProductoById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::IdProducto, global::ProductoGet>(serviceImpl.TraerProductoById));
     serviceBinder.AddMethod(__Method_TraerProductos, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Nulo, global::Producto>(serviceImpl.TraerProductos));
+    serviceBinder.AddMethod(__Method_TraerSubastas, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Nulo, global::Producto>(serviceImpl.TraerSubastas));
     serviceBinder.AddMethod(__Method_AltaProducto, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoPost, global::Response>(serviceImpl.AltaProducto));
     serviceBinder.AddMethod(__Method_EditarProducto, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoPut, global::Response>(serviceImpl.EditarProducto));
     serviceBinder.AddMethod(__Method_ActualizarStock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoStock, global::Response>(serviceImpl.ActualizarStock));
