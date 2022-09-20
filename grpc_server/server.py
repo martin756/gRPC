@@ -154,8 +154,9 @@ class ProductoUsuarios(ProductosServicer):
                     fecha_fin = timestampFin,
                     fecha_inicio = timestampPuja,
                     url_fotos = fotos)
-        else:
             return result
+        else:
+            return ProductoGet()
 
 
     def TraerProductos(self, request, context):
