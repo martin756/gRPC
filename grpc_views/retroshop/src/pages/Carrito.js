@@ -75,6 +75,7 @@ export default function Carrito(props) {
     carrito.forEach((value)=>{
       totalAPagar += value.CantidadSeleccionada*value.Precio
     })
+    const IdUsuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     let saldoDisponible = cookies.get('Saldo') === undefined ? 0 : cookies.get('Saldo')
     if (saldoDisponible < totalAPagar) {
       debugger
@@ -83,7 +84,7 @@ export default function Carrito(props) {
     }
     const jsonDataCarrito = {
       "total": totalAPagar,
-      "clienteIdusuario": 16
+      "clienteIdusuario": IdUsuario
     }
     await axios.post("https://localhost:5001/api/Carrito/PostCarrito", jsonDataCarrito).then(response=>{
       idCarrito = response.data.Id
@@ -106,9 +107,9 @@ export default function Carrito(props) {
       //putProducto.cantidad = value.CantidadDisponible
       await axios.put(baseUrl+"/Producto/UpdateStock?idProducto="+value.IdProducto+"&cantidad="+value.CantidadDisponible)
     })
-    const IdUsuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     await axios.post(baseUrl+"/Usuarios/CargarSaldo",{"idusuario": IdUsuario, "saldo_": (-totalAPagar)})
     cookies.set('Saldo',(saldoDisponible-totalAPagar))
+    await axios.put(baseUrl+"/Carrito/UpdateTotal",{"idcarrito": idCarrito, "total": totalAPagar})
     cookies.remove('Carrito')
     alert("Gracias por su compra!")
     navigate('/mainmenu')

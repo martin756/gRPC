@@ -22,21 +22,21 @@ public static partial class UsuariosReflection {
   static UsuariosReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg51c3Vhcmlvcy5wcm90byKJAQoHVXN1YXJpbxIRCglpZHVzdWFyaW8YASAB",
+          "Cg51c3Vhcmlvcy5wcm90byKcAQoHVXN1YXJpbxIRCglpZHVzdWFyaW8YASAB",
           "KAUSDgoGbm9tYnJlGAIgASgJEhAKCGFwZWxsaWRvGAMgASgJEgsKA2RuaRgE",
           "IAEoAxINCgVlbWFpbBgFIAEoCRIMCgR1c2VyGAYgASgJEhAKCHBhc3N3b3Jk",
-          "GAcgASgJEg0KBXNhbGRvGAggASgCIikKBVNhbGRvEhEKCWlkdXN1YXJpbxgB",
-          "IAEoBRINCgVzYWxkbxgCIAEoAiIuCghVc2VybmFtZRIQCgh1c2VybmFtZRgB",
-          "IAEoCRIQCghwYXNzd29yZBgCIAEoCSIuCghSZXNwb25zZRIPCgdtZXNzYWdl",
-          "GAEgASgJEhEKCWlkdXN1YXJpbxgCIAEoBSIGCgROdWxvMowBCghVc3Vhcmlv",
-          "cxIVCgVMaXN0bxIFLk51bG8aBS5OdWxvEiMKDFRyYWVyVXN1YXJpbxIJLlVz",
-          "ZXJuYW1lGgguVXN1YXJpbxIiCgtBbHRhVXN1YXJpbxIILlVzdWFyaW8aCS5S",
-          "ZXNwb25zZRIgCgtDYXJnYXJTYWxkbxIGLlNhbGRvGgkuUmVzcG9uc2ViBnBy",
-          "b3RvMw=="));
+          "GAcgASgJEg0KBXNhbGRvGAggASgCEhEKCWVzTW9uaXRvchgJIAEoCCIpCgVT",
+          "YWxkbxIRCglpZHVzdWFyaW8YASABKAUSDQoFc2FsZG8YAiABKAIiLgoIVXNl",
+          "cm5hbWUSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLgoI",
+          "UmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCRIRCglpZHVzdWFyaW8YAiABKAUi",
+          "BgoETnVsbzKMAQoIVXN1YXJpb3MSFQoFTGlzdG8SBS5OdWxvGgUuTnVsbxIj",
+          "CgxUcmFlclVzdWFyaW8SCS5Vc2VybmFtZRoILlVzdWFyaW8SIgoLQWx0YVVz",
+          "dWFyaW8SCC5Vc3VhcmlvGgkuUmVzcG9uc2USIAoLQ2FyZ2FyU2FsZG8SBi5T",
+          "YWxkbxoJLlJlc3BvbnNlYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::Usuario), global::Usuario.Parser, new[]{ "Idusuario", "Nombre", "Apellido", "Dni", "Email", "User", "Password", "Saldo" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Usuario), global::Usuario.Parser, new[]{ "Idusuario", "Nombre", "Apellido", "Dni", "Email", "User", "Password", "Saldo", "EsMonitor" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Saldo), global::Saldo.Parser, new[]{ "Idusuario", "Saldo_" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Username), global::Username.Parser, new[]{ "Username_", "Password" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Response), global::Response.Parser, new[]{ "Message", "Idusuario" }, null, null, null, null),
@@ -84,6 +84,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     user_ = other.user_;
     password_ = other.password_;
     saldo_ = other.saldo_;
+    esMonitor_ = other.esMonitor_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -180,6 +181,17 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     }
   }
 
+  /// <summary>Field number for the "esMonitor" field.</summary>
+  public const int EsMonitorFieldNumber = 9;
+  private bool esMonitor_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool EsMonitor {
+    get { return esMonitor_; }
+    set {
+      esMonitor_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Usuario);
@@ -201,6 +213,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (User != other.User) return false;
     if (Password != other.Password) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Saldo, other.Saldo)) return false;
+    if (EsMonitor != other.EsMonitor) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -215,6 +228,7 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     if (User.Length != 0) hash ^= User.GetHashCode();
     if (Password.Length != 0) hash ^= Password.GetHashCode();
     if (Saldo != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Saldo);
+    if (EsMonitor != false) hash ^= EsMonitor.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -263,6 +277,10 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
       output.WriteRawTag(69);
       output.WriteFloat(Saldo);
     }
+    if (EsMonitor != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsMonitor);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -304,6 +322,10 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
       output.WriteRawTag(69);
       output.WriteFloat(Saldo);
     }
+    if (EsMonitor != false) {
+      output.WriteRawTag(72);
+      output.WriteBool(EsMonitor);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -336,6 +358,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     }
     if (Saldo != 0F) {
       size += 1 + 4;
+    }
+    if (EsMonitor != false) {
+      size += 1 + 1;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -371,6 +396,9 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
     }
     if (other.Saldo != 0F) {
       Saldo = other.Saldo;
+    }
+    if (other.EsMonitor != false) {
+      EsMonitor = other.EsMonitor;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -418,6 +446,10 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
           Saldo = input.ReadFloat();
           break;
         }
+        case 72: {
+          EsMonitor = input.ReadBool();
+          break;
+        }
       }
     }
   #endif
@@ -462,6 +494,10 @@ public sealed partial class Usuario : pb::IMessage<Usuario>
         }
         case 69: {
           Saldo = input.ReadFloat();
+          break;
+        }
+        case 72: {
+          EsMonitor = input.ReadBool();
           break;
         }
       }

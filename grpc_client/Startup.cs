@@ -1,3 +1,4 @@
+using Confluent.Kafka;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,16 @@ namespace apiRetroshop
                                   }
                 );
             });
+            var producerConfig = new ProducerConfig() { BootstrapServers = "localhost:9092" };
+            var consumerConfig = new ConsumerConfig() 
+            { 
+                BootstrapServers = "localhost:9092",
+                EnableAutoCommit = false,
+                AutoOffsetReset = 0,
+                EnablePartitionEof = true
+            };
+            services.AddSingleton(producerConfig);
+            services.AddSingleton(consumerConfig);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

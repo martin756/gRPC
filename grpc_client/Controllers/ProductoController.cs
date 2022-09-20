@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Confluent.Kafka;
 
 namespace apiRetroshop.Controllers
 {
@@ -14,6 +15,14 @@ namespace apiRetroshop.Controllers
     [ApiController]
     public class ProductoController : ControllerBase
     {
+        private readonly ProducerConfig _configProducer;
+        private readonly ConsumerConfig _configConsumer;
+        public ProductoController(ProducerConfig config, ConsumerConfig configConsumer)
+        {
+            _configProducer = config;
+            _configConsumer = configConsumer;
+        }
+
         [HttpGet]
         [Route("GetProductoById")]
         public string GetProductoById(int id)
@@ -59,12 +68,10 @@ namespace apiRetroshop.Controllers
 
                 List<Producto> productos = new();
                 using (var call = cliente.TraerProductos(new Nulo()))
+                while (await call.ResponseStream.MoveNext())
                 {
-                    while (await call.ResponseStream.MoveNext())
-                    {
-                        var currentProduct = call.ResponseStream.Current;
-                        productos.Add(currentProduct);
-                    }
+                    var currentProduct = call.ResponseStream.Current;
+                    productos.Add(currentProduct);
                 }
                 response = JsonConvert.SerializeObject(productos);
             }
@@ -76,8 +83,69 @@ namespace apiRetroshop.Controllers
             return response;
         }
 
+        [HttpGet]
+        [Route("GetCambiosProductosKafka")]
+        public string GetKafkaCambios(int idProducto)
+        {
+            List<AuditoriaProducto> changesList = new();
+            try
+            {
+                _configConsumer.GroupId = "cambios-productos";
+                using var consumer = new ConsumerBuilder<string, string>(_configConsumer).Build();
+                consumer.Subscribe("producto" + idProducto);
+                //ConsumeResult<string,string> cr;
+                var topicPartition = new TopicPartition("producto" + idProducto, new Partition(0));
+                consumer.Assign(new TopicPartitionOffset
+                    (topicPartition, 0));
+                var mensaje = "";
+                do
+                {
+                    var cr = consumer.Consume();
+                    mensaje = cr.Message?.Value;
+                    if (mensaje != null)
+                    {
+                        changesList.Add(JsonConvert.DeserializeObject<AuditoriaProducto>(mensaje));
+                    }
+                } while (mensaje != null);
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
+            }
+            return JsonConvert.SerializeObject(changesList);
+        }
+
+        [HttpGet]
+        [Route("GetSubastas")]
+        public async Task<string> GetSubastasAsync()
+        {
+            string response;
+            try
+            {
+                AppContext.SetSwitch(
+                    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+                var channel = GrpcChannel.ForAddress("http://localhost:50051");
+                var cliente = new Productos.ProductosClient(channel);
+
+                List<Producto> subastas = new();
+                using var call = cliente.TraerSubastas(new Nulo());
+                while (await call.ResponseStream.MoveNext())
+                {
+                    var currentSubasta = call.ResponseStream.Current;
+                    subastas.Add(currentSubasta);
+                }
+                response = JsonConvert.SerializeObject(subastas);
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
+            }
+
+            return response;
+        }
+
         [HttpPost]
-        public string PostProducto(ClasePostProducto producto)
+        public async Task<string> PostProductoAsync(ClasePostProducto producto)
         {
             string response;
             try
@@ -95,7 +163,10 @@ namespace apiRetroshop.Controllers
                     Precio = producto.precio,
                     CantidadDisponible = producto.cantidad_disponible,
                     FechaPublicacion = producto.fecha_publicacion,
-                    PublicadorIdusuario = producto.publicador_idusuario
+                    PublicadorIdusuario = producto.publicador_idusuario,
+                    EsSubasta = producto.esSubasta,
+                    FechaInicio = producto.fecha_inicio,
+                    FechaFin = producto.fecha_fin
                 };
                 foreach (var stringUrl in producto.url_fotos)
                 {
@@ -104,6 +175,20 @@ namespace apiRetroshop.Controllers
 
                 var productoResponse = cliente.AltaProducto(postProducto);
                 response = JsonConvert.SerializeObject(productoResponse);
+
+                //Envio a un topic de Kafka para un Producto nuevo
+                AuditoriaProducto audit = new();
+                audit.fecha_edicion = DateTime.Now;
+                audit.accion = "alta";
+                audit.camposCambiados.Add(new AuditoriaProducto.CambiosEnCampos
+                { campo_registrado = "nombre", nuevo_valor = postProducto.Nombre });
+                audit.camposCambiados.Add(new AuditoriaProducto.CambiosEnCampos 
+                { campo_registrado = "precio", nuevo_valor = postProducto.Precio.ToString() });
+
+                using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
+                await producer.ProduceAsync("producto" + productoResponse.Idusuario, new Message<string, string>
+                { Key = audit.accion, Value = JsonConvert.SerializeObject(audit) });
+                producer.Flush(TimeSpan.FromSeconds(10));
             }
             catch (Exception e)
             {
@@ -115,7 +200,7 @@ namespace apiRetroshop.Controllers
 
         [HttpPut]
         [Route("PutProducto")]
-        public string PutProducto(ClasePutProducto producto)
+        public async Task<string> PutProductoAsync(ClasePutProducto producto)
         {
             string response;
             try
@@ -125,7 +210,7 @@ namespace apiRetroshop.Controllers
                 var channel = GrpcChannel.ForAddress("http://localhost:50051");
                 var cliente = new Productos.ProductosClient(channel);
 
-                var postProducto = new ProductoPut
+                var putProducto = new ProductoPut
                 {
                     Idproducto = producto.idproducto,
                     Nombre = producto.nombre,
@@ -136,11 +221,33 @@ namespace apiRetroshop.Controllers
                 };
                 foreach (var stringUrl in producto.url_fotos)
                 {
-                    postProducto.UrlFotos.Add(stringUrl);
+                    putProducto.UrlFotos.Add(stringUrl);
                 }
-
-                var productoResponse = cliente.EditarProducto(postProducto);
+                var valores_originales = cliente.TraerProductoById(new IdProducto { Idproducto = producto.idproducto });
+                var productoResponse = cliente.EditarProducto(putProducto);
                 response = JsonConvert.SerializeObject(productoResponse);
+
+                //Envio al topic de producto de Kafka
+                if (valores_originales.Nombre != putProducto.Nombre || valores_originales.Precio != putProducto.Precio)
+                {
+                    AuditoriaProducto audit = new();
+                    audit.fecha_edicion = DateTime.Now;
+                    audit.accion = "modificacion";
+                    if (valores_originales.Nombre != putProducto.Nombre)
+                    {
+                        audit.camposCambiados.Add(new AuditoriaProducto.CambiosEnCampos 
+                        { campo_registrado = "nombre", nuevo_valor = putProducto.Nombre });
+                    }
+                    if (valores_originales.Precio != putProducto.Precio)
+                    {
+                        audit.camposCambiados.Add(new AuditoriaProducto.CambiosEnCampos 
+                        { campo_registrado = "precio", nuevo_valor = putProducto.Precio.ToString() });
+                    }
+                    using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
+                    await producer.ProduceAsync("producto"+producto.idproducto, new Message<string, string> 
+                    { Key = audit.accion, Value = JsonConvert.SerializeObject(audit) });
+                    producer.Flush(TimeSpan.FromSeconds(10));
+                }
             }
             catch (Exception e)
             {

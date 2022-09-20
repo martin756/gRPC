@@ -45,18 +45,22 @@ function MyShopping() {
   return (
     <div>
         <Header />
-        <div className="row g-5 justify-content-center" style={{padding: '30px'}}>
+        <div className="d-flex g-5 justify-content-center" style={{padding: '30px'}}>
             <div className="col-md-5 col-lg-4 order-md-last">
                 <h4 className="d-flex justify-content-between align-items-center mb-3">
                 <span className="text-primary">Tus Compras</span>
                 </h4>
                 <ul className="list-group mb-3">
-                    <div className="row">
-                    {carritos.length > 0 ? carritos.map((value=>(
-                        value.map((carrito=>(
+                    <div>
+                    {carritos.map((value=>(
+                        <div className="row list-group mb-3"><h4>Ticket nro. {value[0].Idcarrito}</h4>
+                        {value.map((carrito=>(
                             <CheckoutCarrito nombre={carrito.Nombre} cantidad={carrito.Cantidad} precio={carrito.Precio} total={carrito.Total}/>
-                        )))
-                    ))): "Todavia no has hecho ninguna compra"}
+                        )))}
+                        <h4>Total ${value[0].Total}</h4>
+                        <hr />
+                        </div>
+                    )))}
                     <br></br>
                     </div>
                     <br></br>

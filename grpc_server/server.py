@@ -49,7 +49,8 @@ class ServicioUsuarios(UsuariosServicer):
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
-            return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo, esMonitor= bool(row.esMonitor) )
+            return Usuario(idusuario = row.idusuario, nombre = row.nombre, apellido = row.apellido, dni = row.dni, 
+            email = row.email, user = row.usuario, password = row.contraseña, saldo = row.saldo, esMonitor= bool(row.esmonitor) )
         else:
             return Usuario()
 
@@ -58,7 +59,7 @@ class ServicioUsuarios(UsuariosServicer):
         cnx =mysql.connector.connect(user='root', password='root',
                              host='localhost', port='3306',
                              database='retroshop')
-        cursor = cnx.cursor()
+        cursor = cnx.cursor(named_tuple=True)
         query = (f"SELECT * FROM usuario WHERE idusuario = '{request.idusuario}'")
         
         cursor.execute(query)
@@ -66,9 +67,9 @@ class ServicioUsuarios(UsuariosServicer):
         if row is None:
             return Response(message = "404 Not-Found. El usuario con ese id no existe")
         else:
-            query = (f"UPDATE usuario SET `saldo` ='{row[7] + request.saldo}' where idusuario = '{request.idusuario}' ")
+            query = (f"UPDATE usuario SET `saldo` ='{row.saldo + request.saldo}' where idusuario = '{request.idusuario}' ")
             cursor.execute(query)
-            resp = Response(message = f"Saldo total:'{row[7] + request.saldo}'", idusuario =  cursor.lastrowid)
+            resp = Response(message = f"Saldo total:'{row.saldo + request.saldo}'", idusuario = request.idusuario)
             cnx.commit()
             cursor.close()
             cnx.close()
@@ -106,7 +107,9 @@ class ProductoUsuarios(ProductosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria inner join usuario u on p.publicador_idusuario = u.idusuario where idproducto= '{request.idproducto}'")
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p "+
+        "inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "+
+        f"inner join usuario u on p.publicador_idusuario = u.idusuario where idproducto= '{request.idproducto}'")
         cursor.execute(query)
         row = cursor.fetchone()
         if row is not None:
@@ -154,6 +157,7 @@ class ProductoUsuarios(ProductosServicer):
                     fecha_fin = timestampFin,
                     fecha_inicio = timestampPuja,
                     url_fotos = fotos)
+
             return result
         else:
             return ProductoGet()
@@ -164,7 +168,9 @@ class ProductoUsuarios(ProductosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria inner join usuario u on p.publicador_idusuario = u.idusuario where p.esSubasta = 0")
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p "+
+        "inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "+
+        "inner join usuario u on p.publicador_idusuario = u.idusuario where p.esSubasta = 0")
         cursor.execute(query)
         records = cursor.fetchall()
         for row in records:
@@ -179,7 +185,7 @@ class ProductoUsuarios(ProductosServicer):
                 fotos.append(row.url_foto4)
             if row.url_foto5 is not None:
                 fotos.append(row.url_foto5)
-            yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion, 
+            yield Producto(idproducto = row.idproducto, nombre = row.nombre, descripcion = row.descripcion,
             idtipocategoria = row.idtipocategoria, precio = row.precio, cantidad_disponible = row.cantidad_disponible, 
             fecha_publicacion = row.fecha_publicacion, publicador_idusuario = row.publicador_idusuario, url_fotos = fotos)
 
@@ -253,10 +259,9 @@ class ProductoUsuarios(ProductosServicer):
         id_item = cursor.lastrowid
         
         #aniadir valores a tabla de subasta
-
         if(int(request.esSubasta)==1):
-            fechaInicio = self.getFechaFromTimeStamp(request.fecha_inicio)
-            fechaFin = self.getFechaFromTimeStamp(request.fecha_fin)
+            fechaInicio = datetime.fromtimestamp(request.fecha_inicio.seconds)#self.getFechaFromTimeStamp(request.fecha_inicio.seconds)
+            fechaFin = datetime.fromtimestamp(request.fecha_fin.seconds)#self.getFechaFromTimeStamp(request.fecha_fin.seconds)
             sql = "INSERT INTO subasta(idproducto, preciofinal, fechainicio, fechafin, ultimapuja ) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')"
 
             cursor.execute(sql.format(id_item, request.precio, fechaInicio, fechaFin, fechaInicio))
@@ -264,9 +269,9 @@ class ProductoUsuarios(ProductosServicer):
 
         cursor.close()
         cnx.close()
-        return Response()
+        return Response(idusuario = id_item, message = "204 No-Content. Producto cargado exitosamente.")
 
-    def getFechaFromTimeStamp(self, fecha):
+    """def getFechaFromTimeStamp(self, fecha):
         if len(fecha) == 0:
             print("fecha vacia")
             return None
@@ -275,6 +280,7 @@ class ProductoUsuarios(ProductosServicer):
         a = int(num)
         a = a/1000
         return datetime.fromtimestamp(a)
+        return datetime.fromtimestamp(fecha)"""
 
 
     def ActualizarStock(self, request, context):

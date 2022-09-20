@@ -14,6 +14,7 @@ function Login() {
     const navigate = useNavigate()
 
     const iniciarSesion=async(event)=>{
+        debugger
         event.preventDefault()
         await axios.get(baseUrl+`/?username=${username.current.value}&password=${password.current.value}`)
         .then(response=>{
@@ -27,9 +28,10 @@ function Login() {
                 cookies.set('Email',response.Email)
                 cookies.set('User',response.User)
                 cookies.set('Password',response.Password)
+                cookies.set('EsMonitor',response.EsMonitor)
                 cookies.set('Saldo',response.Saldo)
                 alert("Bienvenido "+response.Nombre)
-                navigate('/mainmenu')
+                response.EsMonitor ? navigate('/admin') : navigate('/mainmenu')
             }else{
                 alert("El usuario o la contraseña no son correctos")
             }
@@ -37,7 +39,7 @@ function Login() {
         .catch(error=>{
             alert(error)
         })
-        navigate('/mainmenu')
+        //navigate('/mainmenu')
     }
 
     const Registrarse=()=>{
@@ -45,8 +47,10 @@ function Login() {
     }
 
     useEffect(()=>{
-        if(cookies.get('User')){
+        if(cookies.get('User') && !JSON.parse(cookies.get('EsMonitor'))){
             navigate('/mainmenu')
+        }else if(cookies.get('User') && JSON.parse(cookies.get('EsMonitor'))){
+            navigate('/admin')
         }
     },[])
 

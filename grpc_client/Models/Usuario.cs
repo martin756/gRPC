@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace apiRetroshop.Models
 {
-    public class Usuario
+    /*public class Usuario
     {
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -14,5 +14,5 @@ namespace apiRetroshop.Models
         public string username { get; set; }
         public string password { get; set; }
         public float saldo { get; set; }
-    }
+    }*/
 }

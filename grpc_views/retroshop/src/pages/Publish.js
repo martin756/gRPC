@@ -13,6 +13,8 @@ function Publish(props) {
     const precio = useRef(null)
     const stock = useRef(null)
     const fechaFabricacion = useRef(null)
+    const fechaFinalizacionSubasta = useRef(null)
+    const esSubasta = useRef(null)
     const tipoCategoria = useRef(null)
     const imagen1 = useRef(null), imagen2 = useRef(null)
     const imagen3 = useRef(null), imagen4 = useRef(null), imagen5 = useRef(null)
@@ -20,6 +22,7 @@ function Publish(props) {
     const [inputs, setInputsState] = useState([])
     const cookies = new Cookies()
     const idusuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
+    const [isChecked, setIsChecked] = useState(false);
 
     const publicar=async(event)=>{
         event.preventDefault()
@@ -33,7 +36,12 @@ function Publish(props) {
             "cantidad_disponible": parseInt(stock.current.value),
             "fecha_publicacion": fechaFabricacion.current.value,
             "publicador_idusuario": parseInt(idusuario),
-            "url_fotos": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value]
+            "url_fotos": [imagen1.current.value, imagen2.current.value, imagen3.current.value, imagen4.current.value, imagen5.current.value],
+            "esSubasta": isChecked
+        }
+        if(isChecked){
+            jsonBody["fecha_inicio"] = {"seconds": Math.floor(Date.now()/1000), "nanos": 0}
+            jsonBody["fecha_fin"] = {"seconds": Math.floor(new Date(fechaFinalizacionSubasta.current.value).getTime()/1000), "nanos": 0}
         }
         debugger
         await axios.post(baseUrl, jsonBody)
@@ -49,7 +57,6 @@ function Publish(props) {
         .catch((error)=>{
             alert(error)
         })
-
     }
 
     useEffect(() => {
@@ -62,24 +69,9 @@ function Publish(props) {
         }
       }, []);
 
-      /*const addDynamicInput = () => {
-        if (inputs.length <= 3) {
-            imagen.current.push()
-            let arr = [...inputs]
-            arr.push(inputs.length)
-            setInputsState(arr)
-        }
-      }
-
-      const removeDynamicInput = (index) => {
-        debugger
-        let r = imagen.current;
-        if (inputs.length > 0) {
-            let arr = [...inputs]
-            arr.splice(index,1)
-            setInputsState(arr)
-        }
-      }*/
+      const handleOnChange = () => {
+        setIsChecked(!isChecked);
+      };
 
     return (
         <div>
@@ -151,46 +143,26 @@ function Publish(props) {
                             <div className="invalid-feedback"></div>
                         </div>
                     </div>
+                    <div>
+                        <div className="form-check mb-3">
+                            <input type="checkbox" className="form-check-input" checked={isChecked} onChange={handleOnChange}/> 
+                            <label className="form-check-label" >¿Es subasta?</label>
+                        </div>
+                        <div>
+                            <div className="col-12">
+                                <label className="form-label">Fecha de finalizacion de la subasta</label>
+                                <input ref={fechaFinalizacionSubasta} type="datetime-local" className='form-control' name="text" min={new Date().toISOString().slice(0, -8)} max="2025-01-01" disabled={!isChecked} required/>
+                                <div className="invalid-feedback">Ingrese la fecha de finalización de la subasta!</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <hr className="my-4" />
                 <button className="w-100 btn btn-primary btn-lg" type="submit">Publicar</button>
                 </form>
             </div>
-        </div>
-    </div>
-        {/*<div className='containerPrincipal'>
-            <div className='containerTitulo'>
-                Publicar un nuevo producto</div>
-            <div className='containerHome'>
-                <form onSubmit={event => publicar(event)} className='form-group'>
-                    <label>Nombre: </label>
-                    <br />
-                    <input ref={nombre} type="text" className='form-control' name='nombre' required/>
-                    <br />
-                    <label>Descripción: </label>
-                    <br />
-                    <input ref={descripcion} type='text' className='form-control' name='descripcion'/>
-                    <br />
-                    <label>Precio unitario: </label>
-                    <br />
-                    <input ref={precio} type="number" className='form-control' name='precio' required/>
-                    <br />
-                    <label>Cantidad de stock: </label>
-                    <br />
-                    <input ref={stock} type="number" className='form-control' name='stock' required/>
-                    <br />
-                    <label>Fecha de fabricación: </label>
-                    <br />
-                    <input ref={fechaFabricacion} type="text" className='form-control' name='fechaFabricacion' required/>
-                    <br />
-                    <label>URL de imagen: </label>
-                    <br />
-                    <input ref={imagen} type="text" className='form-control' name='imagen' required/>
-                    <br />
-                    <button type="submit" className='btn btn-primary'>Publicar</button>
-                </form>
             </div>
-    </div>*/}
+        </div>
         </div>
     );
 }

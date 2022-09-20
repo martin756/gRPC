@@ -21,7 +21,7 @@ USE `retroshop` ;
 -- -----------------------------------------------------
 -- Table `retroshop`.`usuario`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `retroshop`.`usuario` ;
+DROP TABLE IF EXISTS `retroshop`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
@@ -132,7 +132,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `retroshop`.`producto`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `retroshop`.`producto` ;
+DROP TABLE IF EXISTS `retroshop`.`producto` ;
 
 CREATE TABLE IF NOT EXISTS `retroshop`.`producto` (
   `idproducto` INT NOT NULL AUTO_INCREMENT,
