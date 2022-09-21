@@ -92,19 +92,23 @@ namespace apiRetroshop.Controllers
             {
                 _configConsumer.GroupId = "cambios-productos";
                 using var consumer = new ConsumerBuilder<string, string>(_configConsumer).Build();
-                consumer.Subscribe("producto" + idProducto);
-                //ConsumeResult<string,string> cr;
-                var topicPartition = new TopicPartition("producto" + idProducto, new Partition(0));
+                //consumer.Subscribe("producto" + idProducto);
+                consumer.Subscribe("TopicProductos");
+                //var topicPartition = new TopicPartition("producto" + idProducto, new Partition(0));
+                var topicPartition = new TopicPartition("TopicProductos", new Partition(0));
                 consumer.Assign(new TopicPartitionOffset
                     (topicPartition, 0));
-                var mensaje = "";
+                Message<string, string> mensaje;
                 do
                 {
                     var cr = consumer.Consume();
-                    mensaje = cr.Message?.Value;
+                    mensaje = cr.Message;
                     if (mensaje != null)
                     {
-                        changesList.Add(JsonConvert.DeserializeObject<AuditoriaProducto>(mensaje));
+                        if (mensaje.Key.Contains("productoid_"+idProducto))
+                        {
+                            changesList.Add(JsonConvert.DeserializeObject<AuditoriaProducto>(mensaje.Value));
+                        }
                     }
                 } while (mensaje != null);
             }
@@ -141,6 +145,34 @@ namespace apiRetroshop.Controllers
                 return e.Message + e.StackTrace;
             }
 
+            return response;
+        }
+
+        [HttpPost]
+        [Route("PostPujaSubastaKafka")]
+        public async Task<string> PostPujaAsync(UltimaPujaSubasta puja)
+        {
+            string response;
+            try
+            {
+                AppContext.SetSwitch(
+                    "System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+                var channel = GrpcChannel.ForAddress("http://localhost:50051");
+                var cliente = new Productos.ProductosClient(channel);
+
+                var productoResponse = cliente.pujarUltimaOferta(puja);
+                response = JsonConvert.SerializeObject(productoResponse);
+
+
+                using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
+                await producer.ProduceAsync("TopicSubasta", new Message<string, string>
+                { Key = "SubastaProducto_"+puja.IdProducto, Value = JsonConvert.SerializeObject(puja) });
+                producer.Flush(TimeSpan.FromSeconds(10));
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
+            }
             return response;
         }
 
@@ -186,8 +218,8 @@ namespace apiRetroshop.Controllers
                 { campo_registrado = "precio", nuevo_valor = postProducto.Precio.ToString() });
 
                 using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
-                await producer.ProduceAsync("producto" + productoResponse.Idusuario, new Message<string, string>
-                { Key = audit.accion, Value = JsonConvert.SerializeObject(audit) });
+                await producer.ProduceAsync("TopicProductos", new Message<string, string>
+                { Key = "productoid_" + productoResponse.Idusuario, Value = JsonConvert.SerializeObject(audit) });
                 producer.Flush(TimeSpan.FromSeconds(10));
             }
             catch (Exception e)
@@ -244,8 +276,8 @@ namespace apiRetroshop.Controllers
                         { campo_registrado = "precio", nuevo_valor = putProducto.Precio.ToString() });
                     }
                     using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
-                    await producer.ProduceAsync("producto"+producto.idproducto, new Message<string, string> 
-                    { Key = audit.accion, Value = JsonConvert.SerializeObject(audit) });
+                    await producer.ProduceAsync("TopicProductos", new Message<string, string> 
+                    { Key = "productoid_" + putProducto.Idproducto, Value = JsonConvert.SerializeObject(audit) });
                     producer.Flush(TimeSpan.FromSeconds(10));
                 }
             }

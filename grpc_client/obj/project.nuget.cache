@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Faf5WubYoX2gK5buyH+pR0Kdi83mGwkXY1AxcO2JKlSZPC1dk+xT1KUmiFBP3qetiSzOnS0x7Pro2XhWSbqQEg==",
+  "dgSpecHash": "YevSULdOQI8RCmzWdlR3FODC7oejWoIS22qRqZ7CGbMRV3Na9Z9bO8psj4M3grRzJ3HHkraQodOfVxEysfDCkg==",
   "success": true,
   "projectFilePath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\magostino\\.nuget\\packages\\confluent.kafka\\1.5.0\\confluent.kafka.1.5.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\confluent.kafka\\1.9.0\\confluent.kafka.1.9.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\google.api.commonprotos\\2.3.0\\google.api.commonprotos.2.3.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\grpc.core\\2.39.1\\grpc.core.2.39.1.nupkg.sha512",
@@ -12,7 +12,7 @@
     "C:\\Users\\magostino\\.nuget\\packages\\grpc.net.client\\2.39.0\\grpc.net.client.2.39.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\grpc.net.common\\2.39.0\\grpc.net.common.2.39.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\grpc.tools\\2.39.1\\grpc.tools.2.39.1.nupkg.sha512",
-    "C:\\Users\\magostino\\.nuget\\packages\\librdkafka.redist\\1.5.0\\librdkafka.redist.1.5.0.nupkg.sha512",
+    "C:\\Users\\magostino\\.nuget\\packages\\librdkafka.redist\\1.9.0\\librdkafka.redist.1.9.0.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\mases.cliparser\\3.1.2\\mases.cliparser.3.1.2.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\mases.jcobridge\\2.4.14\\mases.jcobridge.2.4.14.nupkg.sha512",
     "C:\\Users\\magostino\\.nuget\\packages\\mases.jnet\\1.4.6\\mases.jnet.1.4.6.nupkg.sha512",

@@ -16,7 +16,7 @@ import usuarios_pb2 as usuarios__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc9\x02\n\x08Producto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x05\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x07 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x08 \x01(\x05\x12\x11\n\turl_fotos\x18\t \x03(\t\x12\x11\n\tesSubasta\x18\n \x01(\x08\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"-\n\rProductosList\x12\x1c\n\tproductos\x18\x01 \x03(\x0b\x32\t.Producto\"\xa8\x02\n\x0bProductoGet\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x11\n\tcategoria\x18\x03 \x01(\t\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x12\n\npublicador\x18\x07 \x01(\t\x12\x11\n\turl_fotos\x18\x08 \x03(\t\x12\x11\n\tesSubasta\x18\t \x01(\x08\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb9\x02\n\x0cProductoPost\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x03 \x01(\x03\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x07 \x01(\x03\x12\x11\n\turl_fotos\x18\x08 \x03(\t\x12\x11\n\tesSubasta\x18\t \x01(\x08\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9f\x01\n\x0bProductoPut\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x03\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x11\n\turl_fotos\x18\x07 \x03(\t\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t\" \n\nIdProducto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\"\x1e\n\tIdUsuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\"5\n\rProductoStock\x12\x12\n\nidProducto\x18\x01 \x01(\x05\x12\x10\n\x08\x63\x61ntidad\x18\x02 \x01(\x05\x32\x89\x02\n\tProductos\x12.\n\x11TraerProductoById\x12\x0b.IdProducto\x1a\x0c.ProductoGet\x12$\n\x0eTraerProductos\x12\x05.Nulo\x1a\t.Producto0\x01\x12#\n\rTraerSubastas\x12\x05.Nulo\x1a\t.Producto0\x01\x12(\n\x0c\x41ltaProducto\x12\r.ProductoPost\x1a\t.Response\x12)\n\x0e\x45\x64itarProducto\x12\x0c.ProductoPut\x1a\t.Response\x12,\n\x0f\x41\x63tualizarStock\x12\x0e.ProductoStock\x1a\t.Responseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fproductos.proto\x1a\x0eusuarios.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc9\x02\n\x08Producto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x05\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x07 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x08 \x01(\x05\x12\x11\n\turl_fotos\x18\t \x03(\t\x12\x11\n\tesSubasta\x18\n \x01(\x08\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"-\n\rProductosList\x12\x1c\n\tproductos\x18\x01 \x03(\x0b\x32\t.Producto\"\xf5\x02\n\x0bProductoGet\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x11\n\tcategoria\x18\x03 \x01(\t\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x14\n\x0cprecio_final\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x07 \x01(\t\x12\x12\n\npublicador\x18\x08 \x01(\t\x12\x11\n\turl_fotos\x18\t \x03(\t\x12\x11\n\tesSubasta\x18\n \x01(\x08\x12\x35\n\x11\x66\x65\x63ha_ultima_puja\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\r \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb9\x02\n\x0cProductoPost\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x02 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x03 \x01(\x03\x12\x0e\n\x06precio\x18\x04 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x05 \x01(\x03\x12\x19\n\x11\x66\x65\x63ha_publicacion\x18\x06 \x01(\t\x12\x1c\n\x14publicador_idusuario\x18\x07 \x01(\x03\x12\x11\n\turl_fotos\x18\x08 \x03(\t\x12\x11\n\tesSubasta\x18\t \x01(\x08\x12\x30\n\x0c\x66\x65\x63ha_inicio\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tfecha_fin\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9f\x01\n\x0bProductoPut\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scripcion\x18\x03 \x01(\t\x12\x17\n\x0fidtipocategoria\x18\x04 \x01(\x03\x12\x0e\n\x06precio\x18\x05 \x01(\x02\x12\x1b\n\x13\x63\x61ntidad_disponible\x18\x06 \x01(\x03\x12\x11\n\turl_fotos\x18\x07 \x03(\t\" \n\x0eTipo_categoria\x12\x0e\n\x06nombre\x18\x01 \x01(\t\" \n\nIdProducto\x12\x12\n\nidproducto\x18\x01 \x01(\x05\"\x1e\n\tIdUsuario\x12\x11\n\tidusuario\x18\x01 \x01(\x05\"5\n\rProductoStock\x12\x12\n\nidProducto\x18\x01 \x01(\x05\x12\x10\n\x08\x63\x61ntidad\x18\x02 \x01(\x05\"S\n\x11UltimaPujaSubasta\x12\x11\n\tidPujador\x18\x01 \x01(\x05\x12\x17\n\x0fprecio_ofrecido\x18\x02 \x01(\x02\x12\x12\n\nidProducto\x18\x03 \x01(\x05\x32\xbd\x02\n\tProductos\x12.\n\x11TraerProductoById\x12\x0b.IdProducto\x1a\x0c.ProductoGet\x12$\n\x0eTraerProductos\x12\x05.Nulo\x1a\t.Producto0\x01\x12#\n\rTraerSubastas\x12\x05.Nulo\x1a\t.Producto0\x01\x12(\n\x0c\x41ltaProducto\x12\r.ProductoPost\x1a\t.Response\x12)\n\x0e\x45\x64itarProducto\x12\x0c.ProductoPut\x1a\t.Response\x12,\n\x0f\x41\x63tualizarStock\x12\x0e.ProductoStock\x1a\t.Response\x12\x32\n\x11pujarUltimaOferta\x12\x12.UltimaPujaSubasta\x1a\t.Responseb\x06proto3')
 
 
 
@@ -29,6 +29,7 @@ _TIPO_CATEGORIA = DESCRIPTOR.message_types_by_name['Tipo_categoria']
 _IDPRODUCTO = DESCRIPTOR.message_types_by_name['IdProducto']
 _IDUSUARIO = DESCRIPTOR.message_types_by_name['IdUsuario']
 _PRODUCTOSTOCK = DESCRIPTOR.message_types_by_name['ProductoStock']
+_ULTIMAPUJASUBASTA = DESCRIPTOR.message_types_by_name['UltimaPujaSubasta']
 Producto = _reflection.GeneratedProtocolMessageType('Producto', (_message.Message,), {
   'DESCRIPTOR' : _PRODUCTO,
   '__module__' : 'productos_pb2'
@@ -92,6 +93,13 @@ ProductoStock = _reflection.GeneratedProtocolMessageType('ProductoStock', (_mess
   })
 _sym_db.RegisterMessage(ProductoStock)
 
+UltimaPujaSubasta = _reflection.GeneratedProtocolMessageType('UltimaPujaSubasta', (_message.Message,), {
+  'DESCRIPTOR' : _ULTIMAPUJASUBASTA,
+  '__module__' : 'productos_pb2'
+  # @@protoc_insertion_point(class_scope:UltimaPujaSubasta)
+  })
+_sym_db.RegisterMessage(UltimaPujaSubasta)
+
 _PRODUCTOS = DESCRIPTOR.services_by_name['Productos']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -101,19 +109,21 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _PRODUCTOSLIST._serialized_start=400
   _PRODUCTOSLIST._serialized_end=445
   _PRODUCTOGET._serialized_start=448
-  _PRODUCTOGET._serialized_end=744
-  _PRODUCTOPOST._serialized_start=747
-  _PRODUCTOPOST._serialized_end=1060
-  _PRODUCTOPUT._serialized_start=1063
-  _PRODUCTOPUT._serialized_end=1222
-  _TIPO_CATEGORIA._serialized_start=1224
-  _TIPO_CATEGORIA._serialized_end=1256
-  _IDPRODUCTO._serialized_start=1258
-  _IDPRODUCTO._serialized_end=1290
-  _IDUSUARIO._serialized_start=1292
-  _IDUSUARIO._serialized_end=1322
-  _PRODUCTOSTOCK._serialized_start=1324
-  _PRODUCTOSTOCK._serialized_end=1377
-  _PRODUCTOS._serialized_start=1380
-  _PRODUCTOS._serialized_end=1645
+  _PRODUCTOGET._serialized_end=821
+  _PRODUCTOPOST._serialized_start=824
+  _PRODUCTOPOST._serialized_end=1137
+  _PRODUCTOPUT._serialized_start=1140
+  _PRODUCTOPUT._serialized_end=1299
+  _TIPO_CATEGORIA._serialized_start=1301
+  _TIPO_CATEGORIA._serialized_end=1333
+  _IDPRODUCTO._serialized_start=1335
+  _IDPRODUCTO._serialized_end=1367
+  _IDUSUARIO._serialized_start=1369
+  _IDUSUARIO._serialized_end=1399
+  _PRODUCTOSTOCK._serialized_start=1401
+  _PRODUCTOSTOCK._serialized_end=1454
+  _ULTIMAPUJASUBASTA._serialized_start=1456
+  _ULTIMAPUJASUBASTA._serialized_end=1539
+  _PRODUCTOS._serialized_start=1542
+  _PRODUCTOS._serialized_end=1859
 # @@protoc_insertion_point(module_scope)

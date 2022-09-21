@@ -26,7 +26,7 @@ class ActualizaSubastas():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sql = "update subasta set pujador_idusuario = '{0}', preciofinal = '{1}' , ultimapuja = now() where idsubasta = '{2}' "
+                sql = "update subasta set pujador_idusuario = '{0}', preciofinal = '{1}' , ultimapuja = now() where idproducto = '{2}' "
                 cursor.execute(sql.format(pujador, precio, id))
                 self.conexion.commit()
             except Error as ex:
@@ -40,8 +40,7 @@ if __name__ == "__main__":
 
     consumer = KafkaConsumer("TopicSubasta",
                             bootstrap_servers='127.0.0.1:9092',
-                            auto_offset_reset='latest', 
-                            group_id="consumer-group-a")
+                            group_id="consumer-group-subastas")
 
 
     print("empezando a consumir")
@@ -49,7 +48,7 @@ if __name__ == "__main__":
     for msg in consumer:
         try:
             subasta = json.loads(msg.value)
-            bdSubasta.actualizarSubasta(subasta['id'], subasta['pujador'], subasta['precio'])
+            bdSubasta.actualizarSubasta(subasta['idProducto'], subasta['idPujador'], subasta['precio_ofrecido'])
         except:
             print("Error")
 

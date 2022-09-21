@@ -15,6 +15,7 @@ function Subasta() {
     const cookies = new Cookies()
 
     const precio = useRef(null)
+    const [statePrecio, setPrecio] = useState(0)
     const [producto, setProducto] = useState([])
     const [stringsUrlsFotos, setArrayUrlsStrings] = useState([])
 
@@ -22,18 +23,37 @@ function Subasta() {
     let query = React.useMemo(() => new URLSearchParams(search), [search]);
 
     const idProduct = query.get('id')
-    const baseUrl = "https://localhost:5001/api/Producto/GetProductoById"
+    const baseUrl = "https://localhost:5001/api/Producto/"
 
-    const pujar = (event) => {
+    const pujar = async (event) => {
         event.preventDefault()
-        //implementacion endpoint de actualizacion de la ultima puja precio en subasta
+        debugger
+        const jsonBody = {
+            idPujador: parseInt(cookies.get('Idusuario')),
+            precioOfrecido: parseFloat(precio.current.value),
+            idProducto: parseInt(idProduct)
+        }
+        await axios.post(baseUrl+"PostPujaSubastaKafka",jsonBody)
+        .then(response=>{
+            //alert("Nuevo precio ofertado")
+            const p = parseFloat(precio.current.value)
+            setPrecio(p)
+        })
+        .catch(error=>{
+            alert(error)
+        })
     }
 
-    const traerProducto = async () => {
-        await axios.get(baseUrl+`/?id=${idProduct}`)
+    const traerProductoEnSubasta = async () => {
+        await axios.get(baseUrl+"GetProductoById"+`/?id=${idProduct}`)
         .then(response=>{
-            setProducto(response.data)
-            setArrayUrlsStrings(response.data.UrlFotos)
+            const jsonResponse = response.data
+            jsonResponse.FechaFin = new Date(jsonResponse.FechaFin.Seconds*1000).toLocaleString()
+            jsonResponse.FechaInicio = new Date(jsonResponse.FechaInicio.Seconds*1000).toLocaleString()
+            jsonResponse.FechaUltimaPuja = new Date(jsonResponse.FechaUltimaPuja.Seconds*1000).toLocaleString()
+            setProducto(jsonResponse)
+            setArrayUrlsStrings(jsonResponse.UrlFotos)
+            setPrecio(jsonResponse.PrecioFinal)
         })
         .catch(error=>{
             alert(error)
@@ -41,7 +61,7 @@ function Subasta() {
     }
 
     useEffect(() => {
-        traerProducto()
+        traerProductoEnSubasta()
         const script = document.createElement('script');
         script.src = "https://getbootstrap.com/docs/5.2/examples/checkout/form-validation.js";
         script.async = true;
@@ -51,9 +71,29 @@ function Subasta() {
         }
       }, []);
 
+      const SOCKET_URL = "http://localhost:8080/pujas"
+
+      let onConnected = () => {
+          console.log("Conectado al websocket")
+      }
+  
+      let onMessageReceived = (msg) => {
+          //console.log(msg)
+          alert("Nuevo precio ofertado")
+          setPrecio(msg.PrecioOfrecido)
+      }
+
     return (
         <div>
             <Header />
+            <SockJsClient 
+            url={SOCKET_URL}
+            topics={['/topic/ultimaPuja']}
+            onConnect={onConnected}
+            onDisconnect={console.log("Desconectado!")}
+            onMessage={msg => onMessageReceived(msg)}
+            debug={false}
+            />
             <div className="container">
                 <div className="product-content product-detail">
                     <div className="row justify-content-center" style={{alignItems: 'center'}}>
@@ -88,20 +128,20 @@ function Subasta() {
                                     </div>
                                     <hr />
                                     <div>
-                                        Tiempo restante de la subasta:
-                                        <h5>{new Date().toLocaleString()}</h5>
+                                        La subasta caduca el:
+                                        <h5>{producto.FechaFin}</h5>
                                     </div>
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-12 col-md-6 col-lg-6">
                                         <form onSubmit={(event)=>{pujar(event)}} className="needs-validation" noValidate>
                                             <div className="col-12">
-                                                <label className="form-label">Ultima puja</label>
+                                                <label className="form-label">Ultima puja: <h5>$ {statePrecio}</h5></label>
                                                 <div className="input-group has-validation">
                                                     <span className="input-group-text">$</span>
-                                                    <input ref={precio} type="number" className='form-control' placeholder='Oferte un monto' name='precio' required min={producto.Precio} defaultValue={producto.Precio}/>
+                                                    <input ref={precio} type="number" className='form-control' placeholder='Oferte un monto' name='precio' required min={statePrecio+1} defaultValue={statePrecio+1}/>
                                                     <span className="input-group-text">.00</span>
-                                                    <div className="invalid-feedback">Precio inválido.</div>
+                                                    <div className="invalid-feedback">Precio inferior al ultimo ofertado.</div>
                                                 </div>
                                             </div>
                                             <br></br>
@@ -120,7 +160,7 @@ function Subasta() {
 }
 /*function Subasta() {
     const [mensajes, setMessage] = useState([])
-    const SOCKET_URL = "http://localhost:8080/mensajes"
+    const SOCKET_URL = "http://localhost:8080/pujas"
 
     let onConnected = () => {
         console.log("Conectado al websocket")
@@ -135,7 +175,7 @@ function Subasta() {
     <div>
         <SockJsClient 
         url={SOCKET_URL}
-        topics={['/topic/mensaje']}
+        topics={['/topic/ultimaPuja']}
         onConnect={onConnected}
         onDisconnect={console.log("Desconectado!")}
         onMessage={msg => onMessageReceived(msg)}
