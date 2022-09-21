@@ -28,13 +28,15 @@ message ProductoGet {
     string descripcion = 2;
     string categoria = 3;
     float precio = 4;
-    int64 cantidad_disponible = 5;
-    string fecha_publicacion = 6;
-    string publicador = 7;
-    repeated string url_fotos = 8;
-    bool esSubasta = 9;
-    google.protobuf.Timestamp fecha_inicio = 10;
-    google.protobuf.Timestamp fecha_fin = 11;
+    float precio_final = 5;
+    int64 cantidad_disponible = 6;
+    string fecha_publicacion = 7;
+    string publicador = 8;
+    repeated string url_fotos = 9;
+    bool esSubasta = 10;
+    google.protobuf.Timestamp fecha_ultima_puja = 11;
+    google.protobuf.Timestamp fecha_inicio = 12;
+    google.protobuf.Timestamp fecha_fin = 13;
     
 }
 
@@ -80,6 +82,12 @@ message ProductoStock {
     int32 cantidad = 2;
 }
 
+message UltimaPujaSubasta {
+    int32 idPujador = 1;
+    float precio_ofrecido = 2;
+    int32 idProducto = 3;
+}
+
 service Productos {
     rpc TraerProductoById(IdProducto) returns (ProductoGet);
     rpc TraerProductos(Nulo) returns (stream Producto);
@@ -87,4 +95,5 @@ service Productos {
     rpc AltaProducto(ProductoPost) returns (Response);
     rpc EditarProducto(ProductoPut) returns (Response);
     rpc ActualizarStock(ProductoStock) returns (Response);
+    rpc pujarUltimaOferta(UltimaPujaSubasta) returns (Response);
 }

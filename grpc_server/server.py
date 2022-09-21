@@ -112,6 +112,7 @@ class ProductoUsuarios(ProductosServicer):
         f"inner join usuario u on p.publicador_idusuario = u.idusuario where idproducto= '{request.idproducto}'")
         cursor.execute(query)
         row = cursor.fetchone()
+        result = None
         if row is not None:
             fotos = []
             if row.url_foto1 is not None:
@@ -133,32 +134,39 @@ class ProductoUsuarios(ProductosServicer):
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
                     publicador = row.username,
+                    esSubasta = row.esSubasta,
                     url_fotos = fotos)
 
             #traer campos de subasta y aniadirlos al return
             if row.esSubasta:
-                query = (f"select s.preciofinal as preciofinal, s.ultimapuja as ultimapuja, s.fechafin as fechafin from subasta s where s.idproducto= '{request.idproducto}'")
+                query = (f"select s.preciofinal as preciofinal, s.ultimapuja as ultimapuja, "+
+                "s.fechainicio as fechainicio, s.fechafin as fechafin "+
+                f"from subasta s where s.idproducto= '{request.idproducto}'")
                 cursor.execute(query)
                 subasta = cursor.fetchone()
 
+                timestampInicio = Timestamp()
+                timestampInicio.FromDatetime(subasta.fechainicio)
                 timestampFin = Timestamp()
                 timestampFin.FromDatetime(subasta.fechafin)
                 timestampPuja = Timestamp()
                 timestampPuja.FromDatetime(subasta.ultimapuja)
-
+                
                 result = ProductoGet(
                     nombre = row.nombre, 
                     descripcion = row.descripcion, 
                     categoria = row.categoria,
-                    precio = subasta.preciofinal, 
+                    precio = row.precio, 
+                    precio_final = subasta.preciofinal, 
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
                     publicador = row.username,
                     fecha_fin = timestampFin,
-                    fecha_inicio = timestampPuja,
+                    fecha_inicio = timestampInicio,
+                    fecha_ultima_puja = timestampPuja,
+                    esSubasta = row.esSubasta,
                     url_fotos = fotos)
-        else:
-            return result
+        return result
 
 
     def TraerProductos(self, request, context):
@@ -293,6 +301,19 @@ class ProductoUsuarios(ProductosServicer):
         cnx.close()
 
         return Response(message = "204 No-Content. Actualizacion exitosa")
+
+    def pujarUltimaOferta(self, request, context):
+        cnx =mysql.connector.connect(user='root', password='root',
+                host='localhost', port='3306',
+                database='retroshop')
+        cursor = cnx.cursor()
+        query = (f"UPDATE subasta SET pujador_idusuario = '{request.idPujador}', preciofinal = '{request.precio_ofrecido}' , ultimapuja = now() "+
+        f"where idproducto = '{request.idProducto}' ")
+        cursor.execute(query)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+        return Response(message = "204 No-Content. Ultima oferta actualizada")
 
 
 class CarritoProductos(CarritosServicer):

@@ -51,6 +51,7 @@ function BuyProduct(props) {
     const traerProducto = async () => {
         await axios.get(baseUrl+`/?id=${idProduct}`)
         .then(response=>{
+            debugger
             setProducto(response.data)
             setArrayUrlsStrings(response.data.UrlFotos)
         })

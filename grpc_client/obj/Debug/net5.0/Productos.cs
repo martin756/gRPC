@@ -31,46 +31,52 @@ public static partial class ProductosReflection {
           "X2ZvdG9zGAkgAygJEhEKCWVzU3ViYXN0YRgKIAEoCBIwCgxmZWNoYV9pbmlj",
           "aW8YCyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWZlY2hh",
           "X2ZpbhgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiLQoNUHJv",
-          "ZHVjdG9zTGlzdBIcCglwcm9kdWN0b3MYASADKAsyCS5Qcm9kdWN0byKoAgoL",
+          "ZHVjdG9zTGlzdBIcCglwcm9kdWN0b3MYASADKAsyCS5Qcm9kdWN0byL1AgoL",
           "UHJvZHVjdG9HZXQSDgoGbm9tYnJlGAEgASgJEhMKC2Rlc2NyaXBjaW9uGAIg",
-          "ASgJEhEKCWNhdGVnb3JpYRgDIAEoCRIOCgZwcmVjaW8YBCABKAISGwoTY2Fu",
-          "dGlkYWRfZGlzcG9uaWJsZRgFIAEoAxIZChFmZWNoYV9wdWJsaWNhY2lvbhgG",
-          "IAEoCRISCgpwdWJsaWNhZG9yGAcgASgJEhEKCXVybF9mb3RvcxgIIAMoCRIR",
-          "Cgllc1N1YmFzdGEYCSABKAgSMAoMZmVjaGFfaW5pY2lvGAogASgLMhouZ29v",
-          "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglmZWNoYV9maW4YCyABKAsyGi5n",
-          "b29nbGUucHJvdG9idWYuVGltZXN0YW1wIrkCCgxQcm9kdWN0b1Bvc3QSDgoG",
-          "bm9tYnJlGAEgASgJEhMKC2Rlc2NyaXBjaW9uGAIgASgJEhcKD2lkdGlwb2Nh",
-          "dGVnb3JpYRgDIAEoAxIOCgZwcmVjaW8YBCABKAISGwoTY2FudGlkYWRfZGlz",
-          "cG9uaWJsZRgFIAEoAxIZChFmZWNoYV9wdWJsaWNhY2lvbhgGIAEoCRIcChRw",
-          "dWJsaWNhZG9yX2lkdXN1YXJpbxgHIAEoAxIRCgl1cmxfZm90b3MYCCADKAkS",
-          "EQoJZXNTdWJhc3RhGAkgASgIEjAKDGZlY2hhX2luaWNpbxgKIAEoCzIaLmdv",
-          "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJZmVjaGFfZmluGAsgASgLMhou",
-          "Z29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKfAQoLUHJvZHVjdG9QdXQSEgoK",
-          "aWRwcm9kdWN0bxgBIAEoBRIOCgZub21icmUYAiABKAkSEwoLZGVzY3JpcGNp",
-          "b24YAyABKAkSFwoPaWR0aXBvY2F0ZWdvcmlhGAQgASgDEg4KBnByZWNpbxgF",
-          "IAEoAhIbChNjYW50aWRhZF9kaXNwb25pYmxlGAYgASgDEhEKCXVybF9mb3Rv",
-          "cxgHIAMoCSIgCg5UaXBvX2NhdGVnb3JpYRIOCgZub21icmUYASABKAkiIAoK",
-          "SWRQcm9kdWN0bxISCgppZHByb2R1Y3RvGAEgASgFIh4KCUlkVXN1YXJpbxIR",
-          "CglpZHVzdWFyaW8YASABKAUiNQoNUHJvZHVjdG9TdG9jaxISCgppZFByb2R1",
-          "Y3RvGAEgASgFEhAKCGNhbnRpZGFkGAIgASgFMokCCglQcm9kdWN0b3MSLgoR",
-          "VHJhZXJQcm9kdWN0b0J5SWQSCy5JZFByb2R1Y3RvGgwuUHJvZHVjdG9HZXQS",
-          "JAoOVHJhZXJQcm9kdWN0b3MSBS5OdWxvGgkuUHJvZHVjdG8wARIjCg1UcmFl",
-          "clN1YmFzdGFzEgUuTnVsbxoJLlByb2R1Y3RvMAESKAoMQWx0YVByb2R1Y3Rv",
-          "Eg0uUHJvZHVjdG9Qb3N0GgkuUmVzcG9uc2USKQoORWRpdGFyUHJvZHVjdG8S",
-          "DC5Qcm9kdWN0b1B1dBoJLlJlc3BvbnNlEiwKD0FjdHVhbGl6YXJTdG9jaxIO",
-          "LlByb2R1Y3RvU3RvY2saCS5SZXNwb25zZWIGcHJvdG8z"));
+          "ASgJEhEKCWNhdGVnb3JpYRgDIAEoCRIOCgZwcmVjaW8YBCABKAISFAoMcHJl",
+          "Y2lvX2ZpbmFsGAUgASgCEhsKE2NhbnRpZGFkX2Rpc3BvbmlibGUYBiABKAMS",
+          "GQoRZmVjaGFfcHVibGljYWNpb24YByABKAkSEgoKcHVibGljYWRvchgIIAEo",
+          "CRIRCgl1cmxfZm90b3MYCSADKAkSEQoJZXNTdWJhc3RhGAogASgIEjUKEWZl",
+          "Y2hhX3VsdGltYV9wdWphGAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVz",
+          "dGFtcBIwCgxmZWNoYV9pbmljaW8YDCABKAsyGi5nb29nbGUucHJvdG9idWYu",
+          "VGltZXN0YW1wEi0KCWZlY2hhX2ZpbhgNIAEoCzIaLmdvb2dsZS5wcm90b2J1",
+          "Zi5UaW1lc3RhbXAiuQIKDFByb2R1Y3RvUG9zdBIOCgZub21icmUYASABKAkS",
+          "EwoLZGVzY3JpcGNpb24YAiABKAkSFwoPaWR0aXBvY2F0ZWdvcmlhGAMgASgD",
+          "Eg4KBnByZWNpbxgEIAEoAhIbChNjYW50aWRhZF9kaXNwb25pYmxlGAUgASgD",
+          "EhkKEWZlY2hhX3B1YmxpY2FjaW9uGAYgASgJEhwKFHB1YmxpY2Fkb3JfaWR1",
+          "c3VhcmlvGAcgASgDEhEKCXVybF9mb3RvcxgIIAMoCRIRCgllc1N1YmFzdGEY",
+          "CSABKAgSMAoMZmVjaGFfaW5pY2lvGAogASgLMhouZ29vZ2xlLnByb3RvYnVm",
+          "LlRpbWVzdGFtcBItCglmZWNoYV9maW4YCyABKAsyGi5nb29nbGUucHJvdG9i",
+          "dWYuVGltZXN0YW1wIp8BCgtQcm9kdWN0b1B1dBISCgppZHByb2R1Y3RvGAEg",
+          "ASgFEg4KBm5vbWJyZRgCIAEoCRITCgtkZXNjcmlwY2lvbhgDIAEoCRIXCg9p",
+          "ZHRpcG9jYXRlZ29yaWEYBCABKAMSDgoGcHJlY2lvGAUgASgCEhsKE2NhbnRp",
+          "ZGFkX2Rpc3BvbmlibGUYBiABKAMSEQoJdXJsX2ZvdG9zGAcgAygJIiAKDlRp",
+          "cG9fY2F0ZWdvcmlhEg4KBm5vbWJyZRgBIAEoCSIgCgpJZFByb2R1Y3RvEhIK",
+          "CmlkcHJvZHVjdG8YASABKAUiHgoJSWRVc3VhcmlvEhEKCWlkdXN1YXJpbxgB",
+          "IAEoBSI1Cg1Qcm9kdWN0b1N0b2NrEhIKCmlkUHJvZHVjdG8YASABKAUSEAoI",
+          "Y2FudGlkYWQYAiABKAUiUwoRVWx0aW1hUHVqYVN1YmFzdGESEQoJaWRQdWph",
+          "ZG9yGAEgASgFEhcKD3ByZWNpb19vZnJlY2lkbxgCIAEoAhISCgppZFByb2R1",
+          "Y3RvGAMgASgFMr0CCglQcm9kdWN0b3MSLgoRVHJhZXJQcm9kdWN0b0J5SWQS",
+          "Cy5JZFByb2R1Y3RvGgwuUHJvZHVjdG9HZXQSJAoOVHJhZXJQcm9kdWN0b3MS",
+          "BS5OdWxvGgkuUHJvZHVjdG8wARIjCg1UcmFlclN1YmFzdGFzEgUuTnVsbxoJ",
+          "LlByb2R1Y3RvMAESKAoMQWx0YVByb2R1Y3RvEg0uUHJvZHVjdG9Qb3N0Ggku",
+          "UmVzcG9uc2USKQoORWRpdGFyUHJvZHVjdG8SDC5Qcm9kdWN0b1B1dBoJLlJl",
+          "c3BvbnNlEiwKD0FjdHVhbGl6YXJTdG9jaxIOLlByb2R1Y3RvU3RvY2saCS5S",
+          "ZXNwb25zZRIyChFwdWphclVsdGltYU9mZXJ0YRISLlVsdGltYVB1amFTdWJh",
+          "c3RhGgkuUmVzcG9uc2ViBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::UsuariosReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Producto), global::Producto.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductosList), global::ProductosList.Parser, new[]{ "Productos" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoGet), global::ProductoGet.Parser, new[]{ "Nombre", "Descripcion", "Categoria", "Precio", "CantidadDisponible", "FechaPublicacion", "Publicador", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoGet), global::ProductoGet.Parser, new[]{ "Nombre", "Descripcion", "Categoria", "Precio", "PrecioFinal", "CantidadDisponible", "FechaPublicacion", "Publicador", "UrlFotos", "EsSubasta", "FechaUltimaPuja", "FechaInicio", "FechaFin" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPost), global::ProductoPost.Parser, new[]{ "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "FechaPublicacion", "PublicadorIdusuario", "UrlFotos", "EsSubasta", "FechaInicio", "FechaFin" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ProductoPut), global::ProductoPut.Parser, new[]{ "Idproducto", "Nombre", "Descripcion", "Idtipocategoria", "Precio", "CantidadDisponible", "UrlFotos" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Tipo_categoria), global::Tipo_categoria.Parser, new[]{ "Nombre" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdProducto), global::IdProducto.Parser, new[]{ "Idproducto" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdUsuario), global::IdUsuario.Parser, new[]{ "Idusuario" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoStock), global::ProductoStock.Parser, new[]{ "IdProducto", "Cantidad" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::ProductoStock), global::ProductoStock.Parser, new[]{ "IdProducto", "Cantidad" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UltimaPujaSubasta), global::UltimaPujaSubasta.Parser, new[]{ "IdPujador", "PrecioOfrecido", "IdProducto" }, null, null, null, null)
         }));
   }
   #endregion
@@ -846,11 +852,13 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     descripcion_ = other.descripcion_;
     categoria_ = other.categoria_;
     precio_ = other.precio_;
+    precioFinal_ = other.precioFinal_;
     cantidadDisponible_ = other.cantidadDisponible_;
     fechaPublicacion_ = other.fechaPublicacion_;
     publicador_ = other.publicador_;
     urlFotos_ = other.urlFotos_.Clone();
     esSubasta_ = other.esSubasta_;
+    fechaUltimaPuja_ = other.fechaUltimaPuja_ != null ? other.fechaUltimaPuja_.Clone() : null;
     fechaInicio_ = other.fechaInicio_ != null ? other.fechaInicio_.Clone() : null;
     fechaFin_ = other.fechaFin_ != null ? other.fechaFin_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -905,8 +913,19 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     }
   }
 
+  /// <summary>Field number for the "precio_final" field.</summary>
+  public const int PrecioFinalFieldNumber = 5;
+  private float precioFinal_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public float PrecioFinal {
+    get { return precioFinal_; }
+    set {
+      precioFinal_ = value;
+    }
+  }
+
   /// <summary>Field number for the "cantidad_disponible" field.</summary>
-  public const int CantidadDisponibleFieldNumber = 5;
+  public const int CantidadDisponibleFieldNumber = 6;
   private long cantidadDisponible_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public long CantidadDisponible {
@@ -917,7 +936,7 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
   }
 
   /// <summary>Field number for the "fecha_publicacion" field.</summary>
-  public const int FechaPublicacionFieldNumber = 6;
+  public const int FechaPublicacionFieldNumber = 7;
   private string fechaPublicacion_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string FechaPublicacion {
@@ -928,7 +947,7 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
   }
 
   /// <summary>Field number for the "publicador" field.</summary>
-  public const int PublicadorFieldNumber = 7;
+  public const int PublicadorFieldNumber = 8;
   private string publicador_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Publicador {
@@ -939,9 +958,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
   }
 
   /// <summary>Field number for the "url_fotos" field.</summary>
-  public const int UrlFotosFieldNumber = 8;
+  public const int UrlFotosFieldNumber = 9;
   private static readonly pb::FieldCodec<string> _repeated_urlFotos_codec
-      = pb::FieldCodec.ForString(66);
+      = pb::FieldCodec.ForString(74);
   private readonly pbc::RepeatedField<string> urlFotos_ = new pbc::RepeatedField<string>();
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public pbc::RepeatedField<string> UrlFotos {
@@ -949,7 +968,7 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
   }
 
   /// <summary>Field number for the "esSubasta" field.</summary>
-  public const int EsSubastaFieldNumber = 9;
+  public const int EsSubastaFieldNumber = 10;
   private bool esSubasta_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public bool EsSubasta {
@@ -959,8 +978,19 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     }
   }
 
+  /// <summary>Field number for the "fecha_ultima_puja" field.</summary>
+  public const int FechaUltimaPujaFieldNumber = 11;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaUltimaPuja_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaUltimaPuja {
+    get { return fechaUltimaPuja_; }
+    set {
+      fechaUltimaPuja_ = value;
+    }
+  }
+
   /// <summary>Field number for the "fecha_inicio" field.</summary>
-  public const int FechaInicioFieldNumber = 10;
+  public const int FechaInicioFieldNumber = 12;
   private global::Google.Protobuf.WellKnownTypes.Timestamp fechaInicio_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::Google.Protobuf.WellKnownTypes.Timestamp FechaInicio {
@@ -971,7 +1001,7 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
   }
 
   /// <summary>Field number for the "fecha_fin" field.</summary>
-  public const int FechaFinFieldNumber = 11;
+  public const int FechaFinFieldNumber = 13;
   private global::Google.Protobuf.WellKnownTypes.Timestamp fechaFin_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::Google.Protobuf.WellKnownTypes.Timestamp FechaFin {
@@ -998,11 +1028,13 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (Descripcion != other.Descripcion) return false;
     if (Categoria != other.Categoria) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Precio, other.Precio)) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PrecioFinal, other.PrecioFinal)) return false;
     if (CantidadDisponible != other.CantidadDisponible) return false;
     if (FechaPublicacion != other.FechaPublicacion) return false;
     if (Publicador != other.Publicador) return false;
     if(!urlFotos_.Equals(other.urlFotos_)) return false;
     if (EsSubasta != other.EsSubasta) return false;
+    if (!object.Equals(FechaUltimaPuja, other.FechaUltimaPuja)) return false;
     if (!object.Equals(FechaInicio, other.FechaInicio)) return false;
     if (!object.Equals(FechaFin, other.FechaFin)) return false;
     return Equals(_unknownFields, other._unknownFields);
@@ -1015,11 +1047,13 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (Descripcion.Length != 0) hash ^= Descripcion.GetHashCode();
     if (Categoria.Length != 0) hash ^= Categoria.GetHashCode();
     if (Precio != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Precio);
+    if (PrecioFinal != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PrecioFinal);
     if (CantidadDisponible != 0L) hash ^= CantidadDisponible.GetHashCode();
     if (FechaPublicacion.Length != 0) hash ^= FechaPublicacion.GetHashCode();
     if (Publicador.Length != 0) hash ^= Publicador.GetHashCode();
     hash ^= urlFotos_.GetHashCode();
     if (EsSubasta != false) hash ^= EsSubasta.GetHashCode();
+    if (fechaUltimaPuja_ != null) hash ^= FechaUltimaPuja.GetHashCode();
     if (fechaInicio_ != null) hash ^= FechaInicio.GetHashCode();
     if (fechaFin_ != null) hash ^= FechaFin.GetHashCode();
     if (_unknownFields != null) {
@@ -1054,29 +1088,37 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       output.WriteRawTag(37);
       output.WriteFloat(Precio);
     }
+    if (PrecioFinal != 0F) {
+      output.WriteRawTag(45);
+      output.WriteFloat(PrecioFinal);
+    }
     if (CantidadDisponible != 0L) {
-      output.WriteRawTag(40);
+      output.WriteRawTag(48);
       output.WriteInt64(CantidadDisponible);
     }
     if (FechaPublicacion.Length != 0) {
-      output.WriteRawTag(50);
+      output.WriteRawTag(58);
       output.WriteString(FechaPublicacion);
     }
     if (Publicador.Length != 0) {
-      output.WriteRawTag(58);
+      output.WriteRawTag(66);
       output.WriteString(Publicador);
     }
     urlFotos_.WriteTo(output, _repeated_urlFotos_codec);
     if (EsSubasta != false) {
-      output.WriteRawTag(72);
+      output.WriteRawTag(80);
       output.WriteBool(EsSubasta);
     }
+    if (fechaUltimaPuja_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaUltimaPuja);
+    }
     if (fechaInicio_ != null) {
-      output.WriteRawTag(82);
+      output.WriteRawTag(98);
       output.WriteMessage(FechaInicio);
     }
     if (fechaFin_ != null) {
-      output.WriteRawTag(90);
+      output.WriteRawTag(106);
       output.WriteMessage(FechaFin);
     }
     if (_unknownFields != null) {
@@ -1104,29 +1146,37 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
       output.WriteRawTag(37);
       output.WriteFloat(Precio);
     }
+    if (PrecioFinal != 0F) {
+      output.WriteRawTag(45);
+      output.WriteFloat(PrecioFinal);
+    }
     if (CantidadDisponible != 0L) {
-      output.WriteRawTag(40);
+      output.WriteRawTag(48);
       output.WriteInt64(CantidadDisponible);
     }
     if (FechaPublicacion.Length != 0) {
-      output.WriteRawTag(50);
+      output.WriteRawTag(58);
       output.WriteString(FechaPublicacion);
     }
     if (Publicador.Length != 0) {
-      output.WriteRawTag(58);
+      output.WriteRawTag(66);
       output.WriteString(Publicador);
     }
     urlFotos_.WriteTo(ref output, _repeated_urlFotos_codec);
     if (EsSubasta != false) {
-      output.WriteRawTag(72);
+      output.WriteRawTag(80);
       output.WriteBool(EsSubasta);
     }
+    if (fechaUltimaPuja_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(FechaUltimaPuja);
+    }
     if (fechaInicio_ != null) {
-      output.WriteRawTag(82);
+      output.WriteRawTag(98);
       output.WriteMessage(FechaInicio);
     }
     if (fechaFin_ != null) {
-      output.WriteRawTag(90);
+      output.WriteRawTag(106);
       output.WriteMessage(FechaFin);
     }
     if (_unknownFields != null) {
@@ -1150,6 +1200,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (Precio != 0F) {
       size += 1 + 4;
     }
+    if (PrecioFinal != 0F) {
+      size += 1 + 4;
+    }
     if (CantidadDisponible != 0L) {
       size += 1 + pb::CodedOutputStream.ComputeInt64Size(CantidadDisponible);
     }
@@ -1162,6 +1215,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     size += urlFotos_.CalculateSize(_repeated_urlFotos_codec);
     if (EsSubasta != false) {
       size += 1 + 1;
+    }
+    if (fechaUltimaPuja_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaUltimaPuja);
     }
     if (fechaInicio_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaInicio);
@@ -1192,6 +1248,9 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     if (other.Precio != 0F) {
       Precio = other.Precio;
     }
+    if (other.PrecioFinal != 0F) {
+      PrecioFinal = other.PrecioFinal;
+    }
     if (other.CantidadDisponible != 0L) {
       CantidadDisponible = other.CantidadDisponible;
     }
@@ -1204,6 +1263,12 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
     urlFotos_.Add(other.urlFotos_);
     if (other.EsSubasta != false) {
       EsSubasta = other.EsSubasta;
+    }
+    if (other.fechaUltimaPuja_ != null) {
+      if (fechaUltimaPuja_ == null) {
+        FechaUltimaPuja = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaUltimaPuja.MergeFrom(other.FechaUltimaPuja);
     }
     if (other.fechaInicio_ != null) {
       if (fechaInicio_ == null) {
@@ -1247,34 +1312,45 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
           Precio = input.ReadFloat();
           break;
         }
-        case 40: {
+        case 45: {
+          PrecioFinal = input.ReadFloat();
+          break;
+        }
+        case 48: {
           CantidadDisponible = input.ReadInt64();
           break;
         }
-        case 50: {
+        case 58: {
           FechaPublicacion = input.ReadString();
           break;
         }
-        case 58: {
+        case 66: {
           Publicador = input.ReadString();
           break;
         }
-        case 66: {
+        case 74: {
           urlFotos_.AddEntriesFrom(input, _repeated_urlFotos_codec);
           break;
         }
-        case 72: {
+        case 80: {
           EsSubasta = input.ReadBool();
           break;
         }
-        case 82: {
+        case 90: {
+          if (fechaUltimaPuja_ == null) {
+            FechaUltimaPuja = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaUltimaPuja);
+          break;
+        }
+        case 98: {
           if (fechaInicio_ == null) {
             FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
           }
           input.ReadMessage(FechaInicio);
           break;
         }
-        case 90: {
+        case 106: {
           if (fechaFin_ == null) {
             FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
           }
@@ -1311,34 +1387,45 @@ public sealed partial class ProductoGet : pb::IMessage<ProductoGet>
           Precio = input.ReadFloat();
           break;
         }
-        case 40: {
+        case 45: {
+          PrecioFinal = input.ReadFloat();
+          break;
+        }
+        case 48: {
           CantidadDisponible = input.ReadInt64();
           break;
         }
-        case 50: {
+        case 58: {
           FechaPublicacion = input.ReadString();
           break;
         }
-        case 58: {
+        case 66: {
           Publicador = input.ReadString();
           break;
         }
-        case 66: {
+        case 74: {
           urlFotos_.AddEntriesFrom(ref input, _repeated_urlFotos_codec);
           break;
         }
-        case 72: {
+        case 80: {
           EsSubasta = input.ReadBool();
           break;
         }
-        case 82: {
+        case 90: {
+          if (fechaUltimaPuja_ == null) {
+            FechaUltimaPuja = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaUltimaPuja);
+          break;
+        }
+        case 98: {
           if (fechaInicio_ == null) {
             FechaInicio = new global::Google.Protobuf.WellKnownTypes.Timestamp();
           }
           input.ReadMessage(FechaInicio);
           break;
         }
-        case 90: {
+        case 106: {
           if (fechaFin_ == null) {
             FechaFin = new global::Google.Protobuf.WellKnownTypes.Timestamp();
           }
@@ -2983,6 +3070,250 @@ public sealed partial class ProductoStock : pb::IMessage<ProductoStock>
         }
         case 16: {
           Cantidad = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+public sealed partial class UltimaPujaSubasta : pb::IMessage<UltimaPujaSubasta>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<UltimaPujaSubasta> _parser = new pb::MessageParser<UltimaPujaSubasta>(() => new UltimaPujaSubasta());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<UltimaPujaSubasta> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ProductosReflection.Descriptor.MessageTypes[9]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public UltimaPujaSubasta() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public UltimaPujaSubasta(UltimaPujaSubasta other) : this() {
+    idPujador_ = other.idPujador_;
+    precioOfrecido_ = other.precioOfrecido_;
+    idProducto_ = other.idProducto_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public UltimaPujaSubasta Clone() {
+    return new UltimaPujaSubasta(this);
+  }
+
+  /// <summary>Field number for the "idPujador" field.</summary>
+  public const int IdPujadorFieldNumber = 1;
+  private int idPujador_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int IdPujador {
+    get { return idPujador_; }
+    set {
+      idPujador_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "precio_ofrecido" field.</summary>
+  public const int PrecioOfrecidoFieldNumber = 2;
+  private float precioOfrecido_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public float PrecioOfrecido {
+    get { return precioOfrecido_; }
+    set {
+      precioOfrecido_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "idProducto" field.</summary>
+  public const int IdProductoFieldNumber = 3;
+  private int idProducto_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int IdProducto {
+    get { return idProducto_; }
+    set {
+      idProducto_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as UltimaPujaSubasta);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(UltimaPujaSubasta other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (IdPujador != other.IdPujador) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PrecioOfrecido, other.PrecioOfrecido)) return false;
+    if (IdProducto != other.IdProducto) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (IdPujador != 0) hash ^= IdPujador.GetHashCode();
+    if (PrecioOfrecido != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PrecioOfrecido);
+    if (IdProducto != 0) hash ^= IdProducto.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (IdPujador != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdPujador);
+    }
+    if (PrecioOfrecido != 0F) {
+      output.WriteRawTag(21);
+      output.WriteFloat(PrecioOfrecido);
+    }
+    if (IdProducto != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(IdProducto);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (IdPujador != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdPujador);
+    }
+    if (PrecioOfrecido != 0F) {
+      output.WriteRawTag(21);
+      output.WriteFloat(PrecioOfrecido);
+    }
+    if (IdProducto != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(IdProducto);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (IdPujador != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdPujador);
+    }
+    if (PrecioOfrecido != 0F) {
+      size += 1 + 4;
+    }
+    if (IdProducto != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdProducto);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(UltimaPujaSubasta other) {
+    if (other == null) {
+      return;
+    }
+    if (other.IdPujador != 0) {
+      IdPujador = other.IdPujador;
+    }
+    if (other.PrecioOfrecido != 0F) {
+      PrecioOfrecido = other.PrecioOfrecido;
+    }
+    if (other.IdProducto != 0) {
+      IdProducto = other.IdProducto;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          IdPujador = input.ReadInt32();
+          break;
+        }
+        case 21: {
+          PrecioOfrecido = input.ReadFloat();
+          break;
+        }
+        case 24: {
+          IdProducto = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          IdPujador = input.ReadInt32();
+          break;
+        }
+        case 21: {
+          PrecioOfrecido = input.ReadFloat();
+          break;
+        }
+        case 24: {
+          IdProducto = input.ReadInt32();
           break;
         }
       }

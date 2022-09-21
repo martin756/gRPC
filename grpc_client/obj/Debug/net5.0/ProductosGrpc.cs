@@ -60,6 +60,8 @@ public static partial class Productos
   static readonly grpc::Marshaller<global::ProductoPut> __Marshaller_ProductoPut = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ProductoPut.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::ProductoStock> __Marshaller_ProductoStock = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ProductoStock.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::UltimaPujaSubasta> __Marshaller_UltimaPujaSubasta = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UltimaPujaSubasta.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::IdProducto, global::ProductoGet> __Method_TraerProductoById = new grpc::Method<global::IdProducto, global::ProductoGet>(
@@ -109,6 +111,14 @@ public static partial class Productos
       __Marshaller_ProductoStock,
       __Marshaller_Response);
 
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::UltimaPujaSubasta, global::Response> __Method_pujarUltimaOferta = new grpc::Method<global::UltimaPujaSubasta, global::Response>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "pujarUltimaOferta",
+      __Marshaller_UltimaPujaSubasta,
+      __Marshaller_Response);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -151,6 +161,12 @@ public static partial class Productos
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::System.Threading.Tasks.Task<global::Response> ActualizarStock(global::ProductoStock request, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::System.Threading.Tasks.Task<global::Response> pujarUltimaOferta(global::UltimaPujaSubasta request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -284,6 +300,26 @@ public static partial class Productos
     {
       return CallInvoker.AsyncUnaryCall(__Method_ActualizarStock, null, options, request);
     }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::Response pujarUltimaOferta(global::UltimaPujaSubasta request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return pujarUltimaOferta(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::Response pujarUltimaOferta(global::UltimaPujaSubasta request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_pujarUltimaOferta, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::Response> pujarUltimaOfertaAsync(global::UltimaPujaSubasta request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return pujarUltimaOfertaAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::Response> pujarUltimaOfertaAsync(global::UltimaPujaSubasta request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_pujarUltimaOferta, null, options, request);
+    }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     protected override ProductosClient NewInstance(ClientBaseConfiguration configuration)
@@ -303,7 +339,8 @@ public static partial class Productos
         .AddMethod(__Method_TraerSubastas, serviceImpl.TraerSubastas)
         .AddMethod(__Method_AltaProducto, serviceImpl.AltaProducto)
         .AddMethod(__Method_EditarProducto, serviceImpl.EditarProducto)
-        .AddMethod(__Method_ActualizarStock, serviceImpl.ActualizarStock).Build();
+        .AddMethod(__Method_ActualizarStock, serviceImpl.ActualizarStock)
+        .AddMethod(__Method_pujarUltimaOferta, serviceImpl.pujarUltimaOferta).Build();
   }
 
   /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -319,6 +356,7 @@ public static partial class Productos
     serviceBinder.AddMethod(__Method_AltaProducto, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoPost, global::Response>(serviceImpl.AltaProducto));
     serviceBinder.AddMethod(__Method_EditarProducto, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoPut, global::Response>(serviceImpl.EditarProducto));
     serviceBinder.AddMethod(__Method_ActualizarStock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductoStock, global::Response>(serviceImpl.ActualizarStock));
+    serviceBinder.AddMethod(__Method_pujarUltimaOferta, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::UltimaPujaSubasta, global::Response>(serviceImpl.pujarUltimaOferta));
   }
 
 }
