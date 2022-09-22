@@ -1,4 +1,4 @@
 obj\Debug\net5.0/Productos.cs \
 obj\Debug\net5.0/ProductosGrpc.cs: ../gRPC_server/protobufs/usuarios.proto\
- C:/Users/magostino/.nuget/packages/grpc.tools/2.39.1/build/native/include/google/protobuf/timestamp.proto\
+ C:/Users/marce/.nuget/packages/grpc.tools/2.39.1/build/native/include/google/protobuf/timestamp.proto\
  ../gRPC_server/protobufs/productos.proto

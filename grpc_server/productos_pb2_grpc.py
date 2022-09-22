@@ -45,11 +45,6 @@ class ProductosStub(object):
                 request_serializer=productos__pb2.ProductoStock.SerializeToString,
                 response_deserializer=usuarios__pb2.Response.FromString,
                 )
-        self.pujarUltimaOferta = channel.unary_unary(
-                '/Productos/pujarUltimaOferta',
-                request_serializer=productos__pb2.UltimaPujaSubasta.SerializeToString,
-                response_deserializer=usuarios__pb2.Response.FromString,
-                )
 
 
 class ProductosServicer(object):
@@ -91,12 +86,6 @@ class ProductosServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def pujarUltimaOferta(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_ProductosServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -128,11 +117,6 @@ def add_ProductosServicer_to_server(servicer, server):
             'ActualizarStock': grpc.unary_unary_rpc_method_handler(
                     servicer.ActualizarStock,
                     request_deserializer=productos__pb2.ProductoStock.FromString,
-                    response_serializer=usuarios__pb2.Response.SerializeToString,
-            ),
-            'pujarUltimaOferta': grpc.unary_unary_rpc_method_handler(
-                    servicer.pujarUltimaOferta,
-                    request_deserializer=productos__pb2.UltimaPujaSubasta.FromString,
                     response_serializer=usuarios__pb2.Response.SerializeToString,
             ),
     }
@@ -243,23 +227,6 @@ class Productos(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Productos/ActualizarStock',
             productos__pb2.ProductoStock.SerializeToString,
-            usuarios__pb2.Response.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def pujarUltimaOferta(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Productos/pujarUltimaOferta',
-            productos__pb2.UltimaPujaSubasta.SerializeToString,
             usuarios__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

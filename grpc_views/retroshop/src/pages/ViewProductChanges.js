@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function ViewProductChanges() {
     const [product, setProduct] = useState([])
-    const [mensaje, setMensaje] = useState("Buscando registros...")
 
     const { search } = useLocation();
     let query = useMemo(() => new URLSearchParams(search), [search]);
@@ -16,9 +15,7 @@ function ViewProductChanges() {
         axios.get("https://localhost:5001/api/Producto/GetCambiosProductosKafka?idProducto="+idProduct)
         .then(response=>{
             setProduct(response.data)
-            if (response.data.length == 0){
-                setMensaje("No se registraron historial de cambios para el producto seleccionado")
-            }
+            console.log(response.data)
         })
         .catch(error=>{
             alert(error)
@@ -71,7 +68,7 @@ function ViewProductChanges() {
                                 <br></br>
                             </div>
                         </div>
-                    ))) : mensaje}
+                    ))) : "No se registraron historial de cambios para el producto seleccionado"}
                     <br></br>
                     </div>
                     <br></br>

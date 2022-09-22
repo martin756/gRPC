@@ -13,7 +13,6 @@ import MyShopping from '../pages/MyShopping';
 import Subasta from '../pages/Subasta';
 import MonitorMenu from '../pages/MonitorMenu';
 import ViewProductChanges from '../pages/ViewProductChanges';
-import ViewLastBids from '../pages/ViewLastBids';
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
         <Route path='/Subasta' element={<Subasta />}/>
         <Route path='/admin' element={<MonitorMenu />}/>
         <Route path='/viewProductChanges' element={<ViewProductChanges />}/>
-        <Route path='/viewLastBids' element={<ViewLastBids />}/>
       </Routes>
     </BrowserRouter>
   );

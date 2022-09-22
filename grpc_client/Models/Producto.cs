@@ -62,10 +62,9 @@ namespace apiRetroshop.Models
         
     }
 
-    public class AuditoriaPujasSubasta
+    public class KafkaProperties
     {
-        public int idPujador { get; set; }
-        public float precio_ofrecido { get; set; }
-        public int idProducto { get; set; }
+        public string topic { get; set; }
+        public string groupId { get; set; }
     }
 }

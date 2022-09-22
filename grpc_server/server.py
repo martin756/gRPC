@@ -1,5 +1,8 @@
+import base64
 from email import message
 from time import sleep
+import jinja2
+import pdfkit
 from usuarios_pb2_grpc import UsuariosServicer, add_UsuariosServicer_to_server
 from usuarios_pb2 import Usuario, Response
 from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_server
@@ -8,11 +11,14 @@ from carritos_pb2_grpc import CarritosServicer, add_CarritosServicer_to_server
 from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, ResponseCarrito
 from datetime import datetime
 from google.protobuf.timestamp_pb2 import Timestamp
-
+from facturas_pb2 import Factura, IdFactura,IdProductoCarrito, ResponseImprimirFactura
+from facturas_pb2_grpc import FacturasServicer, add_FacturasServicer_to_server
 import grpc
 from concurrent import futures
-
 import mysql.connector
+
+PATH_WKHTMLTOPDF = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+
 
 class ServicioUsuarios(UsuariosServicer):
 
@@ -112,7 +118,6 @@ class ProductoUsuarios(ProductosServicer):
         f"inner join usuario u on p.publicador_idusuario = u.idusuario where idproducto= '{request.idproducto}'")
         cursor.execute(query)
         row = cursor.fetchone()
-        result = None
         if row is not None:
             fotos = []
             if row.url_foto1 is not None:
@@ -134,37 +139,29 @@ class ProductoUsuarios(ProductosServicer):
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
                     publicador = row.username,
-                    esSubasta = row.esSubasta,
                     url_fotos = fotos)
 
             #traer campos de subasta y aniadirlos al return
             if row.esSubasta:
-                query = (f"select s.preciofinal as preciofinal, s.ultimapuja as ultimapuja, "+
-                "s.fechainicio as fechainicio, s.fechafin as fechafin "+
-                f"from subasta s where s.idproducto= '{request.idproducto}'")
+                query = (f"select s.preciofinal as preciofinal, s.ultimapuja as ultimapuja, s.fechafin as fechafin from subasta s where s.idproducto= '{request.idproducto}'")
                 cursor.execute(query)
                 subasta = cursor.fetchone()
 
-                timestampInicio = Timestamp()
-                timestampInicio.FromDatetime(subasta.fechainicio)
                 timestampFin = Timestamp()
                 timestampFin.FromDatetime(subasta.fechafin)
                 timestampPuja = Timestamp()
                 timestampPuja.FromDatetime(subasta.ultimapuja)
-                
+
                 result = ProductoGet(
                     nombre = row.nombre, 
                     descripcion = row.descripcion, 
                     categoria = row.categoria,
-                    precio = row.precio, 
-                    precio_final = subasta.preciofinal, 
+                    precio = subasta.preciofinal, 
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
                     publicador = row.username,
                     fecha_fin = timestampFin,
-                    fecha_inicio = timestampInicio,
-                    fecha_ultima_puja = timestampPuja,
-                    esSubasta = row.esSubasta,
+                    fecha_inicio = timestampPuja,
                     url_fotos = fotos)
 
             return result
@@ -305,19 +302,6 @@ class ProductoUsuarios(ProductosServicer):
 
         return Response(message = "204 No-Content. Actualizacion exitosa")
 
-    def pujarUltimaOferta(self, request, context):
-        cnx =mysql.connector.connect(user='root', password='root',
-                host='localhost', port='3306',
-                database='retroshop')
-        cursor = cnx.cursor()
-        query = (f"UPDATE subasta SET pujador_idusuario = '{request.idPujador}', preciofinal = '{request.precio_ofrecido}' , ultimapuja = now() "+
-        f"where idproducto = '{request.idProducto}' ")
-        cursor.execute(query)
-        cnx.commit()
-        cursor.close()
-        cnx.close()
-        return Response(message = "204 No-Content. Ultima oferta actualizada")
-
 
 class CarritoProductos(CarritosServicer):
     def CrearCarrito(self, request, context):
@@ -384,11 +368,124 @@ class CarritoProductos(CarritosServicer):
         return ResponseCarrito(mensaje = "204 No-Content. Actualizacion exitosa")
 
 
+class FacturasServicio(FacturasServicer):
+    @staticmethod
+    def get_pdf_template():
+        return '''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Results</title>
+        </head>
+
+        <body>
+          <h1>Factura {{ idfactura }}</h1>
+          <h2>Vendedor: {{ apellido_vendedor }}, {{ nombre_vendedor }}</h2>
+          <h2>Comprador: {{ apellido_comprador }}, {{ nombre_comprador }}</h2>
+          <ul>
+            <li>
+              <em>{{ nombre_producto }}:</em> {{ cantidad }} - ${{ precio }}
+            </li>
+          </ul>
+          <h2>Total: ${{ total }}</h2>
+        </body>
+        </html>
+        '''
+
+    @staticmethod
+    def get_data_factura(id_factura):
+        cursor, conexion = get_cursor_and_connection()
+        tables = 'factura f ' \
+                 'inner join producto_carrito as pc on f.idproducto_carrito = pc.idproducto_carrito ' \
+                 'inner join producto p on pc.idproducto = p.idproducto ' \
+                 'inner join usuario comprador on f.cliente_idusuario = comprador.idusuario ' \
+                 'inner join usuario vendedor on f.vendedor_idusuario = vendedor.idusuario'
+        cols = 'f.idfactura, f.fechacompra, f.cantidad, f.precio, f.total, p.nombre as nombre_producto, comprador.nombre as nombre_comprador, comprador.apellido as apellido_comprador, vendedor.nombre as nombre_vendedor, vendedor.apellido as apellido_vendedor'
+        query = f'select {cols} from {tables} where f.idfactura = {id_factura}'
+        vals = run_select_query(cursor, query, fetch_all=False)
+        cursor.close()
+        conexion.close()
+        return vals
+
+    def CrearFactura(self, request, context):
+        cursor, conexion = get_cursor_and_connection()
+        id_producto_carrito = request.idproducto_carrito
+        select = f"select idfactura from factura where idproducto_carrito={id_producto_carrito}"
+        factura = run_select_query(cursor=cursor, query=select, fetch_all=True)
+        if not factura:
+            # Traer los valores del idproducto_carrito
+            selected_cols = 'idproducto_carrito, cantidad, producto.precio as precio, carrito.cliente_idusuario as comprador, producto.publicador_idusuario as vendedor'
+            tables = 'producto_carrito pc inner join producto as producto on pc.idproducto = producto.idproducto inner join carrito as carrito on pc.idcarrito = carrito.idcarrito'
+            select_producto_carrito = f"SELECT {selected_cols} FROM {tables} WHERE pc.idproducto_carrito = {id_producto_carrito}"
+            producto_carrito = run_select_query(cursor, select_producto_carrito, fetch_all=False)
+            value_order = '(`idproducto_carrito`, `fechacompra`, `cantidad`, `precio`, `total`, `vendedor_idusuario`, `cliente_idusuario`)'
+            insert_query = f"INSERT INTO factura {value_order} VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            tuple_vals = (
+                producto_carrito['idproducto_carrito'],
+                datetime.today(),
+                producto_carrito['cantidad'],
+                producto_carrito['precio'],
+                producto_carrito['precio'] * producto_carrito['cantidad'],
+                producto_carrito['vendedor'],
+                producto_carrito['comprador'],
+            )
+            cursor.execute(insert_query, tuple_vals)
+            res = IdFactura(idfactura=cursor.lastrowid)
+            conexion.commit()
+        else:
+            res = IdFactura(idfactura=factura[0]['idfactura'])
+        cursor.close()
+        conexion.close()
+        return res
+
+    def TraerFacturaByIdUsuario(self, request, context):
+        cursor, conexion = get_cursor_and_connection()
+        id_usuario = request.idusuario
+        select_query = f'select * from factura where cliente_idusuario = {id_usuario}'
+        result = run_select_query(cursor, select_query)
+        cursor.close()
+        conexion.close()
+        for row in result:
+            yield Factura(**row)
+
+    def ImprimirFactura (self, request, context):
+        id_factura = request.idfactura
+        enviroment = jinja2.Environment()
+        template = enviroment.from_string(self.get_pdf_template())
+        html_data = template.render(**self.get_data_factura(id_factura))
+        config = pdfkit.configuration(wkhtmltopdf=PATH_WKHTMLTOPDF)
+        f = pdfkit.from_string(html_data, configuration=config)
+        return ResponseImprimirFactura(pdf=base64.b64encode(f).decode('utf-8'))
+
+
+def get_connection(user='root', password='root', host='localhost', port='3306', database='retroshop'):
+    # Idealmente estos datos los tendrian en un .env en cada una de sus maquinas
+    return mysql.connector.connect(user=user, password=password, host=host, port=port, database=database)
+
+
+def get_cursor_and_connection(connection=None, connection_dict=None):
+    """
+    Funcion que retorna el cursor y la conexion. Si no se recibe la conexion por parametro crea una nueva.
+    :param connection: La conexion a utilizar. Puede no recibirse.
+    :param connection_dict: Los parametros de conexion en caso que se vaya a crear una nueva con configuraciones particulares.
+    :return: El cursor y la conexion (ya sea la proporcionada o una nueva)
+    """
+    conn = connection or get_connection(**(connection_dict or {}))
+    return conn.cursor(dictionary=True), conn  # Usen el cursor como diccionario, retorna cada fila como una hashmap {'clave': 'valor'} donde la clave es el alias del select o el nombre del campo
+
+
+def run_select_query(cursor, query, fetch_all=True):
+    cursor.execute(query)
+    return cursor.fetchone() if fetch_all else cursor.fetchall()
+
+
 def start():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     add_UsuariosServicer_to_server(ServicioUsuarios(), server)
     add_ProductosServicer_to_server(ProductoUsuarios(), server)
     add_CarritosServicer_to_server(CarritoProductos(), server)
+    add_FacturasServicer_to_server(FacturasServicio(), server)
     server.add_insecure_port('[::]:50051')
     print("The server is running!")
     server.start()

@@ -95,7 +95,7 @@ function MonitorMenu() {
                     <div className="row">
                         {products.length > 0 ? products.map((value)=>(
                           <ProductCard id={value.Idproducto} nombre={value.Nombre} precio={value.Precio} 
-                          url={value.UrlFotos[0]} cantidad_disponible={value.CantidadDisponible} linkPage="viewLastBids"/>
+                          url={value.UrlFotos[0]} cantidad_disponible={value.CantidadDisponible} linkPage=""/>
                         )) : "No hay productos para mostrar"}
                     </div>
                   </div>

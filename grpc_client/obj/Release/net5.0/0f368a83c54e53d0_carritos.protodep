@@ -1,0 +1,5 @@
+obj\Release\net5.0/Carritos.cs \
+obj\Release\net5.0/CarritosGrpc.cs: ../gRPC_server/protobufs/usuarios.proto\
+ C:/Users/marce/.nuget/packages/grpc.tools/2.39.1/build/native/include/google/protobuf/timestamp.proto\
+ ../gRPC_server/protobufs/productos.proto\
+ ../gRPC_server/protobufs/carritos.proto

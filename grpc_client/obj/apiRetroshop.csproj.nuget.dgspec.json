@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {}
+    "C:\\Users\\marce\\Downloads\\gRPC-Retroshop-main\\gRPC-Retroshop-main\\grpc_client\\apiRetroshop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj": {
+    "C:\\Users\\marce\\Downloads\\gRPC-Retroshop-main\\gRPC-Retroshop-main\\grpc_client\\apiRetroshop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\Downloads\\gRPC-Retroshop-main\\gRPC-Retroshop-main\\grpc_client\\apiRetroshop.csproj",
         "projectName": "apiRetroshop",
-        "projectPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\apiRetroshop.csproj",
-        "packagesPath": "C:\\Users\\magostino\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\magostino\\Documents\\GitHub\\gRPC-Retroshop\\grpc_client\\obj\\",
+        "projectPath": "C:\\Users\\marce\\Downloads\\gRPC-Retroshop-main\\gRPC-Retroshop-main\\grpc_client\\apiRetroshop.csproj",
+        "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marce\\Downloads\\gRPC-Retroshop-main\\gRPC-Retroshop-main\\grpc_client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\magostino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,7 +46,7 @@
           "dependencies": {
             "Confluent.Kafka": {
               "target": "Package",
-              "version": "[1.9.0, )"
+              "version": "[1.5.0, )"
             },
             "Google.Api.CommonProtos": {
               "target": "Package",
@@ -84,7 +85,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -96,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

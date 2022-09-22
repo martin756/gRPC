@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "productos.proto";
+
+
+message Factura{
+    int32 idfactura = 1;
+    int32 idproducto_carrito = 2;
+    string fechacompra = 3;
+    float cantidad = 4;
+    float precio = 5;
+    float total = 6;
+    int32 vendedor_idusuario = 7;
+    int32 comprador_idusuario = 8;
+}
+
+
+
+message IdProductoCarrito {
+    int32 idproducto_carrito = 1;
+}
+
+message IdFactura {
+    int32 idfactura = 1;
+}
+
+message ResponseImprimirFactura{
+    string pdf = 1;
+}
+
+service Facturas {
+    rpc CrearFactura (IdProductoCarrito) returns (IdFactura);
+    rpc TraerFacturaByIdUsuario (IdUsuario) returns (stream Factura);
+    rpc ImprimirFactura(IdFactura) returns (ResponseImprimirFactura);
+
+}
