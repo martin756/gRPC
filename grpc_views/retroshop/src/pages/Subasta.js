@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import { CartPlusFill } from 'react-bootstrap-icons';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import CountdownTimer from '../components/CountdownTimer';
 
 
 function Subasta() {
@@ -83,6 +84,11 @@ function Subasta() {
           setPrecio(msg.PrecioOfrecido)
       }
 
+    //La fecha que se convierte para usarse en el contador
+    const fechaString = producto.FechaFin;
+    const fechaDate = new Date(fechaString);
+    const dateTimeLeft = fechaDate.getTime()
+
     return (
         <div>
             <Header />
@@ -128,8 +134,8 @@ function Subasta() {
                                     </div>
                                     <hr />
                                     <div>
-                                        La subasta caduca el:
-                                        <h5>{producto.FechaFin}</h5>
+                                        La subasta caduca en:
+                                        <CountdownTimer targetDate={dateTimeLeft} />
                                     </div>
                                     <hr />
                                     <div className="row">
