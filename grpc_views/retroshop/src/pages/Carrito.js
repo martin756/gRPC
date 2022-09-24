@@ -70,27 +70,28 @@ export default function Carrito(props) {
   const comprar=async(event)=>{
     event.preventDefault()
     debugger
-    let totalAPagar = 0, idCarrito = 0
+    let totalAPagar = total, idCarrito = 0
     let items = []
-    carrito.forEach((value)=>{
+    /*carrito.forEach((value)=>{
       totalAPagar += value.CantidadSeleccionada*value.Precio
-    })
+    })*/
     const IdUsuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     let saldoDisponible = cookies.get('Saldo') === undefined ? 0 : cookies.get('Saldo')
     if (saldoDisponible < totalAPagar) {
-      debugger
       alert("Saldo insufiente")
       return
     }
+
+    //Genero un carrito
     const jsonDataCarrito = {
       "total": totalAPagar,
       "clienteIdusuario": IdUsuario
     }
     await axios.post("https://localhost:5001/api/Carrito/PostCarrito", jsonDataCarrito).then(response=>{
       idCarrito = response.data.Id
-    }).catch(error=>{
-      console.log(error)
-    })
+    }).catch(error=>{console.log(error)})
+
+    //Genero los items para el carrito
     carrito.forEach((value)=>{
       items.push(
         {
@@ -101,18 +102,82 @@ export default function Carrito(props) {
         })
     })
     await axios.post("https://localhost:5001/api/Carrito/PostItemsCarrito", items)
-    //let putProducto = {}
+
+    //Actualizo los stocks de los productos abonados
     carrito.forEach(async (value)=>{
       //putProducto.idproducto = value.idProducto
       //putProducto.cantidad = value.CantidadDisponible
       await axios.put(baseUrl+"/Producto/UpdateStock?idProducto="+value.IdProducto+"&cantidad="+value.CantidadDisponible)
     })
+
+    //Descuento el total de la compra del saldo del usuario
     await axios.post(baseUrl+"/Usuarios/CargarSaldo",{"idusuario": IdUsuario, "saldo_": (-totalAPagar)})
     cookies.set('Saldo',(saldoDisponible-totalAPagar))
+
+    //Actualizo el total de la compra al carrito
     await axios.put(baseUrl+"/Carrito/UpdateTotal",{"idcarrito": idCarrito, "total": totalAPagar})
+    await generarFacturas(idCarrito)
     cookies.remove('Carrito')
     alert("Gracias por su compra!")
     navigate('/mainmenu')
+  }
+
+  const generarFacturas=async(idCarrito)=>{
+    debugger
+    let facturas = []
+    const fecha = new Date()
+    const fechaParseada = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate()+' '+fecha.getHours()+':'+fecha.getMinutes()+':'+fecha.getSeconds()
+    let obj = carrito.reduce((res, curr) =>
+    {
+        if (res[curr.DatosVendedor.Idusuario])
+            res[curr.DatosVendedor.Idusuario].push(curr);
+        else
+            Object.assign(res, {[curr.DatosVendedor.Idusuario]: [curr]});
+        return res;
+    }, {});
+    let arr = []
+    obj = Object.entries(obj)
+    Object.entries(obj).forEach(value=>{
+      value['1'].forEach(item=>{
+          Array.isArray(item) && arr.push(item)
+      })
+    })
+    arr.forEach((value, index)=>{
+      const factura = {
+        fechacompra: fechaParseada,
+        items: [],
+        datosComprador: {
+          idusuario: cookies.get('Idusuario'),
+          nombre: cookies.get('Nombre'),
+          apellido: cookies.get('Apellido'),
+          dni: cookies.get('Dni'),
+          email: cookies.get('Email')
+        },
+        datosVendedor: {},
+        totalFacturado: 0,
+        idcarrito: idCarrito
+      }
+      value.forEach(item=>{
+        factura.datosVendedor = {
+          idusuario: item.DatosVendedor.Idusuario,
+          nombre: item.DatosVendedor.Nombre,
+          apellido: item.DatosVendedor.Apellido,
+          dni: item.DatosVendedor.Dni,
+          email: item.DatosVendedor.Email
+        }
+        factura.items.push({
+          idproducto: item.IdProducto,
+          nombre: item.Nombre,
+          precio: item.Precio,
+          cantidad: item.CantidadSeleccionada
+        })
+        factura.totalFacturado += item.CantidadSeleccionada*item.Precio
+      })
+      facturas.push(factura)
+    })
+    await axios.post(baseUrl+"/Carrito/PostFacturasKafka",facturas)
+    .then(response=>{console.log(response.data)})
+    .catch(error=>{alert(error)})
   }
 
 /*const postCarrito=async(event)=>{

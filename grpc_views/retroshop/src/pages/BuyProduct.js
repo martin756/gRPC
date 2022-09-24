@@ -15,6 +15,7 @@ function BuyProduct(props) {
 
     const cantidad = useRef(null)
     const [producto, setProducto] = useState([])
+    const [datosPublicador, setDatosPublicador] = useState([])
     const [stringsUrlsFotos, setArrayUrlsStrings] = useState([])
 
     const { search } = useLocation();
@@ -41,7 +42,8 @@ function BuyProduct(props) {
             "Categoria": producto.Categoria,
             "Precio": producto.Precio,
             "CantidadSeleccionada": cantidad.current.value,
-            "CantidadDisponible": producto.CantidadDisponible-cantidad.current.value
+            "CantidadDisponible": producto.CantidadDisponible-cantidad.current.value,
+            "DatosVendedor": datosPublicador
         }
         //p.CantidadDisponible -= cantidad.current.value
         carrito.push(p)
@@ -54,6 +56,7 @@ function BuyProduct(props) {
             debugger
             setProducto(response.data)
             setArrayUrlsStrings(response.data.UrlFotos)
+            setDatosPublicador(response.data.Publicador)
         })
         .catch(error=>{
             alert(error)
@@ -93,7 +96,7 @@ function BuyProduct(props) {
                             </Carousel>
                         </div>
                         <div className="col-md-5 col-sm-12 col-xs-12">
-                            <h2 className="name">{producto.Nombre}<h5>Publicado por <a href="#">{producto.Publicador}</a></h5></h2>
+                            <h2 className="name">{producto.Nombre}<h5>Publicado por <a href="#">{datosPublicador.User}</a></h5></h2>
                             <h5>{producto.FechaPublicacion}</h5>
                             <hr /><h3 className="price-container">${producto.Precio}</h3><hr />
                             <div className="description description-tabs">

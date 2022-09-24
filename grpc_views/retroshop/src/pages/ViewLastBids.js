@@ -13,11 +13,11 @@ function ViewLastBids() {
     const idProduct = query.get('id')
 
     const traerHistorialProducto = async() => {
-        axios.get("https://localhost:5001/api/Producto/GetCambiosProductosKafka?idProducto="+idProduct)
+        axios.get("https://localhost:5001/api/Producto/GetPujasSubastasKafka?idProducto="+idProduct)
         .then(response=>{
             setProduct(response.data)
             if (response.data.length == 0){
-                setMensaje("No se registraron historial de cambios para el producto seleccionado")
+                setMensaje("Aún no se registraron historial de pujas para el producto subastado")
             }
         })
         .catch(error=>{
@@ -33,7 +33,7 @@ function ViewLastBids() {
         <div className="d-flex g-5 justify-content-center" style={{padding: '30px'}}>
             <div className="col-md-5 col-lg-4 order-md-last">
                 <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-primary">Historial de auditoría</span>
+                <span className="text-primary">Historial de Pujas</span>
                 </h4>
                 <ul className="list-group mb-3">
                     <div>
@@ -42,32 +42,22 @@ function ViewLastBids() {
                             <div className="card-body text-center">
                                 <li class="list-group-item d-flex justify-content-between lh-sm">
                                   <div>
-                                    <strong>Accion: </strong>
-                                    <i>{value.accion}</i>
+                                    <strong>Fecha de Puja: </strong>
+                                    <i>{new Date(value.FechaPuja.Seconds*1000).toLocaleString()}</i>
                                   </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between lh-sm">
                                   <div>
-                                    <strong>Fecha: </strong>
-                                    <i>{new Date(value.fecha_edicion).toLocaleString()}</i>
+                                    <strong>Id de Comprador: </strong>
+                                    <i>{value.IdPujador}</i>
                                   </div>
                                 </li>
-                                {value.camposCambiados.map((campo=>(
-                                    <div>
-                                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                                            <div>
-                                                <strong>Campo Registrado: </strong>
-                                                <i>{campo.campo_registrado}</i>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                                            <div>
-                                                <strong>Nuevo valor: </strong>
-                                                <i>{campo.nuevo_valor}</i>
-                                            </div>
-                                        </li>
-                                    </div>
-                                )))}
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                  <div>
+                                    <strong>Precio Ofrecido: </strong>
+                                    <i>{value.PrecioOfrecido}</i>
+                                  </div>
+                                </li>
                                 <br></br>
                             </div>
                         </div>

@@ -9,11 +9,14 @@ function MyShopping() {
     const cookies = new Cookies()
     const idusuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     const [carritos, setCarritos] = useState([])
+    const [datosVendedor, setVendedor] = useState([])
+    const [datosFactura, setDatosFactura] = useState([])
+    const [fechaCompra, setFechaCompra] = useState([])
     const traerCarritos = async () => {
         await axios.get(baseUrl+"?id="+idusuario)
         .then(response=>{
-          debugger
-          
+            debugger
+          //1. Separo todos los items que compro historicamente el usuario en un array por carrito
           let obj = response.data.reduce((res, curr) =>
           {
               if (res[curr.Idcarrito])
@@ -29,8 +32,31 @@ function MyShopping() {
             value['1'].forEach(carrito=>{
                 Array.isArray(carrito) && arr.push(carrito)
             })
-        })
-        setCarritos(arr)
+          })
+          debugger
+          //2. Separo todos los items de cada carrito en un sub-array por factura
+          let itemsCarritosPorFactura = []
+          arr.forEach(subArray => {
+            obj = subArray.reduce((res,curr) =>
+            {
+                if (res[curr.DatosFactura.Idfactura])
+                    res[curr.DatosFactura.Idfactura].push(curr)
+                else
+                    Object.assign(res, {[curr.DatosFactura.Idfactura]: [curr]})
+                return res;
+            }, {})
+
+            let vec = []
+            obj = Object.entries(obj)
+            Object.entries(obj).forEach(value=>{
+                value['1'].forEach(factura=>{
+                    Array.isArray(factura) && vec.push(factura)
+                })
+            })
+            itemsCarritosPorFactura.push(vec)
+          });
+          
+        setCarritos(itemsCarritosPorFactura)
           //const productsPublishedByLoggedUser = response.data.filter(p=>p.PublicadorIdusuario===idusuario && p.CantidadDisponible>0)
           //setProducts(productsPublishedByLoggedUser)
         })
@@ -53,12 +79,24 @@ function MyShopping() {
                 <ul className="list-group mb-3">
                     <div>
                     {carritos.map((value=>(
-                        <div className="row list-group mb-3"><h4>Ticket nro. {value[0].Idcarrito}</h4>
+                        <div className="row list-group mb-3"><h4>Carrito nro. {value[0][0].Idcarrito}</h4>
                         {value.map((carrito=>(
-                            <CheckoutCarrito nombre={carrito.Nombre} cantidad={carrito.Cantidad} precio={carrito.Precio} total={carrito.Total}/>
+                            <div><h5>Factura nro. {carrito[0].DatosFactura.Idfactura}</h5>
+                            <button className='btn btn-info'>Descargar factura</button>
+                            {carrito.map((factura=>(
+                                <div>
+                                <CheckoutCarrito nombre={factura.Nombre} cantidad={factura.Cantidad} precio={factura.Precio} total={factura.Subtotal} />
+                                </div>
+                            )))}
+                            <h5>
+                                <strong>Total facturado: </strong>
+                                <i>${carrito[0].DatosFactura.TotalFacturado}</i>
+                            </h5>
+                            <br></br>
+                            </div>
                         )))}
-                        <h4>Total ${value[0].Total}</h4>
                         <hr />
+                        <h4>Total Carrito ${value[0][0].Total}</h4>
                         </div>
                     )))}
                     <br></br>

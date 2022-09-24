@@ -15,7 +15,7 @@ function CheckoutCarrito(props) {
         </li>
         <li class="list-group-item d-flex justify-content-between lh-sm">
           <div>
-            <strong>Cantidad de Productos: </strong>
+            <strong>Cantidad: </strong>
             <i>{props.cantidad}</i>
           </div>
         </li>

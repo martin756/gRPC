@@ -90,11 +90,9 @@ namespace apiRetroshop.Controllers
             List<AuditoriaProducto> changesList = new();
             try
             {
-                _configConsumer.GroupId = "cambios-productos";
+                _configConsumer.GroupId = "historial-cambios-productos";
                 using var consumer = new ConsumerBuilder<string, string>(_configConsumer).Build();
-                //consumer.Subscribe("producto" + idProducto);
                 consumer.Subscribe("TopicProductos");
-                //var topicPartition = new TopicPartition("producto" + idProducto, new Partition(0));
                 var topicPartition = new TopicPartition("TopicProductos", new Partition(0));
                 consumer.Assign(new TopicPartitionOffset
                     (topicPartition, 0));
@@ -146,6 +144,40 @@ namespace apiRetroshop.Controllers
             }
 
             return response;
+        }
+
+        [HttpGet]
+        [Route("GetPujasSubastasKafka")]
+        public string GetPujasKafka(int idProducto)
+        {
+            List<UltimaPujaSubasta> changesList = new();
+            try
+            {
+                _configConsumer.GroupId = "historial-pujas-subastas";
+                using var consumer = new ConsumerBuilder<string, string>(_configConsumer).Build();
+                consumer.Subscribe("TopicSubasta");
+                var topicPartition = new TopicPartition("TopicSubasta", new Partition(0));
+                consumer.Assign(new TopicPartitionOffset
+                    (topicPartition, 0));
+                Message<string, string> mensaje;
+                do
+                {
+                    var cr = consumer.Consume();
+                    mensaje = cr.Message;
+                    if (mensaje != null)
+                    {
+                        if (mensaje.Key.Contains("SubastaProducto_" + idProducto))
+                        {
+                            changesList.Add(JsonConvert.DeserializeObject<UltimaPujaSubasta>(mensaje.Value));
+                        }
+                    }
+                } while (mensaje != null);
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
+            }
+            return JsonConvert.SerializeObject(changesList);
         }
 
         [HttpPost]

@@ -31,7 +31,7 @@ message ProductoGet {
     float precio_final = 5;
     int64 cantidad_disponible = 6;
     string fecha_publicacion = 7;
-    string publicador = 8;
+    Usuario publicador = 8;
     repeated string url_fotos = 9;
     bool esSubasta = 10;
     google.protobuf.Timestamp fecha_ultima_puja = 11;
@@ -86,6 +86,7 @@ message UltimaPujaSubasta {
     int32 idPujador = 1;
     float precio_ofrecido = 2;
     int32 idProducto = 3;
+    google.protobuf.Timestamp fecha_puja = 4;
 }
 
 service Productos {

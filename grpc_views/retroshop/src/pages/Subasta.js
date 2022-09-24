@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import { CartPlusFill } from 'react-bootstrap-icons';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import Alert from 'react-bootstrap/Alert';
 
 
 function Subasta() {
@@ -17,6 +18,8 @@ function Subasta() {
     const precio = useRef(null)
     const [statePrecio, setPrecio] = useState(0)
     const [producto, setProducto] = useState([])
+    const [fechaActual, setFechaActual] = useState(new Date())
+    const [datosPublicador, setDatosPublicador] = useState([])
     const [stringsUrlsFotos, setArrayUrlsStrings] = useState([])
 
     const { search } = useLocation();
@@ -31,7 +34,8 @@ function Subasta() {
         const jsonBody = {
             idPujador: parseInt(cookies.get('Idusuario')),
             precioOfrecido: parseFloat(precio.current.value),
-            idProducto: parseInt(idProduct)
+            idProducto: parseInt(idProduct),
+            fechaPuja: {"seconds": Math.floor(Date.now()/1000), "nanos": 0}
         }
         await axios.post(baseUrl+"PostPujaSubastaKafka",jsonBody)
         .then(response=>{
@@ -47,12 +51,14 @@ function Subasta() {
     const traerProductoEnSubasta = async () => {
         await axios.get(baseUrl+"GetProductoById"+`/?id=${idProduct}`)
         .then(response=>{
+            debugger
             const jsonResponse = response.data
-            jsonResponse.FechaFin = new Date(jsonResponse.FechaFin.Seconds*1000).toLocaleString()
-            jsonResponse.FechaInicio = new Date(jsonResponse.FechaInicio.Seconds*1000).toLocaleString()
-            jsonResponse.FechaUltimaPuja = new Date(jsonResponse.FechaUltimaPuja.Seconds*1000).toLocaleString()
+            jsonResponse.FechaFin = (jsonResponse.FechaFin.Seconds+10800)*1000
+            jsonResponse.FechaInicio = (jsonResponse.FechaInicio.Seconds+10800)*1000
+            jsonResponse.FechaUltimaPuja = (jsonResponse.FechaUltimaPuja.Seconds+10800)*1000
             setProducto(jsonResponse)
             setArrayUrlsStrings(jsonResponse.UrlFotos)
+            setDatosPublicador(response.data.Publicador)
             setPrecio(jsonResponse.PrecioFinal)
         })
         .catch(error=>{
@@ -62,6 +68,9 @@ function Subasta() {
 
     useEffect(() => {
         traerProductoEnSubasta()
+        setInterval(()=>{
+            setFechaActual(new Date())
+        },1000)
         const script = document.createElement('script');
         script.src = "https://getbootstrap.com/docs/5.2/examples/checkout/form-validation.js";
         script.async = true;
@@ -113,7 +122,7 @@ function Subasta() {
                             </Carousel>
                         </div>
                         <div className="col-md-5 col-sm-12 col-xs-12">
-                            <h2 className="name">{producto.Nombre}<h5>Publicado por <a href="#">{producto.Publicador}</a></h5></h2>
+                            <h2 className="name">{producto.Nombre}<h5>Publicado por <a href="#">{datosPublicador.User}</a></h5></h2>
                             <h5>{producto.FechaPublicacion}</h5>
                             <hr /><h3 className="price-container">${producto.Precio}</h3><hr />
                             <div className="description description-tabs">
@@ -129,14 +138,19 @@ function Subasta() {
                                     <hr />
                                     <div>
                                         La subasta caduca el:
-                                        <h5>{producto.FechaFin}</h5>
+                                        <h5>{new Date(producto.FechaFin).toLocaleString()}</h5>
                                     </div>
                                     <hr />
+                                    <div>
+                                        Ultima puja: 
+                                        <h5>$ {statePrecio}</h5>
+                                    </div>
+                                    <br />
+                                    {fechaActual < new Date(producto.FechaFin) ?
                                     <div className="row">
                                         <div className="col-sm-12 col-md-6 col-lg-6">
                                         <form onSubmit={(event)=>{pujar(event)}} className="needs-validation" noValidate>
                                             <div className="col-12">
-                                                <label className="form-label">Ultima puja: <h5>$ {statePrecio}</h5></label>
                                                 <div className="input-group has-validation">
                                                     <span className="input-group-text">$</span>
                                                     <input ref={precio} type="number" className='form-control' placeholder='Oferte un monto' name='precio' required min={statePrecio+1} defaultValue={statePrecio+1}/>
@@ -149,6 +163,11 @@ function Subasta() {
                                         </form>
                                         </div>
                                     </div>
+                                    : 
+                                    <Alert key="danger" variant="danger">
+                                        La subasta se ha cerrado!
+                                    </Alert>
+                                    }
                                 </div>
                             </div>
                         </div>

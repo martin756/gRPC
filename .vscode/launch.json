@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch SpringBootKafkaConsumerApplication",
+      "request": "launch",
+      "mainClass": "com.kafka.springbootkafkaconsumer.SpringBootKafkaConsumerApplication",
+      "projectName": "spring-boot-kafka-consumer-pujas"
+    },
+    {
+      "type": "java",
       "name": "Launch KafkaConsumerExample",
       "request": "launch",
       "mainClass": "com.retroshop.KafkaConsumerExample",

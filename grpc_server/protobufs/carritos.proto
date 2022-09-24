@@ -1,9 +1,17 @@
 syntax = "proto3";
 import "productos.proto";
+import "usuarios.proto";
+import "google/protobuf/timestamp.proto";
 
 message Carrito {
     float total = 1;
     int32 cliente_idusuario = 2;
+}
+
+message Factura {
+    int32 idfactura = 1;
+    google.protobuf.Timestamp fecha_compra = 2;
+    float total_facturado = 3;
 }
 
 message Producto_Carrito {
@@ -15,6 +23,8 @@ message Producto_Carrito {
     float precio = 6;
     float total = 7;
     int32 idproductocarrito = 8;
+    Factura datos_factura = 9;
+    Usuario datos_vendedor = 10;
 }
 
 message PutTotalCarrito {

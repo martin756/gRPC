@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
+using apiRetroshop.Models;
+using Confluent.Kafka;
 
 namespace apiRetroshop.Controllers
 {
@@ -14,6 +16,12 @@ namespace apiRetroshop.Controllers
     [ApiController]
     public class CarritoController : ControllerBase
     {
+        private readonly ProducerConfig _configProducer;
+        public CarritoController(ProducerConfig config)
+        {
+            _configProducer = config;
+        }
+
         [HttpPost]
         [Route("PostCarrito")]
         public string CrearCarrito(Carrito carrito)
@@ -79,6 +87,27 @@ namespace apiRetroshop.Controllers
             }
 
             return response;
+        }
+
+        [HttpPost]
+        [Route("PostFacturasKafka")]
+        public async Task<string> PostFacturasAsync(List<ClaseFactura> facturas)
+        {
+            try
+            {
+                using var producer = new ProducerBuilder<string, string>(_configProducer).Build();
+                foreach (var item in facturas)
+                {
+                    await producer.ProduceAsync("TopicFacturacion", new Message<string, string>
+                    { Key = "Carrito_" + item.idcarrito, Value = JsonConvert.SerializeObject(item) });
+                    producer.Flush(TimeSpan.FromSeconds(10));
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
+            }
+            return "Facturas emitidas con exito";
         }
 
         [HttpGet]

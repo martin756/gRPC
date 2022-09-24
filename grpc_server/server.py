@@ -1,11 +1,10 @@
-from email import message
 from time import sleep
 from usuarios_pb2_grpc import UsuariosServicer, add_UsuariosServicer_to_server
 from usuarios_pb2 import Usuario, Response
 from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_server
 from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList, Tipo_categoria
 from carritos_pb2_grpc import CarritosServicer, add_CarritosServicer_to_server
-from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, ResponseCarrito
+from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, Factura, ResponseCarrito
 from datetime import datetime
 from google.protobuf.timestamp_pb2 import Timestamp
 
@@ -107,7 +106,7 @@ class ProductoUsuarios(ProductosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username from producto p "+
+        query = (f"select p.*, c.nombre as 'categoria', u.usuario as username, u.nombre as 'nombre_completo', u.apellido, u.email, u.dni from producto p "+
         "inner join tipo_categoria c on p.idtipocategoria = c.idtipocategoria "+
         f"inner join usuario u on p.publicador_idusuario = u.idusuario where idproducto= '{request.idproducto}'")
         cursor.execute(query)
@@ -125,6 +124,9 @@ class ProductoUsuarios(ProductosServicer):
                 fotos.append(row.url_foto4)
             if row.url_foto5 is not None:
                 fotos.append(row.url_foto5)
+
+            datosPublicador = Usuario(idusuario = row.publicador_idusuario, nombre = row.nombre_completo, 
+            apellido = row.apellido, dni = row.dni, email = row.email, user = row.username)
             
             result = ProductoGet(
                     nombre = row.nombre, 
@@ -133,7 +135,7 @@ class ProductoUsuarios(ProductosServicer):
                     precio = row.precio, 
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
-                    publicador = row.username,
+                    publicador = datosPublicador,
                     esSubasta = row.esSubasta,
                     url_fotos = fotos)
 
@@ -160,7 +162,7 @@ class ProductoUsuarios(ProductosServicer):
                     precio_final = subasta.preciofinal, 
                     cantidad_disponible = row.cantidad_disponible, 
                     fecha_publicacion = row.fecha_publicacion, 
-                    publicador = row.username,
+                    publicador = datosPublicador,
                     fecha_fin = timestampFin,
                     fecha_inicio = timestampInicio,
                     fecha_ultima_puja = timestampPuja,
@@ -359,15 +361,22 @@ class CarritoProductos(CarritosServicer):
                               host='localhost', port='3306',
                               database='retroshop')
         cursor = cnx.cursor(named_tuple=True)
-        query = (f"SELECT c.idcarrito,c.total, pc.idproducto_carrito as productocarrito, pc.cantidad,pc.subtotal,p.idproducto, "+
-        "p.precio, p.nombre FROM carrito c "+
-        f"inner join producto_carrito pc on c.idcarrito=pc.idcarrito "+
-        f"inner join producto p on p.idproducto=pc.idproducto where c.cliente_idusuario = '{request.idusuario}'")
+        query = (f"SELECT c.idcarrito,c.total, pc.idproducto_carrito as productocarrito, pc.cantidad,pc.subtotal,p.idproducto, p.precio, "+
+        "p.nombre, u.nombre as 'nombre_completo', u.apellido, u.dni, u.email, pc.idfactura, f.fechacompra, f.totalfacturado FROM carrito c "+
+        "inner join producto_carrito pc on c.idcarrito=pc.idcarrito "+
+        "inner join producto p on p.idproducto=pc.idproducto "+
+        "inner join factura f on f.idfactura=pc.idfactura "+
+        f"inner join usuario u on u.idusuario=p.publicador_idusuario where c.cliente_idusuario = '{request.idusuario}'")
         cursor.execute(query)
         records = cursor.fetchall()
         for row in records:
-            yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, 
-            subtotal = row.subtotal, nombre = row.nombre, precio = row.precio, total = row.total, idproductocarrito = row.productocarrito)
+            timestampCompra = Timestamp()
+            timestampCompra.FromDatetime(row.fechacompra)
+            yield Producto_Carrito(idproducto = row.idproducto, idcarrito = row.idcarrito, cantidad = row.cantidad, subtotal = row.subtotal, 
+            nombre = row.nombre, precio = row.precio, total = row.total, idproductocarrito = row.productocarrito, 
+            datos_factura = Factura(idfactura = row.idfactura, fecha_compra = timestampCompra, total_facturado = row.totalfacturado), 
+            datos_vendedor = Usuario(nombre = row.nombre_completo, apellido = row.apellido, dni = row.dni, email = row.email)
+            )
 
 
     def ActualizarTotalCarrito(self, request, context):

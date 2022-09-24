@@ -15,6 +15,7 @@ function ViewProductChanges() {
     const traerHistorialProducto = async() => {
         axios.get("https://localhost:5001/api/Producto/GetCambiosProductosKafka?idProducto="+idProduct)
         .then(response=>{
+            debugger
             setProduct(response.data)
             if (response.data.length == 0){
                 setMensaje("No se registraron historial de cambios para el producto seleccionado")

@@ -22,26 +22,32 @@ public static partial class CarritosReflection {
   static CarritosReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg5jYXJyaXRvcy5wcm90bxoPcHJvZHVjdG9zLnByb3RvIjMKB0NhcnJpdG8S",
-          "DQoFdG90YWwYASABKAISGQoRY2xpZW50ZV9pZHVzdWFyaW8YAiABKAUipwEK",
-          "EFByb2R1Y3RvX0NhcnJpdG8SEgoKaWRwcm9kdWN0bxgBIAEoBRIRCglpZGNh",
-          "cnJpdG8YAiABKAUSEAoIY2FudGlkYWQYAyABKAUSEAoIc3VidG90YWwYBCAB",
-          "KAISDgoGbm9tYnJlGAUgASgJEg4KBnByZWNpbxgGIAEoAhINCgV0b3RhbBgH",
-          "IAEoAhIZChFpZHByb2R1Y3RvY2Fycml0bxgIIAEoBSIzCg9QdXRUb3RhbENh",
-          "cnJpdG8SEQoJaWRjYXJyaXRvGAEgASgFEg0KBXRvdGFsGAIgASgCIhcKCUlk",
-          "Q2Fycml0bxIKCgJpZBgBIAEoBSIiCg9SZXNwb25zZUNhcnJpdG8SDwoHbWVu",
-          "c2FqZRgBIAEoCTKVAgoIQ2Fycml0b3MSJAoMQ3JlYXJDYXJyaXRvEgguQ2Fy",
-          "cml0bxoKLklkQ2Fycml0bxI8ChNBZ3JlZ2FySXRlbXNDYXJyaXRvEhEuUHJv",
-          "ZHVjdG9fQ2Fycml0bxoQLlJlc3BvbnNlQ2Fycml0bygBEjsKGFRyYWVyQ2Fy",
-          "cml0b3NCeUlkVXN1YXJpbxIKLklkVXN1YXJpbxoRLlByb2R1Y3RvX0NhcnJp",
-          "dG8wARIqChBUcmFlckNhcnJpdG9CeUlkEgouSWRDYXJyaXRvGgguQ2Fycml0",
-          "bzABEjwKFkFjdHVhbGl6YXJUb3RhbENhcnJpdG8SEC5QdXRUb3RhbENhcnJp",
-          "dG8aEC5SZXNwb25zZUNhcnJpdG9iBnByb3RvMw=="));
+          "Cg5jYXJyaXRvcy5wcm90bxoPcHJvZHVjdG9zLnByb3RvGg51c3Vhcmlvcy5w",
+          "cm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90byIzCgdDYXJy",
+          "aXRvEg0KBXRvdGFsGAEgASgCEhkKEWNsaWVudGVfaWR1c3VhcmlvGAIgASgF",
+          "ImcKB0ZhY3R1cmESEQoJaWRmYWN0dXJhGAEgASgFEjAKDGZlY2hhX2NvbXBy",
+          "YRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASFwoPdG90YWxf",
+          "ZmFjdHVyYWRvGAMgASgCIuoBChBQcm9kdWN0b19DYXJyaXRvEhIKCmlkcHJv",
+          "ZHVjdG8YASABKAUSEQoJaWRjYXJyaXRvGAIgASgFEhAKCGNhbnRpZGFkGAMg",
+          "ASgFEhAKCHN1YnRvdGFsGAQgASgCEg4KBm5vbWJyZRgFIAEoCRIOCgZwcmVj",
+          "aW8YBiABKAISDQoFdG90YWwYByABKAISGQoRaWRwcm9kdWN0b2NhcnJpdG8Y",
+          "CCABKAUSHwoNZGF0b3NfZmFjdHVyYRgJIAEoCzIILkZhY3R1cmESIAoOZGF0",
+          "b3NfdmVuZGVkb3IYCiABKAsyCC5Vc3VhcmlvIjMKD1B1dFRvdGFsQ2Fycml0",
+          "bxIRCglpZGNhcnJpdG8YASABKAUSDQoFdG90YWwYAiABKAIiFwoJSWRDYXJy",
+          "aXRvEgoKAmlkGAEgASgFIiIKD1Jlc3BvbnNlQ2Fycml0bxIPCgdtZW5zYWpl",
+          "GAEgASgJMpUCCghDYXJyaXRvcxIkCgxDcmVhckNhcnJpdG8SCC5DYXJyaXRv",
+          "GgouSWRDYXJyaXRvEjwKE0FncmVnYXJJdGVtc0NhcnJpdG8SES5Qcm9kdWN0",
+          "b19DYXJyaXRvGhAuUmVzcG9uc2VDYXJyaXRvKAESOwoYVHJhZXJDYXJyaXRv",
+          "c0J5SWRVc3VhcmlvEgouSWRVc3VhcmlvGhEuUHJvZHVjdG9fQ2Fycml0bzAB",
+          "EioKEFRyYWVyQ2Fycml0b0J5SWQSCi5JZENhcnJpdG8aCC5DYXJyaXRvMAES",
+          "PAoWQWN0dWFsaXphclRvdGFsQ2Fycml0bxIQLlB1dFRvdGFsQ2Fycml0bxoQ",
+          "LlJlc3BvbnNlQ2Fycml0b2IGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { global::ProductosReflection.Descriptor, },
+        new pbr::FileDescriptor[] { global::ProductosReflection.Descriptor, global::UsuariosReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Carrito), global::Carrito.Parser, new[]{ "Total", "ClienteIdusuario" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::Producto_Carrito), global::Producto_Carrito.Parser, new[]{ "Idproducto", "Idcarrito", "Cantidad", "Subtotal", "Nombre", "Precio", "Total", "Idproductocarrito" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Factura), global::Factura.Parser, new[]{ "Idfactura", "FechaCompra", "TotalFacturado" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Producto_Carrito), global::Producto_Carrito.Parser, new[]{ "Idproducto", "Idcarrito", "Cantidad", "Subtotal", "Nombre", "Precio", "Total", "Idproductocarrito", "DatosFactura", "DatosVendedor" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PutTotalCarrito), global::PutTotalCarrito.Parser, new[]{ "Idcarrito", "Total" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdCarrito), global::IdCarrito.Parser, new[]{ "Id" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ResponseCarrito), global::ResponseCarrito.Parser, new[]{ "Mensaje" }, null, null, null, null)
@@ -259,6 +265,259 @@ public sealed partial class Carrito : pb::IMessage<Carrito>
 
 }
 
+public sealed partial class Factura : pb::IMessage<Factura>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<Factura> _parser = new pb::MessageParser<Factura>(() => new Factura());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<Factura> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::CarritosReflection.Descriptor.MessageTypes[1]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Factura() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Factura(Factura other) : this() {
+    idfactura_ = other.idfactura_;
+    fechaCompra_ = other.fechaCompra_ != null ? other.fechaCompra_.Clone() : null;
+    totalFacturado_ = other.totalFacturado_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public Factura Clone() {
+    return new Factura(this);
+  }
+
+  /// <summary>Field number for the "idfactura" field.</summary>
+  public const int IdfacturaFieldNumber = 1;
+  private int idfactura_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Idfactura {
+    get { return idfactura_; }
+    set {
+      idfactura_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "fecha_compra" field.</summary>
+  public const int FechaCompraFieldNumber = 2;
+  private global::Google.Protobuf.WellKnownTypes.Timestamp fechaCompra_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Google.Protobuf.WellKnownTypes.Timestamp FechaCompra {
+    get { return fechaCompra_; }
+    set {
+      fechaCompra_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "total_facturado" field.</summary>
+  public const int TotalFacturadoFieldNumber = 3;
+  private float totalFacturado_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public float TotalFacturado {
+    get { return totalFacturado_; }
+    set {
+      totalFacturado_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as Factura);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(Factura other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Idfactura != other.Idfactura) return false;
+    if (!object.Equals(FechaCompra, other.FechaCompra)) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(TotalFacturado, other.TotalFacturado)) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Idfactura != 0) hash ^= Idfactura.GetHashCode();
+    if (fechaCompra_ != null) hash ^= FechaCompra.GetHashCode();
+    if (TotalFacturado != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(TotalFacturado);
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (Idfactura != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(Idfactura);
+    }
+    if (fechaCompra_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(FechaCompra);
+    }
+    if (TotalFacturado != 0F) {
+      output.WriteRawTag(29);
+      output.WriteFloat(TotalFacturado);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (Idfactura != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(Idfactura);
+    }
+    if (fechaCompra_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(FechaCompra);
+    }
+    if (TotalFacturado != 0F) {
+      output.WriteRawTag(29);
+      output.WriteFloat(TotalFacturado);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Idfactura != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idfactura);
+    }
+    if (fechaCompra_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FechaCompra);
+    }
+    if (TotalFacturado != 0F) {
+      size += 1 + 4;
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(Factura other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Idfactura != 0) {
+      Idfactura = other.Idfactura;
+    }
+    if (other.fechaCompra_ != null) {
+      if (fechaCompra_ == null) {
+        FechaCompra = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+      }
+      FechaCompra.MergeFrom(other.FechaCompra);
+    }
+    if (other.TotalFacturado != 0F) {
+      TotalFacturado = other.TotalFacturado;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          Idfactura = input.ReadInt32();
+          break;
+        }
+        case 18: {
+          if (fechaCompra_ == null) {
+            FechaCompra = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaCompra);
+          break;
+        }
+        case 29: {
+          TotalFacturado = input.ReadFloat();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          Idfactura = input.ReadInt32();
+          break;
+        }
+        case 18: {
+          if (fechaCompra_ == null) {
+            FechaCompra = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          }
+          input.ReadMessage(FechaCompra);
+          break;
+        }
+        case 29: {
+          TotalFacturado = input.ReadFloat();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
 public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     , pb::IBufferMessage
@@ -271,7 +530,7 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::CarritosReflection.Descriptor.MessageTypes[1]; }
+    get { return global::CarritosReflection.Descriptor.MessageTypes[2]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -296,6 +555,8 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     precio_ = other.precio_;
     total_ = other.total_;
     idproductocarrito_ = other.idproductocarrito_;
+    datosFactura_ = other.datosFactura_ != null ? other.datosFactura_.Clone() : null;
+    datosVendedor_ = other.datosVendedor_ != null ? other.datosVendedor_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -392,6 +653,28 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
   }
 
+  /// <summary>Field number for the "datos_factura" field.</summary>
+  public const int DatosFacturaFieldNumber = 9;
+  private global::Factura datosFactura_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Factura DatosFactura {
+    get { return datosFactura_; }
+    set {
+      datosFactura_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "datos_vendedor" field.</summary>
+  public const int DatosVendedorFieldNumber = 10;
+  private global::Usuario datosVendedor_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::Usuario DatosVendedor {
+    get { return datosVendedor_; }
+    set {
+      datosVendedor_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Producto_Carrito);
@@ -413,6 +696,8 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Precio, other.Precio)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Total, other.Total)) return false;
     if (Idproductocarrito != other.Idproductocarrito) return false;
+    if (!object.Equals(DatosFactura, other.DatosFactura)) return false;
+    if (!object.Equals(DatosVendedor, other.DatosVendedor)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -427,6 +712,8 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     if (Precio != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Precio);
     if (Total != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Total);
     if (Idproductocarrito != 0) hash ^= Idproductocarrito.GetHashCode();
+    if (datosFactura_ != null) hash ^= DatosFactura.GetHashCode();
+    if (datosVendedor_ != null) hash ^= DatosVendedor.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -475,6 +762,14 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
       output.WriteRawTag(64);
       output.WriteInt32(Idproductocarrito);
     }
+    if (datosFactura_ != null) {
+      output.WriteRawTag(74);
+      output.WriteMessage(DatosFactura);
+    }
+    if (datosVendedor_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(DatosVendedor);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -516,6 +811,14 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
       output.WriteRawTag(64);
       output.WriteInt32(Idproductocarrito);
     }
+    if (datosFactura_ != null) {
+      output.WriteRawTag(74);
+      output.WriteMessage(DatosFactura);
+    }
+    if (datosVendedor_ != null) {
+      output.WriteRawTag(82);
+      output.WriteMessage(DatosVendedor);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -548,6 +851,12 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
     if (Idproductocarrito != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Idproductocarrito);
+    }
+    if (datosFactura_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(DatosFactura);
+    }
+    if (datosVendedor_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(DatosVendedor);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -583,6 +892,18 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
     }
     if (other.Idproductocarrito != 0) {
       Idproductocarrito = other.Idproductocarrito;
+    }
+    if (other.datosFactura_ != null) {
+      if (datosFactura_ == null) {
+        DatosFactura = new global::Factura();
+      }
+      DatosFactura.MergeFrom(other.DatosFactura);
+    }
+    if (other.datosVendedor_ != null) {
+      if (datosVendedor_ == null) {
+        DatosVendedor = new global::Usuario();
+      }
+      DatosVendedor.MergeFrom(other.DatosVendedor);
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -628,6 +949,20 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
         }
         case 64: {
           Idproductocarrito = input.ReadInt32();
+          break;
+        }
+        case 74: {
+          if (datosFactura_ == null) {
+            DatosFactura = new global::Factura();
+          }
+          input.ReadMessage(DatosFactura);
+          break;
+        }
+        case 82: {
+          if (datosVendedor_ == null) {
+            DatosVendedor = new global::Usuario();
+          }
+          input.ReadMessage(DatosVendedor);
           break;
         }
       }
@@ -676,6 +1011,20 @@ public sealed partial class Producto_Carrito : pb::IMessage<Producto_Carrito>
           Idproductocarrito = input.ReadInt32();
           break;
         }
+        case 74: {
+          if (datosFactura_ == null) {
+            DatosFactura = new global::Factura();
+          }
+          input.ReadMessage(DatosFactura);
+          break;
+        }
+        case 82: {
+          if (datosVendedor_ == null) {
+            DatosVendedor = new global::Usuario();
+          }
+          input.ReadMessage(DatosVendedor);
+          break;
+        }
       }
     }
   }
@@ -695,7 +1044,7 @@ public sealed partial class PutTotalCarrito : pb::IMessage<PutTotalCarrito>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::CarritosReflection.Descriptor.MessageTypes[2]; }
+    get { return global::CarritosReflection.Descriptor.MessageTypes[3]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -903,7 +1252,7 @@ public sealed partial class IdCarrito : pb::IMessage<IdCarrito>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::CarritosReflection.Descriptor.MessageTypes[3]; }
+    get { return global::CarritosReflection.Descriptor.MessageTypes[4]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1075,7 +1424,7 @@ public sealed partial class ResponseCarrito : pb::IMessage<ResponseCarrito>
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::CarritosReflection.Descriptor.MessageTypes[4]; }
+    get { return global::CarritosReflection.Descriptor.MessageTypes[5]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
