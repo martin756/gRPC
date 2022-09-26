@@ -6,8 +6,8 @@ import '../css/CountdownTimer.css'
 const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
+      <span>Finalizó la Subasta</span>
+      <p>No se pueden realizar mas Pujas</p>
     </div>
   );
 };
