@@ -3,15 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Cookies from 'universal-cookie'
 import CheckoutCarrito from '../components/CheckoutCarrito'
 import Header from '../components/Header'
+import { Document, Page, PDFDownloadLink, Text, View } from '@react-pdf/renderer'
 
 function MyShopping() {
     const baseUrl = "https://localhost:5001/api/Carrito/GetCarritoByIdUsuario"
     const cookies = new Cookies()
     const idusuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     const [carritos, setCarritos] = useState([])
-    const [datosVendedor, setVendedor] = useState([])
-    const [datosFactura, setDatosFactura] = useState([])
-    const [fechaCompra, setFechaCompra] = useState([])
     const traerCarritos = async () => {
         await axios.get(baseUrl+"?id="+idusuario)
         .then(response=>{
@@ -82,7 +80,9 @@ function MyShopping() {
                         <div className="row list-group mb-3"><h4>Carrito nro. {value[0][0].Idcarrito}</h4>
                         {value.map((carrito=>(
                             <div><h5>Factura nro. {carrito[0].DatosFactura.Idfactura}</h5>
-                            <button className='btn btn-info'>Descargar factura</button>
+                            <PDFDownloadLink document={<DescargarFacturaPDF datos={carrito}/>} fileName="factura">
+                                <button className='btn btn-info'>Descargar factura</button>
+                            </PDFDownloadLink>
                             {carrito.map((factura=>(
                                 <div>
                                 <CheckoutCarrito nombre={factura.Nombre} cantidad={factura.Cantidad} precio={factura.Precio} total={factura.Subtotal} />
@@ -110,3 +110,28 @@ function MyShopping() {
 }
 
 export default MyShopping
+
+function DescargarFacturaPDF(props) {
+    const cookies = new Cookies()
+    return (
+      <Document>
+        <Page size="A4">
+            <View style={{display: 'flex', flexDirection: "column", paddingTop: '10px', paddingLeft: '10px'}}>
+                <Text>Factura nro. {props.datos[0].DatosFactura.Idfactura}</Text>
+                <Text style={{padding: '10px'}}>Datos del vendedor: {props.datos[0].DatosVendedor.Apellido}, {props.datos[0].DatosVendedor.Nombre} {props.datos[0].DatosVendedor.Dni} {props.datos[0].DatosVendedor.Email}</Text>
+                <Text style={{padding: '10px'}}>Datos del comprador: {cookies.get('Apellido')}, {cookies.get('Nombre')} {cookies.get('Dni')} {cookies.get('Email')}</Text>
+                <Text>Fecha de compra: {new Date(props.datos[0].DatosFactura.FechaCompra.Seconds*1000).toLocaleString()}</Text>
+                {props.datos.map((value=>(
+                    <View style={{padding: '10px'}}>
+                        <Text style={{paddingBottom: '3px'}}>Producto: {value.Nombre}</Text>
+                        <Text style={{paddingBottom: '3px'}}>Precio unitario: ${value.Precio}</Text>
+                        <Text style={{paddingBottom: '3px'}}>Cantidad: {value.Cantidad}</Text>
+                        <Text style={{paddingBottom: '3px'}}>Subtotal: ${value.Subtotal}</Text>
+                    </View>
+                )))}
+                <Text>Total a pagar: ${props.datos[0].DatosFactura.TotalFacturado}</Text>
+            </View>
+        </Page>
+      </Document>
+    )
+}

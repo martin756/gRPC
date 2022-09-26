@@ -23,7 +23,7 @@ function Login() {
             if(response.User !== undefined && response.User !== ''){
                 cookies.set('Idusuario',response.Idusuario)
                 cookies.set('Nombre',response.Nombre)
-                cookies.set('Apellido',response.Nombre)
+                cookies.set('Apellido',response.Apellido)
                 cookies.set('Dni',response.Dni)
                 cookies.set('Email',response.Email)
                 cookies.set('User',response.User)
