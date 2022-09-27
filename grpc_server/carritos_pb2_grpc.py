@@ -30,6 +30,11 @@ class CarritosStub(object):
                 request_serializer=productos__pb2.IdUsuario.SerializeToString,
                 response_deserializer=carritos__pb2.Producto_Carrito.FromString,
                 )
+        self.TraerFactura = channel.unary_unary(
+                '/Carritos/TraerFactura',
+                request_serializer=carritos__pb2.IdCarrito.SerializeToString,
+                response_deserializer=carritos__pb2.getFactura.FromString,
+                )
         self.TraerCarritoById = channel.unary_stream(
                 '/Carritos/TraerCarritoById',
                 request_serializer=carritos__pb2.IdCarrito.SerializeToString,
@@ -58,6 +63,12 @@ class CarritosServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def TraerCarritosByIdUsuario(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TraerFactura(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -92,6 +103,11 @@ def add_CarritosServicer_to_server(servicer, server):
                     servicer.TraerCarritosByIdUsuario,
                     request_deserializer=productos__pb2.IdUsuario.FromString,
                     response_serializer=carritos__pb2.Producto_Carrito.SerializeToString,
+            ),
+            'TraerFactura': grpc.unary_unary_rpc_method_handler(
+                    servicer.TraerFactura,
+                    request_deserializer=carritos__pb2.IdCarrito.FromString,
+                    response_serializer=carritos__pb2.getFactura.SerializeToString,
             ),
             'TraerCarritoById': grpc.unary_stream_rpc_method_handler(
                     servicer.TraerCarritoById,
@@ -161,6 +177,23 @@ class Carritos(object):
         return grpc.experimental.unary_stream(request, target, '/Carritos/TraerCarritosByIdUsuario',
             productos__pb2.IdUsuario.SerializeToString,
             carritos__pb2.Producto_Carrito.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TraerFactura(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Carritos/TraerFactura',
+            carritos__pb2.IdCarrito.SerializeToString,
+            carritos__pb2.getFactura.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

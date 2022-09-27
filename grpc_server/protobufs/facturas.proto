@@ -1,0 +1,33 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+
+option java_multiple_files = true;
+option java_package = "io.grpc.springbootkafkaconsumer.facturas";
+option java_outer_classname = "facturasProto";
+option objc_class_prefix = "FRP";
+
+package facturas;
+
+message prodFactura{
+    string nombre = 1;
+    int32 cantidad = 2;
+    float precio = 3;
+    string nombre_comprador = 4;
+    string apellido_comprador = 5;
+    string nombre_vendedor = 6;
+    string apellido_vendedor = 7;
+}
+
+message getFactura{
+    repeated prodFactura articulo= 1;
+}
+
+message FacturaId {
+    int32 idfactura = 1;
+}
+
+service Facturas{
+    rpc TraerFactura(FacturaId) returns (getFactura);
+}
+

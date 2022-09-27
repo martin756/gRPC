@@ -4,9 +4,10 @@ from usuarios_pb2 import Usuario, Response
 from productos_pb2_grpc import ProductosServicer, add_ProductosServicer_to_server
 from productos_pb2 import Producto , ProductoGet ,ProductoPost, ProductoPut, ProductosList, Tipo_categoria
 from carritos_pb2_grpc import CarritosServicer, add_CarritosServicer_to_server
-from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, Factura, ResponseCarrito
+from carritos_pb2 import IdCarrito, Carrito, Producto_Carrito, Factura, ResponseCarrito, prodFactura, getFactura
 from datetime import datetime
 from google.protobuf.timestamp_pb2 import Timestamp
+from facturas_pb2_grpc import FacturasServicer, add_FacturasServicer_to_server
 
 import grpc
 from concurrent import futures
@@ -391,6 +392,28 @@ class CarritoProductos(CarritosServicer):
         cnx.close()
 
         return ResponseCarrito(mensaje = "204 No-Content. Actualizacion exitosa")
+class FacturaServicio(FacturasServicer):
+    def TraerFactura(self, request, context):
+        print("request de factura")
+        nombre = "anteojos"
+        cant = 5
+        precio = 550.0
+        compnomb = "walter"
+        compapell = "lacoste"
+        vendnomb = "jorge"
+        vendapell = "Langxieng"
+        
+        factura = prodFactura(nombre = nombre, 
+        cantidad = cant,
+        precio = precio,
+        nombre_comprador= compnomb,
+        apellido_comprador =compapell,
+        nombre_vendedor =vendnomb ,
+        apellido_vendedor =vendapell)
+        facturas = []
+        facturas.append(factura)
+        return getFactura(articulo = facturas)
+
 
 
 def start():
@@ -398,6 +421,7 @@ def start():
     add_UsuariosServicer_to_server(ServicioUsuarios(), server)
     add_ProductosServicer_to_server(ProductoUsuarios(), server)
     add_CarritosServicer_to_server(CarritoProductos(), server)
+    add_FacturasServicer_to_server(FacturaServicio(), server)
     server.add_insecure_port('[::]:50051')
     print("The server is running!")
     server.start()

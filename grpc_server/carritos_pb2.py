@@ -3,7 +3,6 @@
 # source: carritos.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -17,16 +16,421 @@ import usuarios_pb2 as usuarios__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0e\x63\x61rritos.proto\x1a\x0fproductos.proto\x1a\x0eusuarios.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"3\n\x07\x43\x61rrito\x12\r\n\x05total\x18\x01 \x01(\x02\x12\x19\n\x11\x63liente_idusuario\x18\x02 \x01(\x05\"g\n\x07\x46\x61\x63tura\x12\x11\n\tidfactura\x18\x01 \x01(\x05\x12\x30\n\x0c\x66\x65\x63ha_compra\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_facturado\x18\x03 \x01(\x02\"\xea\x01\n\x10Producto_Carrito\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x11\n\tidcarrito\x18\x02 \x01(\x05\x12\x10\n\x08\x63\x61ntidad\x18\x03 \x01(\x05\x12\x10\n\x08subtotal\x18\x04 \x01(\x02\x12\x0e\n\x06nombre\x18\x05 \x01(\t\x12\x0e\n\x06precio\x18\x06 \x01(\x02\x12\r\n\x05total\x18\x07 \x01(\x02\x12\x19\n\x11idproductocarrito\x18\x08 \x01(\x05\x12\x1f\n\rdatos_factura\x18\t \x01(\x0b\x32\x08.Factura\x12 \n\x0e\x64\x61tos_vendedor\x18\n \x01(\x0b\x32\x08.Usuario\"3\n\x0fPutTotalCarrito\x12\x11\n\tidcarrito\x18\x01 \x01(\x05\x12\r\n\x05total\x18\x02 \x01(\x02\"\x17\n\tIdCarrito\x12\n\n\x02id\x18\x01 \x01(\x05\"\"\n\x0fResponseCarrito\x12\x0f\n\x07mensaje\x18\x01 \x01(\t2\x95\x02\n\x08\x43\x61rritos\x12$\n\x0c\x43rearCarrito\x12\x08.Carrito\x1a\n.IdCarrito\x12<\n\x13\x41gregarItemsCarrito\x12\x11.Producto_Carrito\x1a\x10.ResponseCarrito(\x01\x12;\n\x18TraerCarritosByIdUsuario\x12\n.IdUsuario\x1a\x11.Producto_Carrito0\x01\x12*\n\x10TraerCarritoById\x12\n.IdCarrito\x1a\x08.Carrito0\x01\x12<\n\x16\x41\x63tualizarTotalCarrito\x12\x10.PutTotalCarrito\x1a\x10.ResponseCarritob\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='carritos.proto',
+  package='',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x0e\x63\x61rritos.proto\x1a\x0fproductos.proto\x1a\x0eusuarios.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"3\n\x07\x43\x61rrito\x12\r\n\x05total\x18\x01 \x01(\x02\x12\x19\n\x11\x63liente_idusuario\x18\x02 \x01(\x05\"g\n\x07\x46\x61\x63tura\x12\x11\n\tidfactura\x18\x01 \x01(\x05\x12\x30\n\x0c\x66\x65\x63ha_compra\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_facturado\x18\x03 \x01(\x02\"\xea\x01\n\x10Producto_Carrito\x12\x12\n\nidproducto\x18\x01 \x01(\x05\x12\x11\n\tidcarrito\x18\x02 \x01(\x05\x12\x10\n\x08\x63\x61ntidad\x18\x03 \x01(\x05\x12\x10\n\x08subtotal\x18\x04 \x01(\x02\x12\x0e\n\x06nombre\x18\x05 \x01(\t\x12\x0e\n\x06precio\x18\x06 \x01(\x02\x12\r\n\x05total\x18\x07 \x01(\x02\x12\x19\n\x11idproductocarrito\x18\x08 \x01(\x05\x12\x1f\n\rdatos_factura\x18\t \x01(\x0b\x32\x08.Factura\x12 \n\x0e\x64\x61tos_vendedor\x18\n \x01(\x0b\x32\x08.Usuario\"\xa9\x01\n\x0bprodFactura\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x10\n\x08\x63\x61ntidad\x18\x02 \x01(\x05\x12\x0e\n\x06precio\x18\x03 \x01(\x02\x12\x18\n\x10nombre_comprador\x18\x04 \x01(\t\x12\x1a\n\x12\x61pellido_comprador\x18\x05 \x01(\t\x12\x17\n\x0fnombre_vendedor\x18\x06 \x01(\t\x12\x19\n\x11\x61pellido_vendedor\x18\x07 \x01(\t\",\n\ngetFactura\x12\x1e\n\x08\x61rticulo\x18\x01 \x03(\x0b\x32\x0c.prodFactura\"3\n\x0fPutTotalCarrito\x12\x11\n\tidcarrito\x18\x01 \x01(\x05\x12\r\n\x05total\x18\x02 \x01(\x02\"\x17\n\tIdCarrito\x12\n\n\x02id\x18\x01 \x01(\x05\"\"\n\x0fResponseCarrito\x12\x0f\n\x07mensaje\x18\x01 \x01(\t2\xbe\x02\n\x08\x43\x61rritos\x12$\n\x0c\x43rearCarrito\x12\x08.Carrito\x1a\n.IdCarrito\x12<\n\x13\x41gregarItemsCarrito\x12\x11.Producto_Carrito\x1a\x10.ResponseCarrito(\x01\x12;\n\x18TraerCarritosByIdUsuario\x12\n.IdUsuario\x1a\x11.Producto_Carrito0\x01\x12\'\n\x0cTraerFactura\x12\n.IdCarrito\x1a\x0b.getFactura\x12*\n\x10TraerCarritoById\x12\n.IdCarrito\x1a\x08.Carrito0\x01\x12<\n\x16\x41\x63tualizarTotalCarrito\x12\x10.PutTotalCarrito\x1a\x10.ResponseCarritob\x06proto3'
+  ,
+  dependencies=[productos__pb2.DESCRIPTOR,usuarios__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
-_CARRITO = DESCRIPTOR.message_types_by_name['Carrito']
-_FACTURA = DESCRIPTOR.message_types_by_name['Factura']
-_PRODUCTO_CARRITO = DESCRIPTOR.message_types_by_name['Producto_Carrito']
-_PUTTOTALCARRITO = DESCRIPTOR.message_types_by_name['PutTotalCarrito']
-_IDCARRITO = DESCRIPTOR.message_types_by_name['IdCarrito']
-_RESPONSECARRITO = DESCRIPTOR.message_types_by_name['ResponseCarrito']
+
+_CARRITO = _descriptor.Descriptor(
+  name='Carrito',
+  full_name='Carrito',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='total', full_name='Carrito.total', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cliente_idusuario', full_name='Carrito.cliente_idusuario', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=84,
+  serialized_end=135,
+)
+
+
+_FACTURA = _descriptor.Descriptor(
+  name='Factura',
+  full_name='Factura',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='idfactura', full_name='Factura.idfactura', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='fecha_compra', full_name='Factura.fecha_compra', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='total_facturado', full_name='Factura.total_facturado', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=137,
+  serialized_end=240,
+)
+
+
+_PRODUCTO_CARRITO = _descriptor.Descriptor(
+  name='Producto_Carrito',
+  full_name='Producto_Carrito',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='idproducto', full_name='Producto_Carrito.idproducto', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='idcarrito', full_name='Producto_Carrito.idcarrito', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cantidad', full_name='Producto_Carrito.cantidad', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='subtotal', full_name='Producto_Carrito.subtotal', index=3,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nombre', full_name='Producto_Carrito.nombre', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='precio', full_name='Producto_Carrito.precio', index=5,
+      number=6, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='total', full_name='Producto_Carrito.total', index=6,
+      number=7, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='idproductocarrito', full_name='Producto_Carrito.idproductocarrito', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='datos_factura', full_name='Producto_Carrito.datos_factura', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='datos_vendedor', full_name='Producto_Carrito.datos_vendedor', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=243,
+  serialized_end=477,
+)
+
+
+_PRODFACTURA = _descriptor.Descriptor(
+  name='prodFactura',
+  full_name='prodFactura',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='nombre', full_name='prodFactura.nombre', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cantidad', full_name='prodFactura.cantidad', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='precio', full_name='prodFactura.precio', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nombre_comprador', full_name='prodFactura.nombre_comprador', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='apellido_comprador', full_name='prodFactura.apellido_comprador', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='nombre_vendedor', full_name='prodFactura.nombre_vendedor', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='apellido_vendedor', full_name='prodFactura.apellido_vendedor', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=480,
+  serialized_end=649,
+)
+
+
+_GETFACTURA = _descriptor.Descriptor(
+  name='getFactura',
+  full_name='getFactura',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='articulo', full_name='getFactura.articulo', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=651,
+  serialized_end=695,
+)
+
+
+_PUTTOTALCARRITO = _descriptor.Descriptor(
+  name='PutTotalCarrito',
+  full_name='PutTotalCarrito',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='idcarrito', full_name='PutTotalCarrito.idcarrito', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='total', full_name='PutTotalCarrito.total', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=697,
+  serialized_end=748,
+)
+
+
+_IDCARRITO = _descriptor.Descriptor(
+  name='IdCarrito',
+  full_name='IdCarrito',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='IdCarrito.id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=750,
+  serialized_end=773,
+)
+
+
+_RESPONSECARRITO = _descriptor.Descriptor(
+  name='ResponseCarrito',
+  full_name='ResponseCarrito',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mensaje', full_name='ResponseCarrito.mensaje', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=775,
+  serialized_end=809,
+)
+
+_FACTURA.fields_by_name['fecha_compra'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_PRODUCTO_CARRITO.fields_by_name['datos_factura'].message_type = _FACTURA
+_PRODUCTO_CARRITO.fields_by_name['datos_vendedor'].message_type = usuarios__pb2._USUARIO
+_GETFACTURA.fields_by_name['articulo'].message_type = _PRODFACTURA
+DESCRIPTOR.message_types_by_name['Carrito'] = _CARRITO
+DESCRIPTOR.message_types_by_name['Factura'] = _FACTURA
+DESCRIPTOR.message_types_by_name['Producto_Carrito'] = _PRODUCTO_CARRITO
+DESCRIPTOR.message_types_by_name['prodFactura'] = _PRODFACTURA
+DESCRIPTOR.message_types_by_name['getFactura'] = _GETFACTURA
+DESCRIPTOR.message_types_by_name['PutTotalCarrito'] = _PUTTOTALCARRITO
+DESCRIPTOR.message_types_by_name['IdCarrito'] = _IDCARRITO
+DESCRIPTOR.message_types_by_name['ResponseCarrito'] = _RESPONSECARRITO
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 Carrito = _reflection.GeneratedProtocolMessageType('Carrito', (_message.Message,), {
   'DESCRIPTOR' : _CARRITO,
   '__module__' : 'carritos_pb2'
@@ -47,6 +451,20 @@ Producto_Carrito = _reflection.GeneratedProtocolMessageType('Producto_Carrito', 
   # @@protoc_insertion_point(class_scope:Producto_Carrito)
   })
 _sym_db.RegisterMessage(Producto_Carrito)
+
+prodFactura = _reflection.GeneratedProtocolMessageType('prodFactura', (_message.Message,), {
+  'DESCRIPTOR' : _PRODFACTURA,
+  '__module__' : 'carritos_pb2'
+  # @@protoc_insertion_point(class_scope:prodFactura)
+  })
+_sym_db.RegisterMessage(prodFactura)
+
+getFactura = _reflection.GeneratedProtocolMessageType('getFactura', (_message.Message,), {
+  'DESCRIPTOR' : _GETFACTURA,
+  '__module__' : 'carritos_pb2'
+  # @@protoc_insertion_point(class_scope:getFactura)
+  })
+_sym_db.RegisterMessage(getFactura)
 
 PutTotalCarrito = _reflection.GeneratedProtocolMessageType('PutTotalCarrito', (_message.Message,), {
   'DESCRIPTOR' : _PUTTOTALCARRITO,
@@ -69,22 +487,81 @@ ResponseCarrito = _reflection.GeneratedProtocolMessageType('ResponseCarrito', (_
   })
 _sym_db.RegisterMessage(ResponseCarrito)
 
-_CARRITOS = DESCRIPTOR.services_by_name['Carritos']
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _CARRITO._serialized_start=84
-  _CARRITO._serialized_end=135
-  _FACTURA._serialized_start=137
-  _FACTURA._serialized_end=240
-  _PRODUCTO_CARRITO._serialized_start=243
-  _PRODUCTO_CARRITO._serialized_end=477
-  _PUTTOTALCARRITO._serialized_start=479
-  _PUTTOTALCARRITO._serialized_end=530
-  _IDCARRITO._serialized_start=532
-  _IDCARRITO._serialized_end=555
-  _RESPONSECARRITO._serialized_start=557
-  _RESPONSECARRITO._serialized_end=591
-  _CARRITOS._serialized_start=594
-  _CARRITOS._serialized_end=871
+
+_CARRITOS = _descriptor.ServiceDescriptor(
+  name='Carritos',
+  full_name='Carritos',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=812,
+  serialized_end=1130,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='CrearCarrito',
+    full_name='Carritos.CrearCarrito',
+    index=0,
+    containing_service=None,
+    input_type=_CARRITO,
+    output_type=_IDCARRITO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AgregarItemsCarrito',
+    full_name='Carritos.AgregarItemsCarrito',
+    index=1,
+    containing_service=None,
+    input_type=_PRODUCTO_CARRITO,
+    output_type=_RESPONSECARRITO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TraerCarritosByIdUsuario',
+    full_name='Carritos.TraerCarritosByIdUsuario',
+    index=2,
+    containing_service=None,
+    input_type=productos__pb2._IDUSUARIO,
+    output_type=_PRODUCTO_CARRITO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TraerFactura',
+    full_name='Carritos.TraerFactura',
+    index=3,
+    containing_service=None,
+    input_type=_IDCARRITO,
+    output_type=_GETFACTURA,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TraerCarritoById',
+    full_name='Carritos.TraerCarritoById',
+    index=4,
+    containing_service=None,
+    input_type=_IDCARRITO,
+    output_type=_CARRITO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ActualizarTotalCarrito',
+    full_name='Carritos.ActualizarTotalCarrito',
+    index=5,
+    containing_service=None,
+    input_type=_PUTTOTALCARRITO,
+    output_type=_RESPONSECARRITO,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_CARRITOS)
+
+DESCRIPTOR.services_by_name['Carritos'] = _CARRITOS
+
 # @@protoc_insertion_point(module_scope)
