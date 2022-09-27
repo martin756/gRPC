@@ -1,10 +1,9 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function CheckoutCarrito(props) {
     console.log("porps",props);
-  //let query = useQuery()
   return (
     <div className="card-body text-center">
         <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -31,14 +30,6 @@ function CheckoutCarrito(props) {
             <i>${props.precio*props.cantidad}</i>
           </div>
         </li>
-        {/*{props.total !== null &&
-          <li class="list-group-item d-flex justify-content-between">
-            <div>
-              <strong>Total gastado: </strong>
-              <i>${props.total}</i>
-            </div>
-          </li>
-        }*/}
         <br></br>
     </div>  
   )

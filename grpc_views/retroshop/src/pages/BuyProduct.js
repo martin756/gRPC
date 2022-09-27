@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { jsonProducts } from './productsDemo';
 import Carousel from 'react-bootstrap/Carousel'
 import Header from '../components/Header';
 import { CartPlusFill } from 'react-bootstrap-icons';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 
-function BuyProduct(props) {
+function BuyProduct() {
     const navigate = useNavigate()
     const cookies = new Cookies()
     let carrito = cookies.get('Carrito') === undefined ? [] : cookies.get('Carrito')
@@ -22,13 +21,11 @@ function BuyProduct(props) {
     let query = React.useMemo(() => new URLSearchParams(search), [search]);
 
     const idProduct = query.get('id')
-    //const product = jsonProducts.filter(p=>p.id==idProduct)[0]
     const baseUrl = "https://localhost:5001/api/Producto/GetProductoById"
 
     const agregarAlCarrito = (event) => {
         event.preventDefault()
         debugger
-        //producto.CantidadDisponible -= cantidad.current.value
         const productosAgregados = carrito.filter(p=>p.IdProducto===idProduct)
         if (productosAgregados.length > 0){
              alert("El producto ya fue agregado al carrito")
@@ -45,7 +42,6 @@ function BuyProduct(props) {
             "CantidadDisponible": producto.CantidadDisponible-cantidad.current.value,
             "DatosVendedor": datosPublicador
         }
-        //p.CantidadDisponible -= cantidad.current.value
         carrito.push(p)
         cookies.set('Carrito',carrito)
         navigate('/mainmenu')
@@ -128,31 +124,6 @@ function BuyProduct(props) {
                     </div>
                 </div>
             </div>
-            {/*<div className='container'>
-                <div className="row g-5 mt-4 justify-content-center">
-                    <div className="col-md-2 col-lg-3 row g-3 justify-content-center">
-                        <h4 className="text-center mb-3">Comprar producto</h4>
-                        <Carousel  style={{width: '300px', height: '400px'}}>
-                        {product.url_fotos.map((value)=>(
-                            <Carousel.Item>
-                            <img
-                                className="d-block"
-                                style={{width:'300px',height: '400px'}}
-                                src={value}
-                                alt="..."
-                            />
-                            </Carousel.Item>
-                        ))}
-                        </Carousel>
-                    </div>
-                    <div className="w-50 mt-4">
-                        <h5 className="form-label">Nombre del producto: <i className='fw-normal'>{product.nombre}</i></h5>
-                        <h5 className="mt-4 form-label">Descripción: <i className='fw-normal'>{product.descripcion}</i></h5>
-                        <h5 className="mt-4 form-label">Cantidad disponible: <i className='fw-normal'>{product.cantidad_disponible}</i></h5>
-                        <h5 className="mt-4 form-label">Fecha de fabricación: <i className='fw-normal'>{product.fecha_fabricacion.toLocaleString()}</i></h5>
-                    </div>
-                </div>
-            </div>*/}
         </div>
   )
 }

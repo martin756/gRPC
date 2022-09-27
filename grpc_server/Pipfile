@@ -8,6 +8,7 @@ grpcio-tools = "*"
 grpcio = "*"
 googleapis-common-protos = "*"
 mysql-connector-python = "*"
+kafka-python = "*"
 
 [dev-packages]
 

@@ -1,13 +1,9 @@
-#from faker import Faker
 from kafka import KafkaConsumer
 from kafka.structs import TopicPartition
 import mysql.connector
 from mysql.connector import Error
 
 import json
-
-# crear nuevos group ids para poder cargar todo de nuevos
-#mantener los mismos para cargar solo lo ultimo
 
 class AgregarFacturas():
     def __init__(self):
@@ -54,7 +50,6 @@ if __name__ == "__main__":
     for msg in consumer:
         try:
             factura = json.loads(msg.value)
-            #print()
             bdSubasta.agregarFactura(factura)
         except Error as ex:
             print("{0}".format(ex))

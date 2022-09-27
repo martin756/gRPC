@@ -55,8 +55,6 @@ function MyShopping() {
           });
           
         setCarritos(itemsCarritosPorFactura)
-          //const productsPublishedByLoggedUser = response.data.filter(p=>p.PublicadorIdusuario===idusuario && p.CantidadDisponible>0)
-          //setProducts(productsPublishedByLoggedUser)
         })
         .catch(error=>{
           alert(error)
@@ -76,7 +74,7 @@ function MyShopping() {
                 </h4>
                 <ul className="list-group mb-3">
                     <div>
-                    {carritos.map((value=>(
+                    {carritos.length > 0 ? carritos.map((value=>(
                         <div className="row list-group mb-3"><h4>Carrito nro. {value[0][0].Idcarrito}</h4>
                         {value.map((carrito=>(
                             <div><h5>Factura nro. {carrito[0].DatosFactura.Idfactura}</h5>
@@ -98,7 +96,7 @@ function MyShopping() {
                         <hr />
                         <h4>Total Carrito ${value[0][0].Total}</h4>
                         </div>
-                    )))}
+                    ))): "Nada por aquí"}
                     <br></br>
                     </div>
                     <br></br>

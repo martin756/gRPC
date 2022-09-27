@@ -2,20 +2,16 @@ import React, {useEffect, useRef, useState} from 'react'
 import Header from '../components/Header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ProductCard from '../components/ProductCard';
-//import '../css/ShopProductsList.css'
-import { jsonProducts, categorias } from './productsDemo';
+import { categorias } from './productsDemo';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { filtroPorNombre, filtroPorCategoria, filtroRangoFecha, filtroRangoPrecio } from '../pages/MainMenu'
 
 function MonitorMenu() {
     const baseUrl="https://localhost:5001/api/Producto"
-    const cookies = new Cookies()
     const tabEventKeys = {productos: "productos", subastas: "subastas"}
     
-    //const [categorias, setCategories] = useState([])
     const [eventKey, setEventKey] = useState(tabEventKeys.productos)
     const [productsReadOnly, setProductsReadOnly] = useState([])
     const [products, setProductsFiltered] = useState([])
@@ -39,8 +35,6 @@ function MonitorMenu() {
       await axios.get(baseUrl+"/GetProductos")
       .then(response=>{
         debugger
-        //const idusuario = cookies.get('Idusuario') === undefined ? 0 : parseInt(cookies.get('Idusuario'))
-        //const productsNotPublishedByLoggedUser = response.data.filter(p=>p.PublicadorIdusuario!==idusuario && p.CantidadDisponible>0)
         setProductsReadOnly(response.data)
         setProductsFiltered(response.data)
       })
@@ -53,8 +47,6 @@ function MonitorMenu() {
       await axios.get(baseUrl+"/GetSubastas")
       .then(response=>{
         debugger
-        //const idusuario = cookies.get('Idusuario') === undefined ? 0 : parseInt(cookies.get('Idusuario'))
-        //const subastasNotPublishedByLoggerUser = response.data.filter(s=>s.PublicadorIdusuario!==idusuario && s.CantidadDisponible>0)
         setProductsOnAuctionReadOnly(response.data)
       })
       .catch(error=>{

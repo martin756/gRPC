@@ -2,11 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import Header from "../components/Header";
-import { PlusLg, DashLg } from 'react-bootstrap-icons'
 import { categorias } from "./productsDemo";
 import Cookies from "universal-cookie";
 
-function Publish(props) {
+function Publish() {
     const baseUrl="https://localhost:5001/api/Producto"
     const nombre = useRef(null) 
     const descripcion = useRef(null)
@@ -14,12 +13,10 @@ function Publish(props) {
     const stock = useRef(null)
     const fechaFabricacion = useRef(null)
     const fechaFinalizacionSubasta = useRef(null)
-    const esSubasta = useRef(null)
     const tipoCategoria = useRef(null)
     const imagen1 = useRef(null), imagen2 = useRef(null)
     const imagen3 = useRef(null), imagen4 = useRef(null), imagen5 = useRef(null)
     const navigate = useNavigate()
-    const [inputs, setInputsState] = useState([])
     const cookies = new Cookies()
     const idusuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     const [isChecked, setIsChecked] = useState(false);
@@ -95,7 +92,7 @@ function Publish(props) {
                         <label className="form-label">Categoría</label>
                         <select ref={tipoCategoria} className="form-select" required>
                             <option value="">Seleccione categoria</option>
-                            {categorias.map((value, index)=>(
+                            {categorias.map(value=>(
                                 <option>{value}</option>
                             ))}
                         </select>

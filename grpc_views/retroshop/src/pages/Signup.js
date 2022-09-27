@@ -3,7 +3,7 @@ import Cookies from "universal-cookie";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 
-function Signup(props) {
+function Signup() {
     const baseUrl="https://localhost:5001/api/Usuarios"
     const cookies = new Cookies()
     const nombre = useRef(null),apellido = useRef(null)
@@ -36,7 +36,6 @@ function Signup(props) {
         })
         .catch((error)=>{
             alert(error)
-            //alert("Todos los campos son obligatorios")
         })
     }
 

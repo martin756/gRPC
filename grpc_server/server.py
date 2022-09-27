@@ -271,8 +271,8 @@ class ProductoUsuarios(ProductosServicer):
         
         #aniadir valores a tabla de subasta
         if(int(request.esSubasta)==1):
-            fechaInicio = datetime.fromtimestamp(request.fecha_inicio.seconds)#self.getFechaFromTimeStamp(request.fecha_inicio.seconds)
-            fechaFin = datetime.fromtimestamp(request.fecha_fin.seconds)#self.getFechaFromTimeStamp(request.fecha_fin.seconds)
+            fechaInicio = datetime.fromtimestamp(request.fecha_inicio.seconds)
+            fechaFin = datetime.fromtimestamp(request.fecha_fin.seconds)
             sql = "INSERT INTO subasta(idproducto, preciofinal, fechainicio, fechafin, ultimapuja ) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')"
 
             cursor.execute(sql.format(id_item, request.precio, fechaInicio, fechaFin, fechaInicio))
@@ -281,18 +281,6 @@ class ProductoUsuarios(ProductosServicer):
         cursor.close()
         cnx.close()
         return Response(idusuario = id_item, message = "204 No-Content. Producto cargado exitosamente.")
-
-    """def getFechaFromTimeStamp(self, fecha):
-        if len(fecha) == 0:
-            print("fecha vacia")
-            return None
-        print("no vacio")
-        num = fecha.split(':')[1].replace(' ','').replace('\n','')
-        a = int(num)
-        a = a/1000
-        return datetime.fromtimestamp(a)
-        return datetime.fromtimestamp(fecha)"""
-
 
     def ActualizarStock(self, request, context):
         cnx =mysql.connector.connect(user='root', password='root',

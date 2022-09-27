@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from "react-router-dom"
 
 function ProductCard(props) {
-  //let query = useQuery()
   return (
     <div className="col-6 col-md-4 col-lg-3 mb-3">
       {props.cantidad_disponible > 0 &&
@@ -13,7 +12,6 @@ function ProductCard(props) {
         </div>
         <div className="card-body text-center">
           <h4 className="card-title">
-            {/*<a href={`/buyProduct?id=${props.id}`} className=" font-weight-bold text-dark text-uppercase small">{props.nombre}</a>*/}
             <Link to={"/"+props.linkPage+"?id="+props.id} className=" font-weight-bold text-dark text-uppercase small">{props.nombre}</Link>
           </h4>
           <h5 className="card-price">

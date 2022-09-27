@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Cookies from 'universal-cookie';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import ProductCard from '../components/ProductCard';
-import { jsonCarrito } from './carritoDemo';
 import Header from '../components/Header';
 import CheckoutCarrito from '../components/CheckoutCarrito';
 
@@ -14,20 +12,9 @@ export default function Carrito(props) {
   const [products, setProducts] = useState([])
   const [total, setTotalAPagar] = useState(0)
   let flagMostrarItems = true
-  const precio = useRef(null);
-  const nombre = useRef(null);
-  const cantidad = useRef(null);
-  const id_Producto = useRef(null);
-  const id_Usuario = useRef(null);
   const navigate = useNavigate()
 
-
-  //const { search } = useLocation();
-  //let query = React.useMemo(() => new URLSearchParams(search), [search]);
-  //const idProduct = query.get('id')
-  //const product = jsonCarrito.filter(p=>p.id==idProduct)[0]
   useEffect(() => {
-    //getCookies()
     debugger
     const myArray = cookies.get('Carrito')
     setProducts(myArray)
@@ -40,24 +27,6 @@ export default function Carrito(props) {
       document.body.removeChild(script);
     }
   }, []);
-
-
-  /*function setCookies(){
-    const [carrito] = useState(jsonCarrito)
-    console.log(carrito);
-    var myArray = cookies.set('Carrito')
-  }
-
-
-  function getCookies(){
-    //setCookies()
-
-    //const cookies = new Cookies()
-    
-
-    //let obj = JSON.parse(myArray)
-    //console.log(obj)
-  }*/
 
   const calcularTotal = () =>{
     let totalAPagar = 0
@@ -72,9 +41,6 @@ export default function Carrito(props) {
     debugger
     let totalAPagar = total, idCarrito = 0
     let items = []
-    /*carrito.forEach((value)=>{
-      totalAPagar += value.CantidadSeleccionada*value.Precio
-    })*/
     const IdUsuario = cookies.get('Idusuario') === undefined ? 0 : cookies.get('Idusuario')
     let saldoDisponible = cookies.get('Saldo') === undefined ? 0 : cookies.get('Saldo')
     if (saldoDisponible < totalAPagar) {
@@ -105,8 +71,6 @@ export default function Carrito(props) {
 
     //Actualizo los stocks de los productos abonados
     carrito.forEach(async (value)=>{
-      //putProducto.idproducto = value.idProducto
-      //putProducto.cantidad = value.CantidadDisponible
       await axios.put(baseUrl+"/Producto/UpdateStock?idProducto="+value.IdProducto+"&cantidad="+value.CantidadDisponible)
     })
 
@@ -142,7 +106,7 @@ export default function Carrito(props) {
           Array.isArray(item) && arr.push(item)
       })
     })
-    arr.forEach((value, index)=>{
+    arr.forEach(value=>{
       const factura = {
         fechacompra: fechaParseada,
         items: [],
@@ -179,48 +143,6 @@ export default function Carrito(props) {
     .then(response=>{console.log(response.data)})
     .catch(error=>{alert(error)})
   }
-
-/*const postCarrito=async(event)=>{
-    event.preventDefault()
-    const jsonBody = 
-    {
-        "id_Producto": id_Producto.current.value,
-        "nombre": nombre.current.value,
-        "precio": precio.current.value,
-        "cantidad": cantidad.current.value,
-    }
-    await axios.post("https://localhost:5001/api/Carrito", jsonBody)
-    .then(response=>{
-        if (response.data.Message.includes('400')){
-            navigate('/mainmenu')
-        }else{
-            alert("El carrito ya se encuentra guardado")
-        }
-    })
-    .catch((error)=>{
-      alert(error)
-  })
-}
-
-const postProductoCarrito=async(event)=>{
-  event.preventDefault()
-  const jsonBody = 
-  {
-      "id_Producto": id_Producto.current.value,
-      "id_Usuario": id_Usuario.current.value,
-  }
-  await axios.post("https://localhost:5001/api/Producto_Carrito", jsonBody)
-  .then(response=>{
-      if (response.data.Message.includes('400')){
-          navigate('/mainmenu')
-      }else{
-          alert("El carrito ya se encuentra guardado")
-      }
-  })
-  .catch((error)=>{
-    alert(error)
-})
-}*/
 
   return (
     <div>

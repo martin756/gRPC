@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `retroshop`.`producto_carrito` (
   `idcarrito` INT NULL DEFAULT NULL,
   `cantidad` INT NULL DEFAULT NULL,
   `subtotal` FLOAT NULL DEFAULT NULL,
-  `idfactura` INT NOT NULL,
+  `idfactura` INT NULL DEFAULT NULL,
   PRIMARY KEY (`idproducto_carrito`),
   INDEX `fk_idproducto_idx` (`idproducto` ASC) VISIBLE,
   INDEX `fk_idcarrito_idx` (`idcarrito` ASC) VISIBLE,

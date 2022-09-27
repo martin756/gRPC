@@ -1,6 +1,5 @@
 import React, { useRef, useEffect }  from 'react'
 import {useNavigate} from 'react-router-dom'
-import md5 from 'md5'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Cookies from 'universal-cookie'
 import axios from 'axios'
@@ -39,7 +38,6 @@ function Login() {
         .catch(error=>{
             alert(error)
         })
-        //navigate('/mainmenu')
     }
 
     const Registrarse=()=>{

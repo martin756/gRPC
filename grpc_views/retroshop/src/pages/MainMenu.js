@@ -2,8 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import Header from '../components/Header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ProductCard from '../components/ProductCard';
-//import '../css/ShopProductsList.css'
-import { jsonProducts, categorias } from './productsDemo';
+import { categorias } from './productsDemo';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import Tab from 'react-bootstrap/Tab';
@@ -14,7 +13,6 @@ export default function MainMenu() {
     const cookies = new Cookies()
     const tabEventKeys = {productos: "productos", subastas: "subastas"}
     
-    //const [categorias, setCategories] = useState([])
     const [eventKey, setEventKey] = useState(tabEventKeys.productos)
     const [productsReadOnly, setProductsReadOnly] = useState([])
     const [products, setProductsFiltered] = useState([])
@@ -33,44 +31,6 @@ export default function MainMenu() {
 
         setProductsFiltered(productsFiltered)
     }
-
-    /*const filtroPorCategoria = (arr) => {
-      const optionLabelSelected = filtroCategoria.current.options[filtroCategoria.current.options.selectedIndex]
-      if (optionLabelSelected.index !== 0) {
-        debugger
-        return arr.filter(product=>product.Idtipocategoria===optionLabelSelected.index)
-      }
-      return arr
-    }
-
-    const filtroPorNombre = (arr) => {
-      if (filtroNombre.current.value !== '') {
-        return arr.filter(product=>product.Nombre.toLowerCase()
-          .includes(filtroNombre.current.value.toLowerCase()))
-      }
-      return arr
-    }
-
-    const filtroRangoPrecio = (arr) => {
-      if (filtroPrecioDesde.current.value !== '') {
-        arr = arr.filter(product=>product.Precio >= filtroPrecioDesde.current.value)
-      }
-      if (filtroPrecioHasta.current.value !== '') {
-        arr = arr.filter(product=>product.Precio <= filtroPrecioHasta.current.value)
-      }
-      return arr
-    }
-
-    const filtroRangoFecha = (arr) => {
-      debugger
-      if (filtroFechaDesde.current.value !== '') {
-        arr = arr.filter(product=>product.FechaPublicacion >= filtroFechaDesde.current.value)
-      }
-      if (filtroFechaHasta.current.value !== '') {
-        arr = arr.filter(product=>product.FechaPublicacion <= filtroFechaHasta.current.value)
-      }
-      return arr
-    }*/
 
     const traerProductos = async () => {
       await axios.get(baseUrl+"/GetProductos")
@@ -113,7 +73,6 @@ export default function MainMenu() {
     return (
         <div>
         <Header />
-        
         <div className="container pt-5">
           <div className="row">
             <div className="col-md-8 order-md-2 col-lg-9">
@@ -219,5 +178,3 @@ export const filtroRangoFecha = (arr,refFechaDesde,refFechaHasta) => {
   }
   return arr
 }
-
-

@@ -1,19 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react'
 import SockJsClient from 'react-stomp'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { jsonProducts } from './productsDemo';
+import { useLocation } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import Header from '../components/Header';
-import { CartPlusFill } from 'react-bootstrap-icons';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Alert from 'react-bootstrap/Alert';
 import CountdownTimer from '../components/CountdownTimer';
 
 
 function Subasta() {
-    const navigate = useNavigate()
     const cookies = new Cookies()
 
     const precio = useRef(null)
@@ -40,7 +36,6 @@ function Subasta() {
         }
         await axios.post(baseUrl+"PostPujaSubastaKafka",jsonBody)
         .then(response=>{
-            //alert("Nuevo precio ofertado")
             const p = parseFloat(precio.current.value)
             setPrecio(p)
         })
@@ -88,7 +83,6 @@ function Subasta() {
       }
   
       let onMessageReceived = (msg) => {
-          //console.log(msg)
           alert("Nuevo precio ofertado")
           setPrecio(msg.PrecioOfrecido)
       }
@@ -152,7 +146,7 @@ function Subasta() {
                                         <h5>$ {statePrecio}</h5>
                                     </div>
                                     <br />
-                                    {fechaActual < new Date(producto.FechaFin) ?
+                                    {fechaActual < new Date(producto.FechaFin) &&
                                     <div className="row">
                                         <div className="col-sm-12 col-md-6 col-lg-6">
                                         <form onSubmit={(event)=>{pujar(event)}} className="needs-validation" noValidate>
@@ -169,10 +163,6 @@ function Subasta() {
                                         </form>
                                         </div>
                                     </div>
-                                    : 
-                                    <Alert key="danger" variant="danger">
-                                        La subasta se ha cerrado!
-                                    </Alert>
                                     }
                                 </div>
                             </div>
@@ -183,34 +173,5 @@ function Subasta() {
         </div>
   )
 }
-/*function Subasta() {
-    const [mensajes, setMessage] = useState([])
-    const SOCKET_URL = "http://localhost:8080/pujas"
-
-    let onConnected = () => {
-        console.log("Conectado al websocket")
-    }
-
-    let onMessageReceived = (msg) => {
-        console.log(msg)
-        setMessage(mensajes.concat(msg))
-    }
-
-  return (
-    <div>
-        <SockJsClient 
-        url={SOCKET_URL}
-        topics={['/topic/ultimaPuja']}
-        onConnect={onConnected}
-        onDisconnect={console.log("Desconectado!")}
-        onMessage={msg => onMessageReceived(msg)}
-        debug={false}
-        />
-        {mensajes.map((item, index)=>(
-            <div>{JSON.stringify(item)}</div>
-        ))}
-    </div>
-  )
-}*/
 
 export default Subasta
